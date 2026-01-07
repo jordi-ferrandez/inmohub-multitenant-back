@@ -1,0 +1,565 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Ping {
+  id    Int    @id @default(autoincrement())
+  value String
+}
+
+model Role {
+  id          Int              @id @default(autoincrement())
+  name        String           @unique
+  displayName String           @map("display_name")
+  users       UserRole[]
+  permissions RolePermission[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+}
+
+model User {
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  passwordHash String     @map("password_hash")
+  firstName    String     @map("first_name")
+  lastName     String     @map("last_name")
+  phone        String?
+  avatarUrl    String?    @map("avatar_url")
+  isActive     Boolean    @default(true) @map("is_active")
+  roles        UserRole[]
+
+  assignments          Assignment[]
+  followUps            FollowUp[]
+  mailboxing           Mailboxing[]
+  remindersCreated     Reminder[]   @relation("ReminderCreator")
+  remindersResponsible Reminder[]   @relation("ReminderResponsible")
+
+  capturedProperties            Property[]             @relation("PropertyCapturedBy")
+  propertyAttachmentsUploaded   PropertyAttachment[]   @relation("PropertyAttachmentUploadedBy")
+  buildingAttachmentsUploaded   BuildingAttachment[]   @relation("BuildingAttachmentUploadedBy")
+  mailboxingAttachmentsUploaded MailboxingAttachment[] @relation("MailboxingAttachmentUploadedBy")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+}
+
+model Permission {
+  id     Int              @id @default(autoincrement())
+  action String
+  module String
+  roles  RolePermission[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@unique([action, module])
+}
+
+model UserRole {
+  userId Int  @map("user_id")
+  roleId Int  @map("role_id")
+  user   User @relation(fields: [userId], references: [id])
+  role   Role @relation(fields: [roleId], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@id([userId, roleId])
+  @@map("UserRole")
+}
+
+model RolePermission {
+  roleId       Int        @map("role_id")
+  permissionId Int        @map("permission_id")
+  role         Role       @relation(fields: [roleId], references: [id])
+  permission   Permission @relation(fields: [permissionId], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@id([roleId, permissionId])
+  @@map("RolePermission")
+}
+
+model Building {
+  id     Int     @id @default(autoincrement())
+  street String // Calle Prop
+  number Int // Calle Prop Num
+  block  String? // Calle Bloque
+  stair  String? // Calle Prop Esc
+
+  contactId Int?    @map("contact_id")
+  contact   Person? @relation(fields: [contactId], references: [id], name: "BuildingContact")
+
+  presidentId Int?    @map("president_id")
+  president   Person? @relation(fields: [presidentId], references: [id], name: "BuildingPresident")
+
+  informerId Int?    @map("informer_id")
+  informer   Person? @relation(fields: [informerId], references: [id], name: "BuildingInformer")
+
+  noDisturb Boolean @default(false) @map("no_disturb")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  properties  Property[]
+  attachments BuildingAttachment[]
+  assignments Assignment[]
+  mailboxing  Mailboxing[]
+  reminders   Reminder[]
+
+  @@unique([number, block, stair, street])
+  @@index([number, block, stair, street], name: "idx_building")
+  @@index([street], name: "idx_building_street")
+}
+
+model Property {
+  id            Int    @id @default(autoincrement())
+  inmovillaCode Int    @map("inmovilla_code")
+  number        String
+  floor         Int
+  buildingId    Int    @map("building_id")
+  ownerId       Int?   @map("owner_id") // Mantener para compatibilidad, será deprecated
+  tenantId      Int?   @map("tenant_id") // Mantener para compatibilidad, será deprecated
+  capturedById  Int?   @map("captured_by_id")
+
+  appraisalPrice  Decimal? @map("appraisal_price")
+  occupiedBy      String?  @map("occupied_by")
+  importantNotice String?  @map("important_notice")
+  rso_comment     String?  @map("rso_comment")
+  noDisturb       Boolean  @default(false) @map("no_disturb")
+  noDoormat       Boolean  @default(false) @map("no_doormat")
+  noBell          Boolean  @default(false) @map("no_bell")
+  noCounter       Boolean  @default(false) @map("no_counter")
+  soldRentedUs    Boolean  @default(false) @map("sold_rented_us")
+  branch          String?
+
+  // NUEVOS CAMPOS
+  salePrice         Decimal?       @map("sale_price")
+  rentalPrice       Decimal?       @map("rental_price")
+  status            PropertyStatus @default(sin_estado) @map("status")
+  isPresident       Boolean        @default(false) @map("is_president")
+  isInformer        Boolean        @default(false) @map("is_informer")
+  isSecondResidence Boolean        @default(false) @map("is_second_residence")
+  isOpportunity     Boolean        @default(false) @map("is_opportunity")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  followUps       FollowUp[]
+  attachments     PropertyAttachment[]
+  listings        Listing[]
+  reminders       Reminder[]
+  building        Building             @relation(fields: [buildingId], references: [id])
+  owner           Person?              @relation(fields: [ownerId], references: [id], name: "PropertyOwner") // Deprecated
+  tenant          Person?              @relation(fields: [tenantId], references: [id], name: "PropertyTenant") // Deprecated
+  capturedBy      User?                @relation(fields: [capturedById], references: [id], name: "PropertyCapturedBy")
+  propertyPersons PropertyPerson[] // Nueva relación many-to-many
+
+  @@unique([number, floor, buildingId])
+  @@index([buildingId], name: "idx_property_building")
+  @@index([inmovillaCode], name: "idx_property_inmovilla_code")
+}
+
+model PropertyAttachment {
+  id Int @id @default(autoincrement())
+
+  propertyId Int      @map("property_id")
+  property   Property @relation(fields: [propertyId], references: [id])
+
+  fileName String? @map("file_name")
+  mimeType String? @map("mime_type")
+  fileSize Int?    @map("file_size")
+  s3Key    String  @map("s3_key")
+  url      String
+
+  uploadedById Int?  @map("uploaded_by_id")
+  uploadedBy   User? @relation("PropertyAttachmentUploadedBy", fields: [uploadedById], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+}
+
+model BuildingAttachment {
+  id Int @id @default(autoincrement())
+
+  buildingId Int      @map("building_id")
+  building   Building @relation(fields: [buildingId], references: [id])
+
+  fileName String? @map("file_name")
+  mimeType String? @map("mime_type")
+  fileSize Int?    @map("file_size")
+  s3Key    String  @map("s3_key")
+  url      String
+
+  uploadedById Int?  @map("uploaded_by_id")
+  uploadedBy   User? @relation("BuildingAttachmentUploadedBy", fields: [uploadedById], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+}
+
+model Assignment {
+  id         Int            @id @default(autoincrement())
+  user       User           @relation(fields: [userId], references: [id])
+  userId     Int            @map("user_id")
+  building   Building       @relation(fields: [buildingId], references: [id])
+  buildingId Int            @map("building_id")
+  type       AssignmentType
+  startDate  DateTime       @map("start_date")
+  endDate    DateTime       @map("end_date")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+}
+
+enum AssignmentType {
+  Following
+  Mailboxing
+}
+
+model FollowUp {
+  id Int @id @default(autoincrement())
+
+  sellerId Int  @map("seller_id")
+  seller   User @relation(fields: [sellerId], references: [id])
+
+  propertyId Int      @map("property_id")
+  property   Property @relation(fields: [propertyId], references: [id])
+
+  // Nuevo sistema simplificado
+  wasContacted    Boolean @map("was_contacted")
+  contactType     String? @map("contact_type") // "Directo", "Telefónico", "Carta en mano"
+  letterType      String? @map("letter_type") // "Inquilino", "Propietario", "Cuidador/tutor"
+  observationType String? @map("observation_type") // "Perro", "Ruidos", "Mirilla", "Carta debajo puerta"
+
+  // Sistema de fechas mejorado
+  plannedDate  DateTime? @map("planned_date") // Para seguimientos futuros
+  executedDate DateTime? @map("executed_date") // Para seguimientos completados
+
+  comment String?
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  reminders           Reminder[]
+  reminderOccurrences ReminderOccurrence[]
+
+  @@index([sellerId], name: "idx_follow_up_seller")
+  @@index([propertyId], name: "idx_follow_up_property")
+  @@index([plannedDate], name: "idx_follow_up_planned")
+  @@index([executedDate], name: "idx_follow_up_executed")
+}
+
+model Mailboxing {
+  id Int @id @default(autoincrement())
+
+  mailboxerId Int  @map("mailboxer_id")
+  mailboxer   User @relation(fields: [mailboxerId], references: [id])
+
+  buildingId Int      @map("building_id")
+  building   Building @relation(fields: [buildingId], references: [id])
+
+  status MailboxingStatus @default(outside)
+
+  comment String?
+  date    DateTime @map("date")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  attachments MailboxingAttachment[]
+}
+
+model MailboxingAttachment {
+  id Int @id @default(autoincrement())
+
+  mailboxingId Int        @map("mailboxing_id")
+  mailboxing   Mailboxing @relation(fields: [mailboxingId], references: [id])
+
+  fileName String? @map("file_name")
+  mimeType String? @map("mime_type")
+  fileSize Int?    @map("file_size")
+  s3Key    String  @map("s3_key")
+  url      String
+
+  uploadedById Int?  @map("uploaded_by_id")
+  uploadedBy   User? @relation("MailboxingAttachmentUploadedBy", fields: [uploadedById], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+}
+
+model Person {
+  id        Int       @id @default(autoincrement())
+  firstName String    @map("first_name")
+  lastName  String    @map("last_name")
+  email     String?   @unique
+  birthDate DateTime? @map("birth_date")
+  gender    String?
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  contactBuildings   Building[]       @relation("BuildingContact")
+  presidentBuildings Building[]       @relation("BuildingPresident")
+  informerBuildings  Building[]       @relation("BuildingInformer")
+  propertiesOwned    Property[]       @relation("PropertyOwner") // Deprecated
+  propertiesTenanted Property[]       @relation("PropertyTenant") // Deprecated
+  propertyPersons    PropertyPerson[] // Nueva relación many-to-many
+
+  phones    PersonPhone[]
+  reminders Reminder[]
+
+  // ownerships Ownership[]
+  // tenancies Tenancy[]
+}
+
+model PersonPhone {
+  id       Int       @id @default(autoincrement())
+  personId Int       @map("person_id")
+  person   Person    @relation(fields: [personId], references: [id])
+  phone    String
+  type     PhoneType @map("type")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+}
+
+model Reminder {
+  id               Int                    @id @default(autoincrement())
+  title            String
+  note             String?
+  responsibleId    Int                    @map("responsible_id")
+  responsible      User                   @relation("ReminderResponsible", fields: [responsibleId], references: [id])
+  creatorId        Int                    @map("creator_id")
+  creator          User                   @relation("ReminderCreator", fields: [creatorId], references: [id])
+  propertyId       Int?                   @map("property_id")
+  property         Property?              @relation(fields: [propertyId], references: [id])
+  buildingId       Int?                   @map("building_id")
+  building         Building?              @relation(fields: [buildingId], references: [id])
+  personId         Int?                   @map("person_id")
+  person           Person?                @relation(fields: [personId], references: [id])
+  followUpId       Int?                   @map("follow_up_id")
+  followUp         FollowUp?              @relation(fields: [followUpId], references: [id])
+  scheduledAt      DateTime               @map("scheduled_at")
+  timezone         String                 @default("Europe/Madrid")
+  recurrenceType   ReminderRecurrenceType @map("recurrence_type")
+  recurrenceRule   String?                @map("recurrence_rule")
+  recurrenceEndsAt DateTime?              @map("recurrence_ends_at")
+  status           ReminderStatus         @default(active)
+  metadata         Json?
+
+  occurrences ReminderOccurrence[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@index([responsibleId], name: "idx_reminder_responsible")
+  @@index([scheduledAt], name: "idx_reminder_scheduled_at")
+  @@index([status], name: "idx_reminder_status")
+}
+
+model ReminderOccurrence {
+  id                   Int                      @id @default(autoincrement())
+  reminderId           Int                      @map("reminder_id")
+  reminder             Reminder                 @relation(fields: [reminderId], references: [id])
+  followUpId           Int?                     @map("follow_up_id")
+  followUp             FollowUp?                @relation(fields: [followUpId], references: [id])
+  scheduledFor         DateTime                 @map("scheduled_for")
+  originalScheduledFor DateTime?                @map("original_scheduled_for")
+  timezone             String                   @default("Europe/Madrid")
+  status               ReminderOccurrenceStatus @default(pending)
+  completedAt          DateTime?                @map("completed_at")
+  skippedAt            DateTime?                @map("skipped_at")
+  skippedReason        String?                  @map("skipped_reason")
+  autoGenerated        Boolean                  @default(true) @map("auto_generated")
+  sequence             Int                      @default(0)
+  metadata             Json?
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@index([scheduledFor], name: "idx_reminder_occurrence_scheduled")
+  @@index([status], name: "idx_reminder_occurrence_status")
+  @@index([followUpId], name: "idx_reminder_occurrence_followup")
+}
+
+enum PhoneType {
+  Mobile
+  Home
+  Work
+  Other
+}
+
+model Listing {
+  id         Int      @id @default(autoincrement())
+  propertyId Int      @map("property_id")
+  property   Property @relation(fields: [propertyId], references: [id])
+
+  listingTypeId Int         @map("listing_type_id")
+  listingType   ListingType @relation(fields: [listingTypeId], references: [id])
+
+  listingStatusId Int           @map("listing_status_id")
+  listingStatus   ListingStatus @relation(fields: [listingStatusId], references: [id])
+
+  price Decimal
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+}
+
+model ListingType {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  listings Listing[]
+}
+
+model ListingStatus {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  listings Listing[]
+}
+
+// model Ownership {
+//   id Int @id @default(autoincrement())
+
+//   personId Int @map("person_id")
+//   person Person @relation(fields: [personId], references: [id])
+
+//   propertyId Int @map("property_id")
+//   property Property @relation(fields: [propertyId], references: [id])
+
+//   startDate DateTime @map("start_date")
+//   endDate DateTime? @map("end_date")
+
+//   createdAt DateTime @default(now()) @map("created_at")
+//   updatedAt DateTime @default(now()) @map("updated_at") @updatedAt
+//   deletedAt DateTime? @map("deleted_at")
+
+//   @@index([personId], name: "idx_ownership_person")
+//   @@index([propertyId], name: "idx_ownership_property")
+//   @@index([personId, propertyId], name: "idx_ownership_person_property")
+// }
+
+// model Tenancy {
+//   id Int @id @default(autoincrement())
+
+//   personId Int @map("person_id")
+//   person Person @relation(fields: [personId], references: [id])
+
+//   propertyId Int @map("property_id")
+//   property Property @relation(fields: [propertyId], references: [id])
+
+//   startDate DateTime @map("start_date")
+//   endDate DateTime? @map("end_date")
+
+//   createdAt DateTime @default(now()) @map("created_at")
+//   updatedAt DateTime @default(now()) @map("updated_at") @updatedAt
+//   deletedAt DateTime? @map("deleted_at")
+
+//   @@index([personId], name: "idx_tenancy_person")
+//   @@index([propertyId], name: "idx_tenancy_property")
+//   @@index([personId, propertyId], name: "idx_tenancy_person_property")
+// }
+
+enum PropertyStatus {
+  sin_estado
+  noticia_venta
+  noticia_alquiler
+  antiguo_cliente
+}
+
+enum ReminderRecurrenceType {
+  once
+  daily
+  weekly
+  monthly
+  custom
+}
+
+enum ReminderStatus {
+  active
+  paused
+  cancelled
+  archived
+}
+
+enum ReminderOccurrenceStatus {
+  pending
+  completed
+  skipped
+  cancelled
+}
+
+enum MailboxingStatus {
+  inside
+  outside
+  no_disturb
+}
+
+model PropertyPerson {
+  id         Int                @id @default(autoincrement())
+  propertyId Int                @map("property_id")
+  personId   Int                @map("person_id")
+  role       PropertyPersonRole @map("role")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  person   Person   @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, personId, role])
+  @@index([propertyId])
+  @@index([personId])
+  @@index([role])
+  @@map("PropertyPerson")
+}
+
+enum PropertyPersonRole {
+  owner
+  tenant
+}

@@ -1,0 +1,674 @@
+Codigo;Calle Prop;Calle Prop Num;Calle Bloque;Calle Prop esc;Puerta;Calle prop Planta;Nombre Cliente;Apellidos;Email Cliente;Teléfono Cliente;Telf. Movil Cliente;Observación Cliente;Aviso Importante Cliente;NOTICIA ALQUILER;NOTICIA VENTA;INFORMADOR;INQUILINO OCUPADO;PROPIETARIO OCUPADO;2ªRESIDENCIA OCUPADO;ALQUILADO EVERLY;VENDIDO EVERLY;PISO VACIO;Apellidos Captador;Sucursal Captador;Nombre Captador;Cerrado por;Colaborador;Medio Contacto;Precio Inmobiliaria;Precio Alquiler;Valoracion
+10020366;ESTEBAN BALLESTER;18;;1;18;3;Elisa Navarro;Navarro Carretero;;+34 665402679;+34 665402679;María Navarro 692.550.483 MARIA ANGELES 658011045;;0;0;0;0;1;0;0;0;0;ayorarealestate;7556;oficina;. ;Ref:10049959 ;OFICINA FISICA - ESCAPARATE;0;195;160000
+10049963;JOSE BALLESTER;56;;;0;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10049974;ESTEBAN BALLESTER;20;;;9;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10049975;ESTEBAN BALLESTER;20;;;12;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10049976;ESTEBAN BALLESTER;20;;;23;0;Angeles;Pechuan Martínez;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10049977;ESTEBAN BALLESTER;26;;;20;0;Juan Antonio;Sanchez Martinez;;+34 963722768;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10049981;JOSE BALLESTER;59;;;3c;0;Ref:10049981;;;;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10049982;JOSE BALLESTER;60;;;8a;0;Antonio;Puig Martinez;;+34 960712258;+34 680357499;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;AGS;0;0;0
+10049983;JOSE BALLESTER;62;;;1b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10049988;ESTEBAN BALLESTER;22;;;1;0;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050127;JOSE BALLESTER;61;;;3b;0;Jesus Galan Moreno;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050152;JOSE BALLESTER;61;;;8d;0;Consuelo;Martinez Hinojo;;+34 963563964;;;;0;0;1;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050153;JOSE BALLESTER;62;;;8b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050154;JOSE BALLESTER;62;;;8d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050158;ESTEBAN BALLESTER;12;;;15;0;Ref:10050158;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050161;JOSE BALLESTER;61;;;6d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050251;VICENTE BALLESTER;23;;;6;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050272;AMPARO BALLESTER;12;;;4;0;Ref:10050272;;;;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050273;AMPARO BALLESTER;12;;;7;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050274;AMPARO BALLESTER;28;;;16;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050275;JOSE BALLESTER;61;;;8c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050319;ESTEBAN BALLESTER;18;;;35;0;Venancio;Saiz Carrasco;;+34 963725070;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10050326;ESTEBAN BALLESTER;20;;;1;0;Vicente;Casañ Ramirez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10050328;ESTEBAN BALLESTER;20;;;5;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050329;ESTEBAN BALLESTER;20;;;6;0;Cristina;Jimeñez;Contabilidadtbr@hotmail.com;;+34 661444162;;;0;0;1;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10050333;ESTEBAN BALLESTER;20;;;16;0;Juan Ramón;Carabal Bolos;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050334;ESTEBAN BALLESTER;20;;;17;0;María;Castillejo Carmen;;+34 963722131;;;;0;0;0;0;0;0;0;0;0;Porto Cofrades;7556;Kevin;. ;Ref:10049959 ;KPORTO;165000;0;0
+10050335;ESTEBAN BALLESTER;20;;;19;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050342;ESTEBAN BALLESTER;20;;;29;0;Antonio;Blasco Garcia.;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050343;ESTEBAN BALLESTER;20;;;30;0;Desamparados;Herandez Oliver;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050344;ESTEBAN BALLESTER;20;;;32;0;Manuel;Cerda Perez;;;;;;0;1;0;0;0;0;0;0;1;;7556;.;. ;Ref:10049959 ;IFILICE;230000;0;0
+10050345;ESTEBAN BALLESTER;20;;;33;0;Concepción;Tapia Fos;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050346;ESTEBAN BALLESTER;20;;;34;0;Raul;Martinez Toledo;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050348;ESTEBAN BALLESTER;20;;;36;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050349;ESTEBAN BALLESTER;22;;;3;0;Maria Isabel;Secreollini Rodriguez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10050351;ESTEBAN BALLESTER;26;;;8;0;Agustin G;Gracia Blasco;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10050357;ESTEBAN BALLESTER;28;;;32;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050358;JOSE BALLESTER;59;;;6d;0;Ana Maria;Peris Rodriguez;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050360;JOSE BALLESTER;60;;;3a;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050361;JOSE BALLESTER;60;;;4a;0;Salvador;Gimenez Ferrer;;;;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050362;JOSE BALLESTER;60;;;4b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050363;JOSE BALLESTER;60;;;6b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050364;JOSE BALLESTER;60;;;6c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050365;JOSE BALLESTER;60;;;7c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050366;JOSE BALLESTER;62;;;2b;0;Maria Carmen;Pastor Perez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10050367;JOSE BALLESTER;62;;;4a;0;Ref:10050367;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10050502;AMPARO BALLESTER;1;;;10;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050521;ESTEBAN BALLESTER;12;;;19;0;Jose;Adelantado Miguel;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050541;JOSE BALLESTER;59;;;8d;0;Rafael;Aguilar;aguilarafa@msn.com;+34 653085455;+34 653085455;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050562;JOSE BALLESTER;56;;;1;0;Alvaro;Ibañez;;;+34 629609764;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;OFICINA FISICA - ESCAPARATE;0;0;0
+10050588;JOSE BALLESTER;60;;;8b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050642;JOSE BALLESTER;62;;;3b;0;Joaquin;Aleixandre Fayos;;+34 963254293;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050679;JOSE BALLESTER;59;;;6b;0;Maria jesus;Miñana Alonso;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050689;ESTEBAN BALLESTER;22;;;12;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050695;ESTEBAN BALLESTER;20;;;10;2;COSMIN;FLORIN PODAR;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10050707;JOSE BALLESTER;60;;;7b;0;Ref:10050707;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050750;AMPARO BALLESTER;1;;;20;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050756;ESTEBAN BALLESTER;34;;;1;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050792;JOSE BALLESTER;62;;;3c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050813;JOSE BALLESTER;60;;;8c;0;Jose Antonio Arenas;Arenas castiblanque;gerencia@autotalleresarenas.com;+34 656917713;+34 656917713;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050820;JOSE BALLESTER;62;;;4b;0;Francisco;González Arévalo;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050851;JOSE BALLESTER;59;;;6c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10050929;JOSE BALLESTER;59;;;1d;0;Manuel;Bonilla Moreno;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051015;AMPARO BALLESTER;8;;;5;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051059;JOSE BALLESTER;9;;;3;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051084;ESTEBAN BALLESTER;12;;;1;0;Cocha;Sentana;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10051099;AMPARO BALLESTER;12;;;1;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051100;JOSE BALLESTER;35;;;7;0;Paula;Ponce Burgos;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051168;ESTEBAN BALLESTER;26;;;24;0;Antonio;Checa Casas;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10051173;ESTEBAN BALLESTER;28;;;11;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051174;ESTEBAN BALLESTER;28;;;20;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051263;ESTEBAN BALLESTER;12;;;11;0;Nicolas;Albarracin;nicolasalbarracin1999@hotmail.com;;+34 633881527;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10051343;ESTEBAN BALLESTER;28;;;27;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051348;JOSE BALLESTER;60;;;3c;0;Francisca Sorni Bote;Botella;;+34 963256751;+34 675302822;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051360;JOSE BALLESTER;59;;;5a;0;Catalina;Riera Sala;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051375;JOSE BALLESTER;59;;;5c;0;Alberto;Tarin Galvez;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051411;ESTEBAN BALLESTER;20;;;7;0;Mª Dolores;Peiro Sanchez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10051491;JOSE BALLESTER;61;;;8b;0;Manuel Calvo;Calvo zaera;;+34 963721903;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051505;JOSE BALLESTER;60;;;2c;0;Antonio;Cumplido Campos;;+34 963280535;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10051511;JOSE BALLESTER;62;;;2a;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051548;JOSE BALLESTER;60;;;5c;0;Rafael;Rivera Canet;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10051603;JOSE BALLESTER;59;;;4c;0;Vicente Roman Carbon;Carbonell quinto;;+34 961324165;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051629;ESTEBAN BALLESTER;28;;;31;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051640;JOSE BALLESTER;60;;;6a;0;Teresa;Herrero Carrascosa;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051735;AMPARO BALLESTER;12;;;6;0;Ref:10051735;;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10051760;ESTEBAN BALLESTER;12;;;16;0;Andres Luis;Parras Pina;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051761;AMPARO BALLESTER;28;;;5;0;Miguel;Aparisi Gimeno;;+34 963717092;+34 630029748;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051803;JOSE BALLESTER;56;;;3;0;Encarna;Garcia;;;;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051838;AMPARO BALLESTER;1;;;14;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051854;ESTEBAN BALLESTER;28;;;6;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051855;ESTEBAN BALLESTER;28;;;3;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051922;VICENTE BALLESTER;23;;;5;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051950;JOSE BALLESTER;60;;;7a;0;Manuel;Corcoles;manuelcorcoles@hotmail.com;+34 650166011;+34 650166011;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051965;ESTEBAN BALLESTER;18;;;18;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10051967;AMPARO BALLESTER;12;;;5;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052011;JOSE BALLESTER;36;;;0;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052066;VICENTE BALLESTER;23;;;2;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052111;JOSE BALLESTER;60;;;2a;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052117;ESTEBAN BALLESTER;28;;;17;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052150;JOSE BALLESTER;62;;;3a;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052231;ESTEBAN BALLESTER;28;;;14;0;Sergio;Luján Dolz;;+34 963563454;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10052262;AMPARO BALLESTER;12;;;8;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052316;AMPARO BALLESTER;1;;;7;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052339;JOSE BALLESTER;46;;;0;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052352;AMPARO BALLESTER;1;;;4;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052385;JOSE BALLESTER;62;;;4c;0;Gloria Estela;Estela cimorra;;+34 963721707;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052417;AMPARO BALLESTER;1;;;9;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052432;JOSE BALLESTER;9;;;11;0;Manuel;Felip Falcon;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052491;ESTEBAN BALLESTER;20;;;24;0;Ref:10052491;;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10052634;JOSE BALLESTER;59;;;7c;0;Enriqueta;fombuena gimeno;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10052641;JOSE BALLESTER;59;;;4b;0;C;Fons;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052651;ESTEBAN BALLESTER;20;;;3;0;Antonio;Palomares;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10052660;ESTEBAN BALLESTER;28;;;8;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052681;JOSE BALLESTER;62;;;5a;0;Javier;Alvarez Fuentes;;+34 962750441;+34 646970057;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;800;0
+10052730;ESTEBAN BALLESTER;28;;;9;0;Ref:10052730;;;;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052812;JOSE BALLESTER;56;;;7;0;Maria Victoria;Rotea Diaz;;;+34 618429899;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052886;JOSE BALLESTER;60;;;3b;0;Jose Maria;García Martínez;;;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052910;ESTEBAN BALLESTER;20;;;27;0;Maria Teresa;Garcia Otero;;+34 963720150;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052912;JOSE BALLESTER;60;;;8d;0;Ref:10052912;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052952;JOSE BALLESTER;62;;;8a;0;Maria Dolores;Nieto Moreno;;+34 963725212;;;;0;0;1;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10052996;ESTEBAN BALLESTER;26;;;5;0;Joaquin;Ferrandis Garrayo;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10053012;JOSE BALLESTER;60;;;7d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053015;VICENTE BALLESTER;23;;;8;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053035;JOSE BALLESTER;11;;;baja;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053075;ESTEBAN BALLESTER;28;;;22;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053160;JOSE BALLESTER;62;;;1a;0;Josefa;Gomez García;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10053251;ESTEBAN BALLESTER;28;;;16;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053298;ESTEBAN BALLESTER;28;;;4;0;Ref:10053298;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053301;JOSE BALLESTER;60;;;5b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053315;JOSE BALLESTER;41;;;1;0;Jose;Garcia Soriano;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053361;JOSE BALLESTER;59;;;3d;0;Natividad;Gamez Saez;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053411;JOSE BALLESTER;62;;;2c;0;Alejandro;Gutierrez Rodrigo;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053431;JOSE BALLESTER;62;;;2d;0;Desamparados;Sanchez Hernandez;;+34 963711917;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053472;JOSE BALLESTER;60;;;4c;0;Ref:10053472;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053629;JOSE BALLESTER;61;;;5b;0;Ref:10053629;;;;;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053673;JOSE BALLESTER;59;;;2b;0;Raul;Ortiz Soriano;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053719;JOSE BALLESTER;62;;;4d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053722;ESTEBAN BALLESTER;12;;;14;3;Dalila;Labani;;+34 605680050;+34 605680050;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;800;0
+10053752;AMPARO BALLESTER;14;;;4;0;Nuria;Lanza Diaz;nurialanza@yahoo.es;+34 664237906;+34 664237906;esposo jose miguel sanchez;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053782;JOSE BALLESTER;59;;;3b;0;Luis;Costas Serrano;;;;;;0;0;0;0;0;1;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053794;JOSE BALLESTER;60;;;6d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053808;AMPARO BALLESTER;1;;;13;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053826;ESTEBAN BALLESTER;37;;;4;0;Antonio;Llacer Riera;;+34 963678291;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10053857;AMPARO BALLESTER;12;;;3;0;Purificacion;Pechuan Olmos;acanet@valenciaport.com;+34 963717482;;Ernesto Canet 610200696. ercape56@gmail.com;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;AGS;0;0;0
+10053884;ISIDRO BALLESTER;4;;;5;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053897;ESTEBAN BALLESTER;22;;;8;0;VICENTE;CUÑAT LLUCH;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10053928;JOSE BALLESTER;62;;;3d;0;Caridad Jimena Lopez;Lopez;;+34 963712770;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053939;JOSE BALLESTER;60;;;4d;0;Josefina;Lopez Cuevas;;+34 963287877;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10053940;AMPARO BALLESTER;12;;;2;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054091;ESTEBAN BALLESTER;20;;;11;0;Rita;Macario;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054120;JOSE BALLESTER;7;;;bajo;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054129;AMPARO BALLESTER;1;;;17;0;Juan Bautista;Mañas Alepuz;;+34 963717918;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054131;ESTEBAN BALLESTER;12;;;2;0;Alberto;Manchon Quesada;;;;;;0;1;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10054229;JOSE BALLESTER;59;;;2c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054267;JOSE BALLESTER;59;;;7b;0;Carlos;Barrueco Martin;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054287;ESTEBAN BALLESTER;28;;;30;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054320;JOSE BALLESTER;9;;;1;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054334;JOSE BALLESTER;61;;;2b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054349;ESTEBAN BALLESTER;26;;;bj i;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054469;JOSE BALLESTER;59;;;2d;0;Jesus Miguel;Martinez Lasa;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054515;ESTEBAN BALLESTER;12;;;12;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054526;AMPARO BALLESTER;1;;;11;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054527;JOSE BALLESTER;62;;;5b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054575;JOSE BALLESTER;60;;;5a;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054612;JOSE BALLESTER;62;;;6a;0;Santiago;Merencio Garcia;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054640;AMPARO BALLESTER;14;;;6;0;Bienvenida;Milla;;;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054651;JOSE BALLESTER;59;;;7a;0;Andrea;Sausor Miñana;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054676;ESTEBAN BALLESTER;22;;;12;0;Ref:10054676;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10054714;ESTEBAN BALLESTER;28;;;5;0;Maria;Cayuela Mañes;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054758;JOSE BALLESTER;42;;;10;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054789;VICENTE BALLESTER;23;;;3;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054828;AMPARO BALLESTER;28;;;13;0;Jose Enrique;Morales Nuñez;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054949;JOSE BALLESTER;62;;;6c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054953;ESTEBAN BALLESTER;26;;;29;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10054997;ESTEBAN BALLESTER;22;;;20;0;Miguel;Sampero Martinez;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10055022;JOSE BALLESTER;59;;;2a;0;Daniel;March Maycas;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055053;JOSE BALLESTER;61;;;2c;0;Maria Desamparados;Gabarda;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055120;ESTEBAN BALLESTER;12;;;23;0;Asunción;Rojas Sanchis;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055139;AMPARO BALLESTER;46;;;1;0;Jose Maria;Alvarez Dominguez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;185000;0;0
+10055164;VICENTE BALLESTER;23;;;1;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055197;JOSE BALLESTER;61;;;4b;0;Maria Pilar;Olivar de la torre;;+34 963153860;+34 678602608;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055216;JOSE BALLESTER;39;;;0;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055245;ESTEBAN BALLESTER;28;;;24;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055253;JOSE BALLESTER;59;;;1c;0;Noelia;Sanchez Tirado;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055262;ESTEBAN BALLESTER;12;;;7;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055321;JOSE BALLESTER;11;;;1;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055336;JOSE BALLESTER;59;;;3a;0;Ernesto Palop;Gil Mascarell;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055348;JOSE BALLESTER;30;;;0;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055422;ESTEBAN BALLESTER;28;;;1;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055437;AMPARO BALLESTER;12;;;3;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055448;JOSE BALLESTER;60;;;1b;0;Manuel;Romero Peinado;;+34 963723969;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055463;JOSE BALLESTER;59;;;5d;0;Vicenta;Lis Requeni;;+34 963280354;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055495;ESTEBAN BALLESTER;20;;;13;3;Maria;Perea Hortelano;;+34 963282386;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10055503;JOSE BALLESTER;9;;;12;0;Enrique Perez;Perez Aguilar;;+34 961141163;+34 682213497;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10055504;ESTEBAN BALLESTER;12;;;5;0;María Jose;Perez;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055509;JOSE BALLESTER;59;;;5b;0;Alejandro;Pinar Perez;;+34 963280221;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055565;ESTEBAN BALLESTER;28;;;19;0;Julio;Campos Ruiz;;+34 963721557;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055596;AMPARO BALLESTER;1;;;15;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055602;JOSE BALLESTER;9;;;5;0;Amparo;Gresa Vidal;;+34 962063419;+34 679233230;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;139500;0;0
+10055637;ESTEBAN BALLESTER;20;;;18;0;Carmen;Cifre;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10055663;AMPARO BALLESTER;1;;;21;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055665;JOSE BALLESTER;62;;;6d;6;;;;;;;;0;0;1;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055685;JOSE BALLESTER;59;;;7d;0;Ref:10055685;;;;;;;0;0;0;0;0;0;0;0;1;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055699;ESTEBAN BALLESTER;13;;;Bajo;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055713;ESTEBAN BALLESTER;12;;;8;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055725;ESTEBAN BALLESTER;28;;;10;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055769;AMPARO BALLESTER;1;;;1;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055794;AMPARO BALLESTER;1;;;19;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055875;JOSE BALLESTER;60;;;2b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055913;AMPARO BALLESTER;27;;;9;0;MARGARITA;MATEO ALMENDROS;;+34 963711363;;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10055976;ESTEBAN BALLESTER;26;;;17;0;Angel;Alabau;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10055980;ESTEBAN BALLESTER;12;;;22;0;Ref:10055980;;;;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056028;JOSE BALLESTER;59;;;4d;0;Antonio Manuel;Rodrigo Carrascosa;;+34 963551910;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056055;ESTEBAN BALLESTER;26;;;30;0;Maria Pilar;Carrascosa Sanchez;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056058;JOSE BALLESTER;59;;;6a;0;Concha;Peris Rodriguez;;+34 963283945;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056158;AMPARO BALLESTER;1;;;16;0;Fracisco;Martorell;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056166;JOSE BALLESTER;6;;;0;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056231;JOSE BALLESTER;60;;;3d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056254;JOSE BALLESTER;62;;;5d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056373;AMPARO BALLESTER;1;;;3;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056385;ESTEBAN BALLESTER;28;;;2;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056386;JOSE BALLESTER;62;;;8c;0;Jose Salvador;Salvador bacete;;+34 963715710;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056396;VICENTE BALLESTER;23;;;7;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056427;JOSE BALLESTER;59;;;1a;0;Angeles;Alonso Sanchez;;+34 963725009;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056428;JOSE BALLESTER;59;;;1b;0;Angeles;Sanchez Uroz;;;;;;0;1;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056484;JOSE BALLESTER;60;;;1a;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056569;JOSE BALLESTER;59;;;4a;0;Anselmo;Crespo Sanmartin;;+34 963555333;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056606;JOSE BALLESTER;62;;;1d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056669;JOSE BALLESTER;59;;;8a;0;F;Senet;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056673;AMPARO BALLESTER;1;;;12;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056690;ESTEBAN BALLESTER;27;;;6;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056797;JOSE BALLESTER;41;;;9;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056802;ESTEBAN BALLESTER;20;;;0;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056872;JOSE BALLESTER;60;;;5d;0;Ramiro;Rico;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056883;JOSE BALLESTER;60;;;2d;0;Jose;Cuesta Raya;;+34 963562499;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10056884;JOSE BALLESTER;62;;;5c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056890;ESTEBAN BALLESTER;26;;;14;0;Juan;Novelda Leiva;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056912;ESTEBAN BALLESTER;28;;;25;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10056937;VICENTE BALLESTER;23;;;4;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057008;AMPARO BALLESTER;8;;;1;0;Emilio;Albero Ramos;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057162;JOSE BALLESTER;62;;;1c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057163;AMPARO BALLESTER;1;;;8;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057165;AMPARO BALLESTER;1;;;18;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057211;ESTEBAN BALLESTER;13;;;6;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057215;ESTEBAN BALLESTER;28;;;15;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057277;ESTEBAN BALLESTER;26;;;27;0;Jose Vicente;Gijon Botella;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057378;ESTEBAN BALLESTER;28;;;29;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057391;ESTEBAN BALLESTER;26;;;2;0;Familia;Sanchez Villanueva;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10057440;ESTEBAN BALLESTER;20;;;31;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057442;ESTEBAN BALLESTER;20;;;15;0;Victor Manuel;Romero Gautier;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057445;JOSE BALLESTER;59;;;8b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057450;JOSE BALLESTER;10;;;0;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057471;JOSE BALLESTER;61;;;8a;0;Maria Begoña;Zabala Murga;;+34 963931265;;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057506;AMPARO BALLESTER;28;;;3;0;Antonio;Zuñiga Lopez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10057824;JOSE BALLESTER;42;;;7;0;Vicente;Civera villanueva;;+34 963729046;;;;0;0;0;0;0;0;0;0;1;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057851;JOSE BALLESTER;9;;;4;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057876;JOSE BALLESTER;59;;;8c;0;Maria Jose;Esteve Turrion;;+34 655010009;+34 655010009;el es hermano de EMILIO MAZON propietario av malvarrosa 48;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057977;ESTEBAN BALLESTER;20;;;37;0;ELIDA ANTONIA;ELIDA ANTONIA TAVAREZ MARTINEZ;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10057978;ESTEBAN BALLESTER;26;;;19;0;Jose;Frutos;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+10058022;JOSE BALLESTER;9;;;8;0;Jose;Gomez Lopez;;+34 963721160;+34 654970142;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;145000;0;0
+10058030;JOSE BALLESTER;56;;;4;0;Katerina;Grishina;grishins@me.com;+34 603719318;+34 603719318;;;0;0;0;0;0;0;1;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058115;JOSE BALLESTER;62;;;7b;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058116;JOSE BALLESTER;62;;;7a;0;Ref:10058116;;;;;;;0;0;0;0;1;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058121;JOSE BALLESTER;41;;;8;0;Carmen;Lopez de Rivas;clopezderivas@gmail.com;+34 677336856;+34 677336856;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058152;AMPARO BALLESTER;1;;;2;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058212;JOSE BALLESTER;41;;;7;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058228;AMPARO BALLESTER;1;;;6;0;Ref:10058228;;;;;;;0;0;0;1;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058239;ESTEBAN BALLESTER;27;;;4;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058247;AMPARO BALLESTER;18;;;8;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058391;AMPARO BALLESTER;1;;;5;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058398;JOSE BALLESTER;62;;;7d;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058399;JOSE BALLESTER;62;;;7c;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058424;ISIDRO BALLESTER;4;;;6;0;Ref:10049959;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058445;JOSE BALLESTER;42;;;5;0;Ref:10058445;;;;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058446;JOSE BALLESTER;42;;;8;0;Juan Villanueva;Villanueva lloria;;+34 933080210;;;;0;0;0;0;0;0;0;0;0;;7556;.;. ;Ref:10049959 ;Sin Asignar;0;0;0
+10058498;AMPARO BALLESTER;8;;1;5;3;LOCALIZAR;222222;;;;;;0;0;0;0;0;0;0;0;0;ayorarealestate;7556;oficina;. ;Ref:10049959 ;IFILICE;134000;0;120000
+10651513;VICENTE BALLESTER;35;;1;1;1;Maria Nuria;Andres Trilles;nuriaandrestrilles@hotmail.com;;+34 637894928;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;AFERRER;0;700;0
+10957914;ESTEBAN BALLESTER;10;;1;6;3;stefan;;;;+34 661308108;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;150000;0;0
+11004685;AMPARO BALLESTER;46;;;3;1;Manuel;Julia Ros;;+34 675528793;+34 675528793;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+11030115;JOSE BALLESTER;42;;;11;0;Jose;Canuto;;;+34 697944745;;;0;0;0;0;1;0;0;0;0;Porto Cofrades;7556;Kevin;. ;Ref:10049959 ;KPORTO;105000;0;0
+11030147;JOSE BALLESTER;42;;;Bajo;0;Francisco;Lopez de la Vieja;;+34 963712482;;;;0;0;0;0;1;0;0;0;0;Porto Cofrades;7556;Kevin;. ;Ref:10049959 ;KPORTO;0;0;0
+11345932;ESTEBAN BALLESTER;10;;;4;2;Mery;Fernandez Cano;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;. ;Ref:10049959 ;IFILICE;175000;0;0
+12691740;ESTEBAN BALLESTER;12;;1;8;2;Anselmo Ponce;Ponce jimenez;;+34 963329496;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+12692035;ESTEBAN BALLESTER;12;;1;28;6;Miguel;Ramón;;;;;;0;0;1;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;OCM;0;0;0
+12701118;ESTEBAN BALLESTER;12;;1;20;4;Mariano;Chulia Blenguer;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+12701240;ESTEBAN BALLESTER;12;;1;7;2;Gloria;Ortigosa Serna;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+12701419;ESTEBAN BALLESTER;12;;1;10;2;Marino;Muelas Muelas;;+34 969228227;+34 646050975;maria gonzalez carlavilla (04574825x) esposa 646050975;;0;0;0;0;0;1;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13127311;JOSE BALLESTER;61;;1;8B;8;Maria Desamparados;Calvo Garcia;;;;;;0;0;0;0;0;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;CVALERO;0;0;0
+13127759;JOSE BALLESTER;61;;1;4D;4;ADRIAN;ALMENAR BALLESTER;;+34 963280332;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;179000;0;0
+13128014;JOSE BALLESTER;62;;1;0D;4;Rafael Luis;Montuenga Gozalvez;;;;;;0;0;0;0;1;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;ALR;0;0;0
+13128056;JOSE BALLESTER;62;;1;0A;1;Ref:PR00365;;;;;;;0;0;0;0;0;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;ALR;0;0;0
+13128063;JOSE BALLESTER;62;;1;0C;1;Luis;Illescas Martinez;;;;;;0;0;0;0;1;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;CVALERO;0;0;0
+13128106;JOSE BALLESTER;62;;1;D;1;Maria Antonia;Gimeno Sanz;;;;;;0;0;0;0;1;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;ALR;0;0;0
+13143010;ESTEBAN BALLESTER;20;;1;41;7;Francisco Vicente;Miralles Torres;;;;;;0;0;0;0;0;0;0;0;1;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;CVALERO;0;0;0
+13143045;ESTEBAN BALLESTER;20;;1;40;7;Ref:PR00370;;;;;;;0;0;0;0;1;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;ALR;0;0;0
+13143056;ESTEBAN BALLESTER;20;;1;39;7;Natividad;Diaz Ferreruela;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;165000;0;0
+13149561;ESTEBAN BALLESTER;10;;1;5;3;Emilio;Alcaide Lazaro;;;627437979;;;0;0;0;0;0;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;ALR;0;0;0
+13149769;ESTEBAN BALLESTER;10;;1;10;5;Adoracion;Rubio Ferreras;;+34 963550974;;;;0;0;0;0;0;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;ALR;0;0;0
+13149856;ESTEBAN BALLESTER;12;;1;17;4;Amadeo;Ponce Costa;;;;;;0;0;0;0;0;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;CVALERO;0;0;0
+13149860;ESTEBAN BALLESTER;12;;1;26;6;Ref:PR00375;;;;;;;0;0;0;0;0;0;0;0;1;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;ALR;0;0;0
+13174115;JOSE BALLESTER;42;;1;4;1;Ref:PR00379;;;;;;;0;0;0;0;1;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;JSANZ;0;0;0
+13174161;JOSE BALLESTER;42;;1;9;3;Ref:PR00380;;;;;;;0;0;0;0;0;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;JSANZ;0;0;0
+13174303;JOSE BALLESTER;42;;1;2;0;Ref:PR00381;;;;;;;0;0;0;0;0;0;0;0;0;Porto Cofrades;7556;Kevin;Kevin Porto Cofrades;Ref:10049959 ;JSANZ;0;0;0
+13722176;JOSE BALLESTER;5;;;;0;CONCEPCION;FAYOS FELIX;;+34 963710668;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13722889;JOSE BALLESTER;61;;;5A;0;Concepción;Baldo Torrenti;;+34 963282414;;;;0;0;1;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13734984;JOSE BALLESTER;34;;1;0;0;Ref:PR00408;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13738097;ESTEBAN BALLESTER;21;;;12;2;pendiente confirmar;confirmar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;160000;0;0
+13740272;ESTEBAN BALLESTER;21;;;1;0;Pendiente;confirmar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;120900;0;0
+13740997;ESTEBAN BALLESTER;20;;1;28;5;OMAR FERNANDO;ESPINO PAZO;;48755215;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;165000;0;0
+13772271;ESTEBAN BALLESTER;20;;1;1;1;Maria Teresa;Albert Enguix;;+34 963724000;;;;0;0;1;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13792392;JOSE BALLESTER;61;;1;2A;2;INOCENTE;GONZALEZ PALOMINO;;+34 963725613;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13792687;JOSE BALLESTER;61;;1;2B;2;Adrian;Martínez Cambronero;;+34 9517536482;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13792894;JOSE BALLESTER;61;;1;2D;2;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13793096;JOSE BALLESTER;61;;1;3A;3;MARIA ESTHER;ALVAREZ MARCOS;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13793482;JOSE BALLESTER;61;;1;5D;5;Vicente;Fabia Garriguez;;;+34 963365284;;;0;0;1;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13793496;JOSE BALLESTER;61;;1;7D;7;CARMEN;MONZO CHULIA	;;+34 963714382;;;;0;0;1;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13798774;ESTEBAN BALLESTER;20;;1;25;5;Salvador;Cubells Tarin;;+34 963275834;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13799195;ESTEBAN BALLESTER;20;;1;20;4;Rafael Jose;GOMEZ FERNANDEZ	;;+34 963299291;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13799496;ESTEBAN BALLESTER;20;;1;14;3;Maria Carmen;Guitart Gomez;;+34 963720054;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13799693;ESTEBAN BALLESTER;20;;1;22;4;Jeronimo Izquierdo A;Armiñana;;+34 963714176;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13800272;ESTEBAN BALLESTER;20;;1;4;1;Vicente;Marti Galan;;+34 963560768;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13800371;ESTEBAN BALLESTER;20;;1;19;4;Vicente;Martinez Soler;;+34 963275674;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13800483;ESTEBAN BALLESTER;20;;1;21;4;Antonio;Salcedo Ferrando;;+34 963275646;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13800595;ESTEBAN BALLESTER;20;;1;35;6;Maria Isabel Marin;Marin blanco;;+34 963275167;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13800771;ESTEBAN BALLESTER;20;;1;8;2;Juan Vicente;Limorte Martinez;;+34 963299278;+34 678538918;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13814686;ESTEBAN BALLESTER;20;;1;26;5;Juan;RAMOS HERNANDEZ;;+34 963278702;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13906176;AMPARO BALLESTER;14;;1;1;1;Vicente;Albiñana Segura;;;;;;0;0;1;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13906286;AMPARO BALLESTER;14;;1;3;2;Felipe;Redon;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13906296;AMPARO BALLESTER;14;;1;5;3;Laura;Piza Galván;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13906393;AMPARO BALLESTER;14;;1;7;4;Fernando;Mateo Guerrero;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13908188;AMPARO BALLESTER;14;;1;8;4;ENRIQUE;GARRIDO ROMERO;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13912084;ESTEBAN BALLESTER;20;;1;38;7;FERNANDO;CARLOS SAMPEDRO;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13912094;ESTEBAN BALLESTER;20;;1;42;7;PILAR	;MIRALLES PALAZON;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13987873;JOSE BALLESTER;61;;1;1B;1;Pascual;Campayo Carsi;;+34 963280786;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13987981;JOSE BALLESTER;61;;1;6C;6;Isabel;Francés Gorospe;;+34 963283851;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+13988074;JOSE BALLESTER;61;;1;8C;8;Angela;Mena Ponce;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14043877;ESTEBAN BALLESTER;27;;1;2;1;Maria Pilar;Gramage Mengot;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14044579;ESTEBAN BALLESTER;27;;1;4;2;Salvador;Hernandez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14044593;ESTEBAN BALLESTER;27;;1;6;2;Rosa;Serrador;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14044684;ESTEBAN BALLESTER;27;;1;7;3;Antonio;Martinez;;+34 963723217;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14044772;ESTEBAN BALLESTER;27;;1;12;4;Mª Eulalia;Silvestre Barrachina;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14044870;ESTEBAN BALLESTER;27;;1;13;5;Isabel;Barbera Faus;;;;;;0;0;1;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14044892;ESTEBAN BALLESTER;27;;1;14;5;Victoria;Lorca Lopez;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14044974;ESTEBAN BALLESTER;27;;1;8;3;Alicia;Ballester Llorens;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14051386;ESTEBAN BALLESTER;28;;1;28;7;Luis;Ciges Navarro ;;+34 963715359;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14051880;ESTEBAN BALLESTER;28;;1;13;4;Antonio Gimeno Lopez;Gimeno Lopez;;+34 963229351;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14051972;ESTEBAN BALLESTER;28;;1;21;6;Jose Antonio Fernand;Fernandez Ocaña;;+34 963721556;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14063895;ESTEBAN BALLESTER;25;;1;1;1;Dolores;Margaix Gimeno;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14063974;ESTEBAN BALLESTER;25;;1;2;2;Averiguar;buzón;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14063981;ESTEBAN BALLESTER;25;;1;3;3;JOSE FRANCISCO;FELIX BOCH;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14063988;ESTEBAN BALLESTER;25;;1;4;4;Miguel;Milla Navarro;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14066482;JOSE BALLESTER;41;;1;2;1;Jose;Garcia Lorente;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14066493;JOSE BALLESTER;41;;1;3;1;Amparo;Alonso Sanchez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14066591;JOSE BALLESTER;41;;1;5;2;Antonio;Marquina Vila;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;150000;0;0
+14066677;JOSE BALLESTER;41;;1;6;2;Javier;García Lopez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14066774;JOSE BALLESTER;41;;1;9;3;Rosana;Melo Bo;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14066977;ESTEBAN BALLESTER;22;;1;4;1;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14066988;ESTEBAN BALLESTER;22;;1;5;2;Pilar;Citoler Gonzalez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14066991;ESTEBAN BALLESTER;22;;1;11;3;Miguel;Sanchez Lopez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14067073;ESTEBAN BALLESTER;22;;1;13;4;Pedro Antonio;Gomez Gomez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14067087;ESTEBAN BALLESTER;22;;1;15;4;Emilio;Benlloch Garcia;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14069696;ESTEBAN BALLESTER;27;;1;15;5;Alfonso;Alfaro Perez;;+34 963280636;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14069778;ESTEBAN BALLESTER;27;;1;11;4;Marcelina;Carcel Hernandez;;+34 963727645;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14069887;ESTEBAN BALLESTER;27;;1;1;1;Ana María;Chacón Martin;;+34 963552601;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14069896;ESTEBAN BALLESTER;27;;1;3;1;Vicente;Navarro Miquel;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14070988;ESTEBAN BALLESTER;26;;1;26;7;Ana Fontelles Benite;Benitez;;+34 963324387;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14071177;ESTEBAN BALLESTER;26;;1;23;6;Jose Maria;Gascón;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14071390;ESTEBAN BALLESTER;26;;1;3;1;Asunción;Moreno Carrillo;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14071485;ESTEBAN BALLESTER;26;;1;15;4;Domingo;Moreno Ruiz;;+34 963728563;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14071591;ESTEBAN BALLESTER;26;;1;11;3;Juan Antonio;Pascual Guillamon;;+34 963553502;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14071687;ESTEBAN BALLESTER;26;;1;1;1;Alejandro;Prieto Garcia;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14071898;ESTEBAN BALLESTER;26;;1;13;4;Piedad;Arroyo;;+34 963550892;+34 963550892;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072189;ESTEBAN BALLESTER;26;;1;28;7;Francisco;Suesta Collado;;+34 963281862;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072284;ESTEBAN BALLESTER;26;;1;21;6;Carmen;Tamarit Aguilar;;+34 963725290;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072380;ESTEBAN BALLESTER;26;;1;4;1;Juan;Velamazán Martin;;+34 963720745;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072396;ESTEBAN BALLESTER;26;;1;25;7;Manuel Zapater Mompo;Zapater Mompo;;+34 963553635;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072774;ESTEBAN BALLESTER;37;;1;1;1;Maria Luisa;Andujar Ruiz;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072783;ESTEBAN BALLESTER;37;;1;8;4;Emilio;Cubas Lleo;;+34 963291312;+34 601325329;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072893;ESTEBAN BALLESTER;37;;1;3;2;Jose Miguel;Diaz Ayo;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072894;ESTEBAN BALLESTER;37;;1;6;3;Virgilio;Lopez Serna;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14072971;ESTEBAN BALLESTER;37;;1;9;5;Desamparados;Serrano Benjumea;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14089871;ESTEBAN BALLESTER;37;;1;6;3;Virgilio;Lopez Serna;;+34 963556297;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14095996;ESTEBAN BALLESTER;28;;1;18;0;Rafael Lafuente Rios;Rios;;+34 963556668;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101797;ESTEBAN BALLESTER;41;;1;1;1;Jose Vicente;Mañez;;+34 963722274;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101874;ESTEBAN BALLESTER;41;;1;2;1;Federico;Casillas Galindo;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101875;ESTEBAN BALLESTER;41;;1;3;1;Pedro;Navarro Carretero;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101876;ESTEBAN BALLESTER;41;;1;4;2;Juan Antonio;Marti;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101880;ESTEBAN BALLESTER;41;;1;5;2;Vicente;Galbis Lopez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101882;ESTEBAN BALLESTER;41;;1;6;2;Mª Eugenia;Navarro Carretero;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101885;ESTEBAN BALLESTER;41;;1;7;3;Jose Ramon;Sendra Martin;;+34 963554860;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101886;ESTEBAN BALLESTER;41;;1;8;3;Sergio;Maraton Soler;;+34 963727179;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101887;ESTEBAN BALLESTER;41;;1;9;4;Maria;pardo mondejar;;+34 963717552;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101891;ESTEBAN BALLESTER;41;;1;10;4;Maria;pardo mondejar;;+34 963717552;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101971;ESTEBAN BALLESTER;22;;1;2;1;Pendiente;Averiguar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101975;ESTEBAN BALLESTER;22;;1;6;2;Josefa;Menendez Martinez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101977;ESTEBAN BALLESTER;22;;1;7;2;Pendiente;Averiguar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101981;ESTEBAN BALLESTER;22;;1;9;3;Pendiente;Averiguar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101985;ESTEBAN BALLESTER;22;;1;10;3;Maria;Muñoz Vieco;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101987;ESTEBAN BALLESTER;22;;1;14;4;Manuela;Gallego Perez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101996;ESTEBAN BALLESTER;22;;1;16;4;Celia;Serrano Pardo;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14101998;ESTEBAN BALLESTER;22;;1;17;5;Octavio;Navarrete Almeida;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102071;ESTEBAN BALLESTER;22;;1;18;5;Pendiente;Averiguar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102072;ESTEBAN BALLESTER;22;;1;19;5;Maria Carmen;Monreal Mendijon;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102075;ESTEBAN BALLESTER;22;;1;21;6;Ana Beatriz;Rivas Ruiz;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102076;ESTEBAN BALLESTER;22;;1;22;6;Jose Luis;Colomer Viadel;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102077;ESTEBAN BALLESTER;22;;1;23;7;Maria;Aleixos Ubeda;;+34 963561503;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;315000;0;0
+14102078;ESTEBAN BALLESTER;22;;1;24;7;Raul;Cob Ferrer;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102093;ESTEBAN BALLESTER;12;;1;3;1;Maria Isabel;Llopis Bolaños;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102094;ESTEBAN BALLESTER;12;;1;4;1;Francisco;Garrido Perez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102096;ESTEBAN BALLESTER;12;;1;6;2;Pendiente;Averiguar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102170;ESTEBAN BALLESTER;12;;1;9;2;Nada;Buzón;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14102191;ESTEBAN BALLESTER;12;;1;13;3;Milagros;Puig Cervera;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14117696;ESTEBAN BALLESTER;12;;1;18;4;Francisco M;Prieto Marin;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14117773;ESTEBAN BALLESTER;12;;1;21;5;Pascual;Herrero Micó;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14117785;ESTEBAN BALLESTER;12;;1;24;5;Desampardos;Calvo Linares;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14117798;ESTEBAN BALLESTER;12;;1;25;5;Enrique Jose;López Dios;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14117875;ESTEBAN BALLESTER;12;;1;27;6;Marino;Soler Coll;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14132372;JOSE BALLESTER;62;;1;0B;6;Maria Teresa;Pla Reig;;+34 691101228;+34 963721706;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14132374;JOSE BALLESTER;62;;1;0A;7;Pendiente;Averiguar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14134596;JOSE BALLESTER;60;;1;0B;8;Mari Carmen;Casado García;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14139286;JOSE BALLESTER;60;;1;0D;1;Nikolo;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14139370;JOSE BALLESTER;60;;1;0C;1;Maria Dolores;Martinez Borrego;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14174089;JOSE BALLESTER;41;;1;4;2;Raquel;Ricarte Belmonte;;+34 963325660;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14196690;JOSE BALLESTER;56;;1;2;0;Raquel;Ledesma Hidalgo;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14196770;JOSE BALLESTER;56;;1;5;1;Juan;Roca Huerta;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14196773;JOSE BALLESTER;56;;1;6;1;Jose Javier;Molina;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14196789;JOSE BALLESTER;56;;1;8;2;Jose Vicente;Lopez Aleixandre;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14196871;JOSE BALLESTER;56;;1;9;2;Maria Jose;Puertolas Monfort;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14197176;JOSE BALLESTER;56;;1;10;3;Joaquin;Aldas Manzano;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14197179;JOSE BALLESTER;56;;1;11;3;Manuel;Corzo;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14197186;JOSE BALLESTER;56;;1;12;3;Sergio;Ortiz;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14197195;JOSE BALLESTER;56;;1;13;3;Manuel;Fernandez Pacheco;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14205782;ESTEBAN BALLESTER;21;;;2;0;Pendiente;Averiguar;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14205790;ESTEBAN BALLESTER;21;;;6;1;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14205875;ESTEBAN BALLESTER;21;;;8;1;Pendiente;AVeriguar;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14205972;ESTEBAN BALLESTER;21;;;11;2;Intentar;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14205996;ESTEBAN BALLESTER;21;;;13;2;Merleny;Loaiza Gallego;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14206079;ESTEBAN BALLESTER;21;;;14;2;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14206683;ESTEBAN BALLESTER;18;;1;34;6;Antonio;Bustos Gamez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14206880;ESTEBAN BALLESTER;18;;1;27;5;Juan Antonio David F;David Forner;;+34 963267157;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14206972;ESTEBAN BALLESTER;18;;1;31;6;pendiente;averiguar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14206979;ESTEBAN BALLESTER;18;;1;32;6;pendi;averiguar;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14206987;ESTEBAN BALLESTER;18;;1;26;5;Maria;Lavara Mena;;+34 963266085;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14207073;ESTEBAN BALLESTER;18;;1;25;5;Rafael;Estrela Navarrete;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14207083;ESTEBAN BALLESTER;18;;1;19;4;Borja;Tomas Ripolles;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14207098;ESTEBAN BALLESTER;18;;1;11;2;Emiliano;Maestro Avalos;;+34 963299768;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14227987;ESTEBAN BALLESTER;18;;1;37;7;Maria Victoria;Marin Castiblanques;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14228171;ESTEBAN BALLESTER;18;;1;16;3;Juan;Rius Aparicio;;+34 963722693;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14228184;ESTEBAN BALLESTER;18;;1;4;1;Felix;Rodriguez Gomez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14228386;ESTEBAN BALLESTER;18;;1;12;2;Enrique Perez;Perez Aguilar;;+34 961141163;+34 682213497;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14228485;ESTEBAN BALLESTER;18;;1;13;3;Amanda Carolina;Patricio Peña;;;+34 674504985;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14228570;ESTEBAN BALLESTER;18;;1;29;5;Jose Maria;Franch Peiro;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14228678;ESTEBAN BALLESTER;18;;1;41;7;Jose;Sanchez Benitez;;191;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14258788;ESTEBAN BALLESTER;10;;1;1;1;Maria Dolores;Lopez Tejedor;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14258881;ESTEBAN BALLESTER;10;;1;2;1;Alberto;Torres Hurtado;;+34 963276709;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14258892;ESTEBAN BALLESTER;10;;1;3;2;Caridad;Ubeda Moyano;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14258975;ESTEBAN BALLESTER;10;;1;7;4;Laura;Garcia Velazquez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14258983;ESTEBAN BALLESTER;10;;1;8;4;David;Tamarit Chiralt;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14259072;ESTEBAN BALLESTER;10;;1;9;5;Jose Pascual;Puchades garcia;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14263180;ESTEBAN BALLESTER;13;;1;1;1;Arturo;Ferrer GImeno;;+34 963716093;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14263197;ESTEBAN BALLESTER;13;;1;4;2;Domingo;Lujan;;+34 963280627;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14263297;ESTEBAN BALLESTER;13;;1;10;5;Pilar Angela;Villanueva Hernandez;;+34 963713488;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14270291;JOSE BALLESTER;19;;;3;1;Pendiente;Averiguar;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14270371;JOSE BALLESTER;19;;;5;2;Jose;Rivera Darder;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14270397;JOSE BALLESTER;19;;;8;3;Emilio;Lopez Martinez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14279086;JOSE BALLESTER;42;;1;1;0;Jose;Castro Dolz;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14279180;JOSE BALLESTER;42;;1;3;1;Bernardo;Bataller;;;+34 693281351;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14289794;AMPARO BALLESTER;44;;;3;2;Laura;Crespo Soler;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14289872;AMPARO BALLESTER;44;;;5;3;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14291185;AMPARO BALLESTER;44;;;7;4;Francisco Javier;Santamaria Luciañez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14291194;AMPARO BALLESTER;44;;;2;1;Noelia;Marin Jimenez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14314081;JOSE BALLESTER;35;;1;9;3;Adolfo;Soler Villanueva;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14314092;JOSE BALLESTER;35;;1;3;1;Eugenio;Chulia Balaguer;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14317380;AMPARO BALLESTER;25;;1;1;1;Jose;Fernandez;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14317497;AMPARO BALLESTER;25;;1;5;3;Manuel;Gonzalez Lara;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14317586;AMPARO BALLESTER;25;;1;7;4;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14317782;AMPARO BALLESTER;25;;1;8;4;Luis;Catalan Sancho;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14317794;AMPARO BALLESTER;12;;1;5;3;Asunción;Balaguer Marcelino;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14317883;AMPARO BALLESTER;12;;1;7;4;Xavier;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14317991;AMPARO BALLESTER;12;;1;8;4;Francisco;Cisneros Doñate;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14318082;AMPARO BALLESTER;12;;1;1;1;Emilia;Nuñez;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14318896;AMPARO BALLESTER;12;;1;4;2;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14322680;AMPARO BALLESTER;1;;1;2;1;Antonia;Ureña Navarro;;+34 963710277;+34 684246488;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14322792;AMPARO BALLESTER;1;;1;4;2;Miguel Angel;Tello Esteban;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14322888;AMPARO BALLESTER;1;;1;8;3;Angeles;Guaras Urzay;;+34 963281298;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14322983;AMPARO BALLESTER;1;;1;18;6;Maria Jose;Usamo;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14323174;AMPARO BALLESTER;1;;1;19;7;Antonio;Crespillo Quesada;;+34 963280356;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14323188;AMPARO BALLESTER;1;;1;21;7;Eduardo Ferrer;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14326974;JOSE BALLESTER;35;;1;6;2;Maria Angeles;Pardines Das;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14334484;JOSE BALLESTER;9;;1;10;3;Pepe;Bosh;;;+34 645262840;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14340385;AMPARO BALLESTER;36;;;1;1;Pendiente;Averiguar;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14340594;AMPARO BALLESTER;36;;;8;4;Monica;Montalba Montañana;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14341292;AMPARO BALLESTER;28;;1;14;4;Ernesto;;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14341376;AMPARO BALLESTER;28;;1;10;3;Jose;Gonzalez Vazquez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14354879;AMPARO BALLESTER;28;;1;4;1;Eva;Barrachina Monllor;;+34 963560355;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14354973;AMPARO BALLESTER;28;;1;1;1;Antonio;Bonet Garcia;;+34 963282461;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14355175;AMPARO BALLESTER;28;;1;7;2;Conchar;Ferrer;;+34 963280621;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14356376;AMPARO BALLESTER;28;;1;8;2;Jose;Tercero Lara;;+34 963712375;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14356885;AMPARO BALLESTER;33;;1;4;4;Maria Dolores;Garcia Andres;;+34 963714061;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14356991;AMPARO BALLESTER;33;;1;1;1;Maria;Segrera Alcañiz;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14357080;AMPARO BALLESTER;33;;1;3;3;Jose;Garcia Andres;;+34 963561979;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14357280;AMPARO BALLESTER;16;;1;8;4;Maria Vanesa;Montalba Company;;669778284;656604481;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14357670;AMPARO BALLESTER;12;;1;3;2;Purificacion;Pechuan Olmos;acanet@valenciaport.com;+34 963717482;;Ernesto Canet 610200696. ercape56@gmail.com;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14358072;AMPARO BALLESTER;1;;1;10;4;Eva;Cano Abellan;;+34 963715337;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14358174;AMPARO BALLESTER;1;;1;7;3;Jose Miguel;Esteban;;+34 963710274;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14358482;AMPARO BALLESTER;1;;1;20;7;Vicenta;Martinez Dolz;;+34 963287424;+34 669521402;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14358691;AMPARO BALLESTER;1;;1;12;4;Vicente;Safont Senen;;+34 963287150;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14358886;AMPARO BALLESTER;1;;1;3;1;Maria Vicenta;Sales Pastor;;+34 963716593;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364098;JOSE BALLESTER;9;;1;6;2;isabel;Jimenez Geloch;;;+34 600267040;;;0;1;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;177000;0;0
+14364170;JOSE BALLESTER;9;;1;7;2;Urbano;Picazo Lopez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364185;JOSE BALLESTER;9;;1;11;3;Cris;Naroic;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364196;JOSE BALLESTER;9;;1;13;4;Isabel;Esteban;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364277;JOSE BALLESTER;9;;1;14;4;Diego;Diaz Rodriguez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364281;JOSE BALLESTER;9;;1;15;5;Ramon;Galonch Castañer;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364484;AMPARO BALLESTER;1;;1;1;1;David;Carles;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364485;AMPARO BALLESTER;1;;1;5;2;Josefa;Moreno;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364492;AMPARO BALLESTER;1;;1;9;3;Vicenta;Gil;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364577;AMPARO BALLESTER;1;;1;11;4;Jorge;Simo;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364588;AMPARO BALLESTER;1;;1;13;5;J.;Pereis Leiva;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364670;AMPARO BALLESTER;1;;1;14;5;Ramón;Martin;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364683;AMPARO BALLESTER;1;;1;15;5;Pilar;Vicent;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364689;AMPARO BALLESTER;1;;1;17;6;Juan;Bautista Mañes;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364783;AMPARO BALLESTER;8;;1;4;2;Begoña;Debon Alonso;;+34 963717872;+34 636271850;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14364877;AMPARO BALLESTER;36;;;4;2;Alfonso;Navarro Fuentes;;+34 963563172;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14448397;ESTEBAN BALLESTER;18;;1;5;1;Nada;Buzón;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14448474;ESTEBAN BALLESTER;18;;1;8;2;Alfonso;Martinez Martinez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14450672;ESTEBAN BALLESTER;18;;1;9;2;Arturo;Martin;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14475984;AMPARO BALLESTER;25;;1;4;2;Jose Vicente;Solaz Linares;;+34 963711783;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14503082;ESTEBAN BALLESTER;21;;;19;3;Ref:PR00890;;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14760683;JOSE BALLESTER;9;;1;2;0;Josefa;Corcoles;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14813821;JOSE BALLESTER;17;;;;0;Jose;Garcia Garcia;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14820641;AMPARO BALLESTER;44;;;4;2;Jose;Morell Borras;;+34 665230298;+34 665230298;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;795;0
+14825801;JOSE BALLESTER;19;;;1;0;Vanesa;Lozado Mena;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14825803;JOSE BALLESTER;19;;;2;1;Ref:PR00932;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14825807;JOSE BALLESTER;19;;;4;1;Ref:PR00933;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14825827;JOSE BALLESTER;19;;;6;2;Ref:PR00934;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14825836;JOSE BALLESTER;19;;;7;2;Ref:PR00935;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14825840;JOSE BALLESTER;19;;;9;3;Patricia;Delay Carballo;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14825857;JOSE BALLESTER;35;;1;1;1;Pedro;Baena Catalán;;+34 963726700;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14825867;JOSE BALLESTER;35;;1;2;1;Amarfil;Martinez Martinez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828215;JOSE BALLESTER;60;;1;B;2;Isabel;Castellanos Flores;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828228;JOSE BALLESTER;60;;1;0C;3;Francisca Sorni Bote;Botella;;+34 963256751;+34 675302822;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;164000;0;0
+14828240;JOSE BALLESTER;60;;1;A;4;Ref:PR00942;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828247;JOSE BALLESTER;60;;1;B;4;Ref:PR00943;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828252;JOSE BALLESTER;60;;1;0A;5;Ref:PR00944;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828343;JOSE BALLESTER;60;;1;0B;5;Ana belen;Galinda Rubio;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828389;JOSE BALLESTER;60;;1;B;6;Adel;Toribio Esfinjaniun;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828463;JOSE BALLESTER;60;;1;0D;6;Albert;Sanchez Tomas;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828488;JOSE BALLESTER;60;;1;0D;7;Isabel;Jarque Garzando;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14828761;JOSE BALLESTER;60;;1;0A;8;Ignacio;Couchoud Ballester;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14840699;JOSE BALLESTER;35;;1;4;2;Asuncion;Muñoz Rodriguez;;;;marisa peñarocha 605 021 685. sobrina;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14840724;JOSE BALLESTER;35;;1;5;2;Antonio;Sevilla Garcia;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14840736;JOSE BALLESTER;35;;1;8;3;Juan;Gimeno Gallen;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14840774;JOSE BALLESTER;41;;1;7;3;Dolores María;De Vicente Lopez;;+34 963281633;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14840819;JOSE BALLESTER;41;;1;10;4;Pilar;Gimeno Martinez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14840849;JOSE BALLESTER;41;;1;11;4;Yolanda;De Vicente Lopez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14840889;JOSE BALLESTER;42;;1;6;2;Antonio;Lopez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842112;JOSE BALLESTER;61;;1;1A;1;Juan Demetrio;Chillaron Gallego;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842119;JOSE BALLESTER;61;;1;1C;1;Ref:PR00959;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842139;JOSE BALLESTER;61;;1;1D;1;Luis;Tapia Garcia;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842150;JOSE BALLESTER;61;;1;3C;3;Ref:PR00961;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842202;JOSE BALLESTER;61;;1;3D;3;Maria Jesus;Velencoso Campos;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842210;JOSE BALLESTER;61;;1;4A;4;Ref:PR00963;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842213;JOSE BALLESTER;61;;1;4C;4;Ref:PR00964;;;;;;;0;1;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;199000;0;0
+14842306;JOSE BALLESTER;61;;1;5C;5;Francisco;Fernandez Martinez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842318;JOSE BALLESTER;61;;1;6A;6;Patricia;Alepuz Brunet;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842326;JOSE BALLESTER;61;;1;6B;6;Ref:PR00967;;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842398;JOSE BALLESTER;61;;1;6D;6;Juan;Pascual Alonso;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842417;JOSE BALLESTER;61;;1;7A;7;Josefa;Sempero Veses;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842471;JOSE BALLESTER;61;;1;7B;7;Ruben;Viso Roger;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842496;JOSE BALLESTER;61;;1;7C;7;Ref:PR00971;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842878;JOSE BALLESTER;62;;1;B;1;Ref:PR00972;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14842904;JOSE BALLESTER;62;;1;0A;2;Ref:PR00973;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843048;JOSE BALLESTER;62;;1;0A;3;Susana;Chulia Rey;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843083;JOSE BALLESTER;62;;1;0C;3;Maria Elena;Alvarez Aliaga;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843098;JOSE BALLESTER;62;;1;0A;4;Ref:PR00976;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843109;JOSE BALLESTER;62;;1;0B;5;Miguel;Rocafull Ibáñez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843123;JOSE BALLESTER;62;;1;0C;5;Jose Vicente;Viana Mañez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843192;JOSE BALLESTER;62;;1;0D;5;Susana;Cominges Terceño;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843227;JOSE BALLESTER;62;;1;0C;6;Jenifer;Mercado Muñoz;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843236;JOSE BALLESTER;62;;1;0B;7;Ana Isabel;Llodra Lopez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843255;JOSE BALLESTER;62;;1;0C;7;Mercedes;Selfa Perez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843286;JOSE BALLESTER;62;;1;0D;7;Javier;Armesto Bartolome;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843310;JOSE BALLESTER;62;;1;B;8;Ref:PR00984;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843315;JOSE BALLESTER;62;;1;0C;8;Ref:PR00985;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14843355;JOSE BALLESTER;62;;1;0D;8;Ref:PR00986;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14872552;ESTEBAN BALLESTER;13;;1;3;2;Ref:PR00987;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14872562;ESTEBAN BALLESTER;13;;1;9;5;Manuel;Estors Rodrigo;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14874350;ESTEBAN BALLESTER;18;;1;1;1;Pilar;San Ramón Navarro;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14874354;ESTEBAN BALLESTER;18;;1;2;1;Laurentino;Galindo Pastor;;+34 963717945;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14874360;ESTEBAN BALLESTER;18;;1;3;1;Trinidad Vicenta;Sender Duart;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14874378;ESTEBAN BALLESTER;18;;1;6;1;Francisco;Estinguin Marin;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14874390;ESTEBAN BALLESTER;18;;1;7;2;Ref:PR00994;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14874424;ESTEBAN BALLESTER;18;;1;10;2;Antonio;Francisco Saura;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14875536;ESTEBAN BALLESTER;18;;1;14;3;Ref:PR00996;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14875550;ESTEBAN BALLESTER;18;;1;15;3;Ramon;Valero Socuellamos;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14875560;ESTEBAN BALLESTER;18;;1;17;3;Pascual;Blasco Ortola;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878684;ESTEBAN BALLESTER;18;;1;18;3;Francisco;Lopez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878693;ESTEBAN BALLESTER;18;;1;20;4;Roxana;Carrasco;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878697;ESTEBAN BALLESTER;18;;1;21;4;Francisca;Gimeno Roses;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878712;ESTEBAN BALLESTER;18;;1;22;4;Maria;Gimeno Roses;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878719;ESTEBAN BALLESTER;18;;1;23;4;Francisco Javier;Estrada Garcia;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878727;ESTEBAN BALLESTER;18;;1;24;4;Jose;Planells Correcher;;+34 963321763;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878735;ESTEBAN BALLESTER;18;;1;28;5;Ref:PR01005;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878741;ESTEBAN BALLESTER;18;;1;30;5;Antonio;Martinez Ramon;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878750;ESTEBAN BALLESTER;18;;1;33;6;Juan;Trujillo Comino;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878766;ESTEBAN BALLESTER;18;;1;36;6;Juan;Trujillo;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878782;ESTEBAN BALLESTER;18;;1;38;7;Luis Antonio;Roig Gonzalez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878788;ESTEBAN BALLESTER;18;;1;39;7;Juan Jose;Varea Sorribes;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878803;ESTEBAN BALLESTER;18;;1;40;7;Desamparados;Miller Andres;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878804;ESTEBAN BALLESTER;18;;1;42;7;Javier;Hernández González;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878826;ESTEBAN BALLESTER;21;;;20;3;Carlos;Mascaros Moya;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878834;ESTEBAN BALLESTER;21;;;7;1;Antonio;Sevilla Martinez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878838;ESTEBAN BALLESTER;21;;;4;0;Ref:PR01015;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878846;ESTEBAN BALLESTER;27;;1;5;2;Javier;Estrada Cola;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878852;ESTEBAN BALLESTER;27;;1;9;3;Ref:PR01017;;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878853;ESTEBAN BALLESTER;27;;1;10;4;Nicolae;Dragota;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878860;ESTEBAN BALLESTER;28;;1;7;2;Ref:PR01019;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878865;ESTEBAN BALLESTER;28;;1;12;3;Ref:PR01020;;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878867;ESTEBAN BALLESTER;28;;1;23;6;Jose Manuel;Puente Solaz;;+34 963716351;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14878869;ESTEBAN BALLESTER;28;;1;26;7;Victoria;Melian Lagarejo;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881585;ESTEBAN BALLESTER;26;;1;5;2;Maria Jesus;Bermejo Alonso;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881590;ESTEBAN BALLESTER;26;;1;6;2;Vicente Jose;Company Isaac;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881592;ESTEBAN BALLESTER;26;;1;7;2;Juan;Vidal Ramon;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881597;ESTEBAN BALLESTER;26;;1;9;3;Ref:PR01026;Navarro Carrascosa;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881601;ESTEBAN BALLESTER;26;;1;10;3;Andres;Ribelles Orero;;+34 19876508;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881609;ESTEBAN BALLESTER;26;;1;12;3;Jose;Mocholí Alapont;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881619;ESTEBAN BALLESTER;26;;1;14;4;Maria Jesus;Soriano Perez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881622;ESTEBAN BALLESTER;26;;1;16;4;Maria Auxiliadora;Arroyal Cantera;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881638;ESTEBAN BALLESTER;26;;1;18;5;Francisco;Garcia Gracia;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881657;ESTEBAN BALLESTER;26;;1;22;6;Francisco Vicente;Pes Rivas;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881665;ESTEBAN BALLESTER;26;;1;25;7;Maria Dolores;Navarro Palenzuela;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881684;ESTEBAN BALLESTER;26;;1;31;8;Diego;Monllau Monfort;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881692;ESTEBAN BALLESTER;26;;1;32;7;Javier;Cervera;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881798;ESTEBAN BALLESTER;37;;1;2;1;Rafael;Felix Carbonell;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881804;ESTEBAN BALLESTER;37;;1;3;2;Jose Miguel;Diaz Ayo;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881806;ESTEBAN BALLESTER;37;;1;5;3;Antonio;Lara Romero;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881821;ESTEBAN BALLESTER;37;;1;7;4;Esther;Blanco Bayo;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14881823;ESTEBAN BALLESTER;37;;1;10;5;Carmen;Zaragoza Muñoz;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14891979;ESTEBAN BALLESTER;21;;;3;0;Ref:PR01064;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14892025;ESTEBAN BALLESTER;21;;;5;1;Ref:PR01065;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14892040;ESTEBAN BALLESTER;21;;;9;1;Ref:PR01066;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14892046;ESTEBAN BALLESTER;21;;;10;2;Ref:PR01067;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14892069;ESTEBAN BALLESTER;21;;;15;3;Juan Antonio;Fuster Cano;;963714048;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14892111;ESTEBAN BALLESTER;21;;;16;3;Ref:PR01069;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14892115;ESTEBAN BALLESTER;21;;;17;3;Ref:PR01070;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14892127;ESTEBAN BALLESTER;21;;;18;3;Jose Domingo;Sanz Serra;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14893847;ESTEBAN BALLESTER;21;;;21;4;Ref:PR01073;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+14893864;ESTEBAN BALLESTER;21;;;22;4;Ref:PR01074;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15148112;JOSE BALLESTER;9;;1;1;0;Miguel Angel;Cabezas Besa;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15183221;AMPARO BALLESTER;28;;1;2;1;Lucia;Quesada Navarrete;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15184199;AMPARO BALLESTER;28;;1;11;3;Ref:PR01180;;;;;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15192168;AMPARO BALLESTER;42;;;6;3;Luisana;Roesler;roesslerlui@gmail.com;;+34 644582332;;;0;0;0;1;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15201070;JOSE BALLESTER;7;;1;1;1;Vicente;Capilla Cirujeda;;+34 963954180;639827914;MAMEN PEREZ (AMIGA Y TIENE UNA INMOBILIARIA) 722 270 852;;0;0;0;0;0;0;0;0;0;;;;;Ref:10049959 ;IFILICE;0;0;0
+15257075;AMPARO BALLESTER;46;;;6;3;Mari Carmen;Segui Santana;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15257335;AMPARO BALLESTER;42;;;2;1;Ref:PR01232;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15257377;AMPARO BALLESTER;42;;;5;3;Jose;Pastor Grau;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15257408;AMPARO BALLESTER;42;;;7;4;Alfonso;Moliner Dominguez;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15257426;AMPARO BALLESTER;42;;;8;4;Benedito;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+15603143;JOSE BALLESTER;60;;;;0;Maria Escribano;Escribano jauque;keiko_mei@hotmail.com;+34 657044369;+34 657044369;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;AGS;0;0;0
+15650202;JOSE BALLESTER;7;;1;0;0;Araceli;Malaga Lopez;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;CVALERO;0;0;0
+17257443;AMPARO BALLESTER;44;;;08;4;Jesús;Meñe Aparicio;;;;;;0;0;0;0;1;0;0;0;0;Porto Cofrades;7556;Kevin;. ;Ref:10049959 ;KPORTO;299000;0;0
+17525841;ESTEBAN BALLESTER;12;;;31;7;Antonio;Navarro Soler;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17525906;ESTEBAN BALLESTER;12;;;30;7;Dolores;Albarracin Ruiz;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17525944;ESTEBAN BALLESTER;12;;;29;7;Angelica Mabel;Fernandez Bullon;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17526080;ESTEBAN BALLESTER;13;;;02;1;Ref:PR02392;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17526109;ESTEBAN BALLESTER;13;;;07;4;Ref:PR02393;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17526135;ESTEBAN BALLESTER;13;;;08;4;Ref:PR02394;;;;;;;0;0;0;0;0;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17526156;ESTEBAN BALLESTER;13;;;05;3;Ref:PR02395;;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17581422;JOSE BALLESTER;55;;T;OS;0;Ref:PR02476;;;;;;;0;0;0;0;0;0;0;0;0;Lazaro Roman;7556;Antonio;. ;Ref:10049959 ;ALR;0;0;0
+17581591;JOSE BALLESTER;60;;1;1D;0;Ref:PR02477;;;;;;;0;0;0;0;0;0;0;0;1;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17581638;JOSE BALLESTER;60;;1;1C;0;Ref:PR02478;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0
+17596741;JOSE BALLESTER;9;;1;16;5;Ref:PR02479;;;;;;;0;0;0;0;1;0;0;0;0;Nicolas Filice;7556;Ivan;Ivan Nicolas Filice;Ref:10049959 ;ALR;0;0;0

@@ -1,0 +1,2 @@
+export { reminderRouter } from "./reminderRouter";
+

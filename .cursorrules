@@ -1,0 +1,61 @@
+# Reglas de Cursor para Backend - InmoHub
+
+## Respuestas de API Estandarizadas
+
+**OBLIGATORIO**: Toda respuesta de endpoint DEBE usar una de estas tres funciones:
+
+```typescript
+import { successResponse, paginatedResponse, errorResponse } from "@core/utils";
+```
+
+### Funciones disponibles:
+
+1. **successResponse(res, data, statusCode)**
+
+   - Para respuestas exitosas simples
+   - Retorna: `{ status: "success", data: T }`
+   - Códigos comunes: 200 (OK), 201 (Created), 204 (No Content)
+
+2. **paginatedResponse(res, data, metadata, statusCode)**
+
+   - Para respuestas con paginación
+   - Retorna: `{ status: "success", data: T, metadata: { totalItems, page, limit, totalPages } }`
+   - Código común: 200
+
+3. **errorResponse(res, errorMessage, statusCode, details?)**
+   - Para todos los errores
+   - Retorna: `{ status: "error", errorMessage: string, details?: any }`
+   - Códigos comunes: 400 (Bad Request), 401 (Unauthorized), 403 (Forbidden), 404 (Not Found), 500 (Server Error)
+
+### Patrón obligatorio en controladores:
+
+```typescript
+async getResource(req: Request, res: Response) {
+  try {
+    const data = await service.getData();
+    return successResponse(res, data, 200);
+  } catch (error) {
+    return errorResponse(res, error.message, 400);
+  }
+}
+```
+
+### ❌ NUNCA hacer:
+
+```typescript
+return res.json({ data });
+return res.status(200).send(data);
+```
+
+### ✅ SIEMPRE hacer:
+
+```typescript
+return successResponse(res, data, 200);
+return errorResponse(res, "Error message", 400);
+```
+
+Para más detalles ver: `API_RESPONSE_RULES.md`
+
+# PRISMA Y MIGRACIONES
+
+NO crees archivos tu mismo representando migraciones. Debes hacer los cambios en el schema de prisma y luego aplicar el comando para que se generen. Si es necesario aplicar algun cambio a la migracion, hazlo en el archivo que genera prisma.

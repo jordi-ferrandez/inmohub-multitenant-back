@@ -1,0 +1,66 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main, staging, develop]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment variables
+        run: |
+          case "$GITHUB_REF" in
+            refs/heads/main)
+              echo "ENVIRONMENT=production" >> $GITHUB_ENV
+              echo "PORT=4003" >> $GITHUB_ENV
+              ;;
+            refs/heads/staging)
+              echo "ENVIRONMENT=staging" >> $GITHUB_ENV
+              echo "PORT=4002" >> $GITHUB_ENV
+              ;;
+            *)
+              echo "ENVIRONMENT=develop" >> $GITHUB_ENV
+              echo "PORT=4001" >> $GITHUB_ENV
+              ;;
+          esac
+          echo "BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            # Configuración de rutas
+            PROJECT_HOME="/opt/inmohub"
+            ENV_DIR="$PROJECT_HOME/environments/${{ env.ENVIRONMENT }}"
+            COMPOSE_DIR="$PROJECT_HOME/compose"
+
+            # 1. Actualizar repositorio
+            cd "$ENV_DIR/backend"
+            git fetch origin --tags --force
+            git checkout "${{ env.BRANCH }}"
+            git reset --hard origin/"${{ env.BRANCH }}"
+
+            # 2. Reconstruir servicio
+            cd "$COMPOSE_DIR"
+            docker compose -f docker-compose.${{ env.ENVIRONMENT }}.yml build backend-${{ env.ENVIRONMENT }}
+
+            # 3. Reiniciar contenedor
+            docker compose -f docker-compose.${{ env.ENVIRONMENT }}.yml up -d --force-recreate backend-${{ env.ENVIRONMENT }}
+
+            # 4. Ejecutar migraciones de Prisma
+            echo "Ejecutando migraciones de base de datos..."
+            docker compose -f docker-compose.${{ env.ENVIRONMENT }}.yml exec backend-${{ env.ENVIRONMENT }} npx prisma migrate deploy
+
+            # 5. Verificación del servicio
+            echo "Verificando salud del backend..."
+            sleep 15
+            if curl -sI "http://localhost:${{ env.PORT }}/api/v1/ping" | grep -q "HTTP/[0-9.]* 2[0-9][0-9]"; then
+              echo "✅ Backend desplegado correctamente"
+            else
+              echo "❌ Error: El backend no responde correctamente" >&2
+              exit 1
+            fi
