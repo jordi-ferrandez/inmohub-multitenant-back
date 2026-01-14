@@ -16,6 +16,16 @@ export class PropertyController {
     }
   }
 
+  async getProperty(req: Request, res: Response): Promise<void> {
+    try {
+      const property = await this.PropertyService.getProperty();
+      successResponse(res, property, 200);
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al obtener property", 500);
+      return;
+    }
+  }
+
   async patchPropertyById(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.paramsValidated;
@@ -27,6 +37,7 @@ export class PropertyController {
       return;
     }
   }
+
 
   async getPropertyFollowUps(req: Request, res: Response): Promise<void> {
     try {

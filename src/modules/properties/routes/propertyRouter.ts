@@ -8,6 +8,8 @@ import {
   validateUpdatePropertyAttachment,
   validateDeletePropertyAttachment,
   validateGetPropertyFollowUps,
+  validateGetProperty,
+  
 } from "../validators";
 import { PropertyAttachmentController, PropertyController } from "../controller";
 import { bindAllMethods } from "@core/utils";
@@ -17,6 +19,18 @@ const propertyRouter = express.Router();
 const propertyController = bindAllMethods(new PropertyController());
 const propertyAttachmentController = bindAllMethods(
   new PropertyAttachmentController()
+);
+
+// propertyRouter.get('/', (req, res) => {
+//   res.send('Bienvenido a la página de inicio. -> ' + authenticationToken);
+// });
+
+
+propertyRouter.get(
+  "/",
+  authenticationToken,
+  validateGetProperty ,
+  propertyController.getProperty
 );
 
 propertyRouter.get(

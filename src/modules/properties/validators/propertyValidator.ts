@@ -17,6 +17,20 @@ const getPropertyFollowUpsQuerySchema = z.object({
   sortOrder: z.enum(["asc", "desc"]).optional(),
 });
 
+export const validateGetProperty = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+//  const resultParams = getPropertyByIdParamSchema.safeParse(req.params);
+//  if (!resultParams.success) {
+//    errorResponse(res, resultParams.error.message, 400);
+//    return;
+//  }
+//  req.paramsValidated = resultParams.data;
+  next();
+};
+
 export const validateGetPropertyById = (
   req: Request,
   res: Response,

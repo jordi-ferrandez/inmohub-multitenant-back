@@ -48,4 +48,15 @@ export class PropertyService {
     if (!property) throw new Error("No existe una property con ese id");
     return property;
   }
+
+  async getProperty(
+  ) {
+    const property = await prisma.property.findMany({
+      include: this.propertyRelations,      
+    });
+    if (!property) throw new Error("No existe properties");
+    return property;
+  }
+
+
 }
