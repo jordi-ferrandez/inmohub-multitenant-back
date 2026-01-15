@@ -20,6 +20,12 @@ function getEnvironmentVariables() {
     AWS_S3_BASE_URL: process.env.AWS_S3_BASE_URL,
     AWS_S3_SIGNED_URL_TTL: process.env.AWS_S3_SIGNED_URL_TTL,
     ATTACHMENTS_MAX_FILE_SIZE_MB: process.env.ATTACHMENTS_MAX_FILE_SIZE_MB,
+    SMTP_HOST: process.env.SMTP_HOST,
+    SMTP_PORT: parseInt(process.env.SMTP_PORT || "587", 10),
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_PASS: process.env.SMTP_PASS,
+    SMTP_FROM: process.env.SMTP_FROM || "InmoHub <noreply@inmohub.com>",
+    FRONTEND_URL: process.env.FRONTEND_URL || "http://localhost:3000",
   };
 }
 export { getEnvironmentVariables };

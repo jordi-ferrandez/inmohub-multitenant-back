@@ -9,3 +9,6 @@ export * from "./update-user-roles-request";
 export * from "./user-management-dto";
 export * from "./user-query-params";
 export * from "./user-params";
+export * from "./forgot-password-request";
+export * from "./reset-password-request";
+export * from "./update-profile-request";
