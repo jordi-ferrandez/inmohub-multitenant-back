@@ -1,5 +1,5 @@
 import { prisma } from "@core/lib";
-import { Property } from "./../../../../generated/prisma";
+import { Property } from "@generated/prisma";
 
 export class PropertyService {
   propertyRelations = {

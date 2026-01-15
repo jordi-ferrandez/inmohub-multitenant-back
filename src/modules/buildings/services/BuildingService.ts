@@ -1,5 +1,5 @@
 import { prisma } from "@core/lib";
-import { Building, Prisma, Property } from "./../../../../generated/prisma";
+import { Building, Prisma, Property } from "@generated/prisma";
 import {
   BuildingResponseDTO,
   GetBuildingByIdParams,

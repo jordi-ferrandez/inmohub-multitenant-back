@@ -9,7 +9,7 @@ import {
   ImportError,
 } from "../types";
 import { BatchProcessor } from "@core/utils/BatchProcessor";
-import { Person, PhoneType, Property } from "./../../../../generated/prisma";
+import { Person, PhoneType, Property } from "@generated/prisma";
 
 export class InmovillaService {
   async importFromCSV(parsedCSVData: ParsedCSVData): Promise<ImportDTO> {

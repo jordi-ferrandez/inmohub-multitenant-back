@@ -7,13 +7,28 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types", "src/core/types"],
+    "typeRoots": [
+      "node_modules/@types",
+      "src/core/types"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@modules/*": ["src/modules/*"],
-      "@core/*": ["src/core/*"]
+      "@modules/*": [
+        "src/modules/*"
+      ],
+      "@core/*": [
+        "src/core/*"
+      ],
+      "@generated/*": [
+        "src/generated/*"
+      ]
     }
   },
-  "include": ["src/**/*.ts", "src/core/types/express.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/core/types/express.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

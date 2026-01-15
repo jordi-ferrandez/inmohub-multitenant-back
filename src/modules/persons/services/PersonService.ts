@@ -1,5 +1,5 @@
 import { prisma } from "@core/lib";
-import { Prisma } from "./../../../../generated/prisma";
+import { Prisma } from "@generated/prisma";
 import {
   CreatePersonBody,
   UpdatePersonBody,
