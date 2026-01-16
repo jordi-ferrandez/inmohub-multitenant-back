@@ -67,6 +67,7 @@ export class PersonController {
 
   async search(req: Request, res: Response) {
     try {
+      console.log('aquiiiiii ' + JSON.stringify(req.query));
       const query = searchPersonsQuerySchema.parse(req.query);
       const persons = await this.service.searchPersons(query);
       successResponse(res, persons);

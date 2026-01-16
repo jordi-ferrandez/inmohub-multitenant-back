@@ -1,5 +1,8 @@
 import { prisma } from "@core/lib";
-import { Property } from "./../../../../generated/prisma";
+import { Prisma, Property } from "./../../../../generated/prisma";
+import {
+  GetPropertiesQuery,
+} from "../types/propertyTypes";
 
 export class PropertyService {
   propertyRelations = {
@@ -49,14 +52,62 @@ export class PropertyService {
     return property;
   }
 
-  async getProperty(
-  ) {
-    const property = await prisma.property.findMany({
-      include: this.propertyRelations,      
-    });
-    if (!property) throw new Error("No existe properties");
-    return property;
-  }
+	async getProperty(filters: GetPropertiesQuery) {
+		const { page, limit, ...filterData } = filters;
+		const skip = (page - 1) * limit;	
+		
+		// const where: Prisma.BuildingWhereInput = {
+    //   inmovillaCode = filterData.inmovillaCode;
+    // };
+    
+    const myInmovillaCode  = filterData.inmovillaCode   ? filterData.inmovillaCode  : undefined;
+    const myNumber= filterData.number  ? filterData.number : undefined;
+    const myFloor = filterData.floor  ? filterData.floor : undefined;
+    
+    const myStartAppraisalPrice   = filterData.startAppraisalPrice ? filterData.startAppraisalPrice : undefined;
+    const myEndAppraisalPrice     = filterData.endAppraisalPrice ? filterData.endAppraisalPrice : undefined;
 
+    const myStartSalePrice  = filterData.startSalePrice ? filterData.startSalePrice : undefined;
+    const myEndSalePrice    = filterData.endSalePrice ? filterData.endSalePrice : undefined;
+
+    const myStartRentalPrice  = filterData.startRentalPrice ? filterData.startRentalPrice : undefined;
+    const myEndRentalPrice    = filterData.endRentalPrice ? filterData.endRentalPrice : undefined;
+
+    filterData.status
+    filterData.buildingStreet
+
+		const [property, totalItems] = await prisma.$transaction([		
+			prisma.property.findMany({
+				skip: skip,
+				take: limit,		
+				include: this.propertyRelations, 
+        where: {
+          inmovillaCode: myInmovillaCode,
+          number: myNumber,
+          floor: myFloor,
+          appraisalPrice: {
+            gte: myStartAppraisalPrice,
+            lte: myEndAppraisalPrice, 
+          },
+          salePrice: {
+            gte: myStartSalePrice,
+            lte: myEndSalePrice,
+          },
+          rentalPrice: {
+            gte: myStartRentalPrice,
+            lte: myEndRentalPrice,
+          }
+        }   
+			}),
+			prisma.building.count(),
+		]);			
+		
+		if (!property) throw new Error("No existe properties");
+		
+		const totalPages = Math.ceil(totalItems / limit);
+		
+		return { data: property, meta: { totalItems, page, limit, totalPages } };
+		
+	}	
 
 }

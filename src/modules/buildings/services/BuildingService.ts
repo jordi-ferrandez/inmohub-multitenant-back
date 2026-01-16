@@ -86,7 +86,7 @@ export class BuildingService {
       prisma.building.count({ where }),
     ]);
 
-    console.log("Buioldings found:", buildings);
+    console.log("Buildings found:", buildings);
 
     const totalPages = Math.ceil(totalItems / limit);
 

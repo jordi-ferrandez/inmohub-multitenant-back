@@ -8,7 +8,7 @@ import {
   validateUpdatePropertyAttachment,
   validateDeletePropertyAttachment,
   validateGetPropertyFollowUps,
-  validateGetProperty,
+  validateGetProperties,
   
 } from "../validators";
 import { PropertyAttachmentController, PropertyController } from "../controller";
@@ -29,9 +29,10 @@ const propertyAttachmentController = bindAllMethods(
 propertyRouter.get(
   "/",
   authenticationToken,
-  validateGetProperty ,
+  validateGetProperties ,
   propertyController.getProperty
 );
+
 
 propertyRouter.get(
   "/:id",
