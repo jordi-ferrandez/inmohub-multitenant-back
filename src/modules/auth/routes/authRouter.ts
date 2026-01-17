@@ -4,6 +4,10 @@ import { bindAllMethods } from "@core/utils";
 import {
   validateLogin,
   validateRegister,
+  validateForgotPassword,
+  validateResetPassword,
+  validateChangePassword,
+  validateUpdateProfile,
   validateCreateUser,
   validateUpdateUser,
   validateUpdateUserRoles,
@@ -19,6 +23,19 @@ const authController = bindAllMethods(new AuthController());
 // Rutas públicas
 authRouter.post("/register", validateRegister, authController.register);
 authRouter.post("/login", validateLogin, authController.login);
+authRouter.post("/forgot-password", validateForgotPassword, authController.forgotPassword);
+authRouter.post("/reset-password", validateResetPassword, authController.resetPassword);
+authRouter.get("/verify-email", authController.verifyEmail);
+
+// Rutas protegidas
+authRouter.get("/me", authenticationToken, authController.getMe);
+authRouter.put("/me", authenticationToken, validateUpdateProfile, authController.updateMe);
+authRouter.post(
+  "/change-password",
+  authenticationToken,
+  validateChangePassword,
+  authController.changePassword
+);
 
 // Rutas protegidas - CRUD de usuarios (solo para directores)
 authRouter.post(

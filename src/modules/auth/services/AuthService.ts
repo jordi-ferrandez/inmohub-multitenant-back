@@ -1,7 +1,9 @@
 import { hash, compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
+import crypto from "crypto";
 import { prisma } from "@core/lib";
 import { getEnvironmentVariables } from "@core/utils";
+import { MailerService } from "@core/services";
 import {
   LoginRequest,
   LoginResponse,
@@ -12,12 +14,20 @@ import {
   UserManagementDTO,
   UserListResponse,
   UserQueryParams,
+  ForgotPasswordRequest,
+  ResetPasswordRequest,
+  UpdateProfileRequest,
 } from "../types";
 
 const SALT_ROUNDS = getEnvironmentVariables().SALT_ROUNDS;
 const JWT_SECRET = getEnvironmentVariables().JWT_SECRET;
 
 class AuthService {
+  private mailerService: MailerService;
+
+  constructor() {
+    this.mailerService = new MailerService();
+  }
   async registerUser(input: RegisterRequest): Promise<RegisterResponse> {
     const existingUser = await prisma.user.findUnique({
       where: { email: input.email },
@@ -28,6 +38,7 @@ class AuthService {
     }
 
     const passwordHash = await hash(input.password, SALT_ROUNDS);
+    const verificationToken = crypto.randomBytes(32).toString("hex");
 
     const userRole = await prisma.role.findUnique({
       where: { name: input.role },
@@ -45,6 +56,7 @@ class AuthService {
           firstName: input.firstName,
           lastName: input.lastName,
           phone: input.phone,
+          verificationToken,
         },
       });
 
@@ -58,6 +70,13 @@ class AuthService {
       return user;
     });
 
+    // Enviar correo de bienvenida con verificación después de la transacción exitosa
+    await this.mailerService.sendWelcomeEmail(
+      newUser.email,
+      `${newUser.firstName} ${newUser.lastName}`,
+      verificationToken
+    );
+
     return {
       id: newUser.id,
       email: newUser.email,
@@ -70,10 +89,10 @@ class AuthService {
 
   async loginUser(input: LoginRequest): Promise<LoginResponse> {
     const { email, password } = input;
+    
     const user = await prisma.user.findUnique({
       where: { email },
     });
-
     if (!JWT_SECRET) throw new Error("JWT_SECRET no definido");
     if (!user) {
       throw new Error("Credenciales inválidas");
@@ -82,6 +101,12 @@ class AuthService {
     if (!isPasswordValid) {
       throw new Error("Credenciales inválidas");
     }
+
+    //descomentar si se implementa verificacion de correo
+
+    // if (!user.emailVerified) {
+    //   throw new Error("Debes verificar tu email antes de iniciar sesión. Por favor, revisa tu correo.");
+    // }
 
     const userRoles = await prisma.userRole.findMany({
       where: {
@@ -409,6 +434,7 @@ class AuthService {
       }
     }
 
+    const oldEmail = existingUser.email;
     const updatedUser = await prisma.user.update({
       where: { id },
       data: {
@@ -437,6 +463,22 @@ class AuthService {
         },
       },
     });
+
+    // Si el email cambió, notificar a amboscorreos
+    if (input.email && input.email !== oldEmail) {
+      this.mailerService.sendEmailChangedNotification(
+        oldEmail,
+        existingUser.firstName,
+        oldEmail,
+        input.email
+      );
+      this.mailerService.sendEmailChangedNotification(
+        input.email,
+        existingUser.firstName,
+        oldEmail,
+        input.email
+      );
+    }
 
     // Filtrar roles eliminados antes de mapear
     const activeUserRoles = updatedUser.roles.filter(
@@ -624,6 +666,185 @@ class AuthService {
     });
 
     return sortedRoles;
+  }
+
+  async forgotPassword(email: string): Promise<void> {
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      // For security, don't reveal if user exists. Just return success.
+      return;
+    }
+
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const resetExpires = new Date(Date.now() + 3600000); // 1 hour
+
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        resetPasswordToken: resetToken,
+        resetPasswordExpires: resetExpires,
+      },
+    });
+
+    await this.mailerService.sendPasswordResetEmail(
+      user.email,
+      user.firstName,
+      resetToken
+    );
+  }
+
+  async resetPassword(input: ResetPasswordRequest): Promise<void> {
+    const user = await prisma.user.findFirst({
+      where: {
+        resetPasswordToken: input.token,
+        resetPasswordExpires: {
+          gt: new Date(),
+        },
+      },
+    });
+
+    if (!user) {
+      throw new Error("Token inválido o expirado");
+    }
+
+    const passwordHash = await hash(input.password, SALT_ROUNDS);
+
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        passwordHash,
+        resetPasswordToken: null,
+        resetPasswordExpires: null,
+      },
+    });
+
+    await this.mailerService.sendPasswordChangedNotification(
+      user.email,
+      user.firstName
+    );
+  }
+
+  async verifyEmail(token: string): Promise<void> {
+    const user = await prisma.user.findFirst({
+      where: {
+        verificationToken: token,
+      },
+    });
+
+    if (!user) {
+      throw new Error("Token de verificación inválido");
+    }
+
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        emailVerified: new Date(),
+        verificationToken: null,
+      },
+    });
+  }
+
+  async changePassword(
+    userId: number,
+    oldPassword: string,
+    newPassword: string
+  ): Promise<void> {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    const isPasswordValid = await compare(oldPassword, user.passwordHash);
+    if (!isPasswordValid) {
+      throw new Error("La contraseña actual es incorrecta");
+    }
+
+    const passwordHash = await hash(newPassword, SALT_ROUNDS);
+
+    await prisma.user.update({
+      where: { id: userId },
+      data: { passwordHash },
+    });
+
+    await this.mailerService.sendPasswordChangedNotification(
+      user.email,
+      user.firstName
+    );
+  }
+
+  async getProfile(userId: number): Promise<UserManagementDTO> {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        roles: {
+          where: { deletedAt: null },
+          include: { role: true },
+        },
+      },
+    });
+
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    return this.mapUserToDTO(
+      user,
+      user.roles.map((ur) => ur.role)
+    );
+  }
+
+  async updateProfile(
+    userId: number,
+    data: UpdateProfileRequest
+  ): Promise<UserManagementDTO> {
+    const existingUser = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!existingUser) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    if (data.email && data.email !== existingUser.email) {
+      const emailExists = await prisma.user.findUnique({
+        where: { email: data.email },
+      });
+
+      if (emailExists) {
+        throw new Error("El email ya está registrado");
+      }
+    }
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        avatarUrl: data.avatarUrl,
+      },
+      include: {
+        roles: {
+          where: { deletedAt: null },
+          include: { role: true },
+        },
+      },
+    });
+
+    // Si el email cambió, podríamos querer invalidar la verificación actual
+    // Pero por ahora, seguiremos la lógica del usuario de no forzarla inmediatamente si no se solicita.
+
+    return this.mapUserToDTO(
+      updatedUser,
+      updatedUser.roles.map((ur) => ur.role)
+    );
   }
 
   private mapUserToDTO(user: any, roles: any[]): UserManagementDTO {

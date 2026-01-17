@@ -8,6 +8,9 @@ import {
   UpdateUserRolesRequest,
   UserQueryParams,
   UserParams,
+  ForgotPasswordRequest,
+  ResetPasswordRequest,
+  UpdateProfileRequest,
 } from "../types";
 import { AuthService } from "../services";
 import { errorResponse, successResponse, paginatedResponse } from "@core/utils";
@@ -218,6 +221,113 @@ class AuthController {
       return;
     } catch (error: any) {
       errorResponse(res, error.message || "Error al obtener roles", 400);
+      return;
+    }
+  }
+
+  async forgotPassword(
+    req: Request<{}, {}, ForgotPasswordRequest>,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { email } = req.bodyValidated;
+      await this.authService.forgotPassword(email);
+      successResponse(
+        res,
+        { message: "Si el email existe, se ha enviado un enlace de recuperación" },
+        200
+      );
+      return;
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al solicitar recuperación", 400);
+      return;
+    }
+  }
+
+  async resetPassword(
+    req: Request<{}, {}, ResetPasswordRequest>,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const resetData = req.bodyValidated;
+      await this.authService.resetPassword(resetData);
+      successResponse(res, { message: "Contraseña actualizada correctamente" }, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al restablecer contraseña", 400);
+      return;
+    }
+  }
+
+  async verifyEmail(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { token } = req.query as { token: string };
+      if (!token) {
+        throw new Error("Token es requerido");
+      }
+      await this.authService.verifyEmail(token);
+      successResponse(res, { message: "Email verificado correctamente" }, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al verificar email", 400);
+      return;
+    }
+  }
+
+  async changePassword(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { oldPassword, newPassword } = req.bodyValidated;
+      const userId = (req as any).user.userId; // Assuming user is injected by auth middleware
+      await this.authService.changePassword(userId, oldPassword, newPassword);
+      successResponse(res, { message: "Contraseña cambiada correctamente" }, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al cambiar contraseña", 400);
+      return;
+    }
+  }
+  async updateMe(
+    req: Request<{}, {}, UpdateProfileRequest>,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const userId = (req as any).user.userId;
+      const profileData = req.bodyValidated;
+      const updatedProfile = await this.authService.updateProfile(
+        userId,
+        profileData
+      );
+      successResponse(res, updatedProfile, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al actualizar perfil", 400);
+      return;
+    }
+  }
+
+  async getMe(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const userId = (req as any).user.userId;
+      const profile = await this.authService.getProfile(userId);
+      successResponse(res, profile, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al obtener perfil", 400);
       return;
     }
   }

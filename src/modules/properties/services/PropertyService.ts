@@ -73,8 +73,8 @@ export class PropertyService {
     const myStartRentalPrice  = filterData.startRentalPrice ? filterData.startRentalPrice : undefined;
     const myEndRentalPrice    = filterData.endRentalPrice ? filterData.endRentalPrice : undefined;
 
-    filterData.status
-    filterData.buildingStreet
+    // filterData.status
+    // filterData.buildingStreet
 
 		const [property, totalItems] = await prisma.$transaction([		
 			prisma.property.findMany({

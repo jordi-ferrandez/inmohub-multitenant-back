@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import morgan from "morgan";
-import { PrismaClient } from "../generated/prisma";
+import { PrismaClient } from "@generated/prisma";
 import { routerAPI } from "@core/routes";
 import { errorHandler, requestLogger } from "@core/middlewares";
 import { initUploadsDir } from "@core/config/initUploadsDir";
