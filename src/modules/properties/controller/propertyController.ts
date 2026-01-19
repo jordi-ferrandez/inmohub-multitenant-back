@@ -2,6 +2,9 @@ import { errorResponse, successResponse, paginatedResponse } from "@core/utils";
 import { Request, Response } from "express";
 import { PropertyService } from "../services";
 import FollowUpService from "@modules/followups/services/FollowUpService";
+import {
+  GetPropertiesQuery,
+} from "../types/propertyTypes";
 
 export class PropertyController {
   PropertyService = new PropertyService();
@@ -16,16 +19,21 @@ export class PropertyController {
     }
   }
 
+
   async getProperty(req: Request, res: Response): Promise<void> {
     try {
-      const property = await this.PropertyService.getProperty();
-      successResponse(res, property, 200);
+      const query = req.queryValidated as GetPropertiesQuery;
+      const { data, meta } = await this.PropertyService.getProperty(query);
+
+      paginatedResponse(res, data, meta, 200);
+      
     } catch (error: any) {
       errorResponse(res, error.message || "Error al obtener property", 500);
       return;
     }
   }
 
+  
   async patchPropertyById(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.paramsValidated;

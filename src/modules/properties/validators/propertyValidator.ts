@@ -1,5 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import { getPropertyByIdParamSchema, patchPropertyBodySchema } from "../types";
+import { 
+  getPropertyByIdParamSchema, 
+  patchPropertyBodySchema,
+  GetPropertiesQuery,
+  getPropertiesQuerySchema,
+} from "../types";
 import { errorResponse, formatZodError } from "@core/utils";
 import { z } from "zod";
 
@@ -17,19 +22,20 @@ const getPropertyFollowUpsQuerySchema = z.object({
   sortOrder: z.enum(["asc", "desc"]).optional(),
 });
 
-export const validateGetProperty = (
+export const validateGetProperties = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-//  const resultParams = getPropertyByIdParamSchema.safeParse(req.params);
-//  if (!resultParams.success) {
-//    errorResponse(res, resultParams.error.message, 400);
-//    return;
-//  }
-//  req.paramsValidated = resultParams.data;
+  const result = getPropertiesQuerySchema.safeParse(req.query);
+  if (!result.success) {
+    errorResponse(res, result.error.message, 400);
+    return;
+  }
+  req.queryValidated = result.data as GetPropertiesQuery;
   next();
 };
+  
 
 export const validateGetPropertyById = (
   req: Request,

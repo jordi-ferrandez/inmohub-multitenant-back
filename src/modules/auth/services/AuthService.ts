@@ -89,10 +89,10 @@ class AuthService {
 
   async loginUser(input: LoginRequest): Promise<LoginResponse> {
     const { email, password } = input;
+    
     const user = await prisma.user.findUnique({
       where: { email },
     });
-
     if (!JWT_SECRET) throw new Error("JWT_SECRET no definido");
     if (!user) {
       throw new Error("Credenciales inválidas");
