@@ -1,0 +1,13 @@
+
+> inmohub-backend@1.0.0 prisma:generate
+> prisma generate
+
+warn The configuration property `package.json#prisma` is deprecated and will be removed in Prisma 7. Please migrate to a Prisma config file (e.g., `prisma.config.ts`).
+For more information, see: https://pris.ly/prisma-config
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Error: 
+EPERM: operation not permitted, rename 'C:\Users\ricar\OneDrive\Documents\pen3g\app prueba\inmuhub\InmoHub\inmohub-backend-develop\src\generated\prisma\query_engine-windows.dll.node.tmp17628' -> 'C:\Users\ricar\OneDrive\Documents\pen3g\app prueba\inmuhub\InmoHub\inmohub-backend-develop\src\generated\prisma\query_engine-windows.dll.node'
+
+

@@ -220,7 +220,8 @@ exports.Prisma.PropertyScalarFieldEnum = {
   isOpportunity: 'isOpportunity',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  description: 'description'
 };
 
 exports.Prisma.PropertyAttachmentScalarFieldEnum = {
@@ -405,6 +406,38 @@ exports.Prisma.PropertyPersonScalarFieldEnum = {
   deletedAt: 'deletedAt'
 };
 
+exports.Prisma.FlyerTemplateScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  thumbnailUrl: 'thumbnailUrl',
+  content: 'content',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.FlyerScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  templateId: 'templateId',
+  generatedById: 'generatedById',
+  qrContent: 'qrContent',
+  pdfUrl: 'pdfUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.FlyerShipmentScalarFieldEnum = {
+  id: 'id',
+  flyerId: 'flyerId',
+  userId: 'userId',
+  notes: 'notes',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -504,7 +537,10 @@ exports.Prisma.ModelName = {
   Listing: 'Listing',
   ListingType: 'ListingType',
   ListingStatus: 'ListingStatus',
-  PropertyPerson: 'PropertyPerson'
+  PropertyPerson: 'PropertyPerson',
+  FlyerTemplate: 'FlyerTemplate',
+  Flyer: 'Flyer',
+  FlyerShipment: 'FlyerShipment'
 };
 
 /**

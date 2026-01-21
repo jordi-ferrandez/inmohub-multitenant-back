@@ -580,6 +580,40 @@ async function seedAttachments() {
   }
 }
 
+async function seedFlyerTemplates() {
+  const templates = [
+    {
+      id: 1,
+      name: "Moderno",
+      description: "Diseño limpio y minimalista con fotos grandes.",
+      thumbnailUrl: "https://via.placeholder.com/150?text=Moderno",
+      content: "modern",
+    },
+    {
+      id: 2,
+      name: "Clásico",
+      description: "Diseño elegante y tradicional, ideal para propiedades de lujo.",
+      thumbnailUrl: "https://via.placeholder.com/150?text=Clasico",
+      content: "classic",
+    },
+    {
+      id: 3,
+      name: "Compacto",
+      description: "Ideal para buzoneo rápido, con información clave a la vista.",
+      thumbnailUrl: "https://via.placeholder.com/150?text=Compacto",
+      content: "compact",
+    },
+  ];
+
+  for (const template of templates) {
+    await prisma.flyerTemplate.upsert({
+      where: { id: template.id },
+      update: template,
+      create: template,
+    });
+  }
+}
+
 async function seedAlerts() {
   console.warn("ℹ️ El modelo Alert no existe en el esquema. Seed omitido.");
 }
@@ -609,6 +643,9 @@ async function main() {
 
   await seedMailboxing();
   console.log("✅ Registros de buzoneo creados");
+
+  await seedFlyerTemplates();
+  console.log("✅ Plantillas de flyers creadas");
 
   await seedAlerts();
 

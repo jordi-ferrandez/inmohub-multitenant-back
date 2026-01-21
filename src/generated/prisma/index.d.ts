@@ -123,6 +123,21 @@ export type ListingStatus = $Result.DefaultSelection<Prisma.$ListingStatusPayloa
  * 
  */
 export type PropertyPerson = $Result.DefaultSelection<Prisma.$PropertyPersonPayload>
+/**
+ * Model FlyerTemplate
+ * 
+ */
+export type FlyerTemplate = $Result.DefaultSelection<Prisma.$FlyerTemplatePayload>
+/**
+ * Model Flyer
+ * 
+ */
+export type Flyer = $Result.DefaultSelection<Prisma.$FlyerPayload>
+/**
+ * Model FlyerShipment
+ * 
+ */
+export type FlyerShipment = $Result.DefaultSelection<Prisma.$FlyerShipmentPayload>
 
 /**
  * Enums
@@ -574,6 +589,36 @@ export class PrismaClient<
     * ```
     */
   get propertyPerson(): Prisma.PropertyPersonDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.flyerTemplate`: Exposes CRUD operations for the **FlyerTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FlyerTemplates
+    * const flyerTemplates = await prisma.flyerTemplate.findMany()
+    * ```
+    */
+  get flyerTemplate(): Prisma.FlyerTemplateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.flyer`: Exposes CRUD operations for the **Flyer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Flyers
+    * const flyers = await prisma.flyer.findMany()
+    * ```
+    */
+  get flyer(): Prisma.FlyerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.flyerShipment`: Exposes CRUD operations for the **FlyerShipment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FlyerShipments
+    * const flyerShipments = await prisma.flyerShipment.findMany()
+    * ```
+    */
+  get flyerShipment(): Prisma.FlyerShipmentDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1035,7 +1080,10 @@ export namespace Prisma {
     Listing: 'Listing',
     ListingType: 'ListingType',
     ListingStatus: 'ListingStatus',
-    PropertyPerson: 'PropertyPerson'
+    PropertyPerson: 'PropertyPerson',
+    FlyerTemplate: 'FlyerTemplate',
+    Flyer: 'Flyer',
+    FlyerShipment: 'FlyerShipment'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1054,7 +1102,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "ping" | "role" | "user" | "permission" | "userRole" | "rolePermission" | "building" | "property" | "propertyAttachment" | "buildingAttachment" | "assignment" | "followUp" | "mailboxing" | "mailboxingAttachment" | "person" | "personPhone" | "reminder" | "reminderOccurrence" | "listing" | "listingType" | "listingStatus" | "propertyPerson"
+      modelProps: "ping" | "role" | "user" | "permission" | "userRole" | "rolePermission" | "building" | "property" | "propertyAttachment" | "buildingAttachment" | "assignment" | "followUp" | "mailboxing" | "mailboxingAttachment" | "person" | "personPhone" | "reminder" | "reminderOccurrence" | "listing" | "listingType" | "listingStatus" | "propertyPerson" | "flyerTemplate" | "flyer" | "flyerShipment"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2686,6 +2734,228 @@ export namespace Prisma {
           }
         }
       }
+      FlyerTemplate: {
+        payload: Prisma.$FlyerTemplatePayload<ExtArgs>
+        fields: Prisma.FlyerTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FlyerTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FlyerTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.FlyerTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FlyerTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.FlyerTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.FlyerTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.FlyerTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FlyerTemplateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.FlyerTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>
+          }
+          update: {
+            args: Prisma.FlyerTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.FlyerTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FlyerTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FlyerTemplateUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>[]
+          }
+          upsert: {
+            args: Prisma.FlyerTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.FlyerTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFlyerTemplate>
+          }
+          groupBy: {
+            args: Prisma.FlyerTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FlyerTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FlyerTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<FlyerTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
+      Flyer: {
+        payload: Prisma.$FlyerPayload<ExtArgs>
+        fields: Prisma.FlyerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FlyerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FlyerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>
+          }
+          findFirst: {
+            args: Prisma.FlyerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FlyerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>
+          }
+          findMany: {
+            args: Prisma.FlyerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>[]
+          }
+          create: {
+            args: Prisma.FlyerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>
+          }
+          createMany: {
+            args: Prisma.FlyerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FlyerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>[]
+          }
+          delete: {
+            args: Prisma.FlyerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>
+          }
+          update: {
+            args: Prisma.FlyerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>
+          }
+          deleteMany: {
+            args: Prisma.FlyerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FlyerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FlyerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>[]
+          }
+          upsert: {
+            args: Prisma.FlyerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerPayload>
+          }
+          aggregate: {
+            args: Prisma.FlyerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFlyer>
+          }
+          groupBy: {
+            args: Prisma.FlyerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FlyerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FlyerCountArgs<ExtArgs>
+            result: $Utils.Optional<FlyerCountAggregateOutputType> | number
+          }
+        }
+      }
+      FlyerShipment: {
+        payload: Prisma.$FlyerShipmentPayload<ExtArgs>
+        fields: Prisma.FlyerShipmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FlyerShipmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FlyerShipmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>
+          }
+          findFirst: {
+            args: Prisma.FlyerShipmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FlyerShipmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>
+          }
+          findMany: {
+            args: Prisma.FlyerShipmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>[]
+          }
+          create: {
+            args: Prisma.FlyerShipmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>
+          }
+          createMany: {
+            args: Prisma.FlyerShipmentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FlyerShipmentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>[]
+          }
+          delete: {
+            args: Prisma.FlyerShipmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>
+          }
+          update: {
+            args: Prisma.FlyerShipmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.FlyerShipmentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FlyerShipmentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FlyerShipmentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>[]
+          }
+          upsert: {
+            args: Prisma.FlyerShipmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FlyerShipmentPayload>
+          }
+          aggregate: {
+            args: Prisma.FlyerShipmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFlyerShipment>
+          }
+          groupBy: {
+            args: Prisma.FlyerShipmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FlyerShipmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FlyerShipmentCountArgs<ExtArgs>
+            result: $Utils.Optional<FlyerShipmentCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2800,6 +3070,9 @@ export namespace Prisma {
     listingType?: ListingTypeOmit
     listingStatus?: ListingStatusOmit
     propertyPerson?: PropertyPersonOmit
+    flyerTemplate?: FlyerTemplateOmit
+    flyer?: FlyerOmit
+    flyerShipment?: FlyerShipmentOmit
   }
 
   /* Types for Logging */
@@ -2930,6 +3203,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded: number
     buildingAttachmentsUploaded: number
     mailboxingAttachmentsUploaded: number
+    flyersGenerated: number
+    flyerShipments: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2943,6 +3218,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: boolean | UserCountOutputTypeCountPropertyAttachmentsUploadedArgs
     buildingAttachmentsUploaded?: boolean | UserCountOutputTypeCountBuildingAttachmentsUploadedArgs
     mailboxingAttachmentsUploaded?: boolean | UserCountOutputTypeCountMailboxingAttachmentsUploadedArgs
+    flyersGenerated?: boolean | UserCountOutputTypeCountFlyersGeneratedArgs
+    flyerShipments?: boolean | UserCountOutputTypeCountFlyerShipmentsArgs
   }
 
   // Custom InputTypes
@@ -3024,6 +3301,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountMailboxingAttachmentsUploadedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MailboxingAttachmentWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountFlyersGeneratedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlyerWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountFlyerShipmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlyerShipmentWhereInput
   }
 
 
@@ -3135,6 +3426,7 @@ export namespace Prisma {
     attachments: number
     propertyPersons: number
     reminders: number
+    flyers: number
   }
 
   export type PropertyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3143,6 +3435,7 @@ export namespace Prisma {
     attachments?: boolean | PropertyCountOutputTypeCountAttachmentsArgs
     propertyPersons?: boolean | PropertyCountOutputTypeCountPropertyPersonsArgs
     reminders?: boolean | PropertyCountOutputTypeCountRemindersArgs
+    flyers?: boolean | PropertyCountOutputTypeCountFlyersArgs
   }
 
   // Custom InputTypes
@@ -3189,6 +3482,13 @@ export namespace Prisma {
    */
   export type PropertyCountOutputTypeCountRemindersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReminderWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountFlyersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlyerWhereInput
   }
 
 
@@ -3447,6 +3747,68 @@ export namespace Prisma {
    */
   export type ListingStatusCountOutputTypeCountListingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ListingWhereInput
+  }
+
+
+  /**
+   * Count Type FlyerTemplateCountOutputType
+   */
+
+  export type FlyerTemplateCountOutputType = {
+    flyers: number
+  }
+
+  export type FlyerTemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flyers?: boolean | FlyerTemplateCountOutputTypeCountFlyersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FlyerTemplateCountOutputType without action
+   */
+  export type FlyerTemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplateCountOutputType
+     */
+    select?: FlyerTemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FlyerTemplateCountOutputType without action
+   */
+  export type FlyerTemplateCountOutputTypeCountFlyersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlyerWhereInput
+  }
+
+
+  /**
+   * Count Type FlyerCountOutputType
+   */
+
+  export type FlyerCountOutputType = {
+    shipments: number
+  }
+
+  export type FlyerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    shipments?: boolean | FlyerCountOutputTypeCountShipmentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FlyerCountOutputType without action
+   */
+  export type FlyerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerCountOutputType
+     */
+    select?: FlyerCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FlyerCountOutputType without action
+   */
+  export type FlyerCountOutputTypeCountShipmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlyerShipmentWhereInput
   }
 
 
@@ -5877,6 +6239,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: boolean | User$propertyAttachmentsUploadedArgs<ExtArgs>
     buildingAttachmentsUploaded?: boolean | User$buildingAttachmentsUploadedArgs<ExtArgs>
     mailboxingAttachmentsUploaded?: boolean | User$mailboxingAttachmentsUploadedArgs<ExtArgs>
+    flyersGenerated?: boolean | User$flyersGeneratedArgs<ExtArgs>
+    flyerShipments?: boolean | User$flyerShipmentsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -5946,6 +6310,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: boolean | User$propertyAttachmentsUploadedArgs<ExtArgs>
     buildingAttachmentsUploaded?: boolean | User$buildingAttachmentsUploadedArgs<ExtArgs>
     mailboxingAttachmentsUploaded?: boolean | User$mailboxingAttachmentsUploadedArgs<ExtArgs>
+    flyersGenerated?: boolean | User$flyersGeneratedArgs<ExtArgs>
+    flyerShipments?: boolean | User$flyerShipmentsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5964,6 +6330,8 @@ export namespace Prisma {
       propertyAttachmentsUploaded: Prisma.$PropertyAttachmentPayload<ExtArgs>[]
       buildingAttachmentsUploaded: Prisma.$BuildingAttachmentPayload<ExtArgs>[]
       mailboxingAttachmentsUploaded: Prisma.$MailboxingAttachmentPayload<ExtArgs>[]
+      flyersGenerated: Prisma.$FlyerPayload<ExtArgs>[]
+      flyerShipments: Prisma.$FlyerShipmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6385,6 +6753,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded<T extends User$propertyAttachmentsUploadedArgs<ExtArgs> = {}>(args?: Subset<T, User$propertyAttachmentsUploadedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyAttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     buildingAttachmentsUploaded<T extends User$buildingAttachmentsUploadedArgs<ExtArgs> = {}>(args?: Subset<T, User$buildingAttachmentsUploadedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BuildingAttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     mailboxingAttachmentsUploaded<T extends User$mailboxingAttachmentsUploadedArgs<ExtArgs> = {}>(args?: Subset<T, User$mailboxingAttachmentsUploadedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MailboxingAttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    flyersGenerated<T extends User$flyersGeneratedArgs<ExtArgs> = {}>(args?: Subset<T, User$flyersGeneratedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    flyerShipments<T extends User$flyerShipmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$flyerShipmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7054,6 +7424,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MailboxingAttachmentScalarFieldEnum | MailboxingAttachmentScalarFieldEnum[]
+  }
+
+  /**
+   * User.flyersGenerated
+   */
+  export type User$flyersGeneratedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    where?: FlyerWhereInput
+    orderBy?: FlyerOrderByWithRelationInput | FlyerOrderByWithRelationInput[]
+    cursor?: FlyerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlyerScalarFieldEnum | FlyerScalarFieldEnum[]
+  }
+
+  /**
+   * User.flyerShipments
+   */
+  export type User$flyerShipmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    where?: FlyerShipmentWhereInput
+    orderBy?: FlyerShipmentOrderByWithRelationInput | FlyerShipmentOrderByWithRelationInput[]
+    cursor?: FlyerShipmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlyerShipmentScalarFieldEnum | FlyerShipmentScalarFieldEnum[]
   }
 
   /**
@@ -11881,6 +12299,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
+    description: string | null
   }
 
   export type PropertyMaxAggregateOutputType = {
@@ -11912,6 +12331,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
+    description: string | null
   }
 
   export type PropertyCountAggregateOutputType = {
@@ -11943,6 +12363,7 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     deletedAt: number
+    description: number
     _all: number
   }
 
@@ -12002,6 +12423,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
+    description?: true
   }
 
   export type PropertyMaxAggregateInputType = {
@@ -12033,6 +12455,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
+    description?: true
   }
 
   export type PropertyCountAggregateInputType = {
@@ -12064,6 +12487,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
+    description?: true
     _all?: true
   }
 
@@ -12182,6 +12606,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
+    description: string | null
     _count: PropertyCountAggregateOutputType | null
     _avg: PropertyAvgAggregateOutputType | null
     _sum: PropertySumAggregateOutputType | null
@@ -12232,6 +12657,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    description?: boolean
     followUps?: boolean | Property$followUpsArgs<ExtArgs>
     listings?: boolean | Property$listingsArgs<ExtArgs>
     building?: boolean | BuildingDefaultArgs<ExtArgs>
@@ -12241,6 +12667,7 @@ export namespace Prisma {
     attachments?: boolean | Property$attachmentsArgs<ExtArgs>
     propertyPersons?: boolean | Property$propertyPersonsArgs<ExtArgs>
     reminders?: boolean | Property$remindersArgs<ExtArgs>
+    flyers?: boolean | Property$flyersArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -12273,6 +12700,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    description?: boolean
     building?: boolean | BuildingDefaultArgs<ExtArgs>
     capturedBy?: boolean | Property$capturedByArgs<ExtArgs>
     owner?: boolean | Property$ownerArgs<ExtArgs>
@@ -12308,6 +12736,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    description?: boolean
     building?: boolean | BuildingDefaultArgs<ExtArgs>
     capturedBy?: boolean | Property$capturedByArgs<ExtArgs>
     owner?: boolean | Property$ownerArgs<ExtArgs>
@@ -12343,9 +12772,10 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    description?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inmovillaCode" | "number" | "floor" | "buildingId" | "ownerId" | "tenantId" | "capturedById" | "appraisalPrice" | "occupiedBy" | "importantNotice" | "rso_comment" | "noDisturb" | "noDoormat" | "noBell" | "noCounter" | "soldRentedUs" | "branch" | "salePrice" | "rentalPrice" | "status" | "isPresident" | "isInformer" | "isSecondResidence" | "isOpportunity" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inmovillaCode" | "number" | "floor" | "buildingId" | "ownerId" | "tenantId" | "capturedById" | "appraisalPrice" | "occupiedBy" | "importantNotice" | "rso_comment" | "noDisturb" | "noDoormat" | "noBell" | "noCounter" | "soldRentedUs" | "branch" | "salePrice" | "rentalPrice" | "status" | "isPresident" | "isInformer" | "isSecondResidence" | "isOpportunity" | "createdAt" | "updatedAt" | "deletedAt" | "description", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     followUps?: boolean | Property$followUpsArgs<ExtArgs>
     listings?: boolean | Property$listingsArgs<ExtArgs>
@@ -12356,6 +12786,7 @@ export namespace Prisma {
     attachments?: boolean | Property$attachmentsArgs<ExtArgs>
     propertyPersons?: boolean | Property$propertyPersonsArgs<ExtArgs>
     reminders?: boolean | Property$remindersArgs<ExtArgs>
+    flyers?: boolean | Property$flyersArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12383,6 +12814,7 @@ export namespace Prisma {
       attachments: Prisma.$PropertyAttachmentPayload<ExtArgs>[]
       propertyPersons: Prisma.$PropertyPersonPayload<ExtArgs>[]
       reminders: Prisma.$ReminderPayload<ExtArgs>[]
+      flyers: Prisma.$FlyerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -12413,6 +12845,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       deletedAt: Date | null
+      description: string | null
     }, ExtArgs["result"]["property"]>
     composites: {}
   }
@@ -12816,6 +13249,7 @@ export namespace Prisma {
     attachments<T extends Property$attachmentsArgs<ExtArgs> = {}>(args?: Subset<T, Property$attachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyAttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     propertyPersons<T extends Property$propertyPersonsArgs<ExtArgs> = {}>(args?: Subset<T, Property$propertyPersonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPersonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reminders<T extends Property$remindersArgs<ExtArgs> = {}>(args?: Subset<T, Property$remindersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReminderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    flyers<T extends Property$flyersArgs<ExtArgs> = {}>(args?: Subset<T, Property$flyersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12873,6 +13307,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Property", 'DateTime'>
     readonly updatedAt: FieldRef<"Property", 'DateTime'>
     readonly deletedAt: FieldRef<"Property", 'DateTime'>
+    readonly description: FieldRef<"Property", 'String'>
   }
     
 
@@ -13443,6 +13878,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ReminderScalarFieldEnum | ReminderScalarFieldEnum[]
+  }
+
+  /**
+   * Property.flyers
+   */
+  export type Property$flyersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    where?: FlyerWhereInput
+    orderBy?: FlyerOrderByWithRelationInput | FlyerOrderByWithRelationInput[]
+    cursor?: FlyerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlyerScalarFieldEnum | FlyerScalarFieldEnum[]
   }
 
   /**
@@ -30401,6 +30860,3472 @@ export namespace Prisma {
 
 
   /**
+   * Model FlyerTemplate
+   */
+
+  export type AggregateFlyerTemplate = {
+    _count: FlyerTemplateCountAggregateOutputType | null
+    _avg: FlyerTemplateAvgAggregateOutputType | null
+    _sum: FlyerTemplateSumAggregateOutputType | null
+    _min: FlyerTemplateMinAggregateOutputType | null
+    _max: FlyerTemplateMaxAggregateOutputType | null
+  }
+
+  export type FlyerTemplateAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FlyerTemplateSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FlyerTemplateMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    thumbnailUrl: string | null
+    content: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type FlyerTemplateMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    thumbnailUrl: string | null
+    content: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type FlyerTemplateCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    thumbnailUrl: number
+    content: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type FlyerTemplateAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type FlyerTemplateSumAggregateInputType = {
+    id?: true
+  }
+
+  export type FlyerTemplateMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    thumbnailUrl?: true
+    content?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type FlyerTemplateMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    thumbnailUrl?: true
+    content?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type FlyerTemplateCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    thumbnailUrl?: true
+    content?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type FlyerTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlyerTemplate to aggregate.
+     */
+    where?: FlyerTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlyerTemplates to fetch.
+     */
+    orderBy?: FlyerTemplateOrderByWithRelationInput | FlyerTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FlyerTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlyerTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlyerTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FlyerTemplates
+    **/
+    _count?: true | FlyerTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FlyerTemplateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FlyerTemplateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FlyerTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FlyerTemplateMaxAggregateInputType
+  }
+
+  export type GetFlyerTemplateAggregateType<T extends FlyerTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateFlyerTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFlyerTemplate[P]>
+      : GetScalarType<T[P], AggregateFlyerTemplate[P]>
+  }
+
+
+
+
+  export type FlyerTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlyerTemplateWhereInput
+    orderBy?: FlyerTemplateOrderByWithAggregationInput | FlyerTemplateOrderByWithAggregationInput[]
+    by: FlyerTemplateScalarFieldEnum[] | FlyerTemplateScalarFieldEnum
+    having?: FlyerTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FlyerTemplateCountAggregateInputType | true
+    _avg?: FlyerTemplateAvgAggregateInputType
+    _sum?: FlyerTemplateSumAggregateInputType
+    _min?: FlyerTemplateMinAggregateInputType
+    _max?: FlyerTemplateMaxAggregateInputType
+  }
+
+  export type FlyerTemplateGroupByOutputType = {
+    id: number
+    name: string
+    description: string | null
+    thumbnailUrl: string | null
+    content: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    _count: FlyerTemplateCountAggregateOutputType | null
+    _avg: FlyerTemplateAvgAggregateOutputType | null
+    _sum: FlyerTemplateSumAggregateOutputType | null
+    _min: FlyerTemplateMinAggregateOutputType | null
+    _max: FlyerTemplateMaxAggregateOutputType | null
+  }
+
+  type GetFlyerTemplateGroupByPayload<T extends FlyerTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FlyerTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FlyerTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FlyerTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], FlyerTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FlyerTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    thumbnailUrl?: boolean
+    content?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    flyers?: boolean | FlyerTemplate$flyersArgs<ExtArgs>
+    _count?: boolean | FlyerTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flyerTemplate"]>
+
+  export type FlyerTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    thumbnailUrl?: boolean
+    content?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }, ExtArgs["result"]["flyerTemplate"]>
+
+  export type FlyerTemplateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    thumbnailUrl?: boolean
+    content?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }, ExtArgs["result"]["flyerTemplate"]>
+
+  export type FlyerTemplateSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    thumbnailUrl?: boolean
+    content?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type FlyerTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "thumbnailUrl" | "content" | "isActive" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["flyerTemplate"]>
+  export type FlyerTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flyers?: boolean | FlyerTemplate$flyersArgs<ExtArgs>
+    _count?: boolean | FlyerTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type FlyerTemplateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type FlyerTemplateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $FlyerTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FlyerTemplate"
+    objects: {
+      flyers: Prisma.$FlyerPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      description: string | null
+      thumbnailUrl: string | null
+      content: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+    }, ExtArgs["result"]["flyerTemplate"]>
+    composites: {}
+  }
+
+  type FlyerTemplateGetPayload<S extends boolean | null | undefined | FlyerTemplateDefaultArgs> = $Result.GetResult<Prisma.$FlyerTemplatePayload, S>
+
+  type FlyerTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FlyerTemplateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FlyerTemplateCountAggregateInputType | true
+    }
+
+  export interface FlyerTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FlyerTemplate'], meta: { name: 'FlyerTemplate' } }
+    /**
+     * Find zero or one FlyerTemplate that matches the filter.
+     * @param {FlyerTemplateFindUniqueArgs} args - Arguments to find a FlyerTemplate
+     * @example
+     * // Get one FlyerTemplate
+     * const flyerTemplate = await prisma.flyerTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FlyerTemplateFindUniqueArgs>(args: SelectSubset<T, FlyerTemplateFindUniqueArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FlyerTemplate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FlyerTemplateFindUniqueOrThrowArgs} args - Arguments to find a FlyerTemplate
+     * @example
+     * // Get one FlyerTemplate
+     * const flyerTemplate = await prisma.flyerTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FlyerTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, FlyerTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlyerTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerTemplateFindFirstArgs} args - Arguments to find a FlyerTemplate
+     * @example
+     * // Get one FlyerTemplate
+     * const flyerTemplate = await prisma.flyerTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FlyerTemplateFindFirstArgs>(args?: SelectSubset<T, FlyerTemplateFindFirstArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlyerTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerTemplateFindFirstOrThrowArgs} args - Arguments to find a FlyerTemplate
+     * @example
+     * // Get one FlyerTemplate
+     * const flyerTemplate = await prisma.flyerTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FlyerTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, FlyerTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FlyerTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FlyerTemplates
+     * const flyerTemplates = await prisma.flyerTemplate.findMany()
+     * 
+     * // Get first 10 FlyerTemplates
+     * const flyerTemplates = await prisma.flyerTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const flyerTemplateWithIdOnly = await prisma.flyerTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FlyerTemplateFindManyArgs>(args?: SelectSubset<T, FlyerTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FlyerTemplate.
+     * @param {FlyerTemplateCreateArgs} args - Arguments to create a FlyerTemplate.
+     * @example
+     * // Create one FlyerTemplate
+     * const FlyerTemplate = await prisma.flyerTemplate.create({
+     *   data: {
+     *     // ... data to create a FlyerTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends FlyerTemplateCreateArgs>(args: SelectSubset<T, FlyerTemplateCreateArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FlyerTemplates.
+     * @param {FlyerTemplateCreateManyArgs} args - Arguments to create many FlyerTemplates.
+     * @example
+     * // Create many FlyerTemplates
+     * const flyerTemplate = await prisma.flyerTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FlyerTemplateCreateManyArgs>(args?: SelectSubset<T, FlyerTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FlyerTemplates and returns the data saved in the database.
+     * @param {FlyerTemplateCreateManyAndReturnArgs} args - Arguments to create many FlyerTemplates.
+     * @example
+     * // Create many FlyerTemplates
+     * const flyerTemplate = await prisma.flyerTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FlyerTemplates and only return the `id`
+     * const flyerTemplateWithIdOnly = await prisma.flyerTemplate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FlyerTemplateCreateManyAndReturnArgs>(args?: SelectSubset<T, FlyerTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FlyerTemplate.
+     * @param {FlyerTemplateDeleteArgs} args - Arguments to delete one FlyerTemplate.
+     * @example
+     * // Delete one FlyerTemplate
+     * const FlyerTemplate = await prisma.flyerTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one FlyerTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FlyerTemplateDeleteArgs>(args: SelectSubset<T, FlyerTemplateDeleteArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FlyerTemplate.
+     * @param {FlyerTemplateUpdateArgs} args - Arguments to update one FlyerTemplate.
+     * @example
+     * // Update one FlyerTemplate
+     * const flyerTemplate = await prisma.flyerTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FlyerTemplateUpdateArgs>(args: SelectSubset<T, FlyerTemplateUpdateArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FlyerTemplates.
+     * @param {FlyerTemplateDeleteManyArgs} args - Arguments to filter FlyerTemplates to delete.
+     * @example
+     * // Delete a few FlyerTemplates
+     * const { count } = await prisma.flyerTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FlyerTemplateDeleteManyArgs>(args?: SelectSubset<T, FlyerTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlyerTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FlyerTemplates
+     * const flyerTemplate = await prisma.flyerTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FlyerTemplateUpdateManyArgs>(args: SelectSubset<T, FlyerTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlyerTemplates and returns the data updated in the database.
+     * @param {FlyerTemplateUpdateManyAndReturnArgs} args - Arguments to update many FlyerTemplates.
+     * @example
+     * // Update many FlyerTemplates
+     * const flyerTemplate = await prisma.flyerTemplate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FlyerTemplates and only return the `id`
+     * const flyerTemplateWithIdOnly = await prisma.flyerTemplate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FlyerTemplateUpdateManyAndReturnArgs>(args: SelectSubset<T, FlyerTemplateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FlyerTemplate.
+     * @param {FlyerTemplateUpsertArgs} args - Arguments to update or create a FlyerTemplate.
+     * @example
+     * // Update or create a FlyerTemplate
+     * const flyerTemplate = await prisma.flyerTemplate.upsert({
+     *   create: {
+     *     // ... data to create a FlyerTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FlyerTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FlyerTemplateUpsertArgs>(args: SelectSubset<T, FlyerTemplateUpsertArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FlyerTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerTemplateCountArgs} args - Arguments to filter FlyerTemplates to count.
+     * @example
+     * // Count the number of FlyerTemplates
+     * const count = await prisma.flyerTemplate.count({
+     *   where: {
+     *     // ... the filter for the FlyerTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends FlyerTemplateCountArgs>(
+      args?: Subset<T, FlyerTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FlyerTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FlyerTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FlyerTemplateAggregateArgs>(args: Subset<T, FlyerTemplateAggregateArgs>): Prisma.PrismaPromise<GetFlyerTemplateAggregateType<T>>
+
+    /**
+     * Group by FlyerTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FlyerTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FlyerTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: FlyerTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FlyerTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFlyerTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FlyerTemplate model
+   */
+  readonly fields: FlyerTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FlyerTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FlyerTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    flyers<T extends FlyerTemplate$flyersArgs<ExtArgs> = {}>(args?: Subset<T, FlyerTemplate$flyersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FlyerTemplate model
+   */
+  interface FlyerTemplateFieldRefs {
+    readonly id: FieldRef<"FlyerTemplate", 'Int'>
+    readonly name: FieldRef<"FlyerTemplate", 'String'>
+    readonly description: FieldRef<"FlyerTemplate", 'String'>
+    readonly thumbnailUrl: FieldRef<"FlyerTemplate", 'String'>
+    readonly content: FieldRef<"FlyerTemplate", 'String'>
+    readonly isActive: FieldRef<"FlyerTemplate", 'Boolean'>
+    readonly createdAt: FieldRef<"FlyerTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"FlyerTemplate", 'DateTime'>
+    readonly deletedAt: FieldRef<"FlyerTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FlyerTemplate findUnique
+   */
+  export type FlyerTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerTemplate to fetch.
+     */
+    where: FlyerTemplateWhereUniqueInput
+  }
+
+  /**
+   * FlyerTemplate findUniqueOrThrow
+   */
+  export type FlyerTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerTemplate to fetch.
+     */
+    where: FlyerTemplateWhereUniqueInput
+  }
+
+  /**
+   * FlyerTemplate findFirst
+   */
+  export type FlyerTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerTemplate to fetch.
+     */
+    where?: FlyerTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlyerTemplates to fetch.
+     */
+    orderBy?: FlyerTemplateOrderByWithRelationInput | FlyerTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlyerTemplates.
+     */
+    cursor?: FlyerTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlyerTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlyerTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlyerTemplates.
+     */
+    distinct?: FlyerTemplateScalarFieldEnum | FlyerTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * FlyerTemplate findFirstOrThrow
+   */
+  export type FlyerTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerTemplate to fetch.
+     */
+    where?: FlyerTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlyerTemplates to fetch.
+     */
+    orderBy?: FlyerTemplateOrderByWithRelationInput | FlyerTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlyerTemplates.
+     */
+    cursor?: FlyerTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlyerTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlyerTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlyerTemplates.
+     */
+    distinct?: FlyerTemplateScalarFieldEnum | FlyerTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * FlyerTemplate findMany
+   */
+  export type FlyerTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerTemplates to fetch.
+     */
+    where?: FlyerTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlyerTemplates to fetch.
+     */
+    orderBy?: FlyerTemplateOrderByWithRelationInput | FlyerTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FlyerTemplates.
+     */
+    cursor?: FlyerTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlyerTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlyerTemplates.
+     */
+    skip?: number
+    distinct?: FlyerTemplateScalarFieldEnum | FlyerTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * FlyerTemplate create
+   */
+  export type FlyerTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FlyerTemplate.
+     */
+    data: XOR<FlyerTemplateCreateInput, FlyerTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * FlyerTemplate createMany
+   */
+  export type FlyerTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FlyerTemplates.
+     */
+    data: FlyerTemplateCreateManyInput | FlyerTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FlyerTemplate createManyAndReturn
+   */
+  export type FlyerTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to create many FlyerTemplates.
+     */
+    data: FlyerTemplateCreateManyInput | FlyerTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FlyerTemplate update
+   */
+  export type FlyerTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FlyerTemplate.
+     */
+    data: XOR<FlyerTemplateUpdateInput, FlyerTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which FlyerTemplate to update.
+     */
+    where: FlyerTemplateWhereUniqueInput
+  }
+
+  /**
+   * FlyerTemplate updateMany
+   */
+  export type FlyerTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FlyerTemplates.
+     */
+    data: XOR<FlyerTemplateUpdateManyMutationInput, FlyerTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which FlyerTemplates to update
+     */
+    where?: FlyerTemplateWhereInput
+    /**
+     * Limit how many FlyerTemplates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlyerTemplate updateManyAndReturn
+   */
+  export type FlyerTemplateUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * The data used to update FlyerTemplates.
+     */
+    data: XOR<FlyerTemplateUpdateManyMutationInput, FlyerTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which FlyerTemplates to update
+     */
+    where?: FlyerTemplateWhereInput
+    /**
+     * Limit how many FlyerTemplates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlyerTemplate upsert
+   */
+  export type FlyerTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FlyerTemplate to update in case it exists.
+     */
+    where: FlyerTemplateWhereUniqueInput
+    /**
+     * In case the FlyerTemplate found by the `where` argument doesn't exist, create a new FlyerTemplate with this data.
+     */
+    create: XOR<FlyerTemplateCreateInput, FlyerTemplateUncheckedCreateInput>
+    /**
+     * In case the FlyerTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FlyerTemplateUpdateInput, FlyerTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * FlyerTemplate delete
+   */
+  export type FlyerTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which FlyerTemplate to delete.
+     */
+    where: FlyerTemplateWhereUniqueInput
+  }
+
+  /**
+   * FlyerTemplate deleteMany
+   */
+  export type FlyerTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlyerTemplates to delete
+     */
+    where?: FlyerTemplateWhereInput
+    /**
+     * Limit how many FlyerTemplates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlyerTemplate.flyers
+   */
+  export type FlyerTemplate$flyersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    where?: FlyerWhereInput
+    orderBy?: FlyerOrderByWithRelationInput | FlyerOrderByWithRelationInput[]
+    cursor?: FlyerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlyerScalarFieldEnum | FlyerScalarFieldEnum[]
+  }
+
+  /**
+   * FlyerTemplate without action
+   */
+  export type FlyerTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerTemplate
+     */
+    select?: FlyerTemplateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerTemplate
+     */
+    omit?: FlyerTemplateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerTemplateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Flyer
+   */
+
+  export type AggregateFlyer = {
+    _count: FlyerCountAggregateOutputType | null
+    _avg: FlyerAvgAggregateOutputType | null
+    _sum: FlyerSumAggregateOutputType | null
+    _min: FlyerMinAggregateOutputType | null
+    _max: FlyerMaxAggregateOutputType | null
+  }
+
+  export type FlyerAvgAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+    templateId: number | null
+    generatedById: number | null
+  }
+
+  export type FlyerSumAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+    templateId: number | null
+    generatedById: number | null
+  }
+
+  export type FlyerMinAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+    templateId: number | null
+    generatedById: number | null
+    qrContent: string | null
+    pdfUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type FlyerMaxAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+    templateId: number | null
+    generatedById: number | null
+    qrContent: string | null
+    pdfUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type FlyerCountAggregateOutputType = {
+    id: number
+    propertyId: number
+    templateId: number
+    generatedById: number
+    qrContent: number
+    pdfUrl: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type FlyerAvgAggregateInputType = {
+    id?: true
+    propertyId?: true
+    templateId?: true
+    generatedById?: true
+  }
+
+  export type FlyerSumAggregateInputType = {
+    id?: true
+    propertyId?: true
+    templateId?: true
+    generatedById?: true
+  }
+
+  export type FlyerMinAggregateInputType = {
+    id?: true
+    propertyId?: true
+    templateId?: true
+    generatedById?: true
+    qrContent?: true
+    pdfUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type FlyerMaxAggregateInputType = {
+    id?: true
+    propertyId?: true
+    templateId?: true
+    generatedById?: true
+    qrContent?: true
+    pdfUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type FlyerCountAggregateInputType = {
+    id?: true
+    propertyId?: true
+    templateId?: true
+    generatedById?: true
+    qrContent?: true
+    pdfUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type FlyerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Flyer to aggregate.
+     */
+    where?: FlyerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Flyers to fetch.
+     */
+    orderBy?: FlyerOrderByWithRelationInput | FlyerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FlyerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Flyers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Flyers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Flyers
+    **/
+    _count?: true | FlyerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FlyerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FlyerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FlyerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FlyerMaxAggregateInputType
+  }
+
+  export type GetFlyerAggregateType<T extends FlyerAggregateArgs> = {
+        [P in keyof T & keyof AggregateFlyer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFlyer[P]>
+      : GetScalarType<T[P], AggregateFlyer[P]>
+  }
+
+
+
+
+  export type FlyerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlyerWhereInput
+    orderBy?: FlyerOrderByWithAggregationInput | FlyerOrderByWithAggregationInput[]
+    by: FlyerScalarFieldEnum[] | FlyerScalarFieldEnum
+    having?: FlyerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FlyerCountAggregateInputType | true
+    _avg?: FlyerAvgAggregateInputType
+    _sum?: FlyerSumAggregateInputType
+    _min?: FlyerMinAggregateInputType
+    _max?: FlyerMaxAggregateInputType
+  }
+
+  export type FlyerGroupByOutputType = {
+    id: number
+    propertyId: number
+    templateId: number
+    generatedById: number
+    qrContent: string
+    pdfUrl: string | null
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    _count: FlyerCountAggregateOutputType | null
+    _avg: FlyerAvgAggregateOutputType | null
+    _sum: FlyerSumAggregateOutputType | null
+    _min: FlyerMinAggregateOutputType | null
+    _max: FlyerMaxAggregateOutputType | null
+  }
+
+  type GetFlyerGroupByPayload<T extends FlyerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FlyerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FlyerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FlyerGroupByOutputType[P]>
+            : GetScalarType<T[P], FlyerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FlyerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    templateId?: boolean
+    generatedById?: boolean
+    qrContent?: boolean
+    pdfUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+    template?: boolean | FlyerTemplateDefaultArgs<ExtArgs>
+    generatedBy?: boolean | UserDefaultArgs<ExtArgs>
+    shipments?: boolean | Flyer$shipmentsArgs<ExtArgs>
+    _count?: boolean | FlyerCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flyer"]>
+
+  export type FlyerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    templateId?: boolean
+    generatedById?: boolean
+    qrContent?: boolean
+    pdfUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+    template?: boolean | FlyerTemplateDefaultArgs<ExtArgs>
+    generatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flyer"]>
+
+  export type FlyerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    templateId?: boolean
+    generatedById?: boolean
+    qrContent?: boolean
+    pdfUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+    template?: boolean | FlyerTemplateDefaultArgs<ExtArgs>
+    generatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flyer"]>
+
+  export type FlyerSelectScalar = {
+    id?: boolean
+    propertyId?: boolean
+    templateId?: boolean
+    generatedById?: boolean
+    qrContent?: boolean
+    pdfUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type FlyerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propertyId" | "templateId" | "generatedById" | "qrContent" | "pdfUrl" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["flyer"]>
+  export type FlyerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+    template?: boolean | FlyerTemplateDefaultArgs<ExtArgs>
+    generatedBy?: boolean | UserDefaultArgs<ExtArgs>
+    shipments?: boolean | Flyer$shipmentsArgs<ExtArgs>
+    _count?: boolean | FlyerCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type FlyerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+    template?: boolean | FlyerTemplateDefaultArgs<ExtArgs>
+    generatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FlyerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+    template?: boolean | FlyerTemplateDefaultArgs<ExtArgs>
+    generatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $FlyerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Flyer"
+    objects: {
+      property: Prisma.$PropertyPayload<ExtArgs>
+      template: Prisma.$FlyerTemplatePayload<ExtArgs>
+      generatedBy: Prisma.$UserPayload<ExtArgs>
+      shipments: Prisma.$FlyerShipmentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      propertyId: number
+      templateId: number
+      generatedById: number
+      qrContent: string
+      pdfUrl: string | null
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+    }, ExtArgs["result"]["flyer"]>
+    composites: {}
+  }
+
+  type FlyerGetPayload<S extends boolean | null | undefined | FlyerDefaultArgs> = $Result.GetResult<Prisma.$FlyerPayload, S>
+
+  type FlyerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FlyerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FlyerCountAggregateInputType | true
+    }
+
+  export interface FlyerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Flyer'], meta: { name: 'Flyer' } }
+    /**
+     * Find zero or one Flyer that matches the filter.
+     * @param {FlyerFindUniqueArgs} args - Arguments to find a Flyer
+     * @example
+     * // Get one Flyer
+     * const flyer = await prisma.flyer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FlyerFindUniqueArgs>(args: SelectSubset<T, FlyerFindUniqueArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Flyer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FlyerFindUniqueOrThrowArgs} args - Arguments to find a Flyer
+     * @example
+     * // Get one Flyer
+     * const flyer = await prisma.flyer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FlyerFindUniqueOrThrowArgs>(args: SelectSubset<T, FlyerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Flyer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerFindFirstArgs} args - Arguments to find a Flyer
+     * @example
+     * // Get one Flyer
+     * const flyer = await prisma.flyer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FlyerFindFirstArgs>(args?: SelectSubset<T, FlyerFindFirstArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Flyer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerFindFirstOrThrowArgs} args - Arguments to find a Flyer
+     * @example
+     * // Get one Flyer
+     * const flyer = await prisma.flyer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FlyerFindFirstOrThrowArgs>(args?: SelectSubset<T, FlyerFindFirstOrThrowArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Flyers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Flyers
+     * const flyers = await prisma.flyer.findMany()
+     * 
+     * // Get first 10 Flyers
+     * const flyers = await prisma.flyer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const flyerWithIdOnly = await prisma.flyer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FlyerFindManyArgs>(args?: SelectSubset<T, FlyerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Flyer.
+     * @param {FlyerCreateArgs} args - Arguments to create a Flyer.
+     * @example
+     * // Create one Flyer
+     * const Flyer = await prisma.flyer.create({
+     *   data: {
+     *     // ... data to create a Flyer
+     *   }
+     * })
+     * 
+     */
+    create<T extends FlyerCreateArgs>(args: SelectSubset<T, FlyerCreateArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Flyers.
+     * @param {FlyerCreateManyArgs} args - Arguments to create many Flyers.
+     * @example
+     * // Create many Flyers
+     * const flyer = await prisma.flyer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FlyerCreateManyArgs>(args?: SelectSubset<T, FlyerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Flyers and returns the data saved in the database.
+     * @param {FlyerCreateManyAndReturnArgs} args - Arguments to create many Flyers.
+     * @example
+     * // Create many Flyers
+     * const flyer = await prisma.flyer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Flyers and only return the `id`
+     * const flyerWithIdOnly = await prisma.flyer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FlyerCreateManyAndReturnArgs>(args?: SelectSubset<T, FlyerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Flyer.
+     * @param {FlyerDeleteArgs} args - Arguments to delete one Flyer.
+     * @example
+     * // Delete one Flyer
+     * const Flyer = await prisma.flyer.delete({
+     *   where: {
+     *     // ... filter to delete one Flyer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FlyerDeleteArgs>(args: SelectSubset<T, FlyerDeleteArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Flyer.
+     * @param {FlyerUpdateArgs} args - Arguments to update one Flyer.
+     * @example
+     * // Update one Flyer
+     * const flyer = await prisma.flyer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FlyerUpdateArgs>(args: SelectSubset<T, FlyerUpdateArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Flyers.
+     * @param {FlyerDeleteManyArgs} args - Arguments to filter Flyers to delete.
+     * @example
+     * // Delete a few Flyers
+     * const { count } = await prisma.flyer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FlyerDeleteManyArgs>(args?: SelectSubset<T, FlyerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Flyers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Flyers
+     * const flyer = await prisma.flyer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FlyerUpdateManyArgs>(args: SelectSubset<T, FlyerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Flyers and returns the data updated in the database.
+     * @param {FlyerUpdateManyAndReturnArgs} args - Arguments to update many Flyers.
+     * @example
+     * // Update many Flyers
+     * const flyer = await prisma.flyer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Flyers and only return the `id`
+     * const flyerWithIdOnly = await prisma.flyer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FlyerUpdateManyAndReturnArgs>(args: SelectSubset<T, FlyerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Flyer.
+     * @param {FlyerUpsertArgs} args - Arguments to update or create a Flyer.
+     * @example
+     * // Update or create a Flyer
+     * const flyer = await prisma.flyer.upsert({
+     *   create: {
+     *     // ... data to create a Flyer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Flyer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FlyerUpsertArgs>(args: SelectSubset<T, FlyerUpsertArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Flyers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerCountArgs} args - Arguments to filter Flyers to count.
+     * @example
+     * // Count the number of Flyers
+     * const count = await prisma.flyer.count({
+     *   where: {
+     *     // ... the filter for the Flyers we want to count
+     *   }
+     * })
+    **/
+    count<T extends FlyerCountArgs>(
+      args?: Subset<T, FlyerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FlyerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Flyer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FlyerAggregateArgs>(args: Subset<T, FlyerAggregateArgs>): Prisma.PrismaPromise<GetFlyerAggregateType<T>>
+
+    /**
+     * Group by Flyer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FlyerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FlyerGroupByArgs['orderBy'] }
+        : { orderBy?: FlyerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FlyerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFlyerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Flyer model
+   */
+  readonly fields: FlyerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Flyer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FlyerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    property<T extends PropertyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PropertyDefaultArgs<ExtArgs>>): Prisma__PropertyClient<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    template<T extends FlyerTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FlyerTemplateDefaultArgs<ExtArgs>>): Prisma__FlyerTemplateClient<$Result.GetResult<Prisma.$FlyerTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    generatedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    shipments<T extends Flyer$shipmentsArgs<ExtArgs> = {}>(args?: Subset<T, Flyer$shipmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Flyer model
+   */
+  interface FlyerFieldRefs {
+    readonly id: FieldRef<"Flyer", 'Int'>
+    readonly propertyId: FieldRef<"Flyer", 'Int'>
+    readonly templateId: FieldRef<"Flyer", 'Int'>
+    readonly generatedById: FieldRef<"Flyer", 'Int'>
+    readonly qrContent: FieldRef<"Flyer", 'String'>
+    readonly pdfUrl: FieldRef<"Flyer", 'String'>
+    readonly createdAt: FieldRef<"Flyer", 'DateTime'>
+    readonly updatedAt: FieldRef<"Flyer", 'DateTime'>
+    readonly deletedAt: FieldRef<"Flyer", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Flyer findUnique
+   */
+  export type FlyerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * Filter, which Flyer to fetch.
+     */
+    where: FlyerWhereUniqueInput
+  }
+
+  /**
+   * Flyer findUniqueOrThrow
+   */
+  export type FlyerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * Filter, which Flyer to fetch.
+     */
+    where: FlyerWhereUniqueInput
+  }
+
+  /**
+   * Flyer findFirst
+   */
+  export type FlyerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * Filter, which Flyer to fetch.
+     */
+    where?: FlyerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Flyers to fetch.
+     */
+    orderBy?: FlyerOrderByWithRelationInput | FlyerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Flyers.
+     */
+    cursor?: FlyerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Flyers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Flyers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Flyers.
+     */
+    distinct?: FlyerScalarFieldEnum | FlyerScalarFieldEnum[]
+  }
+
+  /**
+   * Flyer findFirstOrThrow
+   */
+  export type FlyerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * Filter, which Flyer to fetch.
+     */
+    where?: FlyerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Flyers to fetch.
+     */
+    orderBy?: FlyerOrderByWithRelationInput | FlyerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Flyers.
+     */
+    cursor?: FlyerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Flyers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Flyers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Flyers.
+     */
+    distinct?: FlyerScalarFieldEnum | FlyerScalarFieldEnum[]
+  }
+
+  /**
+   * Flyer findMany
+   */
+  export type FlyerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * Filter, which Flyers to fetch.
+     */
+    where?: FlyerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Flyers to fetch.
+     */
+    orderBy?: FlyerOrderByWithRelationInput | FlyerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Flyers.
+     */
+    cursor?: FlyerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Flyers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Flyers.
+     */
+    skip?: number
+    distinct?: FlyerScalarFieldEnum | FlyerScalarFieldEnum[]
+  }
+
+  /**
+   * Flyer create
+   */
+  export type FlyerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Flyer.
+     */
+    data: XOR<FlyerCreateInput, FlyerUncheckedCreateInput>
+  }
+
+  /**
+   * Flyer createMany
+   */
+  export type FlyerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Flyers.
+     */
+    data: FlyerCreateManyInput | FlyerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Flyer createManyAndReturn
+   */
+  export type FlyerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * The data used to create many Flyers.
+     */
+    data: FlyerCreateManyInput | FlyerCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Flyer update
+   */
+  export type FlyerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Flyer.
+     */
+    data: XOR<FlyerUpdateInput, FlyerUncheckedUpdateInput>
+    /**
+     * Choose, which Flyer to update.
+     */
+    where: FlyerWhereUniqueInput
+  }
+
+  /**
+   * Flyer updateMany
+   */
+  export type FlyerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Flyers.
+     */
+    data: XOR<FlyerUpdateManyMutationInput, FlyerUncheckedUpdateManyInput>
+    /**
+     * Filter which Flyers to update
+     */
+    where?: FlyerWhereInput
+    /**
+     * Limit how many Flyers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Flyer updateManyAndReturn
+   */
+  export type FlyerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * The data used to update Flyers.
+     */
+    data: XOR<FlyerUpdateManyMutationInput, FlyerUncheckedUpdateManyInput>
+    /**
+     * Filter which Flyers to update
+     */
+    where?: FlyerWhereInput
+    /**
+     * Limit how many Flyers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Flyer upsert
+   */
+  export type FlyerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Flyer to update in case it exists.
+     */
+    where: FlyerWhereUniqueInput
+    /**
+     * In case the Flyer found by the `where` argument doesn't exist, create a new Flyer with this data.
+     */
+    create: XOR<FlyerCreateInput, FlyerUncheckedCreateInput>
+    /**
+     * In case the Flyer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FlyerUpdateInput, FlyerUncheckedUpdateInput>
+  }
+
+  /**
+   * Flyer delete
+   */
+  export type FlyerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+    /**
+     * Filter which Flyer to delete.
+     */
+    where: FlyerWhereUniqueInput
+  }
+
+  /**
+   * Flyer deleteMany
+   */
+  export type FlyerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Flyers to delete
+     */
+    where?: FlyerWhereInput
+    /**
+     * Limit how many Flyers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Flyer.shipments
+   */
+  export type Flyer$shipmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    where?: FlyerShipmentWhereInput
+    orderBy?: FlyerShipmentOrderByWithRelationInput | FlyerShipmentOrderByWithRelationInput[]
+    cursor?: FlyerShipmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FlyerShipmentScalarFieldEnum | FlyerShipmentScalarFieldEnum[]
+  }
+
+  /**
+   * Flyer without action
+   */
+  export type FlyerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Flyer
+     */
+    select?: FlyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Flyer
+     */
+    omit?: FlyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FlyerShipment
+   */
+
+  export type AggregateFlyerShipment = {
+    _count: FlyerShipmentCountAggregateOutputType | null
+    _avg: FlyerShipmentAvgAggregateOutputType | null
+    _sum: FlyerShipmentSumAggregateOutputType | null
+    _min: FlyerShipmentMinAggregateOutputType | null
+    _max: FlyerShipmentMaxAggregateOutputType | null
+  }
+
+  export type FlyerShipmentAvgAggregateOutputType = {
+    id: number | null
+    flyerId: number | null
+    userId: number | null
+  }
+
+  export type FlyerShipmentSumAggregateOutputType = {
+    id: number | null
+    flyerId: number | null
+    userId: number | null
+  }
+
+  export type FlyerShipmentMinAggregateOutputType = {
+    id: number | null
+    flyerId: number | null
+    userId: number | null
+    notes: string | null
+    createdAt: Date | null
+  }
+
+  export type FlyerShipmentMaxAggregateOutputType = {
+    id: number | null
+    flyerId: number | null
+    userId: number | null
+    notes: string | null
+    createdAt: Date | null
+  }
+
+  export type FlyerShipmentCountAggregateOutputType = {
+    id: number
+    flyerId: number
+    userId: number
+    notes: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type FlyerShipmentAvgAggregateInputType = {
+    id?: true
+    flyerId?: true
+    userId?: true
+  }
+
+  export type FlyerShipmentSumAggregateInputType = {
+    id?: true
+    flyerId?: true
+    userId?: true
+  }
+
+  export type FlyerShipmentMinAggregateInputType = {
+    id?: true
+    flyerId?: true
+    userId?: true
+    notes?: true
+    createdAt?: true
+  }
+
+  export type FlyerShipmentMaxAggregateInputType = {
+    id?: true
+    flyerId?: true
+    userId?: true
+    notes?: true
+    createdAt?: true
+  }
+
+  export type FlyerShipmentCountAggregateInputType = {
+    id?: true
+    flyerId?: true
+    userId?: true
+    notes?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type FlyerShipmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlyerShipment to aggregate.
+     */
+    where?: FlyerShipmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlyerShipments to fetch.
+     */
+    orderBy?: FlyerShipmentOrderByWithRelationInput | FlyerShipmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FlyerShipmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlyerShipments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlyerShipments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FlyerShipments
+    **/
+    _count?: true | FlyerShipmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FlyerShipmentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FlyerShipmentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FlyerShipmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FlyerShipmentMaxAggregateInputType
+  }
+
+  export type GetFlyerShipmentAggregateType<T extends FlyerShipmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateFlyerShipment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFlyerShipment[P]>
+      : GetScalarType<T[P], AggregateFlyerShipment[P]>
+  }
+
+
+
+
+  export type FlyerShipmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FlyerShipmentWhereInput
+    orderBy?: FlyerShipmentOrderByWithAggregationInput | FlyerShipmentOrderByWithAggregationInput[]
+    by: FlyerShipmentScalarFieldEnum[] | FlyerShipmentScalarFieldEnum
+    having?: FlyerShipmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FlyerShipmentCountAggregateInputType | true
+    _avg?: FlyerShipmentAvgAggregateInputType
+    _sum?: FlyerShipmentSumAggregateInputType
+    _min?: FlyerShipmentMinAggregateInputType
+    _max?: FlyerShipmentMaxAggregateInputType
+  }
+
+  export type FlyerShipmentGroupByOutputType = {
+    id: number
+    flyerId: number
+    userId: number
+    notes: string | null
+    createdAt: Date
+    _count: FlyerShipmentCountAggregateOutputType | null
+    _avg: FlyerShipmentAvgAggregateOutputType | null
+    _sum: FlyerShipmentSumAggregateOutputType | null
+    _min: FlyerShipmentMinAggregateOutputType | null
+    _max: FlyerShipmentMaxAggregateOutputType | null
+  }
+
+  type GetFlyerShipmentGroupByPayload<T extends FlyerShipmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FlyerShipmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FlyerShipmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FlyerShipmentGroupByOutputType[P]>
+            : GetScalarType<T[P], FlyerShipmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FlyerShipmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    flyerId?: boolean
+    userId?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    flyer?: boolean | FlyerDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flyerShipment"]>
+
+  export type FlyerShipmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    flyerId?: boolean
+    userId?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    flyer?: boolean | FlyerDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flyerShipment"]>
+
+  export type FlyerShipmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    flyerId?: boolean
+    userId?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    flyer?: boolean | FlyerDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["flyerShipment"]>
+
+  export type FlyerShipmentSelectScalar = {
+    id?: boolean
+    flyerId?: boolean
+    userId?: boolean
+    notes?: boolean
+    createdAt?: boolean
+  }
+
+  export type FlyerShipmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "flyerId" | "userId" | "notes" | "createdAt", ExtArgs["result"]["flyerShipment"]>
+  export type FlyerShipmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flyer?: boolean | FlyerDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FlyerShipmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flyer?: boolean | FlyerDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FlyerShipmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    flyer?: boolean | FlyerDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $FlyerShipmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FlyerShipment"
+    objects: {
+      flyer: Prisma.$FlyerPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      flyerId: number
+      userId: number
+      notes: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["flyerShipment"]>
+    composites: {}
+  }
+
+  type FlyerShipmentGetPayload<S extends boolean | null | undefined | FlyerShipmentDefaultArgs> = $Result.GetResult<Prisma.$FlyerShipmentPayload, S>
+
+  type FlyerShipmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FlyerShipmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FlyerShipmentCountAggregateInputType | true
+    }
+
+  export interface FlyerShipmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FlyerShipment'], meta: { name: 'FlyerShipment' } }
+    /**
+     * Find zero or one FlyerShipment that matches the filter.
+     * @param {FlyerShipmentFindUniqueArgs} args - Arguments to find a FlyerShipment
+     * @example
+     * // Get one FlyerShipment
+     * const flyerShipment = await prisma.flyerShipment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FlyerShipmentFindUniqueArgs>(args: SelectSubset<T, FlyerShipmentFindUniqueArgs<ExtArgs>>): Prisma__FlyerShipmentClient<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FlyerShipment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FlyerShipmentFindUniqueOrThrowArgs} args - Arguments to find a FlyerShipment
+     * @example
+     * // Get one FlyerShipment
+     * const flyerShipment = await prisma.flyerShipment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FlyerShipmentFindUniqueOrThrowArgs>(args: SelectSubset<T, FlyerShipmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FlyerShipmentClient<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlyerShipment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerShipmentFindFirstArgs} args - Arguments to find a FlyerShipment
+     * @example
+     * // Get one FlyerShipment
+     * const flyerShipment = await prisma.flyerShipment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FlyerShipmentFindFirstArgs>(args?: SelectSubset<T, FlyerShipmentFindFirstArgs<ExtArgs>>): Prisma__FlyerShipmentClient<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FlyerShipment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerShipmentFindFirstOrThrowArgs} args - Arguments to find a FlyerShipment
+     * @example
+     * // Get one FlyerShipment
+     * const flyerShipment = await prisma.flyerShipment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FlyerShipmentFindFirstOrThrowArgs>(args?: SelectSubset<T, FlyerShipmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__FlyerShipmentClient<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FlyerShipments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerShipmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FlyerShipments
+     * const flyerShipments = await prisma.flyerShipment.findMany()
+     * 
+     * // Get first 10 FlyerShipments
+     * const flyerShipments = await prisma.flyerShipment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const flyerShipmentWithIdOnly = await prisma.flyerShipment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FlyerShipmentFindManyArgs>(args?: SelectSubset<T, FlyerShipmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FlyerShipment.
+     * @param {FlyerShipmentCreateArgs} args - Arguments to create a FlyerShipment.
+     * @example
+     * // Create one FlyerShipment
+     * const FlyerShipment = await prisma.flyerShipment.create({
+     *   data: {
+     *     // ... data to create a FlyerShipment
+     *   }
+     * })
+     * 
+     */
+    create<T extends FlyerShipmentCreateArgs>(args: SelectSubset<T, FlyerShipmentCreateArgs<ExtArgs>>): Prisma__FlyerShipmentClient<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FlyerShipments.
+     * @param {FlyerShipmentCreateManyArgs} args - Arguments to create many FlyerShipments.
+     * @example
+     * // Create many FlyerShipments
+     * const flyerShipment = await prisma.flyerShipment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FlyerShipmentCreateManyArgs>(args?: SelectSubset<T, FlyerShipmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FlyerShipments and returns the data saved in the database.
+     * @param {FlyerShipmentCreateManyAndReturnArgs} args - Arguments to create many FlyerShipments.
+     * @example
+     * // Create many FlyerShipments
+     * const flyerShipment = await prisma.flyerShipment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FlyerShipments and only return the `id`
+     * const flyerShipmentWithIdOnly = await prisma.flyerShipment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FlyerShipmentCreateManyAndReturnArgs>(args?: SelectSubset<T, FlyerShipmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FlyerShipment.
+     * @param {FlyerShipmentDeleteArgs} args - Arguments to delete one FlyerShipment.
+     * @example
+     * // Delete one FlyerShipment
+     * const FlyerShipment = await prisma.flyerShipment.delete({
+     *   where: {
+     *     // ... filter to delete one FlyerShipment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FlyerShipmentDeleteArgs>(args: SelectSubset<T, FlyerShipmentDeleteArgs<ExtArgs>>): Prisma__FlyerShipmentClient<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FlyerShipment.
+     * @param {FlyerShipmentUpdateArgs} args - Arguments to update one FlyerShipment.
+     * @example
+     * // Update one FlyerShipment
+     * const flyerShipment = await prisma.flyerShipment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FlyerShipmentUpdateArgs>(args: SelectSubset<T, FlyerShipmentUpdateArgs<ExtArgs>>): Prisma__FlyerShipmentClient<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FlyerShipments.
+     * @param {FlyerShipmentDeleteManyArgs} args - Arguments to filter FlyerShipments to delete.
+     * @example
+     * // Delete a few FlyerShipments
+     * const { count } = await prisma.flyerShipment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FlyerShipmentDeleteManyArgs>(args?: SelectSubset<T, FlyerShipmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlyerShipments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerShipmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FlyerShipments
+     * const flyerShipment = await prisma.flyerShipment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FlyerShipmentUpdateManyArgs>(args: SelectSubset<T, FlyerShipmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FlyerShipments and returns the data updated in the database.
+     * @param {FlyerShipmentUpdateManyAndReturnArgs} args - Arguments to update many FlyerShipments.
+     * @example
+     * // Update many FlyerShipments
+     * const flyerShipment = await prisma.flyerShipment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FlyerShipments and only return the `id`
+     * const flyerShipmentWithIdOnly = await prisma.flyerShipment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FlyerShipmentUpdateManyAndReturnArgs>(args: SelectSubset<T, FlyerShipmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FlyerShipment.
+     * @param {FlyerShipmentUpsertArgs} args - Arguments to update or create a FlyerShipment.
+     * @example
+     * // Update or create a FlyerShipment
+     * const flyerShipment = await prisma.flyerShipment.upsert({
+     *   create: {
+     *     // ... data to create a FlyerShipment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FlyerShipment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FlyerShipmentUpsertArgs>(args: SelectSubset<T, FlyerShipmentUpsertArgs<ExtArgs>>): Prisma__FlyerShipmentClient<$Result.GetResult<Prisma.$FlyerShipmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FlyerShipments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerShipmentCountArgs} args - Arguments to filter FlyerShipments to count.
+     * @example
+     * // Count the number of FlyerShipments
+     * const count = await prisma.flyerShipment.count({
+     *   where: {
+     *     // ... the filter for the FlyerShipments we want to count
+     *   }
+     * })
+    **/
+    count<T extends FlyerShipmentCountArgs>(
+      args?: Subset<T, FlyerShipmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FlyerShipmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FlyerShipment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerShipmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FlyerShipmentAggregateArgs>(args: Subset<T, FlyerShipmentAggregateArgs>): Prisma.PrismaPromise<GetFlyerShipmentAggregateType<T>>
+
+    /**
+     * Group by FlyerShipment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FlyerShipmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FlyerShipmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FlyerShipmentGroupByArgs['orderBy'] }
+        : { orderBy?: FlyerShipmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FlyerShipmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFlyerShipmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FlyerShipment model
+   */
+  readonly fields: FlyerShipmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FlyerShipment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FlyerShipmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    flyer<T extends FlyerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FlyerDefaultArgs<ExtArgs>>): Prisma__FlyerClient<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FlyerShipment model
+   */
+  interface FlyerShipmentFieldRefs {
+    readonly id: FieldRef<"FlyerShipment", 'Int'>
+    readonly flyerId: FieldRef<"FlyerShipment", 'Int'>
+    readonly userId: FieldRef<"FlyerShipment", 'Int'>
+    readonly notes: FieldRef<"FlyerShipment", 'String'>
+    readonly createdAt: FieldRef<"FlyerShipment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FlyerShipment findUnique
+   */
+  export type FlyerShipmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerShipment to fetch.
+     */
+    where: FlyerShipmentWhereUniqueInput
+  }
+
+  /**
+   * FlyerShipment findUniqueOrThrow
+   */
+  export type FlyerShipmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerShipment to fetch.
+     */
+    where: FlyerShipmentWhereUniqueInput
+  }
+
+  /**
+   * FlyerShipment findFirst
+   */
+  export type FlyerShipmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerShipment to fetch.
+     */
+    where?: FlyerShipmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlyerShipments to fetch.
+     */
+    orderBy?: FlyerShipmentOrderByWithRelationInput | FlyerShipmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlyerShipments.
+     */
+    cursor?: FlyerShipmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlyerShipments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlyerShipments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlyerShipments.
+     */
+    distinct?: FlyerShipmentScalarFieldEnum | FlyerShipmentScalarFieldEnum[]
+  }
+
+  /**
+   * FlyerShipment findFirstOrThrow
+   */
+  export type FlyerShipmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerShipment to fetch.
+     */
+    where?: FlyerShipmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlyerShipments to fetch.
+     */
+    orderBy?: FlyerShipmentOrderByWithRelationInput | FlyerShipmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FlyerShipments.
+     */
+    cursor?: FlyerShipmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlyerShipments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlyerShipments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FlyerShipments.
+     */
+    distinct?: FlyerShipmentScalarFieldEnum | FlyerShipmentScalarFieldEnum[]
+  }
+
+  /**
+   * FlyerShipment findMany
+   */
+  export type FlyerShipmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * Filter, which FlyerShipments to fetch.
+     */
+    where?: FlyerShipmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FlyerShipments to fetch.
+     */
+    orderBy?: FlyerShipmentOrderByWithRelationInput | FlyerShipmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FlyerShipments.
+     */
+    cursor?: FlyerShipmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FlyerShipments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FlyerShipments.
+     */
+    skip?: number
+    distinct?: FlyerShipmentScalarFieldEnum | FlyerShipmentScalarFieldEnum[]
+  }
+
+  /**
+   * FlyerShipment create
+   */
+  export type FlyerShipmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FlyerShipment.
+     */
+    data: XOR<FlyerShipmentCreateInput, FlyerShipmentUncheckedCreateInput>
+  }
+
+  /**
+   * FlyerShipment createMany
+   */
+  export type FlyerShipmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FlyerShipments.
+     */
+    data: FlyerShipmentCreateManyInput | FlyerShipmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FlyerShipment createManyAndReturn
+   */
+  export type FlyerShipmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * The data used to create many FlyerShipments.
+     */
+    data: FlyerShipmentCreateManyInput | FlyerShipmentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FlyerShipment update
+   */
+  export type FlyerShipmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FlyerShipment.
+     */
+    data: XOR<FlyerShipmentUpdateInput, FlyerShipmentUncheckedUpdateInput>
+    /**
+     * Choose, which FlyerShipment to update.
+     */
+    where: FlyerShipmentWhereUniqueInput
+  }
+
+  /**
+   * FlyerShipment updateMany
+   */
+  export type FlyerShipmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FlyerShipments.
+     */
+    data: XOR<FlyerShipmentUpdateManyMutationInput, FlyerShipmentUncheckedUpdateManyInput>
+    /**
+     * Filter which FlyerShipments to update
+     */
+    where?: FlyerShipmentWhereInput
+    /**
+     * Limit how many FlyerShipments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlyerShipment updateManyAndReturn
+   */
+  export type FlyerShipmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * The data used to update FlyerShipments.
+     */
+    data: XOR<FlyerShipmentUpdateManyMutationInput, FlyerShipmentUncheckedUpdateManyInput>
+    /**
+     * Filter which FlyerShipments to update
+     */
+    where?: FlyerShipmentWhereInput
+    /**
+     * Limit how many FlyerShipments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FlyerShipment upsert
+   */
+  export type FlyerShipmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FlyerShipment to update in case it exists.
+     */
+    where: FlyerShipmentWhereUniqueInput
+    /**
+     * In case the FlyerShipment found by the `where` argument doesn't exist, create a new FlyerShipment with this data.
+     */
+    create: XOR<FlyerShipmentCreateInput, FlyerShipmentUncheckedCreateInput>
+    /**
+     * In case the FlyerShipment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FlyerShipmentUpdateInput, FlyerShipmentUncheckedUpdateInput>
+  }
+
+  /**
+   * FlyerShipment delete
+   */
+  export type FlyerShipmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+    /**
+     * Filter which FlyerShipment to delete.
+     */
+    where: FlyerShipmentWhereUniqueInput
+  }
+
+  /**
+   * FlyerShipment deleteMany
+   */
+  export type FlyerShipmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FlyerShipments to delete
+     */
+    where?: FlyerShipmentWhereInput
+    /**
+     * Limit how many FlyerShipments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FlyerShipment without action
+   */
+  export type FlyerShipmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FlyerShipment
+     */
+    select?: FlyerShipmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FlyerShipment
+     */
+    omit?: FlyerShipmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FlyerShipmentInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -30535,7 +34460,8 @@ export namespace Prisma {
     isOpportunity: 'isOpportunity',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    deletedAt: 'deletedAt'
+    deletedAt: 'deletedAt',
+    description: 'description'
   };
 
   export type PropertyScalarFieldEnum = (typeof PropertyScalarFieldEnum)[keyof typeof PropertyScalarFieldEnum]
@@ -30763,6 +34689,47 @@ export namespace Prisma {
   };
 
   export type PropertyPersonScalarFieldEnum = (typeof PropertyPersonScalarFieldEnum)[keyof typeof PropertyPersonScalarFieldEnum]
+
+
+  export const FlyerTemplateScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    thumbnailUrl: 'thumbnailUrl',
+    content: 'content',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type FlyerTemplateScalarFieldEnum = (typeof FlyerTemplateScalarFieldEnum)[keyof typeof FlyerTemplateScalarFieldEnum]
+
+
+  export const FlyerScalarFieldEnum: {
+    id: 'id',
+    propertyId: 'propertyId',
+    templateId: 'templateId',
+    generatedById: 'generatedById',
+    qrContent: 'qrContent',
+    pdfUrl: 'pdfUrl',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type FlyerScalarFieldEnum = (typeof FlyerScalarFieldEnum)[keyof typeof FlyerScalarFieldEnum]
+
+
+  export const FlyerShipmentScalarFieldEnum: {
+    id: 'id',
+    flyerId: 'flyerId',
+    userId: 'userId',
+    notes: 'notes',
+    createdAt: 'createdAt'
+  };
+
+  export type FlyerShipmentScalarFieldEnum = (typeof FlyerShipmentScalarFieldEnum)[keyof typeof FlyerShipmentScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -31150,6 +35117,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentListRelationFilter
     buildingAttachmentsUploaded?: BuildingAttachmentListRelationFilter
     mailboxingAttachmentsUploaded?: MailboxingAttachmentListRelationFilter
+    flyersGenerated?: FlyerListRelationFilter
+    flyerShipments?: FlyerShipmentListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -31178,6 +35147,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentOrderByRelationAggregateInput
     buildingAttachmentsUploaded?: BuildingAttachmentOrderByRelationAggregateInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentOrderByRelationAggregateInput
+    flyersGenerated?: FlyerOrderByRelationAggregateInput
+    flyerShipments?: FlyerShipmentOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -31209,6 +35180,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentListRelationFilter
     buildingAttachmentsUploaded?: BuildingAttachmentListRelationFilter
     mailboxingAttachmentsUploaded?: MailboxingAttachmentListRelationFilter
+    flyersGenerated?: FlyerListRelationFilter
+    flyerShipments?: FlyerShipmentListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -31586,6 +35559,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Property"> | Date | string | null
+    description?: StringNullableFilter<"Property"> | string | null
     followUps?: FollowUpListRelationFilter
     listings?: ListingListRelationFilter
     building?: XOR<BuildingScalarRelationFilter, BuildingWhereInput>
@@ -31595,6 +35569,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentListRelationFilter
     propertyPersons?: PropertyPersonListRelationFilter
     reminders?: ReminderListRelationFilter
+    flyers?: FlyerListRelationFilter
   }
 
   export type PropertyOrderByWithRelationInput = {
@@ -31626,6 +35601,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     followUps?: FollowUpOrderByRelationAggregateInput
     listings?: ListingOrderByRelationAggregateInput
     building?: BuildingOrderByWithRelationInput
@@ -31635,6 +35611,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentOrderByRelationAggregateInput
     propertyPersons?: PropertyPersonOrderByRelationAggregateInput
     reminders?: ReminderOrderByRelationAggregateInput
+    flyers?: FlyerOrderByRelationAggregateInput
   }
 
   export type PropertyWhereUniqueInput = Prisma.AtLeast<{
@@ -31670,6 +35647,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Property"> | Date | string | null
+    description?: StringNullableFilter<"Property"> | string | null
     followUps?: FollowUpListRelationFilter
     listings?: ListingListRelationFilter
     building?: XOR<BuildingScalarRelationFilter, BuildingWhereInput>
@@ -31679,6 +35657,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentListRelationFilter
     propertyPersons?: PropertyPersonListRelationFilter
     reminders?: ReminderListRelationFilter
+    flyers?: FlyerListRelationFilter
   }, "id" | "number_floor_buildingId">
 
   export type PropertyOrderByWithAggregationInput = {
@@ -31710,6 +35689,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     _count?: PropertyCountOrderByAggregateInput
     _avg?: PropertyAvgOrderByAggregateInput
     _max?: PropertyMaxOrderByAggregateInput
@@ -31749,6 +35729,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
+    description?: StringNullableWithAggregatesFilter<"Property"> | string | null
   }
 
   export type PropertyAttachmentWhereInput = {
@@ -32978,6 +36959,229 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableWithAggregatesFilter<"PropertyPerson"> | Date | string | null
   }
 
+  export type FlyerTemplateWhereInput = {
+    AND?: FlyerTemplateWhereInput | FlyerTemplateWhereInput[]
+    OR?: FlyerTemplateWhereInput[]
+    NOT?: FlyerTemplateWhereInput | FlyerTemplateWhereInput[]
+    id?: IntFilter<"FlyerTemplate"> | number
+    name?: StringFilter<"FlyerTemplate"> | string
+    description?: StringNullableFilter<"FlyerTemplate"> | string | null
+    thumbnailUrl?: StringNullableFilter<"FlyerTemplate"> | string | null
+    content?: StringNullableFilter<"FlyerTemplate"> | string | null
+    isActive?: BoolFilter<"FlyerTemplate"> | boolean
+    createdAt?: DateTimeFilter<"FlyerTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"FlyerTemplate"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"FlyerTemplate"> | Date | string | null
+    flyers?: FlyerListRelationFilter
+  }
+
+  export type FlyerTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
+    content?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    flyers?: FlyerOrderByRelationAggregateInput
+  }
+
+  export type FlyerTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: FlyerTemplateWhereInput | FlyerTemplateWhereInput[]
+    OR?: FlyerTemplateWhereInput[]
+    NOT?: FlyerTemplateWhereInput | FlyerTemplateWhereInput[]
+    name?: StringFilter<"FlyerTemplate"> | string
+    description?: StringNullableFilter<"FlyerTemplate"> | string | null
+    thumbnailUrl?: StringNullableFilter<"FlyerTemplate"> | string | null
+    content?: StringNullableFilter<"FlyerTemplate"> | string | null
+    isActive?: BoolFilter<"FlyerTemplate"> | boolean
+    createdAt?: DateTimeFilter<"FlyerTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"FlyerTemplate"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"FlyerTemplate"> | Date | string | null
+    flyers?: FlyerListRelationFilter
+  }, "id">
+
+  export type FlyerTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
+    content?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: FlyerTemplateCountOrderByAggregateInput
+    _avg?: FlyerTemplateAvgOrderByAggregateInput
+    _max?: FlyerTemplateMaxOrderByAggregateInput
+    _min?: FlyerTemplateMinOrderByAggregateInput
+    _sum?: FlyerTemplateSumOrderByAggregateInput
+  }
+
+  export type FlyerTemplateScalarWhereWithAggregatesInput = {
+    AND?: FlyerTemplateScalarWhereWithAggregatesInput | FlyerTemplateScalarWhereWithAggregatesInput[]
+    OR?: FlyerTemplateScalarWhereWithAggregatesInput[]
+    NOT?: FlyerTemplateScalarWhereWithAggregatesInput | FlyerTemplateScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FlyerTemplate"> | number
+    name?: StringWithAggregatesFilter<"FlyerTemplate"> | string
+    description?: StringNullableWithAggregatesFilter<"FlyerTemplate"> | string | null
+    thumbnailUrl?: StringNullableWithAggregatesFilter<"FlyerTemplate"> | string | null
+    content?: StringNullableWithAggregatesFilter<"FlyerTemplate"> | string | null
+    isActive?: BoolWithAggregatesFilter<"FlyerTemplate"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"FlyerTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FlyerTemplate"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"FlyerTemplate"> | Date | string | null
+  }
+
+  export type FlyerWhereInput = {
+    AND?: FlyerWhereInput | FlyerWhereInput[]
+    OR?: FlyerWhereInput[]
+    NOT?: FlyerWhereInput | FlyerWhereInput[]
+    id?: IntFilter<"Flyer"> | number
+    propertyId?: IntFilter<"Flyer"> | number
+    templateId?: IntFilter<"Flyer"> | number
+    generatedById?: IntFilter<"Flyer"> | number
+    qrContent?: StringFilter<"Flyer"> | string
+    pdfUrl?: StringNullableFilter<"Flyer"> | string | null
+    createdAt?: DateTimeFilter<"Flyer"> | Date | string
+    updatedAt?: DateTimeFilter<"Flyer"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Flyer"> | Date | string | null
+    property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
+    template?: XOR<FlyerTemplateScalarRelationFilter, FlyerTemplateWhereInput>
+    generatedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    shipments?: FlyerShipmentListRelationFilter
+  }
+
+  export type FlyerOrderByWithRelationInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    templateId?: SortOrder
+    generatedById?: SortOrder
+    qrContent?: SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    property?: PropertyOrderByWithRelationInput
+    template?: FlyerTemplateOrderByWithRelationInput
+    generatedBy?: UserOrderByWithRelationInput
+    shipments?: FlyerShipmentOrderByRelationAggregateInput
+  }
+
+  export type FlyerWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: FlyerWhereInput | FlyerWhereInput[]
+    OR?: FlyerWhereInput[]
+    NOT?: FlyerWhereInput | FlyerWhereInput[]
+    propertyId?: IntFilter<"Flyer"> | number
+    templateId?: IntFilter<"Flyer"> | number
+    generatedById?: IntFilter<"Flyer"> | number
+    qrContent?: StringFilter<"Flyer"> | string
+    pdfUrl?: StringNullableFilter<"Flyer"> | string | null
+    createdAt?: DateTimeFilter<"Flyer"> | Date | string
+    updatedAt?: DateTimeFilter<"Flyer"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Flyer"> | Date | string | null
+    property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
+    template?: XOR<FlyerTemplateScalarRelationFilter, FlyerTemplateWhereInput>
+    generatedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    shipments?: FlyerShipmentListRelationFilter
+  }, "id">
+
+  export type FlyerOrderByWithAggregationInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    templateId?: SortOrder
+    generatedById?: SortOrder
+    qrContent?: SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: FlyerCountOrderByAggregateInput
+    _avg?: FlyerAvgOrderByAggregateInput
+    _max?: FlyerMaxOrderByAggregateInput
+    _min?: FlyerMinOrderByAggregateInput
+    _sum?: FlyerSumOrderByAggregateInput
+  }
+
+  export type FlyerScalarWhereWithAggregatesInput = {
+    AND?: FlyerScalarWhereWithAggregatesInput | FlyerScalarWhereWithAggregatesInput[]
+    OR?: FlyerScalarWhereWithAggregatesInput[]
+    NOT?: FlyerScalarWhereWithAggregatesInput | FlyerScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Flyer"> | number
+    propertyId?: IntWithAggregatesFilter<"Flyer"> | number
+    templateId?: IntWithAggregatesFilter<"Flyer"> | number
+    generatedById?: IntWithAggregatesFilter<"Flyer"> | number
+    qrContent?: StringWithAggregatesFilter<"Flyer"> | string
+    pdfUrl?: StringNullableWithAggregatesFilter<"Flyer"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Flyer"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Flyer"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Flyer"> | Date | string | null
+  }
+
+  export type FlyerShipmentWhereInput = {
+    AND?: FlyerShipmentWhereInput | FlyerShipmentWhereInput[]
+    OR?: FlyerShipmentWhereInput[]
+    NOT?: FlyerShipmentWhereInput | FlyerShipmentWhereInput[]
+    id?: IntFilter<"FlyerShipment"> | number
+    flyerId?: IntFilter<"FlyerShipment"> | number
+    userId?: IntFilter<"FlyerShipment"> | number
+    notes?: StringNullableFilter<"FlyerShipment"> | string | null
+    createdAt?: DateTimeFilter<"FlyerShipment"> | Date | string
+    flyer?: XOR<FlyerScalarRelationFilter, FlyerWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type FlyerShipmentOrderByWithRelationInput = {
+    id?: SortOrder
+    flyerId?: SortOrder
+    userId?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    flyer?: FlyerOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type FlyerShipmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: FlyerShipmentWhereInput | FlyerShipmentWhereInput[]
+    OR?: FlyerShipmentWhereInput[]
+    NOT?: FlyerShipmentWhereInput | FlyerShipmentWhereInput[]
+    flyerId?: IntFilter<"FlyerShipment"> | number
+    userId?: IntFilter<"FlyerShipment"> | number
+    notes?: StringNullableFilter<"FlyerShipment"> | string | null
+    createdAt?: DateTimeFilter<"FlyerShipment"> | Date | string
+    flyer?: XOR<FlyerScalarRelationFilter, FlyerWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type FlyerShipmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    flyerId?: SortOrder
+    userId?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: FlyerShipmentCountOrderByAggregateInput
+    _avg?: FlyerShipmentAvgOrderByAggregateInput
+    _max?: FlyerShipmentMaxOrderByAggregateInput
+    _min?: FlyerShipmentMinOrderByAggregateInput
+    _sum?: FlyerShipmentSumOrderByAggregateInput
+  }
+
+  export type FlyerShipmentScalarWhereWithAggregatesInput = {
+    AND?: FlyerShipmentScalarWhereWithAggregatesInput | FlyerShipmentScalarWhereWithAggregatesInput[]
+    OR?: FlyerShipmentScalarWhereWithAggregatesInput[]
+    NOT?: FlyerShipmentScalarWhereWithAggregatesInput | FlyerShipmentScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FlyerShipment"> | number
+    flyerId?: IntWithAggregatesFilter<"FlyerShipment"> | number
+    userId?: IntWithAggregatesFilter<"FlyerShipment"> | number
+    notes?: StringNullableWithAggregatesFilter<"FlyerShipment"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"FlyerShipment"> | Date | string
+  }
+
   export type PingCreateInput = {
     value: string
   }
@@ -33103,6 +37307,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -33131,6 +37337,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -33158,6 +37366,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -33186,6 +37396,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -33556,6 +37768,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     listings?: ListingCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
@@ -33565,6 +37778,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateInput = {
@@ -33596,11 +37810,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUpdateInput = {
@@ -33627,6 +37843,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
@@ -33636,6 +37853,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateInput = {
@@ -33667,11 +37885,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyCreateManyInput = {
@@ -33703,6 +37923,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
   }
 
   export type PropertyUpdateManyMutationInput = {
@@ -33729,6 +37950,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PropertyUncheckedUpdateManyInput = {
@@ -33760,6 +37982,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PropertyAttachmentCreateInput = {
@@ -35024,6 +39247,224 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type FlyerTemplateCreateInput = {
+    name: string
+    description?: string | null
+    thumbnailUrl?: string | null
+    content?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    flyers?: FlyerCreateNestedManyWithoutTemplateInput
+  }
+
+  export type FlyerTemplateUncheckedCreateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    thumbnailUrl?: string | null
+    content?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    flyers?: FlyerUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type FlyerTemplateUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    flyers?: FlyerUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type FlyerTemplateUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    flyers?: FlyerUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type FlyerTemplateCreateManyInput = {
+    id?: number
+    name: string
+    description?: string | null
+    thumbnailUrl?: string | null
+    content?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type FlyerTemplateUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerTemplateUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerCreateInput = {
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    property: PropertyCreateNestedOneWithoutFlyersInput
+    template: FlyerTemplateCreateNestedOneWithoutFlyersInput
+    generatedBy: UserCreateNestedOneWithoutFlyersGeneratedInput
+    shipments?: FlyerShipmentCreateNestedManyWithoutFlyerInput
+  }
+
+  export type FlyerUncheckedCreateInput = {
+    id?: number
+    propertyId: number
+    templateId: number
+    generatedById: number
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    shipments?: FlyerShipmentUncheckedCreateNestedManyWithoutFlyerInput
+  }
+
+  export type FlyerUpdateInput = {
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    property?: PropertyUpdateOneRequiredWithoutFlyersNestedInput
+    template?: FlyerTemplateUpdateOneRequiredWithoutFlyersNestedInput
+    generatedBy?: UserUpdateOneRequiredWithoutFlyersGeneratedNestedInput
+    shipments?: FlyerShipmentUpdateManyWithoutFlyerNestedInput
+  }
+
+  export type FlyerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    templateId?: IntFieldUpdateOperationsInput | number
+    generatedById?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shipments?: FlyerShipmentUncheckedUpdateManyWithoutFlyerNestedInput
+  }
+
+  export type FlyerCreateManyInput = {
+    id?: number
+    propertyId: number
+    templateId: number
+    generatedById: number
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type FlyerUpdateManyMutationInput = {
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    templateId?: IntFieldUpdateOperationsInput | number
+    generatedById?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerShipmentCreateInput = {
+    notes?: string | null
+    createdAt?: Date | string
+    flyer: FlyerCreateNestedOneWithoutShipmentsInput
+    user: UserCreateNestedOneWithoutFlyerShipmentsInput
+  }
+
+  export type FlyerShipmentUncheckedCreateInput = {
+    id?: number
+    flyerId: number
+    userId: number
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FlyerShipmentUpdateInput = {
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    flyer?: FlyerUpdateOneRequiredWithoutShipmentsNestedInput
+    user?: UserUpdateOneRequiredWithoutFlyerShipmentsNestedInput
+  }
+
+  export type FlyerShipmentUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    flyerId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FlyerShipmentCreateManyInput = {
+    id?: number
+    flyerId: number
+    userId: number
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FlyerShipmentUpdateManyMutationInput = {
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FlyerShipmentUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    flyerId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -35285,6 +39726,18 @@ export namespace Prisma {
     none?: MailboxingAttachmentWhereInput
   }
 
+  export type FlyerListRelationFilter = {
+    every?: FlyerWhereInput
+    some?: FlyerWhereInput
+    none?: FlyerWhereInput
+  }
+
+  export type FlyerShipmentListRelationFilter = {
+    every?: FlyerShipmentWhereInput
+    some?: FlyerShipmentWhereInput
+    none?: FlyerShipmentWhereInput
+  }
+
   export type AssignmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -35314,6 +39767,14 @@ export namespace Prisma {
   }
 
   export type MailboxingAttachmentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FlyerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FlyerShipmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -35721,6 +40182,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
+    description?: SortOrder
   }
 
   export type PropertyAvgOrderByAggregateInput = {
@@ -35765,6 +40227,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
+    description?: SortOrder
   }
 
   export type PropertyMinOrderByAggregateInput = {
@@ -35796,6 +40259,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
+    description?: SortOrder
   }
 
   export type PropertySumOrderByAggregateInput = {
@@ -36829,6 +41293,146 @@ export namespace Prisma {
     _max?: NestedEnumPropertyPersonRoleFilter<$PrismaModel>
   }
 
+  export type FlyerTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    thumbnailUrl?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type FlyerTemplateAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type FlyerTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    thumbnailUrl?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type FlyerTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    thumbnailUrl?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type FlyerTemplateSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type FlyerTemplateScalarRelationFilter = {
+    is?: FlyerTemplateWhereInput
+    isNot?: FlyerTemplateWhereInput
+  }
+
+  export type FlyerCountOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    templateId?: SortOrder
+    generatedById?: SortOrder
+    qrContent?: SortOrder
+    pdfUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type FlyerAvgOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    templateId?: SortOrder
+    generatedById?: SortOrder
+  }
+
+  export type FlyerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    templateId?: SortOrder
+    generatedById?: SortOrder
+    qrContent?: SortOrder
+    pdfUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type FlyerMinOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    templateId?: SortOrder
+    generatedById?: SortOrder
+    qrContent?: SortOrder
+    pdfUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type FlyerSumOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    templateId?: SortOrder
+    generatedById?: SortOrder
+  }
+
+  export type FlyerScalarRelationFilter = {
+    is?: FlyerWhereInput
+    isNot?: FlyerWhereInput
+  }
+
+  export type FlyerShipmentCountOrderByAggregateInput = {
+    id?: SortOrder
+    flyerId?: SortOrder
+    userId?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FlyerShipmentAvgOrderByAggregateInput = {
+    id?: SortOrder
+    flyerId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type FlyerShipmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    flyerId?: SortOrder
+    userId?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FlyerShipmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    flyerId?: SortOrder
+    userId?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FlyerShipmentSumOrderByAggregateInput = {
+    id?: SortOrder
+    flyerId?: SortOrder
+    userId?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -37003,6 +41607,20 @@ export namespace Prisma {
     connect?: MailboxingAttachmentWhereUniqueInput | MailboxingAttachmentWhereUniqueInput[]
   }
 
+  export type FlyerCreateNestedManyWithoutGeneratedByInput = {
+    create?: XOR<FlyerCreateWithoutGeneratedByInput, FlyerUncheckedCreateWithoutGeneratedByInput> | FlyerCreateWithoutGeneratedByInput[] | FlyerUncheckedCreateWithoutGeneratedByInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutGeneratedByInput | FlyerCreateOrConnectWithoutGeneratedByInput[]
+    createMany?: FlyerCreateManyGeneratedByInputEnvelope
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+  }
+
+  export type FlyerShipmentCreateNestedManyWithoutUserInput = {
+    create?: XOR<FlyerShipmentCreateWithoutUserInput, FlyerShipmentUncheckedCreateWithoutUserInput> | FlyerShipmentCreateWithoutUserInput[] | FlyerShipmentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FlyerShipmentCreateOrConnectWithoutUserInput | FlyerShipmentCreateOrConnectWithoutUserInput[]
+    createMany?: FlyerShipmentCreateManyUserInputEnvelope
+    connect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+  }
+
   export type UserRoleUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -37071,6 +41689,20 @@ export namespace Prisma {
     connectOrCreate?: MailboxingAttachmentCreateOrConnectWithoutUploadedByInput | MailboxingAttachmentCreateOrConnectWithoutUploadedByInput[]
     createMany?: MailboxingAttachmentCreateManyUploadedByInputEnvelope
     connect?: MailboxingAttachmentWhereUniqueInput | MailboxingAttachmentWhereUniqueInput[]
+  }
+
+  export type FlyerUncheckedCreateNestedManyWithoutGeneratedByInput = {
+    create?: XOR<FlyerCreateWithoutGeneratedByInput, FlyerUncheckedCreateWithoutGeneratedByInput> | FlyerCreateWithoutGeneratedByInput[] | FlyerUncheckedCreateWithoutGeneratedByInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutGeneratedByInput | FlyerCreateOrConnectWithoutGeneratedByInput[]
+    createMany?: FlyerCreateManyGeneratedByInputEnvelope
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+  }
+
+  export type FlyerShipmentUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<FlyerShipmentCreateWithoutUserInput, FlyerShipmentUncheckedCreateWithoutUserInput> | FlyerShipmentCreateWithoutUserInput[] | FlyerShipmentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FlyerShipmentCreateOrConnectWithoutUserInput | FlyerShipmentCreateOrConnectWithoutUserInput[]
+    createMany?: FlyerShipmentCreateManyUserInputEnvelope
+    connect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -37221,6 +41853,34 @@ export namespace Prisma {
     deleteMany?: MailboxingAttachmentScalarWhereInput | MailboxingAttachmentScalarWhereInput[]
   }
 
+  export type FlyerUpdateManyWithoutGeneratedByNestedInput = {
+    create?: XOR<FlyerCreateWithoutGeneratedByInput, FlyerUncheckedCreateWithoutGeneratedByInput> | FlyerCreateWithoutGeneratedByInput[] | FlyerUncheckedCreateWithoutGeneratedByInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutGeneratedByInput | FlyerCreateOrConnectWithoutGeneratedByInput[]
+    upsert?: FlyerUpsertWithWhereUniqueWithoutGeneratedByInput | FlyerUpsertWithWhereUniqueWithoutGeneratedByInput[]
+    createMany?: FlyerCreateManyGeneratedByInputEnvelope
+    set?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    disconnect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    delete?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    update?: FlyerUpdateWithWhereUniqueWithoutGeneratedByInput | FlyerUpdateWithWhereUniqueWithoutGeneratedByInput[]
+    updateMany?: FlyerUpdateManyWithWhereWithoutGeneratedByInput | FlyerUpdateManyWithWhereWithoutGeneratedByInput[]
+    deleteMany?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
+  }
+
+  export type FlyerShipmentUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FlyerShipmentCreateWithoutUserInput, FlyerShipmentUncheckedCreateWithoutUserInput> | FlyerShipmentCreateWithoutUserInput[] | FlyerShipmentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FlyerShipmentCreateOrConnectWithoutUserInput | FlyerShipmentCreateOrConnectWithoutUserInput[]
+    upsert?: FlyerShipmentUpsertWithWhereUniqueWithoutUserInput | FlyerShipmentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FlyerShipmentCreateManyUserInputEnvelope
+    set?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    disconnect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    delete?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    connect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    update?: FlyerShipmentUpdateWithWhereUniqueWithoutUserInput | FlyerShipmentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FlyerShipmentUpdateManyWithWhereWithoutUserInput | FlyerShipmentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FlyerShipmentScalarWhereInput | FlyerShipmentScalarWhereInput[]
+  }
+
   export type UserRoleUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -37359,6 +42019,34 @@ export namespace Prisma {
     update?: MailboxingAttachmentUpdateWithWhereUniqueWithoutUploadedByInput | MailboxingAttachmentUpdateWithWhereUniqueWithoutUploadedByInput[]
     updateMany?: MailboxingAttachmentUpdateManyWithWhereWithoutUploadedByInput | MailboxingAttachmentUpdateManyWithWhereWithoutUploadedByInput[]
     deleteMany?: MailboxingAttachmentScalarWhereInput | MailboxingAttachmentScalarWhereInput[]
+  }
+
+  export type FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput = {
+    create?: XOR<FlyerCreateWithoutGeneratedByInput, FlyerUncheckedCreateWithoutGeneratedByInput> | FlyerCreateWithoutGeneratedByInput[] | FlyerUncheckedCreateWithoutGeneratedByInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutGeneratedByInput | FlyerCreateOrConnectWithoutGeneratedByInput[]
+    upsert?: FlyerUpsertWithWhereUniqueWithoutGeneratedByInput | FlyerUpsertWithWhereUniqueWithoutGeneratedByInput[]
+    createMany?: FlyerCreateManyGeneratedByInputEnvelope
+    set?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    disconnect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    delete?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    update?: FlyerUpdateWithWhereUniqueWithoutGeneratedByInput | FlyerUpdateWithWhereUniqueWithoutGeneratedByInput[]
+    updateMany?: FlyerUpdateManyWithWhereWithoutGeneratedByInput | FlyerUpdateManyWithWhereWithoutGeneratedByInput[]
+    deleteMany?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
+  }
+
+  export type FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FlyerShipmentCreateWithoutUserInput, FlyerShipmentUncheckedCreateWithoutUserInput> | FlyerShipmentCreateWithoutUserInput[] | FlyerShipmentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FlyerShipmentCreateOrConnectWithoutUserInput | FlyerShipmentCreateOrConnectWithoutUserInput[]
+    upsert?: FlyerShipmentUpsertWithWhereUniqueWithoutUserInput | FlyerShipmentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FlyerShipmentCreateManyUserInputEnvelope
+    set?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    disconnect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    delete?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    connect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    update?: FlyerShipmentUpdateWithWhereUniqueWithoutUserInput | FlyerShipmentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FlyerShipmentUpdateManyWithWhereWithoutUserInput | FlyerShipmentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FlyerShipmentScalarWhereInput | FlyerShipmentScalarWhereInput[]
   }
 
   export type RolePermissionCreateNestedManyWithoutPermissionInput = {
@@ -37784,6 +42472,13 @@ export namespace Prisma {
     connect?: ReminderWhereUniqueInput | ReminderWhereUniqueInput[]
   }
 
+  export type FlyerCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<FlyerCreateWithoutPropertyInput, FlyerUncheckedCreateWithoutPropertyInput> | FlyerCreateWithoutPropertyInput[] | FlyerUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutPropertyInput | FlyerCreateOrConnectWithoutPropertyInput[]
+    createMany?: FlyerCreateManyPropertyInputEnvelope
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+  }
+
   export type FollowUpUncheckedCreateNestedManyWithoutPropertyInput = {
     create?: XOR<FollowUpCreateWithoutPropertyInput, FollowUpUncheckedCreateWithoutPropertyInput> | FollowUpCreateWithoutPropertyInput[] | FollowUpUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: FollowUpCreateOrConnectWithoutPropertyInput | FollowUpCreateOrConnectWithoutPropertyInput[]
@@ -37817,6 +42512,13 @@ export namespace Prisma {
     connectOrCreate?: ReminderCreateOrConnectWithoutPropertyInput | ReminderCreateOrConnectWithoutPropertyInput[]
     createMany?: ReminderCreateManyPropertyInputEnvelope
     connect?: ReminderWhereUniqueInput | ReminderWhereUniqueInput[]
+  }
+
+  export type FlyerUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<FlyerCreateWithoutPropertyInput, FlyerUncheckedCreateWithoutPropertyInput> | FlyerCreateWithoutPropertyInput[] | FlyerUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutPropertyInput | FlyerCreateOrConnectWithoutPropertyInput[]
+    createMany?: FlyerCreateManyPropertyInputEnvelope
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
   }
 
   export type NullableDecimalFieldUpdateOperationsInput = {
@@ -37939,6 +42641,20 @@ export namespace Prisma {
     deleteMany?: ReminderScalarWhereInput | ReminderScalarWhereInput[]
   }
 
+  export type FlyerUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<FlyerCreateWithoutPropertyInput, FlyerUncheckedCreateWithoutPropertyInput> | FlyerCreateWithoutPropertyInput[] | FlyerUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutPropertyInput | FlyerCreateOrConnectWithoutPropertyInput[]
+    upsert?: FlyerUpsertWithWhereUniqueWithoutPropertyInput | FlyerUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: FlyerCreateManyPropertyInputEnvelope
+    set?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    disconnect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    delete?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    update?: FlyerUpdateWithWhereUniqueWithoutPropertyInput | FlyerUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: FlyerUpdateManyWithWhereWithoutPropertyInput | FlyerUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
+  }
+
   export type FollowUpUncheckedUpdateManyWithoutPropertyNestedInput = {
     create?: XOR<FollowUpCreateWithoutPropertyInput, FollowUpUncheckedCreateWithoutPropertyInput> | FollowUpCreateWithoutPropertyInput[] | FollowUpUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: FollowUpCreateOrConnectWithoutPropertyInput | FollowUpCreateOrConnectWithoutPropertyInput[]
@@ -38007,6 +42723,20 @@ export namespace Prisma {
     update?: ReminderUpdateWithWhereUniqueWithoutPropertyInput | ReminderUpdateWithWhereUniqueWithoutPropertyInput[]
     updateMany?: ReminderUpdateManyWithWhereWithoutPropertyInput | ReminderUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: ReminderScalarWhereInput | ReminderScalarWhereInput[]
+  }
+
+  export type FlyerUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<FlyerCreateWithoutPropertyInput, FlyerUncheckedCreateWithoutPropertyInput> | FlyerCreateWithoutPropertyInput[] | FlyerUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutPropertyInput | FlyerCreateOrConnectWithoutPropertyInput[]
+    upsert?: FlyerUpsertWithWhereUniqueWithoutPropertyInput | FlyerUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: FlyerCreateManyPropertyInputEnvelope
+    set?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    disconnect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    delete?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    update?: FlyerUpdateWithWhereUniqueWithoutPropertyInput | FlyerUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: FlyerUpdateManyWithWhereWithoutPropertyInput | FlyerUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
   }
 
   export type PropertyCreateNestedOneWithoutAttachmentsInput = {
@@ -39013,6 +43743,160 @@ export namespace Prisma {
     update?: XOR<XOR<PropertyUpdateToOneWithWhereWithoutPropertyPersonsInput, PropertyUpdateWithoutPropertyPersonsInput>, PropertyUncheckedUpdateWithoutPropertyPersonsInput>
   }
 
+  export type FlyerCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<FlyerCreateWithoutTemplateInput, FlyerUncheckedCreateWithoutTemplateInput> | FlyerCreateWithoutTemplateInput[] | FlyerUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutTemplateInput | FlyerCreateOrConnectWithoutTemplateInput[]
+    createMany?: FlyerCreateManyTemplateInputEnvelope
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+  }
+
+  export type FlyerUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<FlyerCreateWithoutTemplateInput, FlyerUncheckedCreateWithoutTemplateInput> | FlyerCreateWithoutTemplateInput[] | FlyerUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutTemplateInput | FlyerCreateOrConnectWithoutTemplateInput[]
+    createMany?: FlyerCreateManyTemplateInputEnvelope
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+  }
+
+  export type FlyerUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<FlyerCreateWithoutTemplateInput, FlyerUncheckedCreateWithoutTemplateInput> | FlyerCreateWithoutTemplateInput[] | FlyerUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutTemplateInput | FlyerCreateOrConnectWithoutTemplateInput[]
+    upsert?: FlyerUpsertWithWhereUniqueWithoutTemplateInput | FlyerUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: FlyerCreateManyTemplateInputEnvelope
+    set?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    disconnect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    delete?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    update?: FlyerUpdateWithWhereUniqueWithoutTemplateInput | FlyerUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: FlyerUpdateManyWithWhereWithoutTemplateInput | FlyerUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
+  }
+
+  export type FlyerUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<FlyerCreateWithoutTemplateInput, FlyerUncheckedCreateWithoutTemplateInput> | FlyerCreateWithoutTemplateInput[] | FlyerUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: FlyerCreateOrConnectWithoutTemplateInput | FlyerCreateOrConnectWithoutTemplateInput[]
+    upsert?: FlyerUpsertWithWhereUniqueWithoutTemplateInput | FlyerUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: FlyerCreateManyTemplateInputEnvelope
+    set?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    disconnect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    delete?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+    update?: FlyerUpdateWithWhereUniqueWithoutTemplateInput | FlyerUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: FlyerUpdateManyWithWhereWithoutTemplateInput | FlyerUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
+  }
+
+  export type PropertyCreateNestedOneWithoutFlyersInput = {
+    create?: XOR<PropertyCreateWithoutFlyersInput, PropertyUncheckedCreateWithoutFlyersInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutFlyersInput
+    connect?: PropertyWhereUniqueInput
+  }
+
+  export type FlyerTemplateCreateNestedOneWithoutFlyersInput = {
+    create?: XOR<FlyerTemplateCreateWithoutFlyersInput, FlyerTemplateUncheckedCreateWithoutFlyersInput>
+    connectOrCreate?: FlyerTemplateCreateOrConnectWithoutFlyersInput
+    connect?: FlyerTemplateWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutFlyersGeneratedInput = {
+    create?: XOR<UserCreateWithoutFlyersGeneratedInput, UserUncheckedCreateWithoutFlyersGeneratedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFlyersGeneratedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type FlyerShipmentCreateNestedManyWithoutFlyerInput = {
+    create?: XOR<FlyerShipmentCreateWithoutFlyerInput, FlyerShipmentUncheckedCreateWithoutFlyerInput> | FlyerShipmentCreateWithoutFlyerInput[] | FlyerShipmentUncheckedCreateWithoutFlyerInput[]
+    connectOrCreate?: FlyerShipmentCreateOrConnectWithoutFlyerInput | FlyerShipmentCreateOrConnectWithoutFlyerInput[]
+    createMany?: FlyerShipmentCreateManyFlyerInputEnvelope
+    connect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+  }
+
+  export type FlyerShipmentUncheckedCreateNestedManyWithoutFlyerInput = {
+    create?: XOR<FlyerShipmentCreateWithoutFlyerInput, FlyerShipmentUncheckedCreateWithoutFlyerInput> | FlyerShipmentCreateWithoutFlyerInput[] | FlyerShipmentUncheckedCreateWithoutFlyerInput[]
+    connectOrCreate?: FlyerShipmentCreateOrConnectWithoutFlyerInput | FlyerShipmentCreateOrConnectWithoutFlyerInput[]
+    createMany?: FlyerShipmentCreateManyFlyerInputEnvelope
+    connect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+  }
+
+  export type PropertyUpdateOneRequiredWithoutFlyersNestedInput = {
+    create?: XOR<PropertyCreateWithoutFlyersInput, PropertyUncheckedCreateWithoutFlyersInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutFlyersInput
+    upsert?: PropertyUpsertWithoutFlyersInput
+    connect?: PropertyWhereUniqueInput
+    update?: XOR<XOR<PropertyUpdateToOneWithWhereWithoutFlyersInput, PropertyUpdateWithoutFlyersInput>, PropertyUncheckedUpdateWithoutFlyersInput>
+  }
+
+  export type FlyerTemplateUpdateOneRequiredWithoutFlyersNestedInput = {
+    create?: XOR<FlyerTemplateCreateWithoutFlyersInput, FlyerTemplateUncheckedCreateWithoutFlyersInput>
+    connectOrCreate?: FlyerTemplateCreateOrConnectWithoutFlyersInput
+    upsert?: FlyerTemplateUpsertWithoutFlyersInput
+    connect?: FlyerTemplateWhereUniqueInput
+    update?: XOR<XOR<FlyerTemplateUpdateToOneWithWhereWithoutFlyersInput, FlyerTemplateUpdateWithoutFlyersInput>, FlyerTemplateUncheckedUpdateWithoutFlyersInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutFlyersGeneratedNestedInput = {
+    create?: XOR<UserCreateWithoutFlyersGeneratedInput, UserUncheckedCreateWithoutFlyersGeneratedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFlyersGeneratedInput
+    upsert?: UserUpsertWithoutFlyersGeneratedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFlyersGeneratedInput, UserUpdateWithoutFlyersGeneratedInput>, UserUncheckedUpdateWithoutFlyersGeneratedInput>
+  }
+
+  export type FlyerShipmentUpdateManyWithoutFlyerNestedInput = {
+    create?: XOR<FlyerShipmentCreateWithoutFlyerInput, FlyerShipmentUncheckedCreateWithoutFlyerInput> | FlyerShipmentCreateWithoutFlyerInput[] | FlyerShipmentUncheckedCreateWithoutFlyerInput[]
+    connectOrCreate?: FlyerShipmentCreateOrConnectWithoutFlyerInput | FlyerShipmentCreateOrConnectWithoutFlyerInput[]
+    upsert?: FlyerShipmentUpsertWithWhereUniqueWithoutFlyerInput | FlyerShipmentUpsertWithWhereUniqueWithoutFlyerInput[]
+    createMany?: FlyerShipmentCreateManyFlyerInputEnvelope
+    set?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    disconnect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    delete?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    connect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    update?: FlyerShipmentUpdateWithWhereUniqueWithoutFlyerInput | FlyerShipmentUpdateWithWhereUniqueWithoutFlyerInput[]
+    updateMany?: FlyerShipmentUpdateManyWithWhereWithoutFlyerInput | FlyerShipmentUpdateManyWithWhereWithoutFlyerInput[]
+    deleteMany?: FlyerShipmentScalarWhereInput | FlyerShipmentScalarWhereInput[]
+  }
+
+  export type FlyerShipmentUncheckedUpdateManyWithoutFlyerNestedInput = {
+    create?: XOR<FlyerShipmentCreateWithoutFlyerInput, FlyerShipmentUncheckedCreateWithoutFlyerInput> | FlyerShipmentCreateWithoutFlyerInput[] | FlyerShipmentUncheckedCreateWithoutFlyerInput[]
+    connectOrCreate?: FlyerShipmentCreateOrConnectWithoutFlyerInput | FlyerShipmentCreateOrConnectWithoutFlyerInput[]
+    upsert?: FlyerShipmentUpsertWithWhereUniqueWithoutFlyerInput | FlyerShipmentUpsertWithWhereUniqueWithoutFlyerInput[]
+    createMany?: FlyerShipmentCreateManyFlyerInputEnvelope
+    set?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    disconnect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    delete?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    connect?: FlyerShipmentWhereUniqueInput | FlyerShipmentWhereUniqueInput[]
+    update?: FlyerShipmentUpdateWithWhereUniqueWithoutFlyerInput | FlyerShipmentUpdateWithWhereUniqueWithoutFlyerInput[]
+    updateMany?: FlyerShipmentUpdateManyWithWhereWithoutFlyerInput | FlyerShipmentUpdateManyWithWhereWithoutFlyerInput[]
+    deleteMany?: FlyerShipmentScalarWhereInput | FlyerShipmentScalarWhereInput[]
+  }
+
+  export type FlyerCreateNestedOneWithoutShipmentsInput = {
+    create?: XOR<FlyerCreateWithoutShipmentsInput, FlyerUncheckedCreateWithoutShipmentsInput>
+    connectOrCreate?: FlyerCreateOrConnectWithoutShipmentsInput
+    connect?: FlyerWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutFlyerShipmentsInput = {
+    create?: XOR<UserCreateWithoutFlyerShipmentsInput, UserUncheckedCreateWithoutFlyerShipmentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFlyerShipmentsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type FlyerUpdateOneRequiredWithoutShipmentsNestedInput = {
+    create?: XOR<FlyerCreateWithoutShipmentsInput, FlyerUncheckedCreateWithoutShipmentsInput>
+    connectOrCreate?: FlyerCreateOrConnectWithoutShipmentsInput
+    upsert?: FlyerUpsertWithoutShipmentsInput
+    connect?: FlyerWhereUniqueInput
+    update?: XOR<XOR<FlyerUpdateToOneWithWhereWithoutShipmentsInput, FlyerUpdateWithoutShipmentsInput>, FlyerUncheckedUpdateWithoutShipmentsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutFlyerShipmentsNestedInput = {
+    create?: XOR<UserCreateWithoutFlyerShipmentsInput, UserUncheckedCreateWithoutFlyerShipmentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFlyerShipmentsInput
+    upsert?: UserUpsertWithoutFlyerShipmentsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFlyerShipmentsInput, UserUpdateWithoutFlyerShipmentsInput>, UserUncheckedUpdateWithoutFlyerShipmentsInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -39790,6 +44674,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     listings?: ListingCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
@@ -39798,6 +44683,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutCapturedByInput = {
@@ -39828,11 +44714,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutCapturedByInput = {
@@ -39947,6 +44835,62 @@ export namespace Prisma {
 
   export type MailboxingAttachmentCreateManyUploadedByInputEnvelope = {
     data: MailboxingAttachmentCreateManyUploadedByInput | MailboxingAttachmentCreateManyUploadedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FlyerCreateWithoutGeneratedByInput = {
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    property: PropertyCreateNestedOneWithoutFlyersInput
+    template: FlyerTemplateCreateNestedOneWithoutFlyersInput
+    shipments?: FlyerShipmentCreateNestedManyWithoutFlyerInput
+  }
+
+  export type FlyerUncheckedCreateWithoutGeneratedByInput = {
+    id?: number
+    propertyId: number
+    templateId: number
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    shipments?: FlyerShipmentUncheckedCreateNestedManyWithoutFlyerInput
+  }
+
+  export type FlyerCreateOrConnectWithoutGeneratedByInput = {
+    where: FlyerWhereUniqueInput
+    create: XOR<FlyerCreateWithoutGeneratedByInput, FlyerUncheckedCreateWithoutGeneratedByInput>
+  }
+
+  export type FlyerCreateManyGeneratedByInputEnvelope = {
+    data: FlyerCreateManyGeneratedByInput | FlyerCreateManyGeneratedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FlyerShipmentCreateWithoutUserInput = {
+    notes?: string | null
+    createdAt?: Date | string
+    flyer: FlyerCreateNestedOneWithoutShipmentsInput
+  }
+
+  export type FlyerShipmentUncheckedCreateWithoutUserInput = {
+    id?: number
+    flyerId: number
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FlyerShipmentCreateOrConnectWithoutUserInput = {
+    where: FlyerShipmentWhereUniqueInput
+    create: XOR<FlyerShipmentCreateWithoutUserInput, FlyerShipmentUncheckedCreateWithoutUserInput>
+  }
+
+  export type FlyerShipmentCreateManyUserInputEnvelope = {
+    data: FlyerShipmentCreateManyUserInput | FlyerShipmentCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -40168,6 +45112,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Property"> | Date | string | null
+    description?: StringNullableFilter<"Property"> | string | null
   }
 
   export type PropertyAttachmentUpsertWithWhereUniqueWithoutUploadedByInput = {
@@ -40269,6 +45214,64 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"MailboxingAttachment"> | Date | string | null
   }
 
+  export type FlyerUpsertWithWhereUniqueWithoutGeneratedByInput = {
+    where: FlyerWhereUniqueInput
+    update: XOR<FlyerUpdateWithoutGeneratedByInput, FlyerUncheckedUpdateWithoutGeneratedByInput>
+    create: XOR<FlyerCreateWithoutGeneratedByInput, FlyerUncheckedCreateWithoutGeneratedByInput>
+  }
+
+  export type FlyerUpdateWithWhereUniqueWithoutGeneratedByInput = {
+    where: FlyerWhereUniqueInput
+    data: XOR<FlyerUpdateWithoutGeneratedByInput, FlyerUncheckedUpdateWithoutGeneratedByInput>
+  }
+
+  export type FlyerUpdateManyWithWhereWithoutGeneratedByInput = {
+    where: FlyerScalarWhereInput
+    data: XOR<FlyerUpdateManyMutationInput, FlyerUncheckedUpdateManyWithoutGeneratedByInput>
+  }
+
+  export type FlyerScalarWhereInput = {
+    AND?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
+    OR?: FlyerScalarWhereInput[]
+    NOT?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
+    id?: IntFilter<"Flyer"> | number
+    propertyId?: IntFilter<"Flyer"> | number
+    templateId?: IntFilter<"Flyer"> | number
+    generatedById?: IntFilter<"Flyer"> | number
+    qrContent?: StringFilter<"Flyer"> | string
+    pdfUrl?: StringNullableFilter<"Flyer"> | string | null
+    createdAt?: DateTimeFilter<"Flyer"> | Date | string
+    updatedAt?: DateTimeFilter<"Flyer"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Flyer"> | Date | string | null
+  }
+
+  export type FlyerShipmentUpsertWithWhereUniqueWithoutUserInput = {
+    where: FlyerShipmentWhereUniqueInput
+    update: XOR<FlyerShipmentUpdateWithoutUserInput, FlyerShipmentUncheckedUpdateWithoutUserInput>
+    create: XOR<FlyerShipmentCreateWithoutUserInput, FlyerShipmentUncheckedCreateWithoutUserInput>
+  }
+
+  export type FlyerShipmentUpdateWithWhereUniqueWithoutUserInput = {
+    where: FlyerShipmentWhereUniqueInput
+    data: XOR<FlyerShipmentUpdateWithoutUserInput, FlyerShipmentUncheckedUpdateWithoutUserInput>
+  }
+
+  export type FlyerShipmentUpdateManyWithWhereWithoutUserInput = {
+    where: FlyerShipmentScalarWhereInput
+    data: XOR<FlyerShipmentUpdateManyMutationInput, FlyerShipmentUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type FlyerShipmentScalarWhereInput = {
+    AND?: FlyerShipmentScalarWhereInput | FlyerShipmentScalarWhereInput[]
+    OR?: FlyerShipmentScalarWhereInput[]
+    NOT?: FlyerShipmentScalarWhereInput | FlyerShipmentScalarWhereInput[]
+    id?: IntFilter<"FlyerShipment"> | number
+    flyerId?: IntFilter<"FlyerShipment"> | number
+    userId?: IntFilter<"FlyerShipment"> | number
+    notes?: StringNullableFilter<"FlyerShipment"> | string | null
+    createdAt?: DateTimeFilter<"FlyerShipment"> | Date | string
+  }
+
   export type RolePermissionCreateWithoutPermissionInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40357,6 +45360,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRolesInput = {
@@ -40384,6 +45389,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRolesInput = {
@@ -40456,6 +45463,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRolesInput = {
@@ -40483,6 +45492,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PermissionCreateWithoutRolesInput = {
@@ -40838,6 +45849,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     listings?: ListingCreateNestedManyWithoutPropertyInput
     capturedBy?: UserCreateNestedOneWithoutCapturedPropertiesInput
@@ -40846,6 +45858,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutBuildingInput = {
@@ -40876,11 +45889,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutBuildingInput = {
@@ -41308,6 +46323,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCapturedPropertiesInput = {
@@ -41335,6 +46352,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCapturedPropertiesInput = {
@@ -41541,6 +46560,39 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type FlyerCreateWithoutPropertyInput = {
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    template: FlyerTemplateCreateNestedOneWithoutFlyersInput
+    generatedBy: UserCreateNestedOneWithoutFlyersGeneratedInput
+    shipments?: FlyerShipmentCreateNestedManyWithoutFlyerInput
+  }
+
+  export type FlyerUncheckedCreateWithoutPropertyInput = {
+    id?: number
+    templateId: number
+    generatedById: number
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    shipments?: FlyerShipmentUncheckedCreateNestedManyWithoutFlyerInput
+  }
+
+  export type FlyerCreateOrConnectWithoutPropertyInput = {
+    where: FlyerWhereUniqueInput
+    create: XOR<FlyerCreateWithoutPropertyInput, FlyerUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type FlyerCreateManyPropertyInputEnvelope = {
+    data: FlyerCreateManyPropertyInput | FlyerCreateManyPropertyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type FollowUpUpsertWithWhereUniqueWithoutPropertyInput = {
     where: FollowUpWhereUniqueInput
     update: XOR<FollowUpUpdateWithoutPropertyInput, FollowUpUncheckedUpdateWithoutPropertyInput>
@@ -41670,6 +46722,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCapturedPropertiesInput = {
@@ -41697,6 +46751,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PersonUpsertWithoutPropertiesOwnedInput = {
@@ -41856,6 +46912,22 @@ export namespace Prisma {
     data: XOR<ReminderUpdateManyMutationInput, ReminderUncheckedUpdateManyWithoutPropertyInput>
   }
 
+  export type FlyerUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: FlyerWhereUniqueInput
+    update: XOR<FlyerUpdateWithoutPropertyInput, FlyerUncheckedUpdateWithoutPropertyInput>
+    create: XOR<FlyerCreateWithoutPropertyInput, FlyerUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type FlyerUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: FlyerWhereUniqueInput
+    data: XOR<FlyerUpdateWithoutPropertyInput, FlyerUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type FlyerUpdateManyWithWhereWithoutPropertyInput = {
+    where: FlyerScalarWhereInput
+    data: XOR<FlyerUpdateManyMutationInput, FlyerUncheckedUpdateManyWithoutPropertyInput>
+  }
+
   export type PropertyCreateWithoutAttachmentsInput = {
     inmovillaCode: number
     number: string
@@ -41880,6 +46952,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     listings?: ListingCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
@@ -41888,6 +46961,7 @@ export namespace Prisma {
     tenant?: PersonCreateNestedOneWithoutPropertiesTenantedInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutAttachmentsInput = {
@@ -41919,10 +46993,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutAttachmentsInput = {
@@ -41954,6 +47030,8 @@ export namespace Prisma {
     capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPropertyAttachmentsUploadedInput = {
@@ -41981,6 +47059,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPropertyAttachmentsUploadedInput = {
@@ -42023,6 +47103,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
@@ -42031,6 +47112,7 @@ export namespace Prisma {
     tenant?: PersonUpdateOneWithoutPropertiesTenantedNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutAttachmentsInput = {
@@ -42062,10 +47144,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserUpsertWithoutPropertyAttachmentsUploadedInput = {
@@ -42103,6 +47187,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPropertyAttachmentsUploadedInput = {
@@ -42130,6 +47216,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BuildingCreateWithoutAttachmentsInput = {
@@ -42198,6 +47286,8 @@ export namespace Prisma {
     capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBuildingAttachmentsUploadedInput = {
@@ -42225,6 +47315,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBuildingAttachmentsUploadedInput = {
@@ -42315,6 +47407,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBuildingAttachmentsUploadedInput = {
@@ -42342,6 +47436,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BuildingCreateWithoutAssignmentsInput = {
@@ -42410,6 +47506,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAssignmentsInput = {
@@ -42437,6 +47535,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAssignmentsInput = {
@@ -42527,6 +47627,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssignmentsInput = {
@@ -42554,6 +47656,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PropertyCreateWithoutFollowUpsInput = {
@@ -42580,6 +47684,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     listings?: ListingCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
     capturedBy?: UserCreateNestedOneWithoutCapturedPropertiesInput
@@ -42588,6 +47693,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutFollowUpsInput = {
@@ -42619,10 +47725,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutFollowUpsInput = {
@@ -42654,6 +47762,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFollowUpsInput = {
@@ -42681,6 +47791,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFollowUpsInput = {
@@ -42821,6 +47933,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
     capturedBy?: UserUpdateOneWithoutCapturedPropertiesNestedInput
@@ -42829,6 +47942,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutFollowUpsInput = {
@@ -42860,10 +47974,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserUpsertWithoutFollowUpsInput = {
@@ -42901,6 +48017,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFollowUpsInput = {
@@ -42928,6 +48046,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReminderUpsertWithWhereUniqueWithoutFollowUpInput = {
@@ -43050,6 +48170,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMailboxingInput = {
@@ -43077,6 +48199,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMailboxingInput = {
@@ -43202,6 +48326,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMailboxingInput = {
@@ -43229,6 +48355,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MailboxingAttachmentUpsertWithWhereUniqueWithoutMailboxingInput = {
@@ -43299,6 +48427,8 @@ export namespace Prisma {
     capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMailboxingAttachmentsUploadedInput = {
@@ -43326,6 +48456,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMailboxingAttachmentsUploadedInput = {
@@ -43402,6 +48534,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMailboxingAttachmentsUploadedInput = {
@@ -43429,6 +48563,8 @@ export namespace Prisma {
     capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BuildingCreateWithoutContactInput = {
@@ -43623,6 +48759,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     listings?: ListingCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
@@ -43631,6 +48768,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutOwnerInput = {
@@ -43661,11 +48799,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutOwnerInput = {
@@ -43702,6 +48842,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     listings?: ListingCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
@@ -43710,6 +48851,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutTenantInput = {
@@ -43740,11 +48882,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutTenantInput = {
@@ -44152,6 +49296,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRemindersCreatedInput = {
@@ -44179,6 +49325,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRemindersCreatedInput = {
@@ -44290,6 +49438,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     listings?: ListingCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
@@ -44298,6 +49447,7 @@ export namespace Prisma {
     tenant?: PersonCreateNestedOneWithoutPropertiesTenantedInput
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutRemindersInput = {
@@ -44329,10 +49479,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutRemindersInput = {
@@ -44364,6 +49516,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRemindersResponsibleInput = {
@@ -44391,6 +49545,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRemindersResponsibleInput = {
@@ -44526,6 +49682,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRemindersCreatedInput = {
@@ -44553,6 +49711,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type FollowUpUpsertWithoutRemindersInput = {
@@ -44682,6 +49842,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
@@ -44690,6 +49851,7 @@ export namespace Prisma {
     tenant?: PersonUpdateOneWithoutPropertiesTenantedNestedInput
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutRemindersInput = {
@@ -44721,10 +49883,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserUpsertWithoutRemindersResponsibleInput = {
@@ -44762,6 +49926,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRemindersResponsibleInput = {
@@ -44789,6 +49955,8 @@ export namespace Prisma {
     propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
     mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReminderOccurrenceUpsertWithWhereUniqueWithoutReminderInput = {
@@ -45055,6 +50223,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
     capturedBy?: UserCreateNestedOneWithoutCapturedPropertiesInput
@@ -45063,6 +50232,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutListingsInput = {
@@ -45094,10 +50264,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutListingsInput = {
@@ -45192,6 +50364,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
     capturedBy?: UserUpdateOneWithoutCapturedPropertiesNestedInput
@@ -45200,6 +50373,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutListingsInput = {
@@ -45231,10 +50405,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type ListingCreateWithoutListingTypeInput = {
@@ -45393,6 +50569,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpCreateNestedManyWithoutPropertyInput
     listings?: ListingCreateNestedManyWithoutPropertyInput
     building: BuildingCreateNestedOneWithoutPropertiesInput
@@ -45401,6 +50578,7 @@ export namespace Prisma {
     tenant?: PersonCreateNestedOneWithoutPropertiesTenantedInput
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutPropertyPersonsInput = {
@@ -45432,10 +50610,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
     followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
     listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutPropertyPersonsInput = {
@@ -45526,6 +50706,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
@@ -45534,6 +50715,7 @@ export namespace Prisma {
     tenant?: PersonUpdateOneWithoutPropertiesTenantedNestedInput
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutPropertyPersonsInput = {
@@ -45565,10 +50747,646 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type FlyerCreateWithoutTemplateInput = {
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    property: PropertyCreateNestedOneWithoutFlyersInput
+    generatedBy: UserCreateNestedOneWithoutFlyersGeneratedInput
+    shipments?: FlyerShipmentCreateNestedManyWithoutFlyerInput
+  }
+
+  export type FlyerUncheckedCreateWithoutTemplateInput = {
+    id?: number
+    propertyId: number
+    generatedById: number
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    shipments?: FlyerShipmentUncheckedCreateNestedManyWithoutFlyerInput
+  }
+
+  export type FlyerCreateOrConnectWithoutTemplateInput = {
+    where: FlyerWhereUniqueInput
+    create: XOR<FlyerCreateWithoutTemplateInput, FlyerUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type FlyerCreateManyTemplateInputEnvelope = {
+    data: FlyerCreateManyTemplateInput | FlyerCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FlyerUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: FlyerWhereUniqueInput
+    update: XOR<FlyerUpdateWithoutTemplateInput, FlyerUncheckedUpdateWithoutTemplateInput>
+    create: XOR<FlyerCreateWithoutTemplateInput, FlyerUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type FlyerUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: FlyerWhereUniqueInput
+    data: XOR<FlyerUpdateWithoutTemplateInput, FlyerUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type FlyerUpdateManyWithWhereWithoutTemplateInput = {
+    where: FlyerScalarWhereInput
+    data: XOR<FlyerUpdateManyMutationInput, FlyerUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type PropertyCreateWithoutFlyersInput = {
+    inmovillaCode: number
+    number: string
+    floor: number
+    appraisalPrice?: Decimal | DecimalJsLike | number | string | null
+    occupiedBy?: string | null
+    importantNotice?: string | null
+    rso_comment?: string | null
+    noDisturb?: boolean
+    noDoormat?: boolean
+    noBell?: boolean
+    noCounter?: boolean
+    soldRentedUs?: boolean
+    branch?: string | null
+    salePrice?: Decimal | DecimalJsLike | number | string | null
+    rentalPrice?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.PropertyStatus
+    isPresident?: boolean
+    isInformer?: boolean
+    isSecondResidence?: boolean
+    isOpportunity?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    description?: string | null
+    followUps?: FollowUpCreateNestedManyWithoutPropertyInput
+    listings?: ListingCreateNestedManyWithoutPropertyInput
+    building: BuildingCreateNestedOneWithoutPropertiesInput
+    capturedBy?: UserCreateNestedOneWithoutCapturedPropertiesInput
+    owner?: PersonCreateNestedOneWithoutPropertiesOwnedInput
+    tenant?: PersonCreateNestedOneWithoutPropertiesTenantedInput
+    attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
+    propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
+    reminders?: ReminderCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyUncheckedCreateWithoutFlyersInput = {
+    id?: number
+    inmovillaCode: number
+    number: string
+    floor: number
+    buildingId: number
+    ownerId?: number | null
+    tenantId?: number | null
+    capturedById?: number | null
+    appraisalPrice?: Decimal | DecimalJsLike | number | string | null
+    occupiedBy?: string | null
+    importantNotice?: string | null
+    rso_comment?: string | null
+    noDisturb?: boolean
+    noDoormat?: boolean
+    noBell?: boolean
+    noCounter?: boolean
+    soldRentedUs?: boolean
+    branch?: string | null
+    salePrice?: Decimal | DecimalJsLike | number | string | null
+    rentalPrice?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.PropertyStatus
+    isPresident?: boolean
+    isInformer?: boolean
+    isSecondResidence?: boolean
+    isOpportunity?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    description?: string | null
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
+    listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
+    attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
+    reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyCreateOrConnectWithoutFlyersInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutFlyersInput, PropertyUncheckedCreateWithoutFlyersInput>
+  }
+
+  export type FlyerTemplateCreateWithoutFlyersInput = {
+    name: string
+    description?: string | null
+    thumbnailUrl?: string | null
+    content?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type FlyerTemplateUncheckedCreateWithoutFlyersInput = {
+    id?: number
+    name: string
+    description?: string | null
+    thumbnailUrl?: string | null
+    content?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type FlyerTemplateCreateOrConnectWithoutFlyersInput = {
+    where: FlyerTemplateWhereUniqueInput
+    create: XOR<FlyerTemplateCreateWithoutFlyersInput, FlyerTemplateUncheckedCreateWithoutFlyersInput>
+  }
+
+  export type UserCreateWithoutFlyersGeneratedInput = {
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    roles?: UserRoleCreateNestedManyWithoutUserInput
+    assignments?: AssignmentCreateNestedManyWithoutUserInput
+    followUps?: FollowUpCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutFlyersGeneratedInput = {
+    id?: number
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderUncheckedCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderUncheckedCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutFlyersGeneratedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFlyersGeneratedInput, UserUncheckedCreateWithoutFlyersGeneratedInput>
+  }
+
+  export type FlyerShipmentCreateWithoutFlyerInput = {
+    notes?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutFlyerShipmentsInput
+  }
+
+  export type FlyerShipmentUncheckedCreateWithoutFlyerInput = {
+    id?: number
+    userId: number
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FlyerShipmentCreateOrConnectWithoutFlyerInput = {
+    where: FlyerShipmentWhereUniqueInput
+    create: XOR<FlyerShipmentCreateWithoutFlyerInput, FlyerShipmentUncheckedCreateWithoutFlyerInput>
+  }
+
+  export type FlyerShipmentCreateManyFlyerInputEnvelope = {
+    data: FlyerShipmentCreateManyFlyerInput | FlyerShipmentCreateManyFlyerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PropertyUpsertWithoutFlyersInput = {
+    update: XOR<PropertyUpdateWithoutFlyersInput, PropertyUncheckedUpdateWithoutFlyersInput>
+    create: XOR<PropertyCreateWithoutFlyersInput, PropertyUncheckedCreateWithoutFlyersInput>
+    where?: PropertyWhereInput
+  }
+
+  export type PropertyUpdateToOneWithWhereWithoutFlyersInput = {
+    where?: PropertyWhereInput
+    data: XOR<PropertyUpdateWithoutFlyersInput, PropertyUncheckedUpdateWithoutFlyersInput>
+  }
+
+  export type PropertyUpdateWithoutFlyersInput = {
+    inmovillaCode?: IntFieldUpdateOperationsInput | number
+    number?: StringFieldUpdateOperationsInput | string
+    floor?: IntFieldUpdateOperationsInput | number
+    appraisalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    occupiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    importantNotice?: NullableStringFieldUpdateOperationsInput | string | null
+    rso_comment?: NullableStringFieldUpdateOperationsInput | string | null
+    noDisturb?: BoolFieldUpdateOperationsInput | boolean
+    noDoormat?: BoolFieldUpdateOperationsInput | boolean
+    noBell?: BoolFieldUpdateOperationsInput | boolean
+    noCounter?: BoolFieldUpdateOperationsInput | boolean
+    soldRentedUs?: BoolFieldUpdateOperationsInput | boolean
+    branch?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    isPresident?: BoolFieldUpdateOperationsInput | boolean
+    isInformer?: BoolFieldUpdateOperationsInput | boolean
+    isSecondResidence?: BoolFieldUpdateOperationsInput | boolean
+    isOpportunity?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
+    listings?: ListingUpdateManyWithoutPropertyNestedInput
+    building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
+    capturedBy?: UserUpdateOneWithoutCapturedPropertiesNestedInput
+    owner?: PersonUpdateOneWithoutPropertiesOwnedNestedInput
+    tenant?: PersonUpdateOneWithoutPropertiesTenantedNestedInput
+    attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
+    propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
+    reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutFlyersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    inmovillaCode?: IntFieldUpdateOperationsInput | number
+    number?: StringFieldUpdateOperationsInput | string
+    floor?: IntFieldUpdateOperationsInput | number
+    buildingId?: IntFieldUpdateOperationsInput | number
+    ownerId?: NullableIntFieldUpdateOperationsInput | number | null
+    tenantId?: NullableIntFieldUpdateOperationsInput | number | null
+    capturedById?: NullableIntFieldUpdateOperationsInput | number | null
+    appraisalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    occupiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    importantNotice?: NullableStringFieldUpdateOperationsInput | string | null
+    rso_comment?: NullableStringFieldUpdateOperationsInput | string | null
+    noDisturb?: BoolFieldUpdateOperationsInput | boolean
+    noDoormat?: BoolFieldUpdateOperationsInput | boolean
+    noBell?: BoolFieldUpdateOperationsInput | boolean
+    noCounter?: BoolFieldUpdateOperationsInput | boolean
+    soldRentedUs?: BoolFieldUpdateOperationsInput | boolean
+    branch?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    isPresident?: BoolFieldUpdateOperationsInput | boolean
+    isInformer?: BoolFieldUpdateOperationsInput | boolean
+    isSecondResidence?: BoolFieldUpdateOperationsInput | boolean
+    isOpportunity?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
+    listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
+    attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
+    reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type FlyerTemplateUpsertWithoutFlyersInput = {
+    update: XOR<FlyerTemplateUpdateWithoutFlyersInput, FlyerTemplateUncheckedUpdateWithoutFlyersInput>
+    create: XOR<FlyerTemplateCreateWithoutFlyersInput, FlyerTemplateUncheckedCreateWithoutFlyersInput>
+    where?: FlyerTemplateWhereInput
+  }
+
+  export type FlyerTemplateUpdateToOneWithWhereWithoutFlyersInput = {
+    where?: FlyerTemplateWhereInput
+    data: XOR<FlyerTemplateUpdateWithoutFlyersInput, FlyerTemplateUncheckedUpdateWithoutFlyersInput>
+  }
+
+  export type FlyerTemplateUpdateWithoutFlyersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerTemplateUncheckedUpdateWithoutFlyersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserUpsertWithoutFlyersGeneratedInput = {
+    update: XOR<UserUpdateWithoutFlyersGeneratedInput, UserUncheckedUpdateWithoutFlyersGeneratedInput>
+    create: XOR<UserCreateWithoutFlyersGeneratedInput, UserUncheckedCreateWithoutFlyersGeneratedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFlyersGeneratedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFlyersGeneratedInput, UserUncheckedUpdateWithoutFlyersGeneratedInput>
+  }
+
+  export type UserUpdateWithoutFlyersGeneratedInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roles?: UserRoleUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFlyersGeneratedInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUncheckedUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUncheckedUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type FlyerShipmentUpsertWithWhereUniqueWithoutFlyerInput = {
+    where: FlyerShipmentWhereUniqueInput
+    update: XOR<FlyerShipmentUpdateWithoutFlyerInput, FlyerShipmentUncheckedUpdateWithoutFlyerInput>
+    create: XOR<FlyerShipmentCreateWithoutFlyerInput, FlyerShipmentUncheckedCreateWithoutFlyerInput>
+  }
+
+  export type FlyerShipmentUpdateWithWhereUniqueWithoutFlyerInput = {
+    where: FlyerShipmentWhereUniqueInput
+    data: XOR<FlyerShipmentUpdateWithoutFlyerInput, FlyerShipmentUncheckedUpdateWithoutFlyerInput>
+  }
+
+  export type FlyerShipmentUpdateManyWithWhereWithoutFlyerInput = {
+    where: FlyerShipmentScalarWhereInput
+    data: XOR<FlyerShipmentUpdateManyMutationInput, FlyerShipmentUncheckedUpdateManyWithoutFlyerInput>
+  }
+
+  export type FlyerCreateWithoutShipmentsInput = {
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    property: PropertyCreateNestedOneWithoutFlyersInput
+    template: FlyerTemplateCreateNestedOneWithoutFlyersInput
+    generatedBy: UserCreateNestedOneWithoutFlyersGeneratedInput
+  }
+
+  export type FlyerUncheckedCreateWithoutShipmentsInput = {
+    id?: number
+    propertyId: number
+    templateId: number
+    generatedById: number
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type FlyerCreateOrConnectWithoutShipmentsInput = {
+    where: FlyerWhereUniqueInput
+    create: XOR<FlyerCreateWithoutShipmentsInput, FlyerUncheckedCreateWithoutShipmentsInput>
+  }
+
+  export type UserCreateWithoutFlyerShipmentsInput = {
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    roles?: UserRoleCreateNestedManyWithoutUserInput
+    assignments?: AssignmentCreateNestedManyWithoutUserInput
+    followUps?: FollowUpCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+  }
+
+  export type UserUncheckedCreateWithoutFlyerShipmentsInput = {
+    id?: number
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderUncheckedCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderUncheckedCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+  }
+
+  export type UserCreateOrConnectWithoutFlyerShipmentsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFlyerShipmentsInput, UserUncheckedCreateWithoutFlyerShipmentsInput>
+  }
+
+  export type FlyerUpsertWithoutShipmentsInput = {
+    update: XOR<FlyerUpdateWithoutShipmentsInput, FlyerUncheckedUpdateWithoutShipmentsInput>
+    create: XOR<FlyerCreateWithoutShipmentsInput, FlyerUncheckedCreateWithoutShipmentsInput>
+    where?: FlyerWhereInput
+  }
+
+  export type FlyerUpdateToOneWithWhereWithoutShipmentsInput = {
+    where?: FlyerWhereInput
+    data: XOR<FlyerUpdateWithoutShipmentsInput, FlyerUncheckedUpdateWithoutShipmentsInput>
+  }
+
+  export type FlyerUpdateWithoutShipmentsInput = {
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    property?: PropertyUpdateOneRequiredWithoutFlyersNestedInput
+    template?: FlyerTemplateUpdateOneRequiredWithoutFlyersNestedInput
+    generatedBy?: UserUpdateOneRequiredWithoutFlyersGeneratedNestedInput
+  }
+
+  export type FlyerUncheckedUpdateWithoutShipmentsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    templateId?: IntFieldUpdateOperationsInput | number
+    generatedById?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserUpsertWithoutFlyerShipmentsInput = {
+    update: XOR<UserUpdateWithoutFlyerShipmentsInput, UserUncheckedUpdateWithoutFlyerShipmentsInput>
+    create: XOR<UserCreateWithoutFlyerShipmentsInput, UserUncheckedCreateWithoutFlyerShipmentsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFlyerShipmentsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFlyerShipmentsInput, UserUncheckedUpdateWithoutFlyerShipmentsInput>
+  }
+
+  export type UserUpdateWithoutFlyerShipmentsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roles?: UserRoleUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFlyerShipmentsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUncheckedUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUncheckedUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type RolePermissionCreateManyRoleInput = {
@@ -45741,6 +51559,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
   }
 
   export type PropertyAttachmentCreateManyUploadedByInput = {
@@ -45780,6 +51599,24 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+  }
+
+  export type FlyerCreateManyGeneratedByInput = {
+    id?: number
+    propertyId: number
+    templateId: number
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type FlyerShipmentCreateManyUserInput = {
+    id?: number
+    flyerId: number
+    notes?: string | null
+    createdAt?: Date | string
   }
 
   export type UserRoleUpdateWithoutUserInput = {
@@ -46069,6 +51906,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
@@ -46077,6 +51915,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutCapturedByInput = {
@@ -46107,11 +51946,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutCapturedByInput = {
@@ -46142,6 +51983,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PropertyAttachmentUpdateWithoutUploadedByInput = {
@@ -46258,6 +52100,60 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type FlyerUpdateWithoutGeneratedByInput = {
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    property?: PropertyUpdateOneRequiredWithoutFlyersNestedInput
+    template?: FlyerTemplateUpdateOneRequiredWithoutFlyersNestedInput
+    shipments?: FlyerShipmentUpdateManyWithoutFlyerNestedInput
+  }
+
+  export type FlyerUncheckedUpdateWithoutGeneratedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    templateId?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shipments?: FlyerShipmentUncheckedUpdateManyWithoutFlyerNestedInput
+  }
+
+  export type FlyerUncheckedUpdateManyWithoutGeneratedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    templateId?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerShipmentUpdateWithoutUserInput = {
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    flyer?: FlyerUpdateOneRequiredWithoutShipmentsNestedInput
+  }
+
+  export type FlyerShipmentUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    flyerId?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FlyerShipmentUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    flyerId?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type RolePermissionCreateManyPermissionInput = {
     roleId: number
     createdAt?: Date | string
@@ -46349,6 +52245,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
   }
 
   export type ReminderCreateManyBuildingInput = {
@@ -46500,6 +52397,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     capturedBy?: UserUpdateOneWithoutCapturedPropertiesNestedInput
@@ -46508,6 +52406,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutBuildingInput = {
@@ -46538,11 +52437,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutBuildingInput = {
@@ -46573,6 +52474,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ReminderUpdateWithoutBuildingInput = {
@@ -46702,6 +52604,17 @@ export namespace Prisma {
     recurrenceEndsAt?: Date | string | null
     status?: $Enums.ReminderStatus
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type FlyerCreateManyPropertyInput = {
+    id?: number
+    templateId: number
+    generatedById: number
+    qrContent: string
+    pdfUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -46907,6 +52820,40 @@ export namespace Prisma {
     recurrenceEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumReminderStatusFieldUpdateOperationsInput | $Enums.ReminderStatus
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerUpdateWithoutPropertyInput = {
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    template?: FlyerTemplateUpdateOneRequiredWithoutFlyersNestedInput
+    generatedBy?: UserUpdateOneRequiredWithoutFlyersGeneratedNestedInput
+    shipments?: FlyerShipmentUpdateManyWithoutFlyerNestedInput
+  }
+
+  export type FlyerUncheckedUpdateWithoutPropertyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateId?: IntFieldUpdateOperationsInput | number
+    generatedById?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shipments?: FlyerShipmentUncheckedUpdateManyWithoutFlyerNestedInput
+  }
+
+  export type FlyerUncheckedUpdateManyWithoutPropertyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    templateId?: IntFieldUpdateOperationsInput | number
+    generatedById?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -47198,6 +53145,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
   }
 
   export type PropertyCreateManyTenantInput = {
@@ -47228,6 +53176,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    description?: string | null
   }
 
   export type PropertyPersonCreateManyPersonInput = {
@@ -47463,6 +53412,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
@@ -47471,6 +53421,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutOwnerInput = {
@@ -47501,11 +53452,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutOwnerInput = {
@@ -47536,6 +53489,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PropertyUpdateWithoutTenantInput = {
@@ -47562,6 +53516,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
     listings?: ListingUpdateManyWithoutPropertyNestedInput
     building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
@@ -47570,6 +53525,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutTenantInput = {
@@ -47600,11 +53556,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
     listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutTenantInput = {
@@ -47635,6 +53593,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PropertyPersonUpdateWithoutPersonInput = {
@@ -47874,6 +53833,78 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerCreateManyTemplateInput = {
+    id?: number
+    propertyId: number
+    generatedById: number
+    qrContent: string
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type FlyerUpdateWithoutTemplateInput = {
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    property?: PropertyUpdateOneRequiredWithoutFlyersNestedInput
+    generatedBy?: UserUpdateOneRequiredWithoutFlyersGeneratedNestedInput
+    shipments?: FlyerShipmentUpdateManyWithoutFlyerNestedInput
+  }
+
+  export type FlyerUncheckedUpdateWithoutTemplateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    generatedById?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    shipments?: FlyerShipmentUncheckedUpdateManyWithoutFlyerNestedInput
+  }
+
+  export type FlyerUncheckedUpdateManyWithoutTemplateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    generatedById?: IntFieldUpdateOperationsInput | number
+    qrContent?: StringFieldUpdateOperationsInput | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FlyerShipmentCreateManyFlyerInput = {
+    id?: number
+    userId: number
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FlyerShipmentUpdateWithoutFlyerInput = {
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutFlyerShipmentsNestedInput
+  }
+
+  export type FlyerShipmentUncheckedUpdateWithoutFlyerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FlyerShipmentUncheckedUpdateManyWithoutFlyerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
