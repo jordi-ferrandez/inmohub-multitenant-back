@@ -49,6 +49,8 @@ model User {
   propertyAttachmentsUploaded   PropertyAttachment[]   @relation("PropertyAttachmentUploadedBy")
   buildingAttachmentsUploaded   BuildingAttachment[]   @relation("BuildingAttachmentUploadedBy")
   mailboxingAttachmentsUploaded MailboxingAttachment[] @relation("MailboxingAttachmentUploadedBy")
+  flyersGenerated               Flyer[]                @relation("FlyerGeneratedBy")
+  flyerShipments                FlyerShipment[]
 
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
@@ -149,6 +151,7 @@ model Property {
   createdAt         DateTime             @default(now()) @map("created_at")
   updatedAt         DateTime             @default(now()) @updatedAt @map("updated_at")
   deletedAt         DateTime?            @map("deleted_at")
+  description       String?              @map("description")
   followUps         FollowUp[]
   listings          Listing[]
   building          Building             @relation(fields: [buildingId], references: [id])
@@ -158,6 +161,7 @@ model Property {
   attachments       PropertyAttachment[]
   propertyPersons   PropertyPerson[]
   reminders         Reminder[]
+  flyers            Flyer[]
 
   @@unique([number, floor, buildingId])
   @@index([buildingId], map: "idx_property_building")
@@ -455,4 +459,45 @@ enum MailboxingStatus {
 enum PropertyPersonRole {
   owner
   tenant
+}
+
+model FlyerTemplate {
+  id           Int       @id @default(autoincrement())
+  name         String
+  description  String?
+  thumbnailUrl String?   @map("thumbnail_url")
+  content      String? // HTML/SVG template content
+  isActive     Boolean   @default(true) @map("is_active")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt    DateTime? @map("deleted_at")
+  flyers       Flyer[]
+}
+
+model Flyer {
+  id            Int       @id @default(autoincrement())
+  propertyId    Int       @map("property_id")
+  templateId    Int       @map("template_id")
+  generatedById Int       @map("generated_by_id")
+  qrContent     String    @map("qr_content")
+  pdfUrl        String?   @map("pdf_url")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+
+  property    Property        @relation(fields: [propertyId], references: [id])
+  template    FlyerTemplate   @relation(fields: [templateId], references: [id])
+  generatedBy User            @relation("FlyerGeneratedBy", fields: [generatedById], references: [id])
+  shipments   FlyerShipment[]
+}
+
+model FlyerShipment {
+  id        Int      @id @default(autoincrement())
+  flyerId   Int      @map("flyer_id")
+  userId    Int      @map("user_id")
+  notes     String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  flyer Flyer @relation(fields: [flyerId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
 }

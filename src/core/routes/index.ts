@@ -12,6 +12,7 @@ import mailboxingRouter from "@modules/mailboxing/routes";
 import { reminderRouter } from "@modules/reminders";
 import activityRouter from "@modules/activity/routes";
 import aiRouter from "@modules/ai/routes";
+import { flyerRouter } from "@modules/flyers/routes/flyer.routes";
 
 function routerAPI(app: Express) {
   const router = express.Router();
@@ -28,6 +29,7 @@ function routerAPI(app: Express) {
   router.use("/reminders", reminderRouter);
   router.use("/activity", activityRouter);
   router.use("/ai", aiRouter);
+  router.use("/flyers", flyerRouter);
   router.use("/", testRouter);
 }
 export { routerAPI };

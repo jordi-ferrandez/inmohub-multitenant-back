@@ -60,6 +60,7 @@ export const patchPropertyBodySchema = z
     isInformer: z.boolean().optional(),
     isSecondResidence: z.boolean().optional(),
     isOpportunity: z.boolean().optional(),
+    description: z.string().optional().nullable(),
   })
   .strict()
   .refine(
