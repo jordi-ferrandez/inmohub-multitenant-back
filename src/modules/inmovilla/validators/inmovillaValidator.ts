@@ -17,19 +17,35 @@ import { errorResponse } from "@core/utils";
 //   "Calle prop Planta": z.string().min(1, "Planta es requerida"),
 // }) satisfies z.ZodType<InmovillaCSVRecord>;
 
-// Middleware para validar archivo CSV
+// Middleware para validar archivo de importación (CSV o Excel)
 export const validateCSVFile = (
   req: Request,
   res: Response,
   next: NextFunction
 ): void => {
   if (!req.file) {
-    errorResponse(res, "Archivo CSV es requerido", 400);
+    errorResponse(res, "Archivo es requerido", 400);
     return;
   }
 
-  if (req.file.mimetype !== "text/csv") {
-    errorResponse(res, "Formato de archivo inválido. Solo CSV permitido", 400);
+  const allowedMimetypes = [
+    "text/csv",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xlsx
+    "application/vnd.ms-excel", // .xls
+    "application/octet-stream" // A veces detectado así para CSV o Excel en algunos sistemas
+  ];
+
+  if (!allowedMimetypes.includes(req.file.mimetype)) {
+    // Si el mimetype es octet-stream, verificamos la extensión como respaldo
+    const extension = req.file.originalname.split(".").pop()?.toLowerCase();
+    const allowedExtensions = ["csv", "xlsx", "xls"];
+    
+    if (req.file.mimetype === "application/octet-stream" && extension && allowedExtensions.includes(extension)) {
+      next();
+      return;
+    }
+
+    errorResponse(res, "Formato de archivo inválido. Solo CSV o Excel (.xlsx, .xls) permitido", 400);
     return;
   }
 

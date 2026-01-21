@@ -42,6 +42,7 @@
     "nodemailer": "^7.0.12",
     "rrule": "^2.8.0",
     "tsconfig-paths": "^4.2.0",
+    "xlsx": "^0.18.5",
     "zod": "^3.25.67"
   },
   "devDependencies": {

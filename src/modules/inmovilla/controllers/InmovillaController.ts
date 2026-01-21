@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { InmovillaService } from "../services/InmovillaService";
 import { ImportDTO, ParsedCSVData } from "../types";
-import { parseInmovillaCSV } from "../utils";
+import { parseInmovillaCSV, parseInmovillaExcel } from "../utils";
 import { successResponse, errorResponse } from "@core/utils";
 import fs from "fs";
 import { log } from "console";
@@ -11,19 +11,25 @@ export class InmovillaController {
 
   async importCSV(req: Request, res: Response): Promise<void> {
     try {
-      // Validar que se haya subido un archivo CSV
+      // Validar que se haya subido un archivo
       if (!req.file) {
-        errorResponse(res, "Archivo CSV es requerido", 400);
+        errorResponse(res, "Archivo es requerido", 400);
         return;
       }
 
-      // 1. Parsear CSV (con validación de versión y estructura)
+      // 1. Detectar tipo de archivo y parsear
+      const extension = req.file.originalname.split(".").pop()?.toLowerCase();
       let parsedCSVData: ParsedCSVData;
+      
       try {
-        parsedCSVData = await parseInmovillaCSV(req.file.path);
+        if (extension === "xlsx" || extension === "xls") {
+          parsedCSVData = await parseInmovillaExcel(req.file.path);
+        } else {
+          parsedCSVData = await parseInmovillaCSV(req.file.path);
+        }
       } catch (error: any) {
         // Si el error es de validación de estructura, retornar error descriptivo
-        if (error.message && error.message.includes("estructura correcta")) {
+        if (error.message && (error.message.includes("estructura correcta") || error.message.includes("faltantes"))) {
           errorResponse(
             res,
             error.message,
