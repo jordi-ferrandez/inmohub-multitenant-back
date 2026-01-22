@@ -275,9 +275,8 @@ model Person {
   firstName          String           @map("first_name")
   lastName           String           @map("last_name")
   email              String?          @unique
-  birthDate          DateTime?        @map("birth_date")
-  gender             String?
-  createdAt          DateTime         @default(now()) @map("created_at")
+  notificationPreference NotificationPreference @default(NONE) @map("notification_preference")
+  createdAt              DateTime               @default(now()) @map("created_at")
   updatedAt          DateTime         @default(now()) @updatedAt @map("updated_at")
   deletedAt          DateTime?        @map("deleted_at")
   contactBuildings   Building[]       @relation("BuildingContact")
@@ -459,6 +458,13 @@ enum MailboxingStatus {
 enum PropertyPersonRole {
   owner
   tenant
+}
+
+enum NotificationPreference {
+  EMAIL
+  WHATSAPP
+  SMS
+  NONE
 }
 
 model FlyerTemplate {
