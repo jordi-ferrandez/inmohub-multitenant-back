@@ -311,8 +311,7 @@ exports.Prisma.PersonScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   email: 'email',
-  birthDate: 'birthDate',
-  gender: 'gender',
+  notificationPreference: 'notificationPreference',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -479,6 +478,13 @@ exports.MailboxingStatus = exports.$Enums.MailboxingStatus = {
   inside: 'inside',
   outside: 'outside',
   no_disturb: 'no_disturb'
+};
+
+exports.NotificationPreference = exports.$Enums.NotificationPreference = {
+  EMAIL: 'EMAIL',
+  WHATSAPP: 'WHATSAPP',
+  SMS: 'SMS',
+  NONE: 'NONE'
 };
 
 exports.PhoneType = exports.$Enums.PhoneType = {

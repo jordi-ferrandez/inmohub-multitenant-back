@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const phoneTypeEnum = z.enum(["Mobile", "Home", "Work", "Other"]);
 
-export const genderEnum = z.enum(["Masculino", "Femenino", "Otro"]);
+
 
 export const personPhoneSchema = z.object({
   phone: z
@@ -27,8 +27,7 @@ export const createPersonBodySchema = z.object({
   firstName: z.string().min(1, "El nombre es requerido"),
   lastName: z.string().min(1, "El apellido es requerido"),
   email: z.string().email("El email debe ser válido").optional().nullable(),
-  birthDate: z.coerce.date().optional(),
-  gender: genderEnum.optional(),
+  notificationPreference: z.enum(["EMAIL", "WHATSAPP", "SMS", "NONE"]).optional(),
   phones: z.array(personPhoneSchema).optional(),
 });
 
@@ -36,8 +35,7 @@ export const updatePersonBodySchema = z.object({
   firstName: z.string().min(1, "El nombre es requerido").optional(),
   lastName: z.string().min(1, "El apellido es requerido").optional(),
   email: z.string().email("El email debe ser válido").optional(),
-  birthDate: z.coerce.date().optional(),
-  gender: genderEnum.optional(),
+  notificationPreference: z.enum(["EMAIL", "WHATSAPP", "SMS", "NONE"]).optional(),
   phones: z.array(personPhoneUpdateSchema).optional(),
 });
 
@@ -71,5 +69,5 @@ export type PersonPhoneInput = z.infer<typeof personPhoneSchema>;
 export type PersonPhoneUpdateInput = z.infer<typeof personPhoneUpdateSchema>;
 export type AssignPropertyBody = z.infer<typeof assignPropertyBodySchema>;
 export type UnassignPropertyBody = z.infer<typeof unassignPropertyBodySchema>;
-export type Gender = z.infer<typeof genderEnum>;
+
 export type PhoneType = z.infer<typeof phoneTypeEnum>;

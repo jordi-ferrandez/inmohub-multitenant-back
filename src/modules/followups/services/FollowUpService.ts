@@ -16,6 +16,7 @@ import {
   ReminderRecurrenceConfig,
 } from "@modules/reminders/types";
 import { reminderService } from "@modules/reminders/services";
+import { notificationService } from "@modules/notifications/services/NotificationService";
 
 class FollowUpService {
   async createFollowUp(
@@ -27,11 +28,31 @@ class FollowUpService {
       where: { id: input.propertyId },
       include: {
         building: true,
+        propertyPersons: {
+          where: { role: 'owner' },
+          include: {
+            person: true,
+          },
+        },
       },
     });
 
     if (!property) {
       throw new Error("Propiedad no encontrada");
+    }
+
+    // Si la persona (propietario) no tiene preferencia de notificación y tiene email, establecer a EMAIL
+    if (property.propertyPersons && property.propertyPersons.length > 0) {
+      for (const pp of property.propertyPersons) {
+        const person = pp.person;
+        // @ts-ignore
+        if (person && person.email && (!person.notificationPreference || person.notificationPreference === 'NONE')) {
+          await prisma.person.update({
+            where: { id: person.id },
+            data: { notificationPreference: 'EMAIL' },
+          });
+        }
+      }
     }
 
     // Verificación de asignación removida - cualquier persona puede crear seguimientos sobre cualquier propiedad
@@ -123,6 +144,13 @@ class FollowUpService {
       sellerId,
       reminderInput: input.reminder,
     });
+
+    // Notificar al propietario si fue una visita (wasContacted = true)
+    if (followUp.wasContacted) {
+      notificationService.notifyPropertyVisit(followUp.id).catch((err: Error) => {
+        console.error("Error enviando notificación al propietario:", err);
+      });
+    }
 
     return this.mapToDTO(followUp);
   }

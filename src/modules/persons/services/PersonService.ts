@@ -28,7 +28,10 @@ export class PersonService {
 
     return prisma.person.create({
       data: {
-        ...personData,
+        firstName: personData.firstName,
+        lastName: personData.lastName,
+        email: personData.email,
+        notificationPreference: personData.notificationPreference,
         phones: phones ? { create: phones } : undefined,
       },
       include: {
@@ -86,7 +89,10 @@ export class PersonService {
     return prisma.person.update({
       where: { id },
       data: {
-        ...personData,
+        firstName: personData.firstName,
+        lastName: personData.lastName,
+        email: personData.email,
+        notificationPreference: personData.notificationPreference,
         ...(phones ? { phones: phoneOps } : {}),
       },
       include: {
