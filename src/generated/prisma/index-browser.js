@@ -437,6 +437,59 @@ exports.Prisma.FlyerShipmentScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.BoardScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  isPrivate: 'isPrivate',
+  creatorId: 'creatorId',
+  ownerId: 'ownerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.BoardColumnScalarFieldEnum = {
+  id: 'id',
+  boardId: 'boardId',
+  title: 'title',
+  order: 'order',
+  isSystem: 'isSystem',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.BoardCardScalarFieldEnum = {
+  id: 'id',
+  columnId: 'columnId',
+  title: 'title',
+  description: 'description',
+  priority: 'priority',
+  dueDate: 'dueDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  creatorId: 'creatorId',
+  responsibleId: 'responsibleId'
+};
+
+exports.Prisma.CardTagScalarFieldEnum = {
+  id: 'id',
+  cardId: 'cardId',
+  name: 'name',
+  color: 'color'
+};
+
+exports.Prisma.CardActivityScalarFieldEnum = {
+  id: 'id',
+  cardId: 'cardId',
+  userId: 'userId',
+  action: 'action',
+  details: 'details',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -521,6 +574,13 @@ exports.PropertyPersonRole = exports.$Enums.PropertyPersonRole = {
   tenant: 'tenant'
 };
 
+exports.CardPriority = exports.$Enums.CardPriority = {
+  low: 'low',
+  medium: 'medium',
+  high: 'high',
+  critical: 'critical'
+};
+
 exports.Prisma.ModelName = {
   Ping: 'Ping',
   Role: 'Role',
@@ -546,7 +606,12 @@ exports.Prisma.ModelName = {
   PropertyPerson: 'PropertyPerson',
   FlyerTemplate: 'FlyerTemplate',
   Flyer: 'Flyer',
-  FlyerShipment: 'FlyerShipment'
+  FlyerShipment: 'FlyerShipment',
+  Board: 'Board',
+  BoardColumn: 'BoardColumn',
+  BoardCard: 'BoardCard',
+  CardTag: 'CardTag',
+  CardActivity: 'CardActivity'
 };
 
 /**
