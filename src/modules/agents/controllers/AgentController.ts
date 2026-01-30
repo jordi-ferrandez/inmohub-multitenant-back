@@ -6,6 +6,18 @@ import { AvailablePropertyQueryParams } from "../types/agent-types";
 
 export class AgentController {
   // Obtener asignaciones activas del agente
+  /**
+   * @openapi
+   * /v1/agents/assignments/active:
+   *   get:
+   *     tags: [Agents]
+   *     summary: Obtener asignaciones activas del agente logueado
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de asignaciones activas
+   */
   async getActiveAssignments(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
@@ -22,6 +34,18 @@ export class AgentController {
   }
 
   // Obtener historial de asignaciones del agente
+  /**
+   * @openapi
+   * /v1/agents/assignments/history:
+   *   get:
+   *     tags: [Agents]
+   *     summary: Obtener historial de asignaciones del agente logueado
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Historial de asignaciones
+   */
   async getAssignmentsHistory(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
@@ -38,6 +62,27 @@ export class AgentController {
   }
 
   // Obtener propiedades disponibles para seguimiento
+  /**
+   * @openapi
+   * /v1/agents/properties/available:
+   *   get:
+   *     tags: [Agents]
+   *     summary: Obtener propiedades disponibles para seguimiento/trabajo
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista paginada de propiedades disponibles
+   */
   async getAvailableProperties(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;

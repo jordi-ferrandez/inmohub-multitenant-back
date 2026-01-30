@@ -9,6 +9,27 @@ import { log } from "console";
 export class InmovillaController {
   private inmovillaService = new InmovillaService();
 
+  /**
+   * @openapi
+   * /v1/inmovilla/import:
+   *   post:
+   *     tags: [Inmovilla]
+   *     summary: Importar datos inmobiliarios desde CSV o Excel de Inmovilla
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       content:
+   *         multipart/form-data:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               file:
+   *                 type: string
+   *                 format: binary
+   *     responses:
+   *       201:
+   *         description: Importación exitosa
+   */
   async importCSV(req: Request, res: Response): Promise<void> {
     try {
       // Validar que se haya subido un archivo

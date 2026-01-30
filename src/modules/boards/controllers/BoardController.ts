@@ -9,6 +9,18 @@ export class BoardController {
     this.service = new BoardService();
   }
 
+  /**
+   * @openapi
+   * /v1/boards:
+   *   get:
+   *     tags: [Boards]
+   *     summary: Obtener tableros (kanban) accesibles
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de tableros
+   */
   async getBoards(req: Request, res: Response) {
     try {
       const userId = req.user?.userId;
@@ -26,6 +38,24 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/{id}:
+   *   get:
+   *     tags: [Boards]
+   *     summary: Obtener detalles de un tablero por ID
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Detalles del tablero
+   */
   async getBoard(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -40,6 +70,27 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards:
+   *   post:
+   *     tags: [Boards]
+   *     summary: Crear un nuevo tablero
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               name:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Tablero creado
+   */
   async createBoard(req: Request, res: Response) {
     try {
       const creatorId = req.user?.userId;
@@ -57,6 +108,24 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/{id}/columns:
+   *   post:
+   *     tags: [Boards]
+   *     summary: Crear una columna en un tablero
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Columna creada
+   */
   async createColumn(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -77,6 +146,24 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/cards/{id}:
+   *   put:
+   *     tags: [Boards]
+   *     summary: Actualizar una tarjeta
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Tarjeta actualizada
+   */
   async updateCard(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -88,6 +175,33 @@ export class BoardController {
     }
   }
   
+  /**
+   * @openapi
+   * /v1/boards/cards/{id}/move:
+   *   patch:
+   *     tags: [Boards]
+   *     summary: Mover una tarjeta a otra columna
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               columnId:
+   *                 type: integer
+   *     responses:
+   *       200:
+   *         description: Tarjeta movida
+   */
   async moveCard(req: Request, res: Response) {
     try {
       const { id } = req.params;

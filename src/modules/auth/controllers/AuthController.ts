@@ -22,6 +22,24 @@ class AuthController {
     this.authService = new AuthService();
   }
 
+  /**
+   * @openapi
+   * /v1/auth/register:
+   *   post:
+   *     tags: [Auth]
+   *     summary: Registrar un nuevo usuario
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             $ref: '#/components/schemas/RegisterRequest'
+   *     responses:
+   *       201:
+   *         description: Usuario creado exitosamente
+   *       400:
+   *         description: Error en los datos proporcionados
+   */
   async register(
     req: Request<{}, {}, RegisterRequest>,
     res: Response,
@@ -40,6 +58,29 @@ class AuthController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/auth/login:
+   *   post:
+   *     tags: [Auth]
+   *     summary: Iniciar sesión en el sistema
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               email:
+   *                 type: string
+   *               password:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Login exitoso, devuelve JWT
+   *       401:
+   *         description: Credenciales inválidas
+   */
   async login(
     req: Request<{}, {}, LoginRequest>,
     res: Response,
@@ -58,6 +99,33 @@ class AuthController {
 
   // Nuevos métodos CRUD para gestión de usuarios
 
+  /**
+   * @openapi
+   * /v1/auth/users:
+   *   post:
+   *     tags: [Auth]
+   *     summary: Crear un nuevo usuario
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               email:
+   *                 type: string
+   *               password:
+   *                 type: string
+   *               firstName:
+   *                 type: string
+   *               lastName:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Usuario creado
+   */
   async createUser(
     req: Request<{}, {}, CreateUserRequest>,
     res: Response,
@@ -134,6 +202,24 @@ class AuthController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/auth/users/{id}:
+   *   get:
+   *     tags: [Auth]
+   *     summary: Obtener detalles de un usuario por ID
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Detalles del usuario
+   */
   async getUserById(
     req: Request,
     res: Response,
@@ -150,6 +236,30 @@ class AuthController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/auth/users/{id}:
+   *   put:
+   *     tags: [Auth]
+   *     summary: Actualizar datos de un usuario
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *     responses:
+   *       200:
+   *         description: Usuario actualizado
+   */
   async updateUser(
     req: Request,
     res: Response,
@@ -210,6 +320,18 @@ class AuthController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/auth/roles:
+   *   get:
+   *     tags: [Auth]
+   *     summary: Obtener todos los roles disponibles
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de roles
+   */
   async getAllRoles(
     req: Request,
     res: Response,
@@ -332,6 +454,27 @@ class AuthController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/auth/onboarding:
+   *   patch:
+   *     tags: [Auth]
+   *     summary: Marcar un tour de onboarding como completado
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               tourId:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Estado actualizado
+   */
   async completeOnboarding(
     req: Request,
     res: Response,

@@ -13,6 +13,16 @@ import {
 export class BuildingController {
   BuildingService = new BuildingService();
 
+  /**
+   * @openapi
+   * /v1/buildings/grouped:
+   *   get:
+   *     tags: [Buildings]
+   *     summary: Obtener edificios agrupados por calles
+   *     responses:
+   *       200:
+   *         description: Edificios agrupados por calle
+   */
   async getBuildingsGroupedByStreets(
     req: Request,
     res: Response
@@ -32,6 +42,29 @@ export class BuildingController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/buildings:
+   *   get:
+   *     tags: [Buildings]
+   *     summary: Obtener lista paginada de edificios
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: street
+   *         schema:
+   *           type: string
+   *     responses:
+   *       200:
+   *         description: Lista de edificios
+   */
   async getBuildings(req: Request, res: Response): Promise<void> {
     try {
       const query = req.queryValidated as GetBuildingsQuery;
@@ -45,6 +78,22 @@ export class BuildingController {
       );
     }
   }
+  /**
+   * @openapi
+   * /v1/buildings/street/{streetName}:
+   *   get:
+   *     tags: [Buildings]
+   *     summary: Obtener edificios de una calle específica
+   *     parameters:
+   *       - in: path
+   *         name: streetName
+   *         required: true
+   *         schema:
+   *           type: string
+   *     responses:
+   *       200:
+   *         description: Lista de edificios de la calle
+   */
   async getBuildingsByStreetName(req: Request, res: Response): Promise<void> {
     try {
       const params = req.paramsValidated as GetBuildingsByStreetNameParams;
@@ -61,6 +110,24 @@ export class BuildingController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/buildings/{id}:
+   *   get:
+   *     tags: [Buildings]
+   *     summary: Obtener detalles de un edificio por ID
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Detalles del edificio
+   *       404:
+   *         description: Edificio no encontrado
+   */
   async getBuildingById(req: Request, res: Response): Promise<void> {
     try {
       const params = req.paramsValidated as GetBuildingByIdParams;

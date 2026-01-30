@@ -5,6 +5,7 @@ import morgan from "morgan";
 import { PrismaClient } from "@generated/prisma";
 import { routerAPI } from "@core/routes";
 import { errorHandler, requestLogger } from "@core/middlewares";
+import { setupSwagger } from "@core/config/swagger";
 import { initUploadsDir } from "@core/config/initUploadsDir";
 
 const prisma = new PrismaClient();
@@ -26,6 +27,9 @@ app.use(express.json());
 initUploadsDir();
 
 app.use(requestLogger);
+
+// Documentación de la API
+setupSwagger(app);
 
 routerAPI(app);
 

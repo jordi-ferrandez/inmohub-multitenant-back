@@ -9,6 +9,29 @@ import {
 import { successResponse, errorResponse } from "@core/utils";
 
 class AssignmentController {
+  /**
+   * @openapi
+   * /v1/assignments:
+   *   post:
+   *     tags: [Assignments]
+   *     summary: Crear una nueva asignación de edificio a un agente
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               userId:
+   *                 type: integer
+   *               buildingId:
+   *                 type: integer
+   *     responses:
+   *       201:
+   *         description: Asignación creada
+   */
   async createAssignment(req: Request, res: Response) {
     try {
       const assignment = await assignmentService.createAssignment(
@@ -20,6 +43,18 @@ class AssignmentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/assignments:
+   *   get:
+   *     tags: [Assignments]
+   *     summary: Obtener lista de asignaciones
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de asignaciones
+   */
   async getAssignments(req: Request, res: Response) {
     try {
       const result = await assignmentService.getAssignments(req.queryValidated);
@@ -29,6 +64,24 @@ class AssignmentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/assignments/{id}:
+   *   get:
+   *     tags: [Assignments]
+   *     summary: Obtener detalles de una asignación por ID
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Detalles de la asignación
+   */
   async getAssignmentById(req: Request<AssignmentParams>, res: Response) {
     try {
       const id = parseInt(req.paramsValidated.id);
@@ -39,6 +92,30 @@ class AssignmentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/assignments/{id}:
+   *   put:
+   *     tags: [Assignments]
+   *     summary: Actualizar una asignación
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *     responses:
+   *       200:
+   *         description: Asignación actualizada
+   */
   async updateAssignment(
     req: Request<AssignmentParams, {}, UpdateAssignmentRequest>,
     res: Response
@@ -55,6 +132,24 @@ class AssignmentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/assignments/{id}:
+   *   delete:
+   *     tags: [Assignments]
+   *     summary: Eliminar una asignación
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Asignación eliminada
+   */
   async deleteAssignment(req: Request<AssignmentParams>, res: Response) {
     try {
       const id = parseInt(req.paramsValidated.id);
@@ -65,6 +160,24 @@ class AssignmentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/assignments/user/{userId}:
+   *   get:
+   *     tags: [Assignments]
+   *     summary: Obtener asignaciones de un usuario específico
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: userId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de asignaciones del usuario
+   */
   async getAssignmentsByUser(req: Request<{ userId: string }>, res: Response) {
     try {
       const userId = parseInt(req.paramsValidated.userId);
@@ -75,6 +188,24 @@ class AssignmentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/assignments/building/{buildingId}:
+   *   get:
+   *     tags: [Assignments]
+   *     summary: Obtener asignaciones por edificio
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: buildingId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de asignaciones del edificio
+   */
   async getAssignmentsByBuilding(
     req: Request<{ buildingId: string }, any, any, { activeOnly?: string }>,
     res: Response

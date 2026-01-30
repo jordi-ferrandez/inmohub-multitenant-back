@@ -21,6 +21,22 @@ export class BuildingAttachmentController {
     return userId;
   }
 
+  /**
+   * @openapi
+   * /v1/buildings/{id}/attachments:
+   *   get:
+   *     tags: [Buildings]
+   *     summary: Listar archivos adjuntos de un edificio
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de adjuntos
+   */
   async list(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.paramsValidated;
@@ -31,6 +47,33 @@ export class BuildingAttachmentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/buildings/{id}/attachments:
+   *   post:
+   *     tags: [Buildings]
+   *     summary: Subir un archivo adjunto a un edificio
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       content:
+   *         multipart/form-data:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               file:
+   *                 type: string
+   *                 format: binary
+   *     responses:
+   *       201:
+   *         description: Archivo subido
+   */
   async upload(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
