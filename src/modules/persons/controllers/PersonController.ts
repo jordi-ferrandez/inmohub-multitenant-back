@@ -13,6 +13,31 @@ import { successResponse, errorResponse, paginatedResponse } from "@core/utils";
 export class PersonController {
   private service = new PersonService();
 
+  /**
+   * @openapi
+   * /v1/persons:
+   *   post:
+   *     tags: [Persons]
+   *     summary: Crear una nueva persona (propietario/inquilino)
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               firstName:
+   *                 type: string
+   *               lastName:
+   *                 type: string
+   *               email:
+   *                 type: string
+   *               phone:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Persona creada
+   */
   async create(req: Request, res: Response) {
     try {
       const body = createPersonBodySchema.parse(req.body);
@@ -31,6 +56,28 @@ export class PersonController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/persons/{id}:
+   *   put:
+   *     tags: [Persons]
+   *     summary: Actualizar datos de una persona
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *     responses:
+   *       200:
+   *         description: Persona actualizada
+   */
   async update(req: Request, res: Response) {
     try {
       const id = Number(req.params.id);
@@ -55,6 +102,25 @@ export class PersonController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/persons:
+   *   get:
+   *     tags: [Persons]
+   *     summary: Obtener lista paginada de personas
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de personas
+   */
   async list(req: Request, res: Response) {
     try {
       const query = getPersonsQuerySchema.parse(req.query);
@@ -65,6 +131,22 @@ export class PersonController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/persons/search:
+   *   get:
+   *     tags: [Persons]
+   *     summary: Buscar personas por nombre, email o teléfono
+   *     parameters:
+   *       - in: query
+   *         name: search
+   *         required: true
+   *         schema:
+   *           type: string
+   *     responses:
+   *       200:
+   *         description: Resultados de búsqueda
+   */
   async search(req: Request, res: Response) {
     try {
       console.log('aquiiiiii ' + JSON.stringify(req.query));
@@ -80,6 +162,22 @@ export class PersonController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/persons/{id}:
+   *   delete:
+   *     tags: [Persons]
+   *     summary: Eliminar una persona (soft delete)
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Persona eliminada
+   */
   async delete(req: Request, res: Response) {
     try {
       const id = Number(req.params.id);
@@ -96,6 +194,33 @@ export class PersonController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/persons/{id}/properties/{propertyId}:
+   *   post:
+   *     tags: [Persons]
+   *     summary: Vincular una persona a una propiedad con un rol
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *       - in: path
+   *         name: propertyId
+   *         required: true
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               role:
+   *                 type: string
+   *                 enum: [owner, tenant]
+   *     responses:
+   *       200:
+   *         description: Vinculación exitosa
+   */
   async assignProperty(req: Request, res: Response) {
     try {
       const personId = Number(req.params.id);
@@ -150,6 +275,22 @@ export class PersonController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/persons/{id}/relations:
+   *   get:
+   *     tags: [Persons]
+   *     summary: Obtener relaciones de una persona con propiedades
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Relaciones de la persona
+   */
   async getRelations(req: Request, res: Response) {
     try {
       const id = Number(req.params.id);

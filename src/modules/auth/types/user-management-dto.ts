@@ -13,6 +13,7 @@ export type UserManagementDTO = {
   }>;
   createdAt: Date;
   updatedAt: Date;
+  completedTours: string[];
 };
 
 export type UserListResponse = {

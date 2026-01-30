@@ -18,6 +18,31 @@ export class FollowUpController {
 
     return userId;
   }
+  /**
+   * @openapi
+   * /v1/followups:
+   *   post:
+   *     tags: [FollowUps]
+   *     summary: Crear un nuevo seguimiento
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               propertyId:
+   *                 type: integer
+   *               wasContacted:
+   *                 type: boolean
+   *               comment:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Seguimiento creado
+   */
   async createFollowUp(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -30,6 +55,24 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups/{id}:
+   *   get:
+   *     tags: [FollowUps]
+   *     summary: Obtener un seguimiento por ID
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Detalles del seguimiento
+   */
   async getFollowUpById(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -46,6 +89,27 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups:
+   *   get:
+   *     tags: [FollowUps]
+   *     summary: Obtener lista paginada de seguimientos
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de seguimientos (del usuario activo o filtrada)
+   */
   async getFollowUps(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -80,6 +144,30 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups/{id}:
+   *   put:
+   *     tags: [FollowUps]
+   *     summary: Actualizar un seguimiento
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *     responses:
+   *       200:
+   *         description: Seguimiento actualizado
+   */
   async updateFollowUp(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -97,6 +185,24 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups/{id}:
+   *   delete:
+   *     tags: [FollowUps]
+   *     summary: Eliminar un seguimiento
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       204:
+   *         description: Seguimiento eliminado
+   */
   async deleteFollowUp(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -110,6 +216,18 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups/stats:
+   *   get:
+   *     tags: [FollowUps]
+   *     summary: Obtener estadísticas de seguimientos del usuario
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Estadísticas de seguimientos
+   */
   async getFollowUpStats(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -139,6 +257,24 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups/{id}/complete:
+   *   patch:
+   *     tags: [FollowUps]
+   *     summary: Completar un seguimiento planificado
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Seguimiento completado
+   */
   async completeFollowUp(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -155,6 +291,18 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups/planned:
+   *   get:
+   *     tags: [FollowUps]
+   *     summary: Obtener seguimientos planificados (pendientes)
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de seguimientos planificados
+   */
   async getPlannedFollowUps(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);

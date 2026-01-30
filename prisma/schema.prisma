@@ -55,6 +55,15 @@ model User {
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
+
+  completedTours String[] @map("completed_tours") @default([])
+
+  // Board relations
+  boardsCreated        Board[]                @relation("BoardCreator")
+  boardsOwned          Board[]                @relation("BoardOwner")
+  cardsCreated         BoardCard[]            @relation("CardCreator")
+  cardsResponsible     BoardCard[]            @relation("CardResponsible")
+  cardActivities       CardActivity[]
 }
 
 model Permission {
@@ -506,4 +515,82 @@ model FlyerShipment {
   
   flyer     Flyer    @relation(fields: [flyerId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
+}
+
+model Board {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  isPrivate   Boolean  @default(false)
+  creatorId   Int      @map("creator_id")
+  ownerId     Int      @map("owner_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  
+  creator     User     @relation("BoardCreator", fields: [creatorId], references: [id])
+  owner       User     @relation("BoardOwner", fields: [ownerId], references: [id])
+  columns     BoardColumn[]
+}
+
+model BoardColumn {
+  id        Int      @id @default(autoincrement())
+  boardId   Int      @map("board_id")
+  title     String
+  order     Int
+  isSystem  Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  
+  board     Board    @relation(fields: [boardId], references: [id])
+  cards     BoardCard[]
+}
+
+model BoardCard {
+  id          Int      @id @default(autoincrement())
+  columnId    Int      @map("column_id")
+  title       String
+  description String?
+  priority    CardPriority @default(medium)
+  dueDate     DateTime? @map("due_date")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  creatorId   Int      @map("creator_id")
+  responsibleId Int?   @map("responsible_id")
+
+  column      BoardColumn @relation(fields: [columnId], references: [id])
+  creator     User        @relation("CardCreator", fields: [creatorId], references: [id])
+  responsible User?       @relation("CardResponsible", fields: [responsibleId], references: [id])
+  tags        CardTag[]
+  activities  CardActivity[]
+}
+
+model CardTag {
+  id        Int      @id @default(autoincrement())
+  cardId    Int      @map("card_id")
+  name      String
+  color     String?
+  
+  card      BoardCard @relation(fields: [cardId], references: [id])
+}
+
+model CardActivity {
+  id        Int      @id @default(autoincrement())
+  cardId    Int      @map("card_id")
+  userId    Int      @map("user_id")
+  action    String
+  details   Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  card      BoardCard @relation(fields: [cardId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+}
+
+enum CardPriority {
+  low
+  medium
+  high
+  critical
 }

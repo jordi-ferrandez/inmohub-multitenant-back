@@ -1,4 +1,4 @@
-import express from "express";
+        import express from "express";
 import { AuthController } from "../controllers";
 import { bindAllMethods } from "@core/utils";
 import {
@@ -35,6 +35,11 @@ authRouter.post(
   authenticationToken,
   validateChangePassword,
   authController.changePassword
+);
+authRouter.patch(
+  "/onboarding",
+  authenticationToken,
+  authController.completeOnboarding
 );
 
 // Rutas protegidas - CRUD de usuarios (solo para directores)
@@ -96,6 +101,13 @@ authRouter.put(
   validateUserParams,
   validateUpdateUserRoles,
   authController.updateUserRoles
+);
+authRouter.post(
+  "/users/:id/reset-onboarding",
+  authenticationToken,
+  requireDirectorRole,
+  validateUserParams,
+  authController.resetOnboarding
 );
 authRouter.get(
   "/roles",

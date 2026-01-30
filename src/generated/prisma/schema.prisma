@@ -55,6 +55,12 @@ model User {
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
+
+  // Board relations
+  boardsOwned      Board[]        @relation("BoardOwner")
+  cardsCreated     BoardCard[]    @relation("CardCreator")
+  cardsResponsible BoardCard[]    @relation("CardResponsible")
+  cardActivities   CardActivity[]
 }
 
 model Permission {
@@ -271,23 +277,22 @@ model MailboxingAttachment {
 }
 
 model Person {
-  id                 Int              @id @default(autoincrement())
-  firstName          String           @map("first_name")
-  lastName           String           @map("last_name")
-  email              String?          @unique
-  birthDate          DateTime?        @map("birth_date")
-  gender             String?
-  createdAt          DateTime         @default(now()) @map("created_at")
-  updatedAt          DateTime         @default(now()) @updatedAt @map("updated_at")
-  deletedAt          DateTime?        @map("deleted_at")
-  contactBuildings   Building[]       @relation("BuildingContact")
-  informerBuildings  Building[]       @relation("BuildingInformer")
-  presidentBuildings Building[]       @relation("BuildingPresident")
-  phones             PersonPhone[]
-  propertiesOwned    Property[]       @relation("PropertyOwner")
-  propertiesTenanted Property[]       @relation("PropertyTenant")
-  propertyPersons    PropertyPerson[]
-  reminders          Reminder[]
+  id                     Int                    @id @default(autoincrement())
+  firstName              String                 @map("first_name")
+  lastName               String                 @map("last_name")
+  email                  String?                @unique
+  notificationPreference NotificationPreference @default(NONE) @map("notification_preference")
+  createdAt              DateTime               @default(now()) @map("created_at")
+  updatedAt              DateTime               @default(now()) @updatedAt @map("updated_at")
+  deletedAt              DateTime?              @map("deleted_at")
+  contactBuildings       Building[]             @relation("BuildingContact")
+  informerBuildings      Building[]             @relation("BuildingInformer")
+  presidentBuildings     Building[]             @relation("BuildingPresident")
+  phones                 PersonPhone[]
+  propertiesOwned        Property[]             @relation("PropertyOwner")
+  propertiesTenanted     Property[]             @relation("PropertyTenant")
+  propertyPersons        PropertyPerson[]
+  reminders              Reminder[]
 }
 
 model PersonPhone {
@@ -461,6 +466,13 @@ enum PropertyPersonRole {
   tenant
 }
 
+enum NotificationPreference {
+  EMAIL
+  WHATSAPP
+  SMS
+  NONE
+}
+
 model FlyerTemplate {
   id           Int       @id @default(autoincrement())
   name         String
@@ -500,4 +512,80 @@ model FlyerShipment {
 
   flyer Flyer @relation(fields: [flyerId], references: [id])
   user  User  @relation(fields: [userId], references: [id])
+}
+
+model Board {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  isPrivate   Boolean   @default(false)
+  ownerId     Int       @map("owner_id")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+  owner   User          @relation("BoardOwner", fields: [ownerId], references: [id])
+  columns BoardColumn[]
+}
+
+model BoardColumn {
+  id        Int       @id @default(autoincrement())
+  boardId   Int       @map("board_id")
+  title     String
+  order     Int
+  isSystem  Boolean   @default(false)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  board Board       @relation(fields: [boardId], references: [id])
+  cards BoardCard[]
+}
+
+model BoardCard {
+  id            Int          @id @default(autoincrement())
+  columnId      Int          @map("column_id")
+  title         String
+  description   String?
+  priority      CardPriority @default(medium)
+  dueDate       DateTime?    @map("due_date")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @default(now()) @updatedAt @map("updated_at")
+  deletedAt     DateTime?    @map("deleted_at")
+  creatorId     Int          @map("creator_id")
+  responsibleId Int?         @map("responsible_id")
+
+  column      BoardColumn    @relation(fields: [columnId], references: [id])
+  creator     User           @relation("CardCreator", fields: [creatorId], references: [id])
+  responsible User?          @relation("CardResponsible", fields: [responsibleId], references: [id])
+  tags        CardTag[]
+  activities  CardActivity[]
+}
+
+model CardTag {
+  id     Int     @id @default(autoincrement())
+  cardId Int     @map("card_id")
+  name   String
+  color  String?
+
+  card BoardCard @relation(fields: [cardId], references: [id])
+}
+
+model CardActivity {
+  id        Int      @id @default(autoincrement())
+  cardId    Int      @map("card_id")
+  userId    Int      @map("user_id")
+  action    String
+  details   Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  card BoardCard @relation(fields: [cardId], references: [id])
+  user User      @relation(fields: [userId], references: [id])
+}
+
+enum CardPriority {
+  low
+  medium
+  high
+  critical
 }

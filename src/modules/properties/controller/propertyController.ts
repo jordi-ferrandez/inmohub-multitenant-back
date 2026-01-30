@@ -8,6 +8,22 @@ import {
 
 export class PropertyController {
   PropertyService = new PropertyService();
+  /**
+   * @openapi
+   * /v1/properties/{id}:
+   *   get:
+   *     tags: [Properties]
+   *     summary: Obtener detalles de una propiedad por ID
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Detalles de la propiedad
+   */
   async getPropertyById(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.paramsValidated;
@@ -20,6 +36,29 @@ export class PropertyController {
   }
 
 
+  /**
+   * @openapi
+   * /v1/properties:
+   *   get:
+   *     tags: [Properties]
+   *     summary: Obtener lista paginada de propiedades
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: status
+   *         schema:
+   *           type: string
+   *     responses:
+   *       200:
+   *         description: Lista de propiedades
+   */
   async getProperty(req: Request, res: Response): Promise<void> {
     try {
       const query = req.queryValidated as GetPropertiesQuery;
@@ -34,6 +73,28 @@ export class PropertyController {
   }
 
   
+  /**
+   * @openapi
+   * /v1/properties/{id}:
+   *   patch:
+   *     tags: [Properties]
+   *     summary: Actualizar parcialmente una propiedad
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *     responses:
+   *       200:
+   *         description: Propiedad actualizada
+   */
   async patchPropertyById(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.paramsValidated;
@@ -47,6 +108,30 @@ export class PropertyController {
   }
 
 
+  /**
+   * @openapi
+   * /v1/properties/{id}/followups:
+   *   get:
+   *     tags: [Properties]
+   *     summary: Obtener seguimientos de una propiedad específica
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de seguimientos de la propiedad
+   */
   async getPropertyFollowUps(req: Request, res: Response): Promise<void> {
     try {
       const userIdStr = req.user?.userId;

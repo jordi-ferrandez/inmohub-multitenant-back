@@ -5,6 +5,16 @@ import { FlyerService } from "../services/FlyerService";
 export class FlyerController {
   private flyerService = new FlyerService();
 
+  /**
+   * @openapi
+   * /v1/flyers/templates:
+   *   get:
+   *     tags: [Flyers]
+   *     summary: Obtener plantillas de flyers disponibles
+   *     responses:
+   *       200:
+   *         description: Lista de plantillas
+   */
   async getTemplates(req: Request, res: Response): Promise<void> {
     try {
       const templates = await this.flyerService.getTemplates();
@@ -28,6 +38,31 @@ export class FlyerController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/flyers:
+   *   post:
+   *     tags: [Flyers]
+   *     summary: Crear un nuevo flyer para una propiedad
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               propertyId:
+   *                 type: integer
+   *               templateId:
+   *                 type: integer
+   *               qrContent:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Flyer creado
+   */
   async createFlyer(req: Request, res: Response): Promise<void> {
     try {
       const { propertyId, templateId, qrContent } = req.body;

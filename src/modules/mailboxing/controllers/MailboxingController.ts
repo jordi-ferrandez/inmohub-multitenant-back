@@ -24,6 +24,29 @@ export class MailboxingController {
     return userId;
   }
 
+  /**
+   * @openapi
+   * /v1/mailboxing:
+   *   post:
+   *     tags: [Mailboxing]
+   *     summary: Registrar una actividad de buzoneo
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               assignmentId:
+   *                 type: integer
+   *               status:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Actividad registrada
+   */
   async createMailboxing(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -55,6 +78,27 @@ export class MailboxingController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/mailboxing:
+   *   get:
+   *     tags: [Mailboxing]
+   *     summary: Obtener lista paginada de actividades de buzoneo
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de actividades
+   */
   async getMailboxings(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -82,6 +126,30 @@ export class MailboxingController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/mailboxing/{id}:
+   *   put:
+   *     tags: [Mailboxing]
+   *     summary: Actualizar una actividad de buzoneo
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *     responses:
+   *       200:
+   *         description: Actividad actualizada
+   */
   async updateMailboxing(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -99,6 +167,24 @@ export class MailboxingController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/mailboxing/{id}:
+   *   delete:
+   *     tags: [Mailboxing]
+   *     summary: Eliminar una actividad de buzoneo
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Actividad eliminada
+   */
   async deleteMailboxing(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -114,6 +200,18 @@ export class MailboxingController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/mailboxing/assignments:
+   *   get:
+   *     tags: [Mailboxing]
+   *     summary: Obtener asignaciones de buzoneo activas para el usuario
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de asignaciones activas
+   */
   async getActiveAssignments(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
@@ -126,6 +224,33 @@ export class MailboxingController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/mailboxing/{mailboxingId}/attachments:
+   *   post:
+   *     tags: [Mailboxing]
+   *     summary: Subir un archivo adjunto a una actividad de buzoneo
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: mailboxingId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       content:
+   *         multipart/form-data:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               file:
+   *                 type: string
+   *                 format: binary
+   *     responses:
+   *       201:
+   *         description: Archivo subido
+   */
   async uploadAttachment(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);

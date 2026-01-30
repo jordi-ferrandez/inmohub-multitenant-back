@@ -41,6 +41,8 @@
     "multer": "^2.0.1",
     "nodemailer": "^7.0.12",
     "rrule": "^2.8.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "tsconfig-paths": "^4.2.0",
     "xlsx": "^0.18.5",
     "zod": "^3.25.67"
@@ -53,6 +55,8 @@
     "@types/morgan": "^1.9.10",
     "@types/node": "^22.15.29",
     "@types/nodemailer": "^7.0.5",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "prisma": "^6.15.0",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.16",

@@ -24,6 +24,32 @@ class ReminderController {
     return userId;
   }
 
+  /**
+   * @openapi
+   * /v1/reminders:
+   *   post:
+   *     tags: [Reminders]
+   *     summary: Crear un nuevo recordatorio o tarea
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               title:
+   *                 type: string
+   *               description:
+   *                 type: string
+   *               date:
+   *                 type: string
+   *                 format: date-time
+   *     responses:
+   *       201:
+   *         description: Recordatorio creado
+   */
   async createReminder(
     req: Request<{}, {}, CreateReminderRequest>,
     res: Response
@@ -42,6 +68,18 @@ class ReminderController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/reminders:
+   *   get:
+   *     tags: [Reminders]
+   *     summary: Obtener lista de recordatorios del usuario
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de recordatorios
+   */
   async getReminders(req: Request, res: Response) {
     try {
       const userId = this.extractUserId(req, res);
@@ -57,6 +95,24 @@ class ReminderController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/reminders/{id}:
+   *   get:
+   *     tags: [Reminders]
+   *     summary: Obtener un recordatorio por ID
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Detalles del recordatorio
+   */
   async getReminder(req: Request, res: Response) {
     try {
       const userId = this.extractUserId(req, res);
@@ -73,6 +129,30 @@ class ReminderController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/reminders/{id}:
+   *   put:
+   *     tags: [Reminders]
+   *     summary: Actualizar un recordatorio
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *     responses:
+   *       200:
+   *         description: Recordatorio actualizado
+   */
   async updateReminder(
     req: Request,
     res: Response
@@ -112,6 +192,24 @@ class ReminderController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/reminders/{id}:
+   *   delete:
+   *     tags: [Reminders]
+   *     summary: Eliminar un recordatorio
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       204:
+   *         description: Recordatorio eliminado
+   */
   async deleteReminder(req: Request, res: Response) {
     try {
       const userId = this.extractUserId(req, res);
@@ -127,6 +225,29 @@ class ReminderController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/reminders/agenda:
+   *   get:
+   *     tags: [Reminders]
+   *     summary: Obtener la agenda (eventos en un rango de fechas)
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: startDate
+   *         schema:
+   *           type: string
+   *           format: date
+   *       - in: query
+   *         name: endDate
+   *         schema:
+   *           type: string
+   *           format: date
+   *     responses:
+   *       200:
+   *         description: Eventos de la agenda
+   */
   async getAgenda(req: Request, res: Response) {
     try {
       const userId = this.extractUserId(req, res);
