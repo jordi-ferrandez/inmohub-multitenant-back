@@ -331,6 +331,47 @@ class AuthController {
       return;
     }
   }
+
+  async completeOnboarding(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const userId = (req as any).user.userId;
+      const { tourId } = req.body;
+      if (!tourId) {
+        throw new Error("tourId es requerido");
+      }
+      const updatedUser = await this.authService.updateOnboardingStatus(
+        userId,
+        tourId
+      );
+      successResponse(res, updatedUser, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al completar onboarding", 400);
+      return;
+    }
+  }
+
+  async resetOnboarding(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const params = req.params as any;
+      const updatedUser = await this.authService.resetOnboardingStatus(
+        parseInt(params.id)
+      );
+      successResponse(res, updatedUser, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al resetear onboarding", 400);
+      return;
+    }
+  }
 }
 
 export { AuthController };

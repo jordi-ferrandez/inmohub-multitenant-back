@@ -6653,6 +6653,7 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     deletedAt: number
+    completedTours: number
     _all: number
   }
 
@@ -6717,6 +6718,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
+    completedTours?: true
     _all?: true
   }
 
@@ -6822,6 +6824,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
+    completedTours: string[]
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -6859,6 +6862,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    completedTours?: boolean
     roles?: boolean | User$rolesArgs<ExtArgs>
     assignments?: boolean | User$assignmentsArgs<ExtArgs>
     followUps?: boolean | User$followUpsArgs<ExtArgs>
@@ -6895,6 +6899,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    completedTours?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6913,6 +6918,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    completedTours?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -6931,9 +6937,10 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    completedTours?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "passwordHash" | "firstName" | "lastName" | "phone" | "avatarUrl" | "isActive" | "emailVerified" | "verificationToken" | "resetPasswordToken" | "resetPasswordExpires" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "passwordHash" | "firstName" | "lastName" | "phone" | "avatarUrl" | "isActive" | "emailVerified" | "verificationToken" | "resetPasswordToken" | "resetPasswordExpires" | "createdAt" | "updatedAt" | "deletedAt" | "completedTours", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     roles?: boolean | User$rolesArgs<ExtArgs>
     assignments?: boolean | User$assignmentsArgs<ExtArgs>
@@ -6994,6 +7001,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       deletedAt: Date | null
+      completedTours: string[]
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -7449,6 +7457,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly deletedAt: FieldRef<"User", 'DateTime'>
+    readonly completedTours: FieldRef<"User", 'String[]'>
   }
     
 
@@ -40965,7 +40974,8 @@ export namespace Prisma {
     resetPasswordExpires: 'resetPasswordExpires',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    deletedAt: 'deletedAt'
+    deletedAt: 'deletedAt',
+    completedTours: 'completedTours'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -41793,6 +41803,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    completedTours?: StringNullableListFilter<"User">
     roles?: UserRoleListRelationFilter
     assignments?: AssignmentListRelationFilter
     followUps?: FollowUpListRelationFilter
@@ -41828,6 +41839,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
+    completedTours?: SortOrder
     roles?: UserRoleOrderByRelationAggregateInput
     assignments?: AssignmentOrderByRelationAggregateInput
     followUps?: FollowUpOrderByRelationAggregateInput
@@ -41866,6 +41878,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    completedTours?: StringNullableListFilter<"User">
     roles?: UserRoleListRelationFilter
     assignments?: AssignmentListRelationFilter
     followUps?: FollowUpListRelationFilter
@@ -41901,6 +41914,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
+    completedTours?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -41927,6 +41941,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    completedTours?: StringNullableListFilter<"User">
   }
 
   export type PermissionWhereInput = {
@@ -44367,6 +44382,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -44402,6 +44418,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -44436,6 +44453,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -44471,6 +44489,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -44506,6 +44525,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
   }
 
   export type UserUpdateManyMutationInput = {
@@ -44523,6 +44543,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -44541,6 +44562,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
   }
 
   export type PermissionCreateInput = {
@@ -47124,6 +47146,14 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type AssignmentListRelationFilter = {
     every?: AssignmentWhereInput
     some?: AssignmentWhereInput
@@ -47270,6 +47300,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
+    completedTours?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -49296,6 +49327,10 @@ export namespace Prisma {
     deleteMany?: UserRoleScalarWhereInput | UserRoleScalarWhereInput[]
   }
 
+  export type UserCreatecompletedToursInput = {
+    set: string[]
+  }
+
   export type UserRoleCreateNestedManyWithoutUserInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -49540,6 +49575,11 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type UserUpdatecompletedToursInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type UserRoleUpdateManyWithoutUserNestedInput = {
@@ -53951,6 +53991,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
     mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
@@ -53985,6 +54026,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
     mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
@@ -54064,6 +54106,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
     mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
@@ -54098,6 +54141,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
     mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
@@ -54922,6 +54966,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -54956,6 +55001,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -55327,6 +55373,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -55361,6 +55408,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -55641,6 +55689,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -55675,6 +55724,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -55808,6 +55858,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -55842,6 +55893,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -55917,6 +55969,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -55951,6 +56004,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -56048,6 +56102,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -56082,6 +56137,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -56157,6 +56213,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
     mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
@@ -56191,6 +56248,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
     mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
@@ -56288,6 +56346,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
     mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
@@ -56322,6 +56381,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
     mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
@@ -56433,6 +56493,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
@@ -56467,6 +56528,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
@@ -56698,6 +56760,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
@@ -56732,6 +56795,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
@@ -56861,6 +56925,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -56895,6 +56960,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -57027,6 +57093,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -57061,6 +57128,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -57138,6 +57206,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -57172,6 +57241,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -57255,6 +57325,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -57289,6 +57360,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -58023,6 +58095,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -58057,6 +58130,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -58251,6 +58325,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -58285,6 +58360,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -58427,6 +58503,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -58461,6 +58538,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -58679,6 +58757,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -58713,6 +58792,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -59693,6 +59773,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -59727,6 +59808,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -59917,6 +59999,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -59951,6 +60034,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -60028,6 +60112,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -60062,6 +60147,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -60145,6 +60231,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -60179,6 +60266,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -60212,6 +60300,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -60246,6 +60335,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -60284,6 +60374,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -60318,6 +60409,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -60398,6 +60490,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -60432,6 +60525,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -60476,6 +60570,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -60510,6 +60605,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -60716,6 +60812,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -60750,6 +60847,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -60788,6 +60886,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -60822,6 +60921,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -60949,6 +61049,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -60983,6 +61084,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -61027,6 +61129,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -61061,6 +61164,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
@@ -61244,6 +61348,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleCreateNestedManyWithoutUserInput
     assignments?: AssignmentCreateNestedManyWithoutUserInput
     followUps?: FollowUpCreateNestedManyWithoutSellerInput
@@ -61278,6 +61383,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
     roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
     followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
@@ -61367,6 +61473,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUpdateManyWithoutSellerNestedInput
@@ -61401,6 +61508,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
     roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
     followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput

@@ -149,7 +149,8 @@ exports.Prisma.UserScalarFieldEnum = {
   resetPasswordExpires: 'resetPasswordExpires',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  completedTours: 'completedTours'
 };
 
 exports.Prisma.PermissionScalarFieldEnum = {

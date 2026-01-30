@@ -137,6 +137,7 @@ class AuthService {
       userId: user.id,
       email: user.email,
       roles: roles,
+      completedTours: user.completedTours || [],
     };
 
     const token = sign(payload, JWT_SECRET, {
@@ -331,6 +332,7 @@ class AuthService {
         isActive: true,
         createdAt: true,
         updatedAt: true,
+        completedTours: true,
         roles: {
           where: {
             deletedAt: null,
@@ -847,6 +849,66 @@ class AuthService {
     );
   }
 
+  async updateOnboardingStatus(
+    userId: number,
+    tourId: string
+  ): Promise<UserManagementDTO> {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { completedTours: true },
+    });
+
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    if (user.completedTours.includes(tourId)) {
+      return this.getUserById(userId);
+    }
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        completedTours: {
+          push: tourId,
+        },
+      },
+      include: {
+        roles: {
+          where: { deletedAt: null },
+          include: { role: true },
+        },
+      },
+    });
+
+    return this.mapUserToDTO(
+      updatedUser,
+      updatedUser.roles.map((ur) => ur.role)
+    );
+  }
+
+  async resetOnboardingStatus(
+    userId: number
+  ): Promise<UserManagementDTO> {
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        completedTours: [],
+      },
+      include: {
+        roles: {
+          where: { deletedAt: null },
+          include: { role: true },
+        },
+      },
+    });
+
+    return this.mapUserToDTO(
+      updatedUser,
+      updatedUser.roles.map((ur) => ur.role)
+    );
+  }
+
   private mapUserToDTO(user: any, roles: any[]): UserManagementDTO {
     // Filtrar roles eliminados (deletedAt !== null) y eliminar duplicados por ID
     const activeRoles = roles.filter((role) => !role.deletedAt);
@@ -869,6 +931,7 @@ class AuthService {
       })),
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
+      completedTours: user.completedTours || [],
     };
   }
 }

@@ -56,6 +56,8 @@ model User {
   updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
 
+  completedTours String[] @map("completed_tours") @default([])
+
   // Board relations
   boardsCreated        Board[]                @relation("BoardCreator")
   boardsOwned          Board[]                @relation("BoardOwner")
