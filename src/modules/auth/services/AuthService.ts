@@ -869,9 +869,7 @@ class AuthService {
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: {
-        completedTours: {
-          push: tourId,
-        },
+        completedTours: [...user.completedTours, tourId],
       },
       include: {
         roles: {
@@ -880,6 +878,10 @@ class AuthService {
         },
       },
     });
+
+    if (process.env.NODE_ENV === "development") {
+      console.log(`✅ Onboarding completed for user ${userId}: ${tourId}`);
+    }
 
     return this.mapUserToDTO(
       updatedUser,
