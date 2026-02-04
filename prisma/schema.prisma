@@ -65,6 +65,8 @@ model User {
   cardsResponsible     BoardCard[]            @relation("CardResponsible")
   cardActivities       CardActivity[]
   ocrHistory           OcrHistory[]
+  forumTopics          ForumTopic[]
+  forumPosts           ForumPost[]
 }
 
 model Permission {
@@ -607,4 +609,62 @@ model OcrHistory {
   user          User     @relation(fields: [userId], references: [id])
 
   @@map("OcrHistory")
+}
+
+model ForumCategory {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  icon        String?      // Lucide icon name or URL
+  color       String?      // Hex color for the category
+  order       Int          @default(0)
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @default(now()) @updatedAt @map("updated_at")
+  topics      ForumTopic[]
+
+  @@map("ForumCategory")
+}
+
+model ForumTopic {
+  id          Int           @id @default(autoincrement())
+  title       String
+  content     String        @db.Text
+  categoryId  Int           @map("category_id")
+  authorId    Int           @map("author_id")
+  views       Int           @default(0)
+  isPinned    Boolean       @default(false) @map("is_pinned")
+  isLocked    Boolean       @default(false) @map("is_locked")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @default(now()) @updatedAt @map("updated_at")
+  deletedAt   DateTime?     @map("deleted_at")
+  
+  category    ForumCategory @relation(fields: [categoryId], references: [id])
+  author      User          @relation(fields: [authorId], references: [id])
+  posts       ForumPost[]
+  tags        ForumTag[]
+
+  @@map("ForumTopic")
+}
+
+model ForumPost {
+  id        Int       @id @default(autoincrement())
+  topicId   Int       @map("topic_id")
+  authorId  Int       @map("author_id")
+  content   String    @db.Text
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  topic     ForumTopic @relation(fields: [topicId], references: [id])
+  author    User       @relation(fields: [authorId], references: [id])
+
+  @@map("ForumPost")
+}
+
+model ForumTag {
+  id     Int          @id @default(autoincrement())
+  name   String       @unique
+  topics ForumTopic[]
+
+  @@map("ForumTag")
 }

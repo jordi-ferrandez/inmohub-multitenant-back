@@ -14,6 +14,7 @@ import activityRouter from "@modules/activity/routes";
 import aiRouter from "@modules/ai/routes";
 import { flyerRouter } from "@modules/flyers/routes/flyer.routes";
 import { boardRouter } from "@modules/boards/routes";
+import { forumRouter } from "@modules/forum/routes";
 
 function routerAPI(app: Express) {
   const router = express.Router();
@@ -32,6 +33,7 @@ function routerAPI(app: Express) {
   router.use("/ai", aiRouter);
   router.use("/flyers", flyerRouter);
   router.use("/boards", boardRouter);
+  router.use("/forum", forumRouter);
   router.use("/", testRouter);
 }
 export { routerAPI };

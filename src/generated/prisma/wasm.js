@@ -501,6 +501,46 @@ exports.Prisma.OcrHistoryScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ForumCategoryScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  icon: 'icon',
+  color: 'color',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ForumTopicScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  categoryId: 'categoryId',
+  authorId: 'authorId',
+  views: 'views',
+  isPinned: 'isPinned',
+  isLocked: 'isLocked',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.ForumPostScalarFieldEnum = {
+  id: 'id',
+  topicId: 'topicId',
+  authorId: 'authorId',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.ForumTagScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -623,7 +663,11 @@ exports.Prisma.ModelName = {
   BoardCard: 'BoardCard',
   CardTag: 'CardTag',
   CardActivity: 'CardActivity',
-  OcrHistory: 'OcrHistory'
+  OcrHistory: 'OcrHistory',
+  ForumCategory: 'ForumCategory',
+  ForumTopic: 'ForumTopic',
+  ForumPost: 'ForumPost',
+  ForumTag: 'ForumTag'
 };
 
 /**

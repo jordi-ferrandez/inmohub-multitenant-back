@@ -168,6 +168,26 @@ export type CardActivity = $Result.DefaultSelection<Prisma.$CardActivityPayload>
  * 
  */
 export type OcrHistory = $Result.DefaultSelection<Prisma.$OcrHistoryPayload>
+/**
+ * Model ForumCategory
+ * 
+ */
+export type ForumCategory = $Result.DefaultSelection<Prisma.$ForumCategoryPayload>
+/**
+ * Model ForumTopic
+ * 
+ */
+export type ForumTopic = $Result.DefaultSelection<Prisma.$ForumTopicPayload>
+/**
+ * Model ForumPost
+ * 
+ */
+export type ForumPost = $Result.DefaultSelection<Prisma.$ForumPostPayload>
+/**
+ * Model ForumTag
+ * 
+ */
+export type ForumTag = $Result.DefaultSelection<Prisma.$ForumTagPayload>
 
 /**
  * Enums
@@ -737,6 +757,46 @@ export class PrismaClient<
     * ```
     */
   get ocrHistory(): Prisma.OcrHistoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.forumCategory`: Exposes CRUD operations for the **ForumCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ForumCategories
+    * const forumCategories = await prisma.forumCategory.findMany()
+    * ```
+    */
+  get forumCategory(): Prisma.ForumCategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.forumTopic`: Exposes CRUD operations for the **ForumTopic** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ForumTopics
+    * const forumTopics = await prisma.forumTopic.findMany()
+    * ```
+    */
+  get forumTopic(): Prisma.ForumTopicDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.forumPost`: Exposes CRUD operations for the **ForumPost** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ForumPosts
+    * const forumPosts = await prisma.forumPost.findMany()
+    * ```
+    */
+  get forumPost(): Prisma.ForumPostDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.forumTag`: Exposes CRUD operations for the **ForumTag** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ForumTags
+    * const forumTags = await prisma.forumTag.findMany()
+    * ```
+    */
+  get forumTag(): Prisma.ForumTagDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1207,7 +1267,11 @@ export namespace Prisma {
     BoardCard: 'BoardCard',
     CardTag: 'CardTag',
     CardActivity: 'CardActivity',
-    OcrHistory: 'OcrHistory'
+    OcrHistory: 'OcrHistory',
+    ForumCategory: 'ForumCategory',
+    ForumTopic: 'ForumTopic',
+    ForumPost: 'ForumPost',
+    ForumTag: 'ForumTag'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1226,7 +1290,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "ping" | "role" | "user" | "permission" | "userRole" | "rolePermission" | "building" | "property" | "propertyAttachment" | "buildingAttachment" | "assignment" | "followUp" | "mailboxing" | "mailboxingAttachment" | "person" | "personPhone" | "reminder" | "reminderOccurrence" | "listing" | "listingType" | "listingStatus" | "propertyPerson" | "flyerTemplate" | "flyer" | "flyerShipment" | "board" | "boardColumn" | "boardCard" | "cardTag" | "cardActivity" | "ocrHistory"
+      modelProps: "ping" | "role" | "user" | "permission" | "userRole" | "rolePermission" | "building" | "property" | "propertyAttachment" | "buildingAttachment" | "assignment" | "followUp" | "mailboxing" | "mailboxingAttachment" | "person" | "personPhone" | "reminder" | "reminderOccurrence" | "listing" | "listingType" | "listingStatus" | "propertyPerson" | "flyerTemplate" | "flyer" | "flyerShipment" | "board" | "boardColumn" | "boardCard" | "cardTag" | "cardActivity" | "ocrHistory" | "forumCategory" | "forumTopic" | "forumPost" | "forumTag"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3524,6 +3588,302 @@ export namespace Prisma {
           }
         }
       }
+      ForumCategory: {
+        payload: Prisma.$ForumCategoryPayload<ExtArgs>
+        fields: Prisma.ForumCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ForumCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ForumCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.ForumCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ForumCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.ForumCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.ForumCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.ForumCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ForumCategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.ForumCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          update: {
+            args: Prisma.ForumCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.ForumCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ForumCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ForumCategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.ForumCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.ForumCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateForumCategory>
+          }
+          groupBy: {
+            args: Prisma.ForumCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ForumCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ForumCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<ForumCategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      ForumTopic: {
+        payload: Prisma.$ForumTopicPayload<ExtArgs>
+        fields: Prisma.ForumTopicFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ForumTopicFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ForumTopicFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>
+          }
+          findFirst: {
+            args: Prisma.ForumTopicFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ForumTopicFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>
+          }
+          findMany: {
+            args: Prisma.ForumTopicFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>[]
+          }
+          create: {
+            args: Prisma.ForumTopicCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>
+          }
+          createMany: {
+            args: Prisma.ForumTopicCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ForumTopicCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>[]
+          }
+          delete: {
+            args: Prisma.ForumTopicDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>
+          }
+          update: {
+            args: Prisma.ForumTopicUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>
+          }
+          deleteMany: {
+            args: Prisma.ForumTopicDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ForumTopicUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ForumTopicUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>[]
+          }
+          upsert: {
+            args: Prisma.ForumTopicUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTopicPayload>
+          }
+          aggregate: {
+            args: Prisma.ForumTopicAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateForumTopic>
+          }
+          groupBy: {
+            args: Prisma.ForumTopicGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ForumTopicGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ForumTopicCountArgs<ExtArgs>
+            result: $Utils.Optional<ForumTopicCountAggregateOutputType> | number
+          }
+        }
+      }
+      ForumPost: {
+        payload: Prisma.$ForumPostPayload<ExtArgs>
+        fields: Prisma.ForumPostFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ForumPostFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ForumPostFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>
+          }
+          findFirst: {
+            args: Prisma.ForumPostFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ForumPostFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>
+          }
+          findMany: {
+            args: Prisma.ForumPostFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>[]
+          }
+          create: {
+            args: Prisma.ForumPostCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>
+          }
+          createMany: {
+            args: Prisma.ForumPostCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ForumPostCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>[]
+          }
+          delete: {
+            args: Prisma.ForumPostDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>
+          }
+          update: {
+            args: Prisma.ForumPostUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>
+          }
+          deleteMany: {
+            args: Prisma.ForumPostDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ForumPostUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ForumPostUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>[]
+          }
+          upsert: {
+            args: Prisma.ForumPostUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumPostPayload>
+          }
+          aggregate: {
+            args: Prisma.ForumPostAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateForumPost>
+          }
+          groupBy: {
+            args: Prisma.ForumPostGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ForumPostGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ForumPostCountArgs<ExtArgs>
+            result: $Utils.Optional<ForumPostCountAggregateOutputType> | number
+          }
+        }
+      }
+      ForumTag: {
+        payload: Prisma.$ForumTagPayload<ExtArgs>
+        fields: Prisma.ForumTagFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ForumTagFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ForumTagFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>
+          }
+          findFirst: {
+            args: Prisma.ForumTagFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ForumTagFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>
+          }
+          findMany: {
+            args: Prisma.ForumTagFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>[]
+          }
+          create: {
+            args: Prisma.ForumTagCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>
+          }
+          createMany: {
+            args: Prisma.ForumTagCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ForumTagCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>[]
+          }
+          delete: {
+            args: Prisma.ForumTagDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>
+          }
+          update: {
+            args: Prisma.ForumTagUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>
+          }
+          deleteMany: {
+            args: Prisma.ForumTagDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ForumTagUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ForumTagUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>[]
+          }
+          upsert: {
+            args: Prisma.ForumTagUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ForumTagPayload>
+          }
+          aggregate: {
+            args: Prisma.ForumTagAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateForumTag>
+          }
+          groupBy: {
+            args: Prisma.ForumTagGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ForumTagGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ForumTagCountArgs<ExtArgs>
+            result: $Utils.Optional<ForumTagCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -3647,6 +4007,10 @@ export namespace Prisma {
     cardTag?: CardTagOmit
     cardActivity?: CardActivityOmit
     ocrHistory?: OcrHistoryOmit
+    forumCategory?: ForumCategoryOmit
+    forumTopic?: ForumTopicOmit
+    forumPost?: ForumPostOmit
+    forumTag?: ForumTagOmit
   }
 
   /* Types for Logging */
@@ -3785,6 +4149,8 @@ export namespace Prisma {
     cardsResponsible: number
     cardActivities: number
     ocrHistory: number
+    forumTopics: number
+    forumPosts: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3806,6 +4172,8 @@ export namespace Prisma {
     cardsResponsible?: boolean | UserCountOutputTypeCountCardsResponsibleArgs
     cardActivities?: boolean | UserCountOutputTypeCountCardActivitiesArgs
     ocrHistory?: boolean | UserCountOutputTypeCountOcrHistoryArgs
+    forumTopics?: boolean | UserCountOutputTypeCountForumTopicsArgs
+    forumPosts?: boolean | UserCountOutputTypeCountForumPostsArgs
   }
 
   // Custom InputTypes
@@ -3943,6 +4311,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountOcrHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OcrHistoryWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountForumTopicsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumTopicWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountForumPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumPostWhereInput
   }
 
 
@@ -4539,6 +4921,108 @@ export namespace Prisma {
    */
   export type BoardCardCountOutputTypeCountActivitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CardActivityWhereInput
+  }
+
+
+  /**
+   * Count Type ForumCategoryCountOutputType
+   */
+
+  export type ForumCategoryCountOutputType = {
+    topics: number
+  }
+
+  export type ForumCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    topics?: boolean | ForumCategoryCountOutputTypeCountTopicsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ForumCategoryCountOutputType without action
+   */
+  export type ForumCategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategoryCountOutputType
+     */
+    select?: ForumCategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ForumCategoryCountOutputType without action
+   */
+  export type ForumCategoryCountOutputTypeCountTopicsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumTopicWhereInput
+  }
+
+
+  /**
+   * Count Type ForumTopicCountOutputType
+   */
+
+  export type ForumTopicCountOutputType = {
+    posts: number
+    tags: number
+  }
+
+  export type ForumTopicCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posts?: boolean | ForumTopicCountOutputTypeCountPostsArgs
+    tags?: boolean | ForumTopicCountOutputTypeCountTagsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ForumTopicCountOutputType without action
+   */
+  export type ForumTopicCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopicCountOutputType
+     */
+    select?: ForumTopicCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ForumTopicCountOutputType without action
+   */
+  export type ForumTopicCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumPostWhereInput
+  }
+
+  /**
+   * ForumTopicCountOutputType without action
+   */
+  export type ForumTopicCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumTagWhereInput
+  }
+
+
+  /**
+   * Count Type ForumTagCountOutputType
+   */
+
+  export type ForumTagCountOutputType = {
+    topics: number
+  }
+
+  export type ForumTagCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    topics?: boolean | ForumTagCountOutputTypeCountTopicsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ForumTagCountOutputType without action
+   */
+  export type ForumTagCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTagCountOutputType
+     */
+    select?: ForumTagCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ForumTagCountOutputType without action
+   */
+  export type ForumTagCountOutputTypeCountTopicsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumTopicWhereInput
   }
 
 
@@ -6981,6 +7465,8 @@ export namespace Prisma {
     cardsResponsible?: boolean | User$cardsResponsibleArgs<ExtArgs>
     cardActivities?: boolean | User$cardActivitiesArgs<ExtArgs>
     ocrHistory?: boolean | User$ocrHistoryArgs<ExtArgs>
+    forumTopics?: boolean | User$forumTopicsArgs<ExtArgs>
+    forumPosts?: boolean | User$forumPostsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -7061,6 +7547,8 @@ export namespace Prisma {
     cardsResponsible?: boolean | User$cardsResponsibleArgs<ExtArgs>
     cardActivities?: boolean | User$cardActivitiesArgs<ExtArgs>
     ocrHistory?: boolean | User$ocrHistoryArgs<ExtArgs>
+    forumTopics?: boolean | User$forumTopicsArgs<ExtArgs>
+    forumPosts?: boolean | User$forumPostsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7087,6 +7575,8 @@ export namespace Prisma {
       cardsResponsible: Prisma.$BoardCardPayload<ExtArgs>[]
       cardActivities: Prisma.$CardActivityPayload<ExtArgs>[]
       ocrHistory: Prisma.$OcrHistoryPayload<ExtArgs>[]
+      forumTopics: Prisma.$ForumTopicPayload<ExtArgs>[]
+      forumPosts: Prisma.$ForumPostPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7517,6 +8007,8 @@ export namespace Prisma {
     cardsResponsible<T extends User$cardsResponsibleArgs<ExtArgs> = {}>(args?: Subset<T, User$cardsResponsibleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardCardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cardActivities<T extends User$cardActivitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$cardActivitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     ocrHistory<T extends User$ocrHistoryArgs<ExtArgs> = {}>(args?: Subset<T, User$ocrHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    forumTopics<T extends User$forumTopicsArgs<ExtArgs> = {}>(args?: Subset<T, User$forumTopicsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    forumPosts<T extends User$forumPostsArgs<ExtArgs> = {}>(args?: Subset<T, User$forumPostsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8379,6 +8871,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: OcrHistoryScalarFieldEnum | OcrHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * User.forumTopics
+   */
+  export type User$forumTopicsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    where?: ForumTopicWhereInput
+    orderBy?: ForumTopicOrderByWithRelationInput | ForumTopicOrderByWithRelationInput[]
+    cursor?: ForumTopicWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumTopicScalarFieldEnum | ForumTopicScalarFieldEnum[]
+  }
+
+  /**
+   * User.forumPosts
+   */
+  export type User$forumPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    where?: ForumPostWhereInput
+    orderBy?: ForumPostOrderByWithRelationInput | ForumPostOrderByWithRelationInput[]
+    cursor?: ForumPostWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumPostScalarFieldEnum | ForumPostScalarFieldEnum[]
   }
 
   /**
@@ -42176,6 +42716,4600 @@ export namespace Prisma {
 
 
   /**
+   * Model ForumCategory
+   */
+
+  export type AggregateForumCategory = {
+    _count: ForumCategoryCountAggregateOutputType | null
+    _avg: ForumCategoryAvgAggregateOutputType | null
+    _sum: ForumCategorySumAggregateOutputType | null
+    _min: ForumCategoryMinAggregateOutputType | null
+    _max: ForumCategoryMaxAggregateOutputType | null
+  }
+
+  export type ForumCategoryAvgAggregateOutputType = {
+    id: number | null
+    order: number | null
+  }
+
+  export type ForumCategorySumAggregateOutputType = {
+    id: number | null
+    order: number | null
+  }
+
+  export type ForumCategoryMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    icon: string | null
+    color: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ForumCategoryMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    icon: string | null
+    color: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ForumCategoryCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    icon: number
+    color: number
+    order: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ForumCategoryAvgAggregateInputType = {
+    id?: true
+    order?: true
+  }
+
+  export type ForumCategorySumAggregateInputType = {
+    id?: true
+    order?: true
+  }
+
+  export type ForumCategoryMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    icon?: true
+    color?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ForumCategoryMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    icon?: true
+    color?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ForumCategoryCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    icon?: true
+    color?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ForumCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumCategory to aggregate.
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumCategories to fetch.
+     */
+    orderBy?: ForumCategoryOrderByWithRelationInput | ForumCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ForumCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ForumCategories
+    **/
+    _count?: true | ForumCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ForumCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ForumCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ForumCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ForumCategoryMaxAggregateInputType
+  }
+
+  export type GetForumCategoryAggregateType<T extends ForumCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateForumCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateForumCategory[P]>
+      : GetScalarType<T[P], AggregateForumCategory[P]>
+  }
+
+
+
+
+  export type ForumCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumCategoryWhereInput
+    orderBy?: ForumCategoryOrderByWithAggregationInput | ForumCategoryOrderByWithAggregationInput[]
+    by: ForumCategoryScalarFieldEnum[] | ForumCategoryScalarFieldEnum
+    having?: ForumCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ForumCategoryCountAggregateInputType | true
+    _avg?: ForumCategoryAvgAggregateInputType
+    _sum?: ForumCategorySumAggregateInputType
+    _min?: ForumCategoryMinAggregateInputType
+    _max?: ForumCategoryMaxAggregateInputType
+  }
+
+  export type ForumCategoryGroupByOutputType = {
+    id: number
+    title: string
+    description: string | null
+    icon: string | null
+    color: string | null
+    order: number
+    createdAt: Date
+    updatedAt: Date
+    _count: ForumCategoryCountAggregateOutputType | null
+    _avg: ForumCategoryAvgAggregateOutputType | null
+    _sum: ForumCategorySumAggregateOutputType | null
+    _min: ForumCategoryMinAggregateOutputType | null
+    _max: ForumCategoryMaxAggregateOutputType | null
+  }
+
+  type GetForumCategoryGroupByPayload<T extends ForumCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ForumCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ForumCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ForumCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], ForumCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ForumCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    icon?: boolean
+    color?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    topics?: boolean | ForumCategory$topicsArgs<ExtArgs>
+    _count?: boolean | ForumCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumCategory"]>
+
+  export type ForumCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    icon?: boolean
+    color?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["forumCategory"]>
+
+  export type ForumCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    icon?: boolean
+    color?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["forumCategory"]>
+
+  export type ForumCategorySelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    icon?: boolean
+    color?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ForumCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "icon" | "color" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["forumCategory"]>
+  export type ForumCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    topics?: boolean | ForumCategory$topicsArgs<ExtArgs>
+    _count?: boolean | ForumCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ForumCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ForumCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ForumCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ForumCategory"
+    objects: {
+      topics: Prisma.$ForumTopicPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      description: string | null
+      icon: string | null
+      color: string | null
+      order: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["forumCategory"]>
+    composites: {}
+  }
+
+  type ForumCategoryGetPayload<S extends boolean | null | undefined | ForumCategoryDefaultArgs> = $Result.GetResult<Prisma.$ForumCategoryPayload, S>
+
+  type ForumCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ForumCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ForumCategoryCountAggregateInputType | true
+    }
+
+  export interface ForumCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ForumCategory'], meta: { name: 'ForumCategory' } }
+    /**
+     * Find zero or one ForumCategory that matches the filter.
+     * @param {ForumCategoryFindUniqueArgs} args - Arguments to find a ForumCategory
+     * @example
+     * // Get one ForumCategory
+     * const forumCategory = await prisma.forumCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ForumCategoryFindUniqueArgs>(args: SelectSubset<T, ForumCategoryFindUniqueArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ForumCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ForumCategoryFindUniqueOrThrowArgs} args - Arguments to find a ForumCategory
+     * @example
+     * // Get one ForumCategory
+     * const forumCategory = await prisma.forumCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ForumCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, ForumCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryFindFirstArgs} args - Arguments to find a ForumCategory
+     * @example
+     * // Get one ForumCategory
+     * const forumCategory = await prisma.forumCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ForumCategoryFindFirstArgs>(args?: SelectSubset<T, ForumCategoryFindFirstArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryFindFirstOrThrowArgs} args - Arguments to find a ForumCategory
+     * @example
+     * // Get one ForumCategory
+     * const forumCategory = await prisma.forumCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ForumCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, ForumCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ForumCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ForumCategories
+     * const forumCategories = await prisma.forumCategory.findMany()
+     * 
+     * // Get first 10 ForumCategories
+     * const forumCategories = await prisma.forumCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const forumCategoryWithIdOnly = await prisma.forumCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ForumCategoryFindManyArgs>(args?: SelectSubset<T, ForumCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ForumCategory.
+     * @param {ForumCategoryCreateArgs} args - Arguments to create a ForumCategory.
+     * @example
+     * // Create one ForumCategory
+     * const ForumCategory = await prisma.forumCategory.create({
+     *   data: {
+     *     // ... data to create a ForumCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends ForumCategoryCreateArgs>(args: SelectSubset<T, ForumCategoryCreateArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ForumCategories.
+     * @param {ForumCategoryCreateManyArgs} args - Arguments to create many ForumCategories.
+     * @example
+     * // Create many ForumCategories
+     * const forumCategory = await prisma.forumCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ForumCategoryCreateManyArgs>(args?: SelectSubset<T, ForumCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ForumCategories and returns the data saved in the database.
+     * @param {ForumCategoryCreateManyAndReturnArgs} args - Arguments to create many ForumCategories.
+     * @example
+     * // Create many ForumCategories
+     * const forumCategory = await prisma.forumCategory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ForumCategories and only return the `id`
+     * const forumCategoryWithIdOnly = await prisma.forumCategory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ForumCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, ForumCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ForumCategory.
+     * @param {ForumCategoryDeleteArgs} args - Arguments to delete one ForumCategory.
+     * @example
+     * // Delete one ForumCategory
+     * const ForumCategory = await prisma.forumCategory.delete({
+     *   where: {
+     *     // ... filter to delete one ForumCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ForumCategoryDeleteArgs>(args: SelectSubset<T, ForumCategoryDeleteArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ForumCategory.
+     * @param {ForumCategoryUpdateArgs} args - Arguments to update one ForumCategory.
+     * @example
+     * // Update one ForumCategory
+     * const forumCategory = await prisma.forumCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ForumCategoryUpdateArgs>(args: SelectSubset<T, ForumCategoryUpdateArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ForumCategories.
+     * @param {ForumCategoryDeleteManyArgs} args - Arguments to filter ForumCategories to delete.
+     * @example
+     * // Delete a few ForumCategories
+     * const { count } = await prisma.forumCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ForumCategoryDeleteManyArgs>(args?: SelectSubset<T, ForumCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ForumCategories
+     * const forumCategory = await prisma.forumCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ForumCategoryUpdateManyArgs>(args: SelectSubset<T, ForumCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumCategories and returns the data updated in the database.
+     * @param {ForumCategoryUpdateManyAndReturnArgs} args - Arguments to update many ForumCategories.
+     * @example
+     * // Update many ForumCategories
+     * const forumCategory = await prisma.forumCategory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ForumCategories and only return the `id`
+     * const forumCategoryWithIdOnly = await prisma.forumCategory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ForumCategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, ForumCategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ForumCategory.
+     * @param {ForumCategoryUpsertArgs} args - Arguments to update or create a ForumCategory.
+     * @example
+     * // Update or create a ForumCategory
+     * const forumCategory = await prisma.forumCategory.upsert({
+     *   create: {
+     *     // ... data to create a ForumCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ForumCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ForumCategoryUpsertArgs>(args: SelectSubset<T, ForumCategoryUpsertArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ForumCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryCountArgs} args - Arguments to filter ForumCategories to count.
+     * @example
+     * // Count the number of ForumCategories
+     * const count = await prisma.forumCategory.count({
+     *   where: {
+     *     // ... the filter for the ForumCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends ForumCategoryCountArgs>(
+      args?: Subset<T, ForumCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ForumCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ForumCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ForumCategoryAggregateArgs>(args: Subset<T, ForumCategoryAggregateArgs>): Prisma.PrismaPromise<GetForumCategoryAggregateType<T>>
+
+    /**
+     * Group by ForumCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ForumCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ForumCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: ForumCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ForumCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetForumCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ForumCategory model
+   */
+  readonly fields: ForumCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ForumCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ForumCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    topics<T extends ForumCategory$topicsArgs<ExtArgs> = {}>(args?: Subset<T, ForumCategory$topicsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ForumCategory model
+   */
+  interface ForumCategoryFieldRefs {
+    readonly id: FieldRef<"ForumCategory", 'Int'>
+    readonly title: FieldRef<"ForumCategory", 'String'>
+    readonly description: FieldRef<"ForumCategory", 'String'>
+    readonly icon: FieldRef<"ForumCategory", 'String'>
+    readonly color: FieldRef<"ForumCategory", 'String'>
+    readonly order: FieldRef<"ForumCategory", 'Int'>
+    readonly createdAt: FieldRef<"ForumCategory", 'DateTime'>
+    readonly updatedAt: FieldRef<"ForumCategory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ForumCategory findUnique
+   */
+  export type ForumCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategory to fetch.
+     */
+    where: ForumCategoryWhereUniqueInput
+  }
+
+  /**
+   * ForumCategory findUniqueOrThrow
+   */
+  export type ForumCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategory to fetch.
+     */
+    where: ForumCategoryWhereUniqueInput
+  }
+
+  /**
+   * ForumCategory findFirst
+   */
+  export type ForumCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategory to fetch.
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumCategories to fetch.
+     */
+    orderBy?: ForumCategoryOrderByWithRelationInput | ForumCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumCategories.
+     */
+    cursor?: ForumCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumCategories.
+     */
+    distinct?: ForumCategoryScalarFieldEnum | ForumCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * ForumCategory findFirstOrThrow
+   */
+  export type ForumCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategory to fetch.
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumCategories to fetch.
+     */
+    orderBy?: ForumCategoryOrderByWithRelationInput | ForumCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumCategories.
+     */
+    cursor?: ForumCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumCategories.
+     */
+    distinct?: ForumCategoryScalarFieldEnum | ForumCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * ForumCategory findMany
+   */
+  export type ForumCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumCategories to fetch.
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumCategories to fetch.
+     */
+    orderBy?: ForumCategoryOrderByWithRelationInput | ForumCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ForumCategories.
+     */
+    cursor?: ForumCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumCategories.
+     */
+    skip?: number
+    distinct?: ForumCategoryScalarFieldEnum | ForumCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * ForumCategory create
+   */
+  export type ForumCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ForumCategory.
+     */
+    data: XOR<ForumCategoryCreateInput, ForumCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * ForumCategory createMany
+   */
+  export type ForumCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ForumCategories.
+     */
+    data: ForumCategoryCreateManyInput | ForumCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumCategory createManyAndReturn
+   */
+  export type ForumCategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many ForumCategories.
+     */
+    data: ForumCategoryCreateManyInput | ForumCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumCategory update
+   */
+  export type ForumCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ForumCategory.
+     */
+    data: XOR<ForumCategoryUpdateInput, ForumCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which ForumCategory to update.
+     */
+    where: ForumCategoryWhereUniqueInput
+  }
+
+  /**
+   * ForumCategory updateMany
+   */
+  export type ForumCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ForumCategories.
+     */
+    data: XOR<ForumCategoryUpdateManyMutationInput, ForumCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumCategories to update
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * Limit how many ForumCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumCategory updateManyAndReturn
+   */
+  export type ForumCategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update ForumCategories.
+     */
+    data: XOR<ForumCategoryUpdateManyMutationInput, ForumCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumCategories to update
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * Limit how many ForumCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumCategory upsert
+   */
+  export type ForumCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ForumCategory to update in case it exists.
+     */
+    where: ForumCategoryWhereUniqueInput
+    /**
+     * In case the ForumCategory found by the `where` argument doesn't exist, create a new ForumCategory with this data.
+     */
+    create: XOR<ForumCategoryCreateInput, ForumCategoryUncheckedCreateInput>
+    /**
+     * In case the ForumCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ForumCategoryUpdateInput, ForumCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * ForumCategory delete
+   */
+  export type ForumCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which ForumCategory to delete.
+     */
+    where: ForumCategoryWhereUniqueInput
+  }
+
+  /**
+   * ForumCategory deleteMany
+   */
+  export type ForumCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumCategories to delete
+     */
+    where?: ForumCategoryWhereInput
+    /**
+     * Limit how many ForumCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumCategory.topics
+   */
+  export type ForumCategory$topicsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    where?: ForumTopicWhereInput
+    orderBy?: ForumTopicOrderByWithRelationInput | ForumTopicOrderByWithRelationInput[]
+    cursor?: ForumTopicWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumTopicScalarFieldEnum | ForumTopicScalarFieldEnum[]
+  }
+
+  /**
+   * ForumCategory without action
+   */
+  export type ForumCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumCategory
+     */
+    select?: ForumCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumCategory
+     */
+    omit?: ForumCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ForumTopic
+   */
+
+  export type AggregateForumTopic = {
+    _count: ForumTopicCountAggregateOutputType | null
+    _avg: ForumTopicAvgAggregateOutputType | null
+    _sum: ForumTopicSumAggregateOutputType | null
+    _min: ForumTopicMinAggregateOutputType | null
+    _max: ForumTopicMaxAggregateOutputType | null
+  }
+
+  export type ForumTopicAvgAggregateOutputType = {
+    id: number | null
+    categoryId: number | null
+    authorId: number | null
+    views: number | null
+  }
+
+  export type ForumTopicSumAggregateOutputType = {
+    id: number | null
+    categoryId: number | null
+    authorId: number | null
+    views: number | null
+  }
+
+  export type ForumTopicMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    content: string | null
+    categoryId: number | null
+    authorId: number | null
+    views: number | null
+    isPinned: boolean | null
+    isLocked: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type ForumTopicMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    content: string | null
+    categoryId: number | null
+    authorId: number | null
+    views: number | null
+    isPinned: boolean | null
+    isLocked: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type ForumTopicCountAggregateOutputType = {
+    id: number
+    title: number
+    content: number
+    categoryId: number
+    authorId: number
+    views: number
+    isPinned: number
+    isLocked: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type ForumTopicAvgAggregateInputType = {
+    id?: true
+    categoryId?: true
+    authorId?: true
+    views?: true
+  }
+
+  export type ForumTopicSumAggregateInputType = {
+    id?: true
+    categoryId?: true
+    authorId?: true
+    views?: true
+  }
+
+  export type ForumTopicMinAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    categoryId?: true
+    authorId?: true
+    views?: true
+    isPinned?: true
+    isLocked?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type ForumTopicMaxAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    categoryId?: true
+    authorId?: true
+    views?: true
+    isPinned?: true
+    isLocked?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type ForumTopicCountAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    categoryId?: true
+    authorId?: true
+    views?: true
+    isPinned?: true
+    isLocked?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type ForumTopicAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumTopic to aggregate.
+     */
+    where?: ForumTopicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumTopics to fetch.
+     */
+    orderBy?: ForumTopicOrderByWithRelationInput | ForumTopicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ForumTopicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumTopics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumTopics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ForumTopics
+    **/
+    _count?: true | ForumTopicCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ForumTopicAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ForumTopicSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ForumTopicMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ForumTopicMaxAggregateInputType
+  }
+
+  export type GetForumTopicAggregateType<T extends ForumTopicAggregateArgs> = {
+        [P in keyof T & keyof AggregateForumTopic]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateForumTopic[P]>
+      : GetScalarType<T[P], AggregateForumTopic[P]>
+  }
+
+
+
+
+  export type ForumTopicGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumTopicWhereInput
+    orderBy?: ForumTopicOrderByWithAggregationInput | ForumTopicOrderByWithAggregationInput[]
+    by: ForumTopicScalarFieldEnum[] | ForumTopicScalarFieldEnum
+    having?: ForumTopicScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ForumTopicCountAggregateInputType | true
+    _avg?: ForumTopicAvgAggregateInputType
+    _sum?: ForumTopicSumAggregateInputType
+    _min?: ForumTopicMinAggregateInputType
+    _max?: ForumTopicMaxAggregateInputType
+  }
+
+  export type ForumTopicGroupByOutputType = {
+    id: number
+    title: string
+    content: string
+    categoryId: number
+    authorId: number
+    views: number
+    isPinned: boolean
+    isLocked: boolean
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    _count: ForumTopicCountAggregateOutputType | null
+    _avg: ForumTopicAvgAggregateOutputType | null
+    _sum: ForumTopicSumAggregateOutputType | null
+    _min: ForumTopicMinAggregateOutputType | null
+    _max: ForumTopicMaxAggregateOutputType | null
+  }
+
+  type GetForumTopicGroupByPayload<T extends ForumTopicGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ForumTopicGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ForumTopicGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ForumTopicGroupByOutputType[P]>
+            : GetScalarType<T[P], ForumTopicGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ForumTopicSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    categoryId?: boolean
+    authorId?: boolean
+    views?: boolean
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    posts?: boolean | ForumTopic$postsArgs<ExtArgs>
+    tags?: boolean | ForumTopic$tagsArgs<ExtArgs>
+    _count?: boolean | ForumTopicCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumTopic"]>
+
+  export type ForumTopicSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    categoryId?: boolean
+    authorId?: boolean
+    views?: boolean
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumTopic"]>
+
+  export type ForumTopicSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    categoryId?: boolean
+    authorId?: boolean
+    views?: boolean
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumTopic"]>
+
+  export type ForumTopicSelectScalar = {
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    categoryId?: boolean
+    authorId?: boolean
+    views?: boolean
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type ForumTopicOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "categoryId" | "authorId" | "views" | "isPinned" | "isLocked" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["forumTopic"]>
+  export type ForumTopicInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    posts?: boolean | ForumTopic$postsArgs<ExtArgs>
+    tags?: boolean | ForumTopic$tagsArgs<ExtArgs>
+    _count?: boolean | ForumTopicCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ForumTopicIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ForumTopicIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | ForumCategoryDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ForumTopicPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ForumTopic"
+    objects: {
+      category: Prisma.$ForumCategoryPayload<ExtArgs>
+      author: Prisma.$UserPayload<ExtArgs>
+      posts: Prisma.$ForumPostPayload<ExtArgs>[]
+      tags: Prisma.$ForumTagPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      content: string
+      categoryId: number
+      authorId: number
+      views: number
+      isPinned: boolean
+      isLocked: boolean
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+    }, ExtArgs["result"]["forumTopic"]>
+    composites: {}
+  }
+
+  type ForumTopicGetPayload<S extends boolean | null | undefined | ForumTopicDefaultArgs> = $Result.GetResult<Prisma.$ForumTopicPayload, S>
+
+  type ForumTopicCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ForumTopicFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ForumTopicCountAggregateInputType | true
+    }
+
+  export interface ForumTopicDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ForumTopic'], meta: { name: 'ForumTopic' } }
+    /**
+     * Find zero or one ForumTopic that matches the filter.
+     * @param {ForumTopicFindUniqueArgs} args - Arguments to find a ForumTopic
+     * @example
+     * // Get one ForumTopic
+     * const forumTopic = await prisma.forumTopic.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ForumTopicFindUniqueArgs>(args: SelectSubset<T, ForumTopicFindUniqueArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ForumTopic that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ForumTopicFindUniqueOrThrowArgs} args - Arguments to find a ForumTopic
+     * @example
+     * // Get one ForumTopic
+     * const forumTopic = await prisma.forumTopic.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ForumTopicFindUniqueOrThrowArgs>(args: SelectSubset<T, ForumTopicFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumTopic that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTopicFindFirstArgs} args - Arguments to find a ForumTopic
+     * @example
+     * // Get one ForumTopic
+     * const forumTopic = await prisma.forumTopic.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ForumTopicFindFirstArgs>(args?: SelectSubset<T, ForumTopicFindFirstArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumTopic that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTopicFindFirstOrThrowArgs} args - Arguments to find a ForumTopic
+     * @example
+     * // Get one ForumTopic
+     * const forumTopic = await prisma.forumTopic.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ForumTopicFindFirstOrThrowArgs>(args?: SelectSubset<T, ForumTopicFindFirstOrThrowArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ForumTopics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTopicFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ForumTopics
+     * const forumTopics = await prisma.forumTopic.findMany()
+     * 
+     * // Get first 10 ForumTopics
+     * const forumTopics = await prisma.forumTopic.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const forumTopicWithIdOnly = await prisma.forumTopic.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ForumTopicFindManyArgs>(args?: SelectSubset<T, ForumTopicFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ForumTopic.
+     * @param {ForumTopicCreateArgs} args - Arguments to create a ForumTopic.
+     * @example
+     * // Create one ForumTopic
+     * const ForumTopic = await prisma.forumTopic.create({
+     *   data: {
+     *     // ... data to create a ForumTopic
+     *   }
+     * })
+     * 
+     */
+    create<T extends ForumTopicCreateArgs>(args: SelectSubset<T, ForumTopicCreateArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ForumTopics.
+     * @param {ForumTopicCreateManyArgs} args - Arguments to create many ForumTopics.
+     * @example
+     * // Create many ForumTopics
+     * const forumTopic = await prisma.forumTopic.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ForumTopicCreateManyArgs>(args?: SelectSubset<T, ForumTopicCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ForumTopics and returns the data saved in the database.
+     * @param {ForumTopicCreateManyAndReturnArgs} args - Arguments to create many ForumTopics.
+     * @example
+     * // Create many ForumTopics
+     * const forumTopic = await prisma.forumTopic.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ForumTopics and only return the `id`
+     * const forumTopicWithIdOnly = await prisma.forumTopic.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ForumTopicCreateManyAndReturnArgs>(args?: SelectSubset<T, ForumTopicCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ForumTopic.
+     * @param {ForumTopicDeleteArgs} args - Arguments to delete one ForumTopic.
+     * @example
+     * // Delete one ForumTopic
+     * const ForumTopic = await prisma.forumTopic.delete({
+     *   where: {
+     *     // ... filter to delete one ForumTopic
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ForumTopicDeleteArgs>(args: SelectSubset<T, ForumTopicDeleteArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ForumTopic.
+     * @param {ForumTopicUpdateArgs} args - Arguments to update one ForumTopic.
+     * @example
+     * // Update one ForumTopic
+     * const forumTopic = await prisma.forumTopic.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ForumTopicUpdateArgs>(args: SelectSubset<T, ForumTopicUpdateArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ForumTopics.
+     * @param {ForumTopicDeleteManyArgs} args - Arguments to filter ForumTopics to delete.
+     * @example
+     * // Delete a few ForumTopics
+     * const { count } = await prisma.forumTopic.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ForumTopicDeleteManyArgs>(args?: SelectSubset<T, ForumTopicDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumTopics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTopicUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ForumTopics
+     * const forumTopic = await prisma.forumTopic.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ForumTopicUpdateManyArgs>(args: SelectSubset<T, ForumTopicUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumTopics and returns the data updated in the database.
+     * @param {ForumTopicUpdateManyAndReturnArgs} args - Arguments to update many ForumTopics.
+     * @example
+     * // Update many ForumTopics
+     * const forumTopic = await prisma.forumTopic.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ForumTopics and only return the `id`
+     * const forumTopicWithIdOnly = await prisma.forumTopic.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ForumTopicUpdateManyAndReturnArgs>(args: SelectSubset<T, ForumTopicUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ForumTopic.
+     * @param {ForumTopicUpsertArgs} args - Arguments to update or create a ForumTopic.
+     * @example
+     * // Update or create a ForumTopic
+     * const forumTopic = await prisma.forumTopic.upsert({
+     *   create: {
+     *     // ... data to create a ForumTopic
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ForumTopic we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ForumTopicUpsertArgs>(args: SelectSubset<T, ForumTopicUpsertArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ForumTopics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTopicCountArgs} args - Arguments to filter ForumTopics to count.
+     * @example
+     * // Count the number of ForumTopics
+     * const count = await prisma.forumTopic.count({
+     *   where: {
+     *     // ... the filter for the ForumTopics we want to count
+     *   }
+     * })
+    **/
+    count<T extends ForumTopicCountArgs>(
+      args?: Subset<T, ForumTopicCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ForumTopicCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ForumTopic.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTopicAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ForumTopicAggregateArgs>(args: Subset<T, ForumTopicAggregateArgs>): Prisma.PrismaPromise<GetForumTopicAggregateType<T>>
+
+    /**
+     * Group by ForumTopic.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTopicGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ForumTopicGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ForumTopicGroupByArgs['orderBy'] }
+        : { orderBy?: ForumTopicGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ForumTopicGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetForumTopicGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ForumTopic model
+   */
+  readonly fields: ForumTopicFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ForumTopic.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ForumTopicClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    category<T extends ForumCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ForumCategoryDefaultArgs<ExtArgs>>): Prisma__ForumCategoryClient<$Result.GetResult<Prisma.$ForumCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    posts<T extends ForumTopic$postsArgs<ExtArgs> = {}>(args?: Subset<T, ForumTopic$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tags<T extends ForumTopic$tagsArgs<ExtArgs> = {}>(args?: Subset<T, ForumTopic$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ForumTopic model
+   */
+  interface ForumTopicFieldRefs {
+    readonly id: FieldRef<"ForumTopic", 'Int'>
+    readonly title: FieldRef<"ForumTopic", 'String'>
+    readonly content: FieldRef<"ForumTopic", 'String'>
+    readonly categoryId: FieldRef<"ForumTopic", 'Int'>
+    readonly authorId: FieldRef<"ForumTopic", 'Int'>
+    readonly views: FieldRef<"ForumTopic", 'Int'>
+    readonly isPinned: FieldRef<"ForumTopic", 'Boolean'>
+    readonly isLocked: FieldRef<"ForumTopic", 'Boolean'>
+    readonly createdAt: FieldRef<"ForumTopic", 'DateTime'>
+    readonly updatedAt: FieldRef<"ForumTopic", 'DateTime'>
+    readonly deletedAt: FieldRef<"ForumTopic", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ForumTopic findUnique
+   */
+  export type ForumTopicFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTopic to fetch.
+     */
+    where: ForumTopicWhereUniqueInput
+  }
+
+  /**
+   * ForumTopic findUniqueOrThrow
+   */
+  export type ForumTopicFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTopic to fetch.
+     */
+    where: ForumTopicWhereUniqueInput
+  }
+
+  /**
+   * ForumTopic findFirst
+   */
+  export type ForumTopicFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTopic to fetch.
+     */
+    where?: ForumTopicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumTopics to fetch.
+     */
+    orderBy?: ForumTopicOrderByWithRelationInput | ForumTopicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumTopics.
+     */
+    cursor?: ForumTopicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumTopics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumTopics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumTopics.
+     */
+    distinct?: ForumTopicScalarFieldEnum | ForumTopicScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTopic findFirstOrThrow
+   */
+  export type ForumTopicFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTopic to fetch.
+     */
+    where?: ForumTopicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumTopics to fetch.
+     */
+    orderBy?: ForumTopicOrderByWithRelationInput | ForumTopicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumTopics.
+     */
+    cursor?: ForumTopicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumTopics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumTopics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumTopics.
+     */
+    distinct?: ForumTopicScalarFieldEnum | ForumTopicScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTopic findMany
+   */
+  export type ForumTopicFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTopics to fetch.
+     */
+    where?: ForumTopicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumTopics to fetch.
+     */
+    orderBy?: ForumTopicOrderByWithRelationInput | ForumTopicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ForumTopics.
+     */
+    cursor?: ForumTopicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumTopics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumTopics.
+     */
+    skip?: number
+    distinct?: ForumTopicScalarFieldEnum | ForumTopicScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTopic create
+   */
+  export type ForumTopicCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ForumTopic.
+     */
+    data: XOR<ForumTopicCreateInput, ForumTopicUncheckedCreateInput>
+  }
+
+  /**
+   * ForumTopic createMany
+   */
+  export type ForumTopicCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ForumTopics.
+     */
+    data: ForumTopicCreateManyInput | ForumTopicCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumTopic createManyAndReturn
+   */
+  export type ForumTopicCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * The data used to create many ForumTopics.
+     */
+    data: ForumTopicCreateManyInput | ForumTopicCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ForumTopic update
+   */
+  export type ForumTopicUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ForumTopic.
+     */
+    data: XOR<ForumTopicUpdateInput, ForumTopicUncheckedUpdateInput>
+    /**
+     * Choose, which ForumTopic to update.
+     */
+    where: ForumTopicWhereUniqueInput
+  }
+
+  /**
+   * ForumTopic updateMany
+   */
+  export type ForumTopicUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ForumTopics.
+     */
+    data: XOR<ForumTopicUpdateManyMutationInput, ForumTopicUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumTopics to update
+     */
+    where?: ForumTopicWhereInput
+    /**
+     * Limit how many ForumTopics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumTopic updateManyAndReturn
+   */
+  export type ForumTopicUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * The data used to update ForumTopics.
+     */
+    data: XOR<ForumTopicUpdateManyMutationInput, ForumTopicUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumTopics to update
+     */
+    where?: ForumTopicWhereInput
+    /**
+     * Limit how many ForumTopics to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ForumTopic upsert
+   */
+  export type ForumTopicUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ForumTopic to update in case it exists.
+     */
+    where: ForumTopicWhereUniqueInput
+    /**
+     * In case the ForumTopic found by the `where` argument doesn't exist, create a new ForumTopic with this data.
+     */
+    create: XOR<ForumTopicCreateInput, ForumTopicUncheckedCreateInput>
+    /**
+     * In case the ForumTopic was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ForumTopicUpdateInput, ForumTopicUncheckedUpdateInput>
+  }
+
+  /**
+   * ForumTopic delete
+   */
+  export type ForumTopicDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    /**
+     * Filter which ForumTopic to delete.
+     */
+    where: ForumTopicWhereUniqueInput
+  }
+
+  /**
+   * ForumTopic deleteMany
+   */
+  export type ForumTopicDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumTopics to delete
+     */
+    where?: ForumTopicWhereInput
+    /**
+     * Limit how many ForumTopics to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumTopic.posts
+   */
+  export type ForumTopic$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    where?: ForumPostWhereInput
+    orderBy?: ForumPostOrderByWithRelationInput | ForumPostOrderByWithRelationInput[]
+    cursor?: ForumPostWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumPostScalarFieldEnum | ForumPostScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTopic.tags
+   */
+  export type ForumTopic$tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    where?: ForumTagWhereInput
+    orderBy?: ForumTagOrderByWithRelationInput | ForumTagOrderByWithRelationInput[]
+    cursor?: ForumTagWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumTagScalarFieldEnum | ForumTagScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTopic without action
+   */
+  export type ForumTopicDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ForumPost
+   */
+
+  export type AggregateForumPost = {
+    _count: ForumPostCountAggregateOutputType | null
+    _avg: ForumPostAvgAggregateOutputType | null
+    _sum: ForumPostSumAggregateOutputType | null
+    _min: ForumPostMinAggregateOutputType | null
+    _max: ForumPostMaxAggregateOutputType | null
+  }
+
+  export type ForumPostAvgAggregateOutputType = {
+    id: number | null
+    topicId: number | null
+    authorId: number | null
+  }
+
+  export type ForumPostSumAggregateOutputType = {
+    id: number | null
+    topicId: number | null
+    authorId: number | null
+  }
+
+  export type ForumPostMinAggregateOutputType = {
+    id: number | null
+    topicId: number | null
+    authorId: number | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type ForumPostMaxAggregateOutputType = {
+    id: number | null
+    topicId: number | null
+    authorId: number | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type ForumPostCountAggregateOutputType = {
+    id: number
+    topicId: number
+    authorId: number
+    content: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type ForumPostAvgAggregateInputType = {
+    id?: true
+    topicId?: true
+    authorId?: true
+  }
+
+  export type ForumPostSumAggregateInputType = {
+    id?: true
+    topicId?: true
+    authorId?: true
+  }
+
+  export type ForumPostMinAggregateInputType = {
+    id?: true
+    topicId?: true
+    authorId?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type ForumPostMaxAggregateInputType = {
+    id?: true
+    topicId?: true
+    authorId?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type ForumPostCountAggregateInputType = {
+    id?: true
+    topicId?: true
+    authorId?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type ForumPostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumPost to aggregate.
+     */
+    where?: ForumPostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumPosts to fetch.
+     */
+    orderBy?: ForumPostOrderByWithRelationInput | ForumPostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ForumPostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumPosts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumPosts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ForumPosts
+    **/
+    _count?: true | ForumPostCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ForumPostAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ForumPostSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ForumPostMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ForumPostMaxAggregateInputType
+  }
+
+  export type GetForumPostAggregateType<T extends ForumPostAggregateArgs> = {
+        [P in keyof T & keyof AggregateForumPost]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateForumPost[P]>
+      : GetScalarType<T[P], AggregateForumPost[P]>
+  }
+
+
+
+
+  export type ForumPostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumPostWhereInput
+    orderBy?: ForumPostOrderByWithAggregationInput | ForumPostOrderByWithAggregationInput[]
+    by: ForumPostScalarFieldEnum[] | ForumPostScalarFieldEnum
+    having?: ForumPostScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ForumPostCountAggregateInputType | true
+    _avg?: ForumPostAvgAggregateInputType
+    _sum?: ForumPostSumAggregateInputType
+    _min?: ForumPostMinAggregateInputType
+    _max?: ForumPostMaxAggregateInputType
+  }
+
+  export type ForumPostGroupByOutputType = {
+    id: number
+    topicId: number
+    authorId: number
+    content: string
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    _count: ForumPostCountAggregateOutputType | null
+    _avg: ForumPostAvgAggregateOutputType | null
+    _sum: ForumPostSumAggregateOutputType | null
+    _min: ForumPostMinAggregateOutputType | null
+    _max: ForumPostMaxAggregateOutputType | null
+  }
+
+  type GetForumPostGroupByPayload<T extends ForumPostGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ForumPostGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ForumPostGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ForumPostGroupByOutputType[P]>
+            : GetScalarType<T[P], ForumPostGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ForumPostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    topicId?: boolean
+    authorId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    topic?: boolean | ForumTopicDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumPost"]>
+
+  export type ForumPostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    topicId?: boolean
+    authorId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    topic?: boolean | ForumTopicDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumPost"]>
+
+  export type ForumPostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    topicId?: boolean
+    authorId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    topic?: boolean | ForumTopicDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumPost"]>
+
+  export type ForumPostSelectScalar = {
+    id?: boolean
+    topicId?: boolean
+    authorId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type ForumPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "topicId" | "authorId" | "content" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["forumPost"]>
+  export type ForumPostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    topic?: boolean | ForumTopicDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ForumPostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    topic?: boolean | ForumTopicDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ForumPostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    topic?: boolean | ForumTopicDefaultArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ForumPostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ForumPost"
+    objects: {
+      topic: Prisma.$ForumTopicPayload<ExtArgs>
+      author: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      topicId: number
+      authorId: number
+      content: string
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+    }, ExtArgs["result"]["forumPost"]>
+    composites: {}
+  }
+
+  type ForumPostGetPayload<S extends boolean | null | undefined | ForumPostDefaultArgs> = $Result.GetResult<Prisma.$ForumPostPayload, S>
+
+  type ForumPostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ForumPostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ForumPostCountAggregateInputType | true
+    }
+
+  export interface ForumPostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ForumPost'], meta: { name: 'ForumPost' } }
+    /**
+     * Find zero or one ForumPost that matches the filter.
+     * @param {ForumPostFindUniqueArgs} args - Arguments to find a ForumPost
+     * @example
+     * // Get one ForumPost
+     * const forumPost = await prisma.forumPost.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ForumPostFindUniqueArgs>(args: SelectSubset<T, ForumPostFindUniqueArgs<ExtArgs>>): Prisma__ForumPostClient<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ForumPost that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ForumPostFindUniqueOrThrowArgs} args - Arguments to find a ForumPost
+     * @example
+     * // Get one ForumPost
+     * const forumPost = await prisma.forumPost.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ForumPostFindUniqueOrThrowArgs>(args: SelectSubset<T, ForumPostFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ForumPostClient<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumPost that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumPostFindFirstArgs} args - Arguments to find a ForumPost
+     * @example
+     * // Get one ForumPost
+     * const forumPost = await prisma.forumPost.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ForumPostFindFirstArgs>(args?: SelectSubset<T, ForumPostFindFirstArgs<ExtArgs>>): Prisma__ForumPostClient<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumPost that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumPostFindFirstOrThrowArgs} args - Arguments to find a ForumPost
+     * @example
+     * // Get one ForumPost
+     * const forumPost = await prisma.forumPost.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ForumPostFindFirstOrThrowArgs>(args?: SelectSubset<T, ForumPostFindFirstOrThrowArgs<ExtArgs>>): Prisma__ForumPostClient<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ForumPosts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumPostFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ForumPosts
+     * const forumPosts = await prisma.forumPost.findMany()
+     * 
+     * // Get first 10 ForumPosts
+     * const forumPosts = await prisma.forumPost.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const forumPostWithIdOnly = await prisma.forumPost.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ForumPostFindManyArgs>(args?: SelectSubset<T, ForumPostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ForumPost.
+     * @param {ForumPostCreateArgs} args - Arguments to create a ForumPost.
+     * @example
+     * // Create one ForumPost
+     * const ForumPost = await prisma.forumPost.create({
+     *   data: {
+     *     // ... data to create a ForumPost
+     *   }
+     * })
+     * 
+     */
+    create<T extends ForumPostCreateArgs>(args: SelectSubset<T, ForumPostCreateArgs<ExtArgs>>): Prisma__ForumPostClient<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ForumPosts.
+     * @param {ForumPostCreateManyArgs} args - Arguments to create many ForumPosts.
+     * @example
+     * // Create many ForumPosts
+     * const forumPost = await prisma.forumPost.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ForumPostCreateManyArgs>(args?: SelectSubset<T, ForumPostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ForumPosts and returns the data saved in the database.
+     * @param {ForumPostCreateManyAndReturnArgs} args - Arguments to create many ForumPosts.
+     * @example
+     * // Create many ForumPosts
+     * const forumPost = await prisma.forumPost.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ForumPosts and only return the `id`
+     * const forumPostWithIdOnly = await prisma.forumPost.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ForumPostCreateManyAndReturnArgs>(args?: SelectSubset<T, ForumPostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ForumPost.
+     * @param {ForumPostDeleteArgs} args - Arguments to delete one ForumPost.
+     * @example
+     * // Delete one ForumPost
+     * const ForumPost = await prisma.forumPost.delete({
+     *   where: {
+     *     // ... filter to delete one ForumPost
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ForumPostDeleteArgs>(args: SelectSubset<T, ForumPostDeleteArgs<ExtArgs>>): Prisma__ForumPostClient<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ForumPost.
+     * @param {ForumPostUpdateArgs} args - Arguments to update one ForumPost.
+     * @example
+     * // Update one ForumPost
+     * const forumPost = await prisma.forumPost.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ForumPostUpdateArgs>(args: SelectSubset<T, ForumPostUpdateArgs<ExtArgs>>): Prisma__ForumPostClient<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ForumPosts.
+     * @param {ForumPostDeleteManyArgs} args - Arguments to filter ForumPosts to delete.
+     * @example
+     * // Delete a few ForumPosts
+     * const { count } = await prisma.forumPost.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ForumPostDeleteManyArgs>(args?: SelectSubset<T, ForumPostDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumPosts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumPostUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ForumPosts
+     * const forumPost = await prisma.forumPost.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ForumPostUpdateManyArgs>(args: SelectSubset<T, ForumPostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumPosts and returns the data updated in the database.
+     * @param {ForumPostUpdateManyAndReturnArgs} args - Arguments to update many ForumPosts.
+     * @example
+     * // Update many ForumPosts
+     * const forumPost = await prisma.forumPost.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ForumPosts and only return the `id`
+     * const forumPostWithIdOnly = await prisma.forumPost.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ForumPostUpdateManyAndReturnArgs>(args: SelectSubset<T, ForumPostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ForumPost.
+     * @param {ForumPostUpsertArgs} args - Arguments to update or create a ForumPost.
+     * @example
+     * // Update or create a ForumPost
+     * const forumPost = await prisma.forumPost.upsert({
+     *   create: {
+     *     // ... data to create a ForumPost
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ForumPost we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ForumPostUpsertArgs>(args: SelectSubset<T, ForumPostUpsertArgs<ExtArgs>>): Prisma__ForumPostClient<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ForumPosts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumPostCountArgs} args - Arguments to filter ForumPosts to count.
+     * @example
+     * // Count the number of ForumPosts
+     * const count = await prisma.forumPost.count({
+     *   where: {
+     *     // ... the filter for the ForumPosts we want to count
+     *   }
+     * })
+    **/
+    count<T extends ForumPostCountArgs>(
+      args?: Subset<T, ForumPostCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ForumPostCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ForumPost.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumPostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ForumPostAggregateArgs>(args: Subset<T, ForumPostAggregateArgs>): Prisma.PrismaPromise<GetForumPostAggregateType<T>>
+
+    /**
+     * Group by ForumPost.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumPostGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ForumPostGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ForumPostGroupByArgs['orderBy'] }
+        : { orderBy?: ForumPostGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ForumPostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetForumPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ForumPost model
+   */
+  readonly fields: ForumPostFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ForumPost.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ForumPostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    topic<T extends ForumTopicDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ForumTopicDefaultArgs<ExtArgs>>): Prisma__ForumTopicClient<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ForumPost model
+   */
+  interface ForumPostFieldRefs {
+    readonly id: FieldRef<"ForumPost", 'Int'>
+    readonly topicId: FieldRef<"ForumPost", 'Int'>
+    readonly authorId: FieldRef<"ForumPost", 'Int'>
+    readonly content: FieldRef<"ForumPost", 'String'>
+    readonly createdAt: FieldRef<"ForumPost", 'DateTime'>
+    readonly updatedAt: FieldRef<"ForumPost", 'DateTime'>
+    readonly deletedAt: FieldRef<"ForumPost", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ForumPost findUnique
+   */
+  export type ForumPostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumPost to fetch.
+     */
+    where: ForumPostWhereUniqueInput
+  }
+
+  /**
+   * ForumPost findUniqueOrThrow
+   */
+  export type ForumPostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumPost to fetch.
+     */
+    where: ForumPostWhereUniqueInput
+  }
+
+  /**
+   * ForumPost findFirst
+   */
+  export type ForumPostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumPost to fetch.
+     */
+    where?: ForumPostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumPosts to fetch.
+     */
+    orderBy?: ForumPostOrderByWithRelationInput | ForumPostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumPosts.
+     */
+    cursor?: ForumPostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumPosts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumPosts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumPosts.
+     */
+    distinct?: ForumPostScalarFieldEnum | ForumPostScalarFieldEnum[]
+  }
+
+  /**
+   * ForumPost findFirstOrThrow
+   */
+  export type ForumPostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumPost to fetch.
+     */
+    where?: ForumPostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumPosts to fetch.
+     */
+    orderBy?: ForumPostOrderByWithRelationInput | ForumPostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumPosts.
+     */
+    cursor?: ForumPostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumPosts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumPosts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumPosts.
+     */
+    distinct?: ForumPostScalarFieldEnum | ForumPostScalarFieldEnum[]
+  }
+
+  /**
+   * ForumPost findMany
+   */
+  export type ForumPostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumPosts to fetch.
+     */
+    where?: ForumPostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumPosts to fetch.
+     */
+    orderBy?: ForumPostOrderByWithRelationInput | ForumPostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ForumPosts.
+     */
+    cursor?: ForumPostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumPosts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumPosts.
+     */
+    skip?: number
+    distinct?: ForumPostScalarFieldEnum | ForumPostScalarFieldEnum[]
+  }
+
+  /**
+   * ForumPost create
+   */
+  export type ForumPostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ForumPost.
+     */
+    data: XOR<ForumPostCreateInput, ForumPostUncheckedCreateInput>
+  }
+
+  /**
+   * ForumPost createMany
+   */
+  export type ForumPostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ForumPosts.
+     */
+    data: ForumPostCreateManyInput | ForumPostCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumPost createManyAndReturn
+   */
+  export type ForumPostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * The data used to create many ForumPosts.
+     */
+    data: ForumPostCreateManyInput | ForumPostCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ForumPost update
+   */
+  export type ForumPostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ForumPost.
+     */
+    data: XOR<ForumPostUpdateInput, ForumPostUncheckedUpdateInput>
+    /**
+     * Choose, which ForumPost to update.
+     */
+    where: ForumPostWhereUniqueInput
+  }
+
+  /**
+   * ForumPost updateMany
+   */
+  export type ForumPostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ForumPosts.
+     */
+    data: XOR<ForumPostUpdateManyMutationInput, ForumPostUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumPosts to update
+     */
+    where?: ForumPostWhereInput
+    /**
+     * Limit how many ForumPosts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumPost updateManyAndReturn
+   */
+  export type ForumPostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * The data used to update ForumPosts.
+     */
+    data: XOR<ForumPostUpdateManyMutationInput, ForumPostUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumPosts to update
+     */
+    where?: ForumPostWhereInput
+    /**
+     * Limit how many ForumPosts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ForumPost upsert
+   */
+  export type ForumPostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ForumPost to update in case it exists.
+     */
+    where: ForumPostWhereUniqueInput
+    /**
+     * In case the ForumPost found by the `where` argument doesn't exist, create a new ForumPost with this data.
+     */
+    create: XOR<ForumPostCreateInput, ForumPostUncheckedCreateInput>
+    /**
+     * In case the ForumPost was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ForumPostUpdateInput, ForumPostUncheckedUpdateInput>
+  }
+
+  /**
+   * ForumPost delete
+   */
+  export type ForumPostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+    /**
+     * Filter which ForumPost to delete.
+     */
+    where: ForumPostWhereUniqueInput
+  }
+
+  /**
+   * ForumPost deleteMany
+   */
+  export type ForumPostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumPosts to delete
+     */
+    where?: ForumPostWhereInput
+    /**
+     * Limit how many ForumPosts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumPost without action
+   */
+  export type ForumPostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumPost
+     */
+    select?: ForumPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumPost
+     */
+    omit?: ForumPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumPostInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ForumTag
+   */
+
+  export type AggregateForumTag = {
+    _count: ForumTagCountAggregateOutputType | null
+    _avg: ForumTagAvgAggregateOutputType | null
+    _sum: ForumTagSumAggregateOutputType | null
+    _min: ForumTagMinAggregateOutputType | null
+    _max: ForumTagMaxAggregateOutputType | null
+  }
+
+  export type ForumTagAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ForumTagSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ForumTagMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type ForumTagMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type ForumTagCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type ForumTagAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ForumTagSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ForumTagMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ForumTagMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ForumTagCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type ForumTagAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumTag to aggregate.
+     */
+    where?: ForumTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumTags to fetch.
+     */
+    orderBy?: ForumTagOrderByWithRelationInput | ForumTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ForumTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ForumTags
+    **/
+    _count?: true | ForumTagCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ForumTagAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ForumTagSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ForumTagMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ForumTagMaxAggregateInputType
+  }
+
+  export type GetForumTagAggregateType<T extends ForumTagAggregateArgs> = {
+        [P in keyof T & keyof AggregateForumTag]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateForumTag[P]>
+      : GetScalarType<T[P], AggregateForumTag[P]>
+  }
+
+
+
+
+  export type ForumTagGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ForumTagWhereInput
+    orderBy?: ForumTagOrderByWithAggregationInput | ForumTagOrderByWithAggregationInput[]
+    by: ForumTagScalarFieldEnum[] | ForumTagScalarFieldEnum
+    having?: ForumTagScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ForumTagCountAggregateInputType | true
+    _avg?: ForumTagAvgAggregateInputType
+    _sum?: ForumTagSumAggregateInputType
+    _min?: ForumTagMinAggregateInputType
+    _max?: ForumTagMaxAggregateInputType
+  }
+
+  export type ForumTagGroupByOutputType = {
+    id: number
+    name: string
+    _count: ForumTagCountAggregateOutputType | null
+    _avg: ForumTagAvgAggregateOutputType | null
+    _sum: ForumTagSumAggregateOutputType | null
+    _min: ForumTagMinAggregateOutputType | null
+    _max: ForumTagMaxAggregateOutputType | null
+  }
+
+  type GetForumTagGroupByPayload<T extends ForumTagGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ForumTagGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ForumTagGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ForumTagGroupByOutputType[P]>
+            : GetScalarType<T[P], ForumTagGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ForumTagSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    topics?: boolean | ForumTag$topicsArgs<ExtArgs>
+    _count?: boolean | ForumTagCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["forumTag"]>
+
+  export type ForumTagSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["forumTag"]>
+
+  export type ForumTagSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["forumTag"]>
+
+  export type ForumTagSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type ForumTagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["forumTag"]>
+  export type ForumTagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    topics?: boolean | ForumTag$topicsArgs<ExtArgs>
+    _count?: boolean | ForumTagCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ForumTagIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ForumTagIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ForumTagPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ForumTag"
+    objects: {
+      topics: Prisma.$ForumTopicPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["forumTag"]>
+    composites: {}
+  }
+
+  type ForumTagGetPayload<S extends boolean | null | undefined | ForumTagDefaultArgs> = $Result.GetResult<Prisma.$ForumTagPayload, S>
+
+  type ForumTagCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ForumTagFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ForumTagCountAggregateInputType | true
+    }
+
+  export interface ForumTagDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ForumTag'], meta: { name: 'ForumTag' } }
+    /**
+     * Find zero or one ForumTag that matches the filter.
+     * @param {ForumTagFindUniqueArgs} args - Arguments to find a ForumTag
+     * @example
+     * // Get one ForumTag
+     * const forumTag = await prisma.forumTag.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ForumTagFindUniqueArgs>(args: SelectSubset<T, ForumTagFindUniqueArgs<ExtArgs>>): Prisma__ForumTagClient<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ForumTag that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ForumTagFindUniqueOrThrowArgs} args - Arguments to find a ForumTag
+     * @example
+     * // Get one ForumTag
+     * const forumTag = await prisma.forumTag.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ForumTagFindUniqueOrThrowArgs>(args: SelectSubset<T, ForumTagFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ForumTagClient<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumTag that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTagFindFirstArgs} args - Arguments to find a ForumTag
+     * @example
+     * // Get one ForumTag
+     * const forumTag = await prisma.forumTag.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ForumTagFindFirstArgs>(args?: SelectSubset<T, ForumTagFindFirstArgs<ExtArgs>>): Prisma__ForumTagClient<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ForumTag that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTagFindFirstOrThrowArgs} args - Arguments to find a ForumTag
+     * @example
+     * // Get one ForumTag
+     * const forumTag = await prisma.forumTag.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ForumTagFindFirstOrThrowArgs>(args?: SelectSubset<T, ForumTagFindFirstOrThrowArgs<ExtArgs>>): Prisma__ForumTagClient<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ForumTags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTagFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ForumTags
+     * const forumTags = await prisma.forumTag.findMany()
+     * 
+     * // Get first 10 ForumTags
+     * const forumTags = await prisma.forumTag.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const forumTagWithIdOnly = await prisma.forumTag.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ForumTagFindManyArgs>(args?: SelectSubset<T, ForumTagFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ForumTag.
+     * @param {ForumTagCreateArgs} args - Arguments to create a ForumTag.
+     * @example
+     * // Create one ForumTag
+     * const ForumTag = await prisma.forumTag.create({
+     *   data: {
+     *     // ... data to create a ForumTag
+     *   }
+     * })
+     * 
+     */
+    create<T extends ForumTagCreateArgs>(args: SelectSubset<T, ForumTagCreateArgs<ExtArgs>>): Prisma__ForumTagClient<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ForumTags.
+     * @param {ForumTagCreateManyArgs} args - Arguments to create many ForumTags.
+     * @example
+     * // Create many ForumTags
+     * const forumTag = await prisma.forumTag.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ForumTagCreateManyArgs>(args?: SelectSubset<T, ForumTagCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ForumTags and returns the data saved in the database.
+     * @param {ForumTagCreateManyAndReturnArgs} args - Arguments to create many ForumTags.
+     * @example
+     * // Create many ForumTags
+     * const forumTag = await prisma.forumTag.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ForumTags and only return the `id`
+     * const forumTagWithIdOnly = await prisma.forumTag.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ForumTagCreateManyAndReturnArgs>(args?: SelectSubset<T, ForumTagCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ForumTag.
+     * @param {ForumTagDeleteArgs} args - Arguments to delete one ForumTag.
+     * @example
+     * // Delete one ForumTag
+     * const ForumTag = await prisma.forumTag.delete({
+     *   where: {
+     *     // ... filter to delete one ForumTag
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ForumTagDeleteArgs>(args: SelectSubset<T, ForumTagDeleteArgs<ExtArgs>>): Prisma__ForumTagClient<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ForumTag.
+     * @param {ForumTagUpdateArgs} args - Arguments to update one ForumTag.
+     * @example
+     * // Update one ForumTag
+     * const forumTag = await prisma.forumTag.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ForumTagUpdateArgs>(args: SelectSubset<T, ForumTagUpdateArgs<ExtArgs>>): Prisma__ForumTagClient<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ForumTags.
+     * @param {ForumTagDeleteManyArgs} args - Arguments to filter ForumTags to delete.
+     * @example
+     * // Delete a few ForumTags
+     * const { count } = await prisma.forumTag.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ForumTagDeleteManyArgs>(args?: SelectSubset<T, ForumTagDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTagUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ForumTags
+     * const forumTag = await prisma.forumTag.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ForumTagUpdateManyArgs>(args: SelectSubset<T, ForumTagUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ForumTags and returns the data updated in the database.
+     * @param {ForumTagUpdateManyAndReturnArgs} args - Arguments to update many ForumTags.
+     * @example
+     * // Update many ForumTags
+     * const forumTag = await prisma.forumTag.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ForumTags and only return the `id`
+     * const forumTagWithIdOnly = await prisma.forumTag.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ForumTagUpdateManyAndReturnArgs>(args: SelectSubset<T, ForumTagUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ForumTag.
+     * @param {ForumTagUpsertArgs} args - Arguments to update or create a ForumTag.
+     * @example
+     * // Update or create a ForumTag
+     * const forumTag = await prisma.forumTag.upsert({
+     *   create: {
+     *     // ... data to create a ForumTag
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ForumTag we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ForumTagUpsertArgs>(args: SelectSubset<T, ForumTagUpsertArgs<ExtArgs>>): Prisma__ForumTagClient<$Result.GetResult<Prisma.$ForumTagPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ForumTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTagCountArgs} args - Arguments to filter ForumTags to count.
+     * @example
+     * // Count the number of ForumTags
+     * const count = await prisma.forumTag.count({
+     *   where: {
+     *     // ... the filter for the ForumTags we want to count
+     *   }
+     * })
+    **/
+    count<T extends ForumTagCountArgs>(
+      args?: Subset<T, ForumTagCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ForumTagCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ForumTag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTagAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ForumTagAggregateArgs>(args: Subset<T, ForumTagAggregateArgs>): Prisma.PrismaPromise<GetForumTagAggregateType<T>>
+
+    /**
+     * Group by ForumTag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ForumTagGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ForumTagGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ForumTagGroupByArgs['orderBy'] }
+        : { orderBy?: ForumTagGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ForumTagGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetForumTagGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ForumTag model
+   */
+  readonly fields: ForumTagFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ForumTag.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ForumTagClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    topics<T extends ForumTag$topicsArgs<ExtArgs> = {}>(args?: Subset<T, ForumTag$topicsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ForumTag model
+   */
+  interface ForumTagFieldRefs {
+    readonly id: FieldRef<"ForumTag", 'Int'>
+    readonly name: FieldRef<"ForumTag", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ForumTag findUnique
+   */
+  export type ForumTagFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTag to fetch.
+     */
+    where: ForumTagWhereUniqueInput
+  }
+
+  /**
+   * ForumTag findUniqueOrThrow
+   */
+  export type ForumTagFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTag to fetch.
+     */
+    where: ForumTagWhereUniqueInput
+  }
+
+  /**
+   * ForumTag findFirst
+   */
+  export type ForumTagFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTag to fetch.
+     */
+    where?: ForumTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumTags to fetch.
+     */
+    orderBy?: ForumTagOrderByWithRelationInput | ForumTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumTags.
+     */
+    cursor?: ForumTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumTags.
+     */
+    distinct?: ForumTagScalarFieldEnum | ForumTagScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTag findFirstOrThrow
+   */
+  export type ForumTagFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTag to fetch.
+     */
+    where?: ForumTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumTags to fetch.
+     */
+    orderBy?: ForumTagOrderByWithRelationInput | ForumTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ForumTags.
+     */
+    cursor?: ForumTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ForumTags.
+     */
+    distinct?: ForumTagScalarFieldEnum | ForumTagScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTag findMany
+   */
+  export type ForumTagFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * Filter, which ForumTags to fetch.
+     */
+    where?: ForumTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ForumTags to fetch.
+     */
+    orderBy?: ForumTagOrderByWithRelationInput | ForumTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ForumTags.
+     */
+    cursor?: ForumTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ForumTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ForumTags.
+     */
+    skip?: number
+    distinct?: ForumTagScalarFieldEnum | ForumTagScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTag create
+   */
+  export type ForumTagCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ForumTag.
+     */
+    data: XOR<ForumTagCreateInput, ForumTagUncheckedCreateInput>
+  }
+
+  /**
+   * ForumTag createMany
+   */
+  export type ForumTagCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ForumTags.
+     */
+    data: ForumTagCreateManyInput | ForumTagCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumTag createManyAndReturn
+   */
+  export type ForumTagCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * The data used to create many ForumTags.
+     */
+    data: ForumTagCreateManyInput | ForumTagCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ForumTag update
+   */
+  export type ForumTagUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ForumTag.
+     */
+    data: XOR<ForumTagUpdateInput, ForumTagUncheckedUpdateInput>
+    /**
+     * Choose, which ForumTag to update.
+     */
+    where: ForumTagWhereUniqueInput
+  }
+
+  /**
+   * ForumTag updateMany
+   */
+  export type ForumTagUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ForumTags.
+     */
+    data: XOR<ForumTagUpdateManyMutationInput, ForumTagUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumTags to update
+     */
+    where?: ForumTagWhereInput
+    /**
+     * Limit how many ForumTags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumTag updateManyAndReturn
+   */
+  export type ForumTagUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * The data used to update ForumTags.
+     */
+    data: XOR<ForumTagUpdateManyMutationInput, ForumTagUncheckedUpdateManyInput>
+    /**
+     * Filter which ForumTags to update
+     */
+    where?: ForumTagWhereInput
+    /**
+     * Limit how many ForumTags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumTag upsert
+   */
+  export type ForumTagUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ForumTag to update in case it exists.
+     */
+    where: ForumTagWhereUniqueInput
+    /**
+     * In case the ForumTag found by the `where` argument doesn't exist, create a new ForumTag with this data.
+     */
+    create: XOR<ForumTagCreateInput, ForumTagUncheckedCreateInput>
+    /**
+     * In case the ForumTag was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ForumTagUpdateInput, ForumTagUncheckedUpdateInput>
+  }
+
+  /**
+   * ForumTag delete
+   */
+  export type ForumTagDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+    /**
+     * Filter which ForumTag to delete.
+     */
+    where: ForumTagWhereUniqueInput
+  }
+
+  /**
+   * ForumTag deleteMany
+   */
+  export type ForumTagDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ForumTags to delete
+     */
+    where?: ForumTagWhereInput
+    /**
+     * Limit how many ForumTags to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ForumTag.topics
+   */
+  export type ForumTag$topicsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTopic
+     */
+    select?: ForumTopicSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTopic
+     */
+    omit?: ForumTopicOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTopicInclude<ExtArgs> | null
+    where?: ForumTopicWhereInput
+    orderBy?: ForumTopicOrderByWithRelationInput | ForumTopicOrderByWithRelationInput[]
+    cursor?: ForumTopicWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ForumTopicScalarFieldEnum | ForumTopicScalarFieldEnum[]
+  }
+
+  /**
+   * ForumTag without action
+   */
+  export type ForumTagDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ForumTag
+     */
+    select?: ForumTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ForumTag
+     */
+    omit?: ForumTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ForumTagInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -42663,6 +47797,58 @@ export namespace Prisma {
   export type OcrHistoryScalarFieldEnum = (typeof OcrHistoryScalarFieldEnum)[keyof typeof OcrHistoryScalarFieldEnum]
 
 
+  export const ForumCategoryScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    icon: 'icon',
+    color: 'color',
+    order: 'order',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ForumCategoryScalarFieldEnum = (typeof ForumCategoryScalarFieldEnum)[keyof typeof ForumCategoryScalarFieldEnum]
+
+
+  export const ForumTopicScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    content: 'content',
+    categoryId: 'categoryId',
+    authorId: 'authorId',
+    views: 'views',
+    isPinned: 'isPinned',
+    isLocked: 'isLocked',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type ForumTopicScalarFieldEnum = (typeof ForumTopicScalarFieldEnum)[keyof typeof ForumTopicScalarFieldEnum]
+
+
+  export const ForumPostScalarFieldEnum: {
+    id: 'id',
+    topicId: 'topicId',
+    authorId: 'authorId',
+    content: 'content',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type ForumPostScalarFieldEnum = (typeof ForumPostScalarFieldEnum)[keyof typeof ForumPostScalarFieldEnum]
+
+
+  export const ForumTagScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ForumTagScalarFieldEnum = (typeof ForumTagScalarFieldEnum)[keyof typeof ForumTagScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -43085,6 +48271,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardListRelationFilter
     cardActivities?: CardActivityListRelationFilter
     ocrHistory?: OcrHistoryListRelationFilter
+    forumTopics?: ForumTopicListRelationFilter
+    forumPosts?: ForumPostListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -43122,6 +48310,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardOrderByRelationAggregateInput
     cardActivities?: CardActivityOrderByRelationAggregateInput
     ocrHistory?: OcrHistoryOrderByRelationAggregateInput
+    forumTopics?: ForumTopicOrderByRelationAggregateInput
+    forumPosts?: ForumPostOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -43162,6 +48352,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardListRelationFilter
     cardActivities?: CardActivityListRelationFilter
     ocrHistory?: OcrHistoryListRelationFilter
+    forumTopics?: ForumTopicListRelationFilter
+    forumPosts?: ForumPostListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -45600,6 +50792,286 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"OcrHistory"> | Date | string
   }
 
+  export type ForumCategoryWhereInput = {
+    AND?: ForumCategoryWhereInput | ForumCategoryWhereInput[]
+    OR?: ForumCategoryWhereInput[]
+    NOT?: ForumCategoryWhereInput | ForumCategoryWhereInput[]
+    id?: IntFilter<"ForumCategory"> | number
+    title?: StringFilter<"ForumCategory"> | string
+    description?: StringNullableFilter<"ForumCategory"> | string | null
+    icon?: StringNullableFilter<"ForumCategory"> | string | null
+    color?: StringNullableFilter<"ForumCategory"> | string | null
+    order?: IntFilter<"ForumCategory"> | number
+    createdAt?: DateTimeFilter<"ForumCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumCategory"> | Date | string
+    topics?: ForumTopicListRelationFilter
+  }
+
+  export type ForumCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    icon?: SortOrderInput | SortOrder
+    color?: SortOrderInput | SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    topics?: ForumTopicOrderByRelationAggregateInput
+  }
+
+  export type ForumCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ForumCategoryWhereInput | ForumCategoryWhereInput[]
+    OR?: ForumCategoryWhereInput[]
+    NOT?: ForumCategoryWhereInput | ForumCategoryWhereInput[]
+    title?: StringFilter<"ForumCategory"> | string
+    description?: StringNullableFilter<"ForumCategory"> | string | null
+    icon?: StringNullableFilter<"ForumCategory"> | string | null
+    color?: StringNullableFilter<"ForumCategory"> | string | null
+    order?: IntFilter<"ForumCategory"> | number
+    createdAt?: DateTimeFilter<"ForumCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumCategory"> | Date | string
+    topics?: ForumTopicListRelationFilter
+  }, "id">
+
+  export type ForumCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    icon?: SortOrderInput | SortOrder
+    color?: SortOrderInput | SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ForumCategoryCountOrderByAggregateInput
+    _avg?: ForumCategoryAvgOrderByAggregateInput
+    _max?: ForumCategoryMaxOrderByAggregateInput
+    _min?: ForumCategoryMinOrderByAggregateInput
+    _sum?: ForumCategorySumOrderByAggregateInput
+  }
+
+  export type ForumCategoryScalarWhereWithAggregatesInput = {
+    AND?: ForumCategoryScalarWhereWithAggregatesInput | ForumCategoryScalarWhereWithAggregatesInput[]
+    OR?: ForumCategoryScalarWhereWithAggregatesInput[]
+    NOT?: ForumCategoryScalarWhereWithAggregatesInput | ForumCategoryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ForumCategory"> | number
+    title?: StringWithAggregatesFilter<"ForumCategory"> | string
+    description?: StringNullableWithAggregatesFilter<"ForumCategory"> | string | null
+    icon?: StringNullableWithAggregatesFilter<"ForumCategory"> | string | null
+    color?: StringNullableWithAggregatesFilter<"ForumCategory"> | string | null
+    order?: IntWithAggregatesFilter<"ForumCategory"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ForumCategory"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ForumCategory"> | Date | string
+  }
+
+  export type ForumTopicWhereInput = {
+    AND?: ForumTopicWhereInput | ForumTopicWhereInput[]
+    OR?: ForumTopicWhereInput[]
+    NOT?: ForumTopicWhereInput | ForumTopicWhereInput[]
+    id?: IntFilter<"ForumTopic"> | number
+    title?: StringFilter<"ForumTopic"> | string
+    content?: StringFilter<"ForumTopic"> | string
+    categoryId?: IntFilter<"ForumTopic"> | number
+    authorId?: IntFilter<"ForumTopic"> | number
+    views?: IntFilter<"ForumTopic"> | number
+    isPinned?: BoolFilter<"ForumTopic"> | boolean
+    isLocked?: BoolFilter<"ForumTopic"> | boolean
+    createdAt?: DateTimeFilter<"ForumTopic"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumTopic"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"ForumTopic"> | Date | string | null
+    category?: XOR<ForumCategoryScalarRelationFilter, ForumCategoryWhereInput>
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    posts?: ForumPostListRelationFilter
+    tags?: ForumTagListRelationFilter
+  }
+
+  export type ForumTopicOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    categoryId?: SortOrder
+    authorId?: SortOrder
+    views?: SortOrder
+    isPinned?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    category?: ForumCategoryOrderByWithRelationInput
+    author?: UserOrderByWithRelationInput
+    posts?: ForumPostOrderByRelationAggregateInput
+    tags?: ForumTagOrderByRelationAggregateInput
+  }
+
+  export type ForumTopicWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ForumTopicWhereInput | ForumTopicWhereInput[]
+    OR?: ForumTopicWhereInput[]
+    NOT?: ForumTopicWhereInput | ForumTopicWhereInput[]
+    title?: StringFilter<"ForumTopic"> | string
+    content?: StringFilter<"ForumTopic"> | string
+    categoryId?: IntFilter<"ForumTopic"> | number
+    authorId?: IntFilter<"ForumTopic"> | number
+    views?: IntFilter<"ForumTopic"> | number
+    isPinned?: BoolFilter<"ForumTopic"> | boolean
+    isLocked?: BoolFilter<"ForumTopic"> | boolean
+    createdAt?: DateTimeFilter<"ForumTopic"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumTopic"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"ForumTopic"> | Date | string | null
+    category?: XOR<ForumCategoryScalarRelationFilter, ForumCategoryWhereInput>
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    posts?: ForumPostListRelationFilter
+    tags?: ForumTagListRelationFilter
+  }, "id">
+
+  export type ForumTopicOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    categoryId?: SortOrder
+    authorId?: SortOrder
+    views?: SortOrder
+    isPinned?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: ForumTopicCountOrderByAggregateInput
+    _avg?: ForumTopicAvgOrderByAggregateInput
+    _max?: ForumTopicMaxOrderByAggregateInput
+    _min?: ForumTopicMinOrderByAggregateInput
+    _sum?: ForumTopicSumOrderByAggregateInput
+  }
+
+  export type ForumTopicScalarWhereWithAggregatesInput = {
+    AND?: ForumTopicScalarWhereWithAggregatesInput | ForumTopicScalarWhereWithAggregatesInput[]
+    OR?: ForumTopicScalarWhereWithAggregatesInput[]
+    NOT?: ForumTopicScalarWhereWithAggregatesInput | ForumTopicScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ForumTopic"> | number
+    title?: StringWithAggregatesFilter<"ForumTopic"> | string
+    content?: StringWithAggregatesFilter<"ForumTopic"> | string
+    categoryId?: IntWithAggregatesFilter<"ForumTopic"> | number
+    authorId?: IntWithAggregatesFilter<"ForumTopic"> | number
+    views?: IntWithAggregatesFilter<"ForumTopic"> | number
+    isPinned?: BoolWithAggregatesFilter<"ForumTopic"> | boolean
+    isLocked?: BoolWithAggregatesFilter<"ForumTopic"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ForumTopic"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ForumTopic"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"ForumTopic"> | Date | string | null
+  }
+
+  export type ForumPostWhereInput = {
+    AND?: ForumPostWhereInput | ForumPostWhereInput[]
+    OR?: ForumPostWhereInput[]
+    NOT?: ForumPostWhereInput | ForumPostWhereInput[]
+    id?: IntFilter<"ForumPost"> | number
+    topicId?: IntFilter<"ForumPost"> | number
+    authorId?: IntFilter<"ForumPost"> | number
+    content?: StringFilter<"ForumPost"> | string
+    createdAt?: DateTimeFilter<"ForumPost"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumPost"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"ForumPost"> | Date | string | null
+    topic?: XOR<ForumTopicScalarRelationFilter, ForumTopicWhereInput>
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ForumPostOrderByWithRelationInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    authorId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    topic?: ForumTopicOrderByWithRelationInput
+    author?: UserOrderByWithRelationInput
+  }
+
+  export type ForumPostWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ForumPostWhereInput | ForumPostWhereInput[]
+    OR?: ForumPostWhereInput[]
+    NOT?: ForumPostWhereInput | ForumPostWhereInput[]
+    topicId?: IntFilter<"ForumPost"> | number
+    authorId?: IntFilter<"ForumPost"> | number
+    content?: StringFilter<"ForumPost"> | string
+    createdAt?: DateTimeFilter<"ForumPost"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumPost"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"ForumPost"> | Date | string | null
+    topic?: XOR<ForumTopicScalarRelationFilter, ForumTopicWhereInput>
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ForumPostOrderByWithAggregationInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    authorId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: ForumPostCountOrderByAggregateInput
+    _avg?: ForumPostAvgOrderByAggregateInput
+    _max?: ForumPostMaxOrderByAggregateInput
+    _min?: ForumPostMinOrderByAggregateInput
+    _sum?: ForumPostSumOrderByAggregateInput
+  }
+
+  export type ForumPostScalarWhereWithAggregatesInput = {
+    AND?: ForumPostScalarWhereWithAggregatesInput | ForumPostScalarWhereWithAggregatesInput[]
+    OR?: ForumPostScalarWhereWithAggregatesInput[]
+    NOT?: ForumPostScalarWhereWithAggregatesInput | ForumPostScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ForumPost"> | number
+    topicId?: IntWithAggregatesFilter<"ForumPost"> | number
+    authorId?: IntWithAggregatesFilter<"ForumPost"> | number
+    content?: StringWithAggregatesFilter<"ForumPost"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ForumPost"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ForumPost"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"ForumPost"> | Date | string | null
+  }
+
+  export type ForumTagWhereInput = {
+    AND?: ForumTagWhereInput | ForumTagWhereInput[]
+    OR?: ForumTagWhereInput[]
+    NOT?: ForumTagWhereInput | ForumTagWhereInput[]
+    id?: IntFilter<"ForumTag"> | number
+    name?: StringFilter<"ForumTag"> | string
+    topics?: ForumTopicListRelationFilter
+  }
+
+  export type ForumTagOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    topics?: ForumTopicOrderByRelationAggregateInput
+  }
+
+  export type ForumTagWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: ForumTagWhereInput | ForumTagWhereInput[]
+    OR?: ForumTagWhereInput[]
+    NOT?: ForumTagWhereInput | ForumTagWhereInput[]
+    topics?: ForumTopicListRelationFilter
+  }, "id" | "name">
+
+  export type ForumTagOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: ForumTagCountOrderByAggregateInput
+    _avg?: ForumTagAvgOrderByAggregateInput
+    _max?: ForumTagMaxOrderByAggregateInput
+    _min?: ForumTagMinOrderByAggregateInput
+    _sum?: ForumTagSumOrderByAggregateInput
+  }
+
+  export type ForumTagScalarWhereWithAggregatesInput = {
+    AND?: ForumTagScalarWhereWithAggregatesInput | ForumTagScalarWhereWithAggregatesInput[]
+    OR?: ForumTagScalarWhereWithAggregatesInput[]
+    NOT?: ForumTagScalarWhereWithAggregatesInput | ForumTagScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ForumTag"> | number
+    name?: StringWithAggregatesFilter<"ForumTag"> | string
+  }
+
   export type PingCreateInput = {
     value: string
   }
@@ -45734,6 +51206,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -45771,6 +51245,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUpdateInput = {
@@ -45807,6 +51283,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -45844,6 +51322,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -48336,6 +53816,286 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ForumCategoryCreateInput = {
+    title: string
+    description?: string | null
+    icon?: string | null
+    color?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    topics?: ForumTopicCreateNestedManyWithoutCategoryInput
+  }
+
+  export type ForumCategoryUncheckedCreateInput = {
+    id?: number
+    title: string
+    description?: string | null
+    icon?: string | null
+    color?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    topics?: ForumTopicUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type ForumCategoryUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    topics?: ForumTopicUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type ForumCategoryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    topics?: ForumTopicUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type ForumCategoryCreateManyInput = {
+    id?: number
+    title: string
+    description?: string | null
+    icon?: string | null
+    color?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumCategoryUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumCategoryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumTopicCreateInput = {
+    title: string
+    content: string
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    category: ForumCategoryCreateNestedOneWithoutTopicsInput
+    author: UserCreateNestedOneWithoutForumTopicsInput
+    posts?: ForumPostCreateNestedManyWithoutTopicInput
+    tags?: ForumTagCreateNestedManyWithoutTopicsInput
+  }
+
+  export type ForumTopicUncheckedCreateInput = {
+    id?: number
+    title: string
+    content: string
+    categoryId: number
+    authorId: number
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    posts?: ForumPostUncheckedCreateNestedManyWithoutTopicInput
+    tags?: ForumTagUncheckedCreateNestedManyWithoutTopicsInput
+  }
+
+  export type ForumTopicUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: ForumCategoryUpdateOneRequiredWithoutTopicsNestedInput
+    author?: UserUpdateOneRequiredWithoutForumTopicsNestedInput
+    posts?: ForumPostUpdateManyWithoutTopicNestedInput
+    tags?: ForumTagUpdateManyWithoutTopicsNestedInput
+  }
+
+  export type ForumTopicUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    posts?: ForumPostUncheckedUpdateManyWithoutTopicNestedInput
+    tags?: ForumTagUncheckedUpdateManyWithoutTopicsNestedInput
+  }
+
+  export type ForumTopicCreateManyInput = {
+    id?: number
+    title: string
+    content: string
+    categoryId: number
+    authorId: number
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ForumTopicUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumTopicUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumPostCreateInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    topic: ForumTopicCreateNestedOneWithoutPostsInput
+    author: UserCreateNestedOneWithoutForumPostsInput
+  }
+
+  export type ForumPostUncheckedCreateInput = {
+    id?: number
+    topicId: number
+    authorId: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ForumPostUpdateInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    topic?: ForumTopicUpdateOneRequiredWithoutPostsNestedInput
+    author?: UserUpdateOneRequiredWithoutForumPostsNestedInput
+  }
+
+  export type ForumPostUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    topicId?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumPostCreateManyInput = {
+    id?: number
+    topicId: number
+    authorId: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ForumPostUpdateManyMutationInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumPostUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    topicId?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumTagCreateInput = {
+    name: string
+    topics?: ForumTopicCreateNestedManyWithoutTagsInput
+  }
+
+  export type ForumTagUncheckedCreateInput = {
+    id?: number
+    name: string
+    topics?: ForumTopicUncheckedCreateNestedManyWithoutTagsInput
+  }
+
+  export type ForumTagUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    topics?: ForumTopicUpdateManyWithoutTagsNestedInput
+  }
+
+  export type ForumTagUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    topics?: ForumTopicUncheckedUpdateManyWithoutTagsNestedInput
+  }
+
+  export type ForumTagCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type ForumTagUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ForumTagUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -48641,6 +54401,18 @@ export namespace Prisma {
     none?: OcrHistoryWhereInput
   }
 
+  export type ForumTopicListRelationFilter = {
+    every?: ForumTopicWhereInput
+    some?: ForumTopicWhereInput
+    none?: ForumTopicWhereInput
+  }
+
+  export type ForumPostListRelationFilter = {
+    every?: ForumPostWhereInput
+    some?: ForumPostWhereInput
+    none?: ForumPostWhereInput
+  }
+
   export type AssignmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -48694,6 +54466,14 @@ export namespace Prisma {
   }
 
   export type OcrHistoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ForumTopicOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ForumPostOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -50676,6 +56456,190 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
+  export type ForumCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ForumCategoryAvgOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+  }
+
+  export type ForumCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ForumCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ForumCategorySumOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+  }
+
+  export type ForumCategoryScalarRelationFilter = {
+    is?: ForumCategoryWhereInput
+    isNot?: ForumCategoryWhereInput
+  }
+
+  export type ForumTagListRelationFilter = {
+    every?: ForumTagWhereInput
+    some?: ForumTagWhereInput
+    none?: ForumTagWhereInput
+  }
+
+  export type ForumTagOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ForumTopicCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    categoryId?: SortOrder
+    authorId?: SortOrder
+    views?: SortOrder
+    isPinned?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ForumTopicAvgOrderByAggregateInput = {
+    id?: SortOrder
+    categoryId?: SortOrder
+    authorId?: SortOrder
+    views?: SortOrder
+  }
+
+  export type ForumTopicMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    categoryId?: SortOrder
+    authorId?: SortOrder
+    views?: SortOrder
+    isPinned?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ForumTopicMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    categoryId?: SortOrder
+    authorId?: SortOrder
+    views?: SortOrder
+    isPinned?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ForumTopicSumOrderByAggregateInput = {
+    id?: SortOrder
+    categoryId?: SortOrder
+    authorId?: SortOrder
+    views?: SortOrder
+  }
+
+  export type ForumTopicScalarRelationFilter = {
+    is?: ForumTopicWhereInput
+    isNot?: ForumTopicWhereInput
+  }
+
+  export type ForumPostCountOrderByAggregateInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    authorId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ForumPostAvgOrderByAggregateInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type ForumPostMaxOrderByAggregateInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    authorId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ForumPostMinOrderByAggregateInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    authorId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type ForumPostSumOrderByAggregateInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type ForumTagCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ForumTagAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ForumTagMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ForumTagMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ForumTagSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -50910,6 +56874,20 @@ export namespace Prisma {
     connect?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
   }
 
+  export type ForumTopicCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ForumTopicCreateWithoutAuthorInput, ForumTopicUncheckedCreateWithoutAuthorInput> | ForumTopicCreateWithoutAuthorInput[] | ForumTopicUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutAuthorInput | ForumTopicCreateOrConnectWithoutAuthorInput[]
+    createMany?: ForumTopicCreateManyAuthorInputEnvelope
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+  }
+
+  export type ForumPostCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ForumPostCreateWithoutAuthorInput, ForumPostUncheckedCreateWithoutAuthorInput> | ForumPostCreateWithoutAuthorInput[] | ForumPostUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumPostCreateOrConnectWithoutAuthorInput | ForumPostCreateOrConnectWithoutAuthorInput[]
+    createMany?: ForumPostCreateManyAuthorInputEnvelope
+    connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+  }
+
   export type UserRoleUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -51034,6 +57012,20 @@ export namespace Prisma {
     connectOrCreate?: OcrHistoryCreateOrConnectWithoutUserInput | OcrHistoryCreateOrConnectWithoutUserInput[]
     createMany?: OcrHistoryCreateManyUserInputEnvelope
     connect?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+  }
+
+  export type ForumTopicUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ForumTopicCreateWithoutAuthorInput, ForumTopicUncheckedCreateWithoutAuthorInput> | ForumTopicCreateWithoutAuthorInput[] | ForumTopicUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutAuthorInput | ForumTopicCreateOrConnectWithoutAuthorInput[]
+    createMany?: ForumTopicCreateManyAuthorInputEnvelope
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+  }
+
+  export type ForumPostUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ForumPostCreateWithoutAuthorInput, ForumPostUncheckedCreateWithoutAuthorInput> | ForumPostCreateWithoutAuthorInput[] | ForumPostUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumPostCreateOrConnectWithoutAuthorInput | ForumPostCreateOrConnectWithoutAuthorInput[]
+    createMany?: ForumPostCreateManyAuthorInputEnvelope
+    connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -51301,6 +57293,34 @@ export namespace Prisma {
     deleteMany?: OcrHistoryScalarWhereInput | OcrHistoryScalarWhereInput[]
   }
 
+  export type ForumTopicUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ForumTopicCreateWithoutAuthorInput, ForumTopicUncheckedCreateWithoutAuthorInput> | ForumTopicCreateWithoutAuthorInput[] | ForumTopicUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutAuthorInput | ForumTopicCreateOrConnectWithoutAuthorInput[]
+    upsert?: ForumTopicUpsertWithWhereUniqueWithoutAuthorInput | ForumTopicUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ForumTopicCreateManyAuthorInputEnvelope
+    set?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    disconnect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    delete?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    update?: ForumTopicUpdateWithWhereUniqueWithoutAuthorInput | ForumTopicUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ForumTopicUpdateManyWithWhereWithoutAuthorInput | ForumTopicUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
+  }
+
+  export type ForumPostUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ForumPostCreateWithoutAuthorInput, ForumPostUncheckedCreateWithoutAuthorInput> | ForumPostCreateWithoutAuthorInput[] | ForumPostUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumPostCreateOrConnectWithoutAuthorInput | ForumPostCreateOrConnectWithoutAuthorInput[]
+    upsert?: ForumPostUpsertWithWhereUniqueWithoutAuthorInput | ForumPostUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ForumPostCreateManyAuthorInputEnvelope
+    set?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    disconnect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    delete?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    update?: ForumPostUpdateWithWhereUniqueWithoutAuthorInput | ForumPostUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ForumPostUpdateManyWithWhereWithoutAuthorInput | ForumPostUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ForumPostScalarWhereInput | ForumPostScalarWhereInput[]
+  }
+
   export type UserRoleUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -51551,6 +57571,34 @@ export namespace Prisma {
     update?: OcrHistoryUpdateWithWhereUniqueWithoutUserInput | OcrHistoryUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: OcrHistoryUpdateManyWithWhereWithoutUserInput | OcrHistoryUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: OcrHistoryScalarWhereInput | OcrHistoryScalarWhereInput[]
+  }
+
+  export type ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ForumTopicCreateWithoutAuthorInput, ForumTopicUncheckedCreateWithoutAuthorInput> | ForumTopicCreateWithoutAuthorInput[] | ForumTopicUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutAuthorInput | ForumTopicCreateOrConnectWithoutAuthorInput[]
+    upsert?: ForumTopicUpsertWithWhereUniqueWithoutAuthorInput | ForumTopicUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ForumTopicCreateManyAuthorInputEnvelope
+    set?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    disconnect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    delete?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    update?: ForumTopicUpdateWithWhereUniqueWithoutAuthorInput | ForumTopicUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ForumTopicUpdateManyWithWhereWithoutAuthorInput | ForumTopicUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
+  }
+
+  export type ForumPostUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ForumPostCreateWithoutAuthorInput, ForumPostUncheckedCreateWithoutAuthorInput> | ForumPostCreateWithoutAuthorInput[] | ForumPostUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ForumPostCreateOrConnectWithoutAuthorInput | ForumPostCreateOrConnectWithoutAuthorInput[]
+    upsert?: ForumPostUpsertWithWhereUniqueWithoutAuthorInput | ForumPostUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ForumPostCreateManyAuthorInputEnvelope
+    set?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    disconnect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    delete?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    update?: ForumPostUpdateWithWhereUniqueWithoutAuthorInput | ForumPostUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ForumPostUpdateManyWithWhereWithoutAuthorInput | ForumPostUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ForumPostScalarWhereInput | ForumPostScalarWhereInput[]
   }
 
   export type RolePermissionCreateNestedManyWithoutPermissionInput = {
@@ -53719,6 +59767,222 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOcrHistoryInput, UserUpdateWithoutOcrHistoryInput>, UserUncheckedUpdateWithoutOcrHistoryInput>
   }
 
+  export type ForumTopicCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<ForumTopicCreateWithoutCategoryInput, ForumTopicUncheckedCreateWithoutCategoryInput> | ForumTopicCreateWithoutCategoryInput[] | ForumTopicUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutCategoryInput | ForumTopicCreateOrConnectWithoutCategoryInput[]
+    createMany?: ForumTopicCreateManyCategoryInputEnvelope
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+  }
+
+  export type ForumTopicUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<ForumTopicCreateWithoutCategoryInput, ForumTopicUncheckedCreateWithoutCategoryInput> | ForumTopicCreateWithoutCategoryInput[] | ForumTopicUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutCategoryInput | ForumTopicCreateOrConnectWithoutCategoryInput[]
+    createMany?: ForumTopicCreateManyCategoryInputEnvelope
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+  }
+
+  export type ForumTopicUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<ForumTopicCreateWithoutCategoryInput, ForumTopicUncheckedCreateWithoutCategoryInput> | ForumTopicCreateWithoutCategoryInput[] | ForumTopicUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutCategoryInput | ForumTopicCreateOrConnectWithoutCategoryInput[]
+    upsert?: ForumTopicUpsertWithWhereUniqueWithoutCategoryInput | ForumTopicUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: ForumTopicCreateManyCategoryInputEnvelope
+    set?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    disconnect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    delete?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    update?: ForumTopicUpdateWithWhereUniqueWithoutCategoryInput | ForumTopicUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: ForumTopicUpdateManyWithWhereWithoutCategoryInput | ForumTopicUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
+  }
+
+  export type ForumTopicUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<ForumTopicCreateWithoutCategoryInput, ForumTopicUncheckedCreateWithoutCategoryInput> | ForumTopicCreateWithoutCategoryInput[] | ForumTopicUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutCategoryInput | ForumTopicCreateOrConnectWithoutCategoryInput[]
+    upsert?: ForumTopicUpsertWithWhereUniqueWithoutCategoryInput | ForumTopicUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: ForumTopicCreateManyCategoryInputEnvelope
+    set?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    disconnect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    delete?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    update?: ForumTopicUpdateWithWhereUniqueWithoutCategoryInput | ForumTopicUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: ForumTopicUpdateManyWithWhereWithoutCategoryInput | ForumTopicUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
+  }
+
+  export type ForumCategoryCreateNestedOneWithoutTopicsInput = {
+    create?: XOR<ForumCategoryCreateWithoutTopicsInput, ForumCategoryUncheckedCreateWithoutTopicsInput>
+    connectOrCreate?: ForumCategoryCreateOrConnectWithoutTopicsInput
+    connect?: ForumCategoryWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutForumTopicsInput = {
+    create?: XOR<UserCreateWithoutForumTopicsInput, UserUncheckedCreateWithoutForumTopicsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutForumTopicsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ForumPostCreateNestedManyWithoutTopicInput = {
+    create?: XOR<ForumPostCreateWithoutTopicInput, ForumPostUncheckedCreateWithoutTopicInput> | ForumPostCreateWithoutTopicInput[] | ForumPostUncheckedCreateWithoutTopicInput[]
+    connectOrCreate?: ForumPostCreateOrConnectWithoutTopicInput | ForumPostCreateOrConnectWithoutTopicInput[]
+    createMany?: ForumPostCreateManyTopicInputEnvelope
+    connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+  }
+
+  export type ForumTagCreateNestedManyWithoutTopicsInput = {
+    create?: XOR<ForumTagCreateWithoutTopicsInput, ForumTagUncheckedCreateWithoutTopicsInput> | ForumTagCreateWithoutTopicsInput[] | ForumTagUncheckedCreateWithoutTopicsInput[]
+    connectOrCreate?: ForumTagCreateOrConnectWithoutTopicsInput | ForumTagCreateOrConnectWithoutTopicsInput[]
+    connect?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+  }
+
+  export type ForumPostUncheckedCreateNestedManyWithoutTopicInput = {
+    create?: XOR<ForumPostCreateWithoutTopicInput, ForumPostUncheckedCreateWithoutTopicInput> | ForumPostCreateWithoutTopicInput[] | ForumPostUncheckedCreateWithoutTopicInput[]
+    connectOrCreate?: ForumPostCreateOrConnectWithoutTopicInput | ForumPostCreateOrConnectWithoutTopicInput[]
+    createMany?: ForumPostCreateManyTopicInputEnvelope
+    connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+  }
+
+  export type ForumTagUncheckedCreateNestedManyWithoutTopicsInput = {
+    create?: XOR<ForumTagCreateWithoutTopicsInput, ForumTagUncheckedCreateWithoutTopicsInput> | ForumTagCreateWithoutTopicsInput[] | ForumTagUncheckedCreateWithoutTopicsInput[]
+    connectOrCreate?: ForumTagCreateOrConnectWithoutTopicsInput | ForumTagCreateOrConnectWithoutTopicsInput[]
+    connect?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+  }
+
+  export type ForumCategoryUpdateOneRequiredWithoutTopicsNestedInput = {
+    create?: XOR<ForumCategoryCreateWithoutTopicsInput, ForumCategoryUncheckedCreateWithoutTopicsInput>
+    connectOrCreate?: ForumCategoryCreateOrConnectWithoutTopicsInput
+    upsert?: ForumCategoryUpsertWithoutTopicsInput
+    connect?: ForumCategoryWhereUniqueInput
+    update?: XOR<XOR<ForumCategoryUpdateToOneWithWhereWithoutTopicsInput, ForumCategoryUpdateWithoutTopicsInput>, ForumCategoryUncheckedUpdateWithoutTopicsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutForumTopicsNestedInput = {
+    create?: XOR<UserCreateWithoutForumTopicsInput, UserUncheckedCreateWithoutForumTopicsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutForumTopicsInput
+    upsert?: UserUpsertWithoutForumTopicsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutForumTopicsInput, UserUpdateWithoutForumTopicsInput>, UserUncheckedUpdateWithoutForumTopicsInput>
+  }
+
+  export type ForumPostUpdateManyWithoutTopicNestedInput = {
+    create?: XOR<ForumPostCreateWithoutTopicInput, ForumPostUncheckedCreateWithoutTopicInput> | ForumPostCreateWithoutTopicInput[] | ForumPostUncheckedCreateWithoutTopicInput[]
+    connectOrCreate?: ForumPostCreateOrConnectWithoutTopicInput | ForumPostCreateOrConnectWithoutTopicInput[]
+    upsert?: ForumPostUpsertWithWhereUniqueWithoutTopicInput | ForumPostUpsertWithWhereUniqueWithoutTopicInput[]
+    createMany?: ForumPostCreateManyTopicInputEnvelope
+    set?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    disconnect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    delete?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    update?: ForumPostUpdateWithWhereUniqueWithoutTopicInput | ForumPostUpdateWithWhereUniqueWithoutTopicInput[]
+    updateMany?: ForumPostUpdateManyWithWhereWithoutTopicInput | ForumPostUpdateManyWithWhereWithoutTopicInput[]
+    deleteMany?: ForumPostScalarWhereInput | ForumPostScalarWhereInput[]
+  }
+
+  export type ForumTagUpdateManyWithoutTopicsNestedInput = {
+    create?: XOR<ForumTagCreateWithoutTopicsInput, ForumTagUncheckedCreateWithoutTopicsInput> | ForumTagCreateWithoutTopicsInput[] | ForumTagUncheckedCreateWithoutTopicsInput[]
+    connectOrCreate?: ForumTagCreateOrConnectWithoutTopicsInput | ForumTagCreateOrConnectWithoutTopicsInput[]
+    upsert?: ForumTagUpsertWithWhereUniqueWithoutTopicsInput | ForumTagUpsertWithWhereUniqueWithoutTopicsInput[]
+    set?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+    disconnect?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+    delete?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+    connect?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+    update?: ForumTagUpdateWithWhereUniqueWithoutTopicsInput | ForumTagUpdateWithWhereUniqueWithoutTopicsInput[]
+    updateMany?: ForumTagUpdateManyWithWhereWithoutTopicsInput | ForumTagUpdateManyWithWhereWithoutTopicsInput[]
+    deleteMany?: ForumTagScalarWhereInput | ForumTagScalarWhereInput[]
+  }
+
+  export type ForumPostUncheckedUpdateManyWithoutTopicNestedInput = {
+    create?: XOR<ForumPostCreateWithoutTopicInput, ForumPostUncheckedCreateWithoutTopicInput> | ForumPostCreateWithoutTopicInput[] | ForumPostUncheckedCreateWithoutTopicInput[]
+    connectOrCreate?: ForumPostCreateOrConnectWithoutTopicInput | ForumPostCreateOrConnectWithoutTopicInput[]
+    upsert?: ForumPostUpsertWithWhereUniqueWithoutTopicInput | ForumPostUpsertWithWhereUniqueWithoutTopicInput[]
+    createMany?: ForumPostCreateManyTopicInputEnvelope
+    set?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    disconnect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    delete?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+    update?: ForumPostUpdateWithWhereUniqueWithoutTopicInput | ForumPostUpdateWithWhereUniqueWithoutTopicInput[]
+    updateMany?: ForumPostUpdateManyWithWhereWithoutTopicInput | ForumPostUpdateManyWithWhereWithoutTopicInput[]
+    deleteMany?: ForumPostScalarWhereInput | ForumPostScalarWhereInput[]
+  }
+
+  export type ForumTagUncheckedUpdateManyWithoutTopicsNestedInput = {
+    create?: XOR<ForumTagCreateWithoutTopicsInput, ForumTagUncheckedCreateWithoutTopicsInput> | ForumTagCreateWithoutTopicsInput[] | ForumTagUncheckedCreateWithoutTopicsInput[]
+    connectOrCreate?: ForumTagCreateOrConnectWithoutTopicsInput | ForumTagCreateOrConnectWithoutTopicsInput[]
+    upsert?: ForumTagUpsertWithWhereUniqueWithoutTopicsInput | ForumTagUpsertWithWhereUniqueWithoutTopicsInput[]
+    set?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+    disconnect?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+    delete?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+    connect?: ForumTagWhereUniqueInput | ForumTagWhereUniqueInput[]
+    update?: ForumTagUpdateWithWhereUniqueWithoutTopicsInput | ForumTagUpdateWithWhereUniqueWithoutTopicsInput[]
+    updateMany?: ForumTagUpdateManyWithWhereWithoutTopicsInput | ForumTagUpdateManyWithWhereWithoutTopicsInput[]
+    deleteMany?: ForumTagScalarWhereInput | ForumTagScalarWhereInput[]
+  }
+
+  export type ForumTopicCreateNestedOneWithoutPostsInput = {
+    create?: XOR<ForumTopicCreateWithoutPostsInput, ForumTopicUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutPostsInput
+    connect?: ForumTopicWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutForumPostsInput = {
+    create?: XOR<UserCreateWithoutForumPostsInput, UserUncheckedCreateWithoutForumPostsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutForumPostsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ForumTopicUpdateOneRequiredWithoutPostsNestedInput = {
+    create?: XOR<ForumTopicCreateWithoutPostsInput, ForumTopicUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutPostsInput
+    upsert?: ForumTopicUpsertWithoutPostsInput
+    connect?: ForumTopicWhereUniqueInput
+    update?: XOR<XOR<ForumTopicUpdateToOneWithWhereWithoutPostsInput, ForumTopicUpdateWithoutPostsInput>, ForumTopicUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutForumPostsNestedInput = {
+    create?: XOR<UserCreateWithoutForumPostsInput, UserUncheckedCreateWithoutForumPostsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutForumPostsInput
+    upsert?: UserUpsertWithoutForumPostsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutForumPostsInput, UserUpdateWithoutForumPostsInput>, UserUncheckedUpdateWithoutForumPostsInput>
+  }
+
+  export type ForumTopicCreateNestedManyWithoutTagsInput = {
+    create?: XOR<ForumTopicCreateWithoutTagsInput, ForumTopicUncheckedCreateWithoutTagsInput> | ForumTopicCreateWithoutTagsInput[] | ForumTopicUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutTagsInput | ForumTopicCreateOrConnectWithoutTagsInput[]
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+  }
+
+  export type ForumTopicUncheckedCreateNestedManyWithoutTagsInput = {
+    create?: XOR<ForumTopicCreateWithoutTagsInput, ForumTopicUncheckedCreateWithoutTagsInput> | ForumTopicCreateWithoutTagsInput[] | ForumTopicUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutTagsInput | ForumTopicCreateOrConnectWithoutTagsInput[]
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+  }
+
+  export type ForumTopicUpdateManyWithoutTagsNestedInput = {
+    create?: XOR<ForumTopicCreateWithoutTagsInput, ForumTopicUncheckedCreateWithoutTagsInput> | ForumTopicCreateWithoutTagsInput[] | ForumTopicUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutTagsInput | ForumTopicCreateOrConnectWithoutTagsInput[]
+    upsert?: ForumTopicUpsertWithWhereUniqueWithoutTagsInput | ForumTopicUpsertWithWhereUniqueWithoutTagsInput[]
+    set?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    disconnect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    delete?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    update?: ForumTopicUpdateWithWhereUniqueWithoutTagsInput | ForumTopicUpdateWithWhereUniqueWithoutTagsInput[]
+    updateMany?: ForumTopicUpdateManyWithWhereWithoutTagsInput | ForumTopicUpdateManyWithWhereWithoutTagsInput[]
+    deleteMany?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
+  }
+
+  export type ForumTopicUncheckedUpdateManyWithoutTagsNestedInput = {
+    create?: XOR<ForumTopicCreateWithoutTagsInput, ForumTopicUncheckedCreateWithoutTagsInput> | ForumTopicCreateWithoutTagsInput[] | ForumTopicUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: ForumTopicCreateOrConnectWithoutTagsInput | ForumTopicCreateOrConnectWithoutTagsInput[]
+    upsert?: ForumTopicUpsertWithWhereUniqueWithoutTagsInput | ForumTopicUpsertWithWhereUniqueWithoutTagsInput[]
+    set?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    disconnect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    delete?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    connect?: ForumTopicWhereUniqueInput | ForumTopicWhereUniqueInput[]
+    update?: ForumTopicUpdateWithWhereUniqueWithoutTagsInput | ForumTopicUpdateWithWhereUniqueWithoutTagsInput[]
+    updateMany?: ForumTopicUpdateManyWithWhereWithoutTagsInput | ForumTopicUpdateManyWithWhereWithoutTagsInput[]
+    deleteMany?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -54942,6 +61206,72 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ForumTopicCreateWithoutAuthorInput = {
+    title: string
+    content: string
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    category: ForumCategoryCreateNestedOneWithoutTopicsInput
+    posts?: ForumPostCreateNestedManyWithoutTopicInput
+    tags?: ForumTagCreateNestedManyWithoutTopicsInput
+  }
+
+  export type ForumTopicUncheckedCreateWithoutAuthorInput = {
+    id?: number
+    title: string
+    content: string
+    categoryId: number
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    posts?: ForumPostUncheckedCreateNestedManyWithoutTopicInput
+    tags?: ForumTagUncheckedCreateNestedManyWithoutTopicsInput
+  }
+
+  export type ForumTopicCreateOrConnectWithoutAuthorInput = {
+    where: ForumTopicWhereUniqueInput
+    create: XOR<ForumTopicCreateWithoutAuthorInput, ForumTopicUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ForumTopicCreateManyAuthorInputEnvelope = {
+    data: ForumTopicCreateManyAuthorInput | ForumTopicCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ForumPostCreateWithoutAuthorInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    topic: ForumTopicCreateNestedOneWithoutPostsInput
+  }
+
+  export type ForumPostUncheckedCreateWithoutAuthorInput = {
+    id?: number
+    topicId: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ForumPostCreateOrConnectWithoutAuthorInput = {
+    where: ForumPostWhereUniqueInput
+    create: XOR<ForumPostCreateWithoutAuthorInput, ForumPostUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ForumPostCreateManyAuthorInputEnvelope = {
+    data: ForumPostCreateManyAuthorInput | ForumPostCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserRoleUpsertWithWhereUniqueWithoutUserInput = {
     where: UserRoleWhereUniqueInput
     update: XOR<UserRoleUpdateWithoutUserInput, UserRoleUncheckedUpdateWithoutUserInput>
@@ -55471,6 +61801,68 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"OcrHistory"> | Date | string
   }
 
+  export type ForumTopicUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: ForumTopicWhereUniqueInput
+    update: XOR<ForumTopicUpdateWithoutAuthorInput, ForumTopicUncheckedUpdateWithoutAuthorInput>
+    create: XOR<ForumTopicCreateWithoutAuthorInput, ForumTopicUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ForumTopicUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: ForumTopicWhereUniqueInput
+    data: XOR<ForumTopicUpdateWithoutAuthorInput, ForumTopicUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type ForumTopicUpdateManyWithWhereWithoutAuthorInput = {
+    where: ForumTopicScalarWhereInput
+    data: XOR<ForumTopicUpdateManyMutationInput, ForumTopicUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type ForumTopicScalarWhereInput = {
+    AND?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
+    OR?: ForumTopicScalarWhereInput[]
+    NOT?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
+    id?: IntFilter<"ForumTopic"> | number
+    title?: StringFilter<"ForumTopic"> | string
+    content?: StringFilter<"ForumTopic"> | string
+    categoryId?: IntFilter<"ForumTopic"> | number
+    authorId?: IntFilter<"ForumTopic"> | number
+    views?: IntFilter<"ForumTopic"> | number
+    isPinned?: BoolFilter<"ForumTopic"> | boolean
+    isLocked?: BoolFilter<"ForumTopic"> | boolean
+    createdAt?: DateTimeFilter<"ForumTopic"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumTopic"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"ForumTopic"> | Date | string | null
+  }
+
+  export type ForumPostUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: ForumPostWhereUniqueInput
+    update: XOR<ForumPostUpdateWithoutAuthorInput, ForumPostUncheckedUpdateWithoutAuthorInput>
+    create: XOR<ForumPostCreateWithoutAuthorInput, ForumPostUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ForumPostUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: ForumPostWhereUniqueInput
+    data: XOR<ForumPostUpdateWithoutAuthorInput, ForumPostUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type ForumPostUpdateManyWithWhereWithoutAuthorInput = {
+    where: ForumPostScalarWhereInput
+    data: XOR<ForumPostUpdateManyMutationInput, ForumPostUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type ForumPostScalarWhereInput = {
+    AND?: ForumPostScalarWhereInput | ForumPostScalarWhereInput[]
+    OR?: ForumPostScalarWhereInput[]
+    NOT?: ForumPostScalarWhereInput | ForumPostScalarWhereInput[]
+    id?: IntFilter<"ForumPost"> | number
+    topicId?: IntFilter<"ForumPost"> | number
+    authorId?: IntFilter<"ForumPost"> | number
+    content?: StringFilter<"ForumPost"> | string
+    createdAt?: DateTimeFilter<"ForumPost"> | Date | string
+    updatedAt?: DateTimeFilter<"ForumPost"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"ForumPost"> | Date | string | null
+  }
+
   export type RolePermissionCreateWithoutPermissionInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55568,6 +61960,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutRolesInput = {
@@ -55604,6 +61998,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutRolesInput = {
@@ -55685,6 +62081,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRolesInput = {
@@ -55721,6 +62119,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type PermissionCreateWithoutRolesInput = {
@@ -56571,6 +62971,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutCapturedPropertiesInput = {
@@ -56607,6 +63009,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutCapturedPropertiesInput = {
@@ -56988,6 +63392,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCapturedPropertiesInput = {
@@ -57024,6 +63430,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type PersonUpsertWithoutPropertiesOwnedInput = {
@@ -57314,6 +63722,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutPropertyAttachmentsUploadedInput = {
@@ -57350,6 +63760,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutPropertyAttachmentsUploadedInput = {
@@ -57485,6 +63897,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPropertyAttachmentsUploadedInput = {
@@ -57521,6 +63935,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type BuildingCreateWithoutAttachmentsInput = {
@@ -57598,6 +64014,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutBuildingAttachmentsUploadedInput = {
@@ -57634,6 +64052,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutBuildingAttachmentsUploadedInput = {
@@ -57733,6 +64153,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBuildingAttachmentsUploadedInput = {
@@ -57769,6 +64191,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type BuildingCreateWithoutAssignmentsInput = {
@@ -57846,6 +64270,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutAssignmentsInput = {
@@ -57882,6 +64308,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutAssignmentsInput = {
@@ -57981,6 +64409,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssignmentsInput = {
@@ -58017,6 +64447,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type PropertyCreateWithoutFollowUpsInput = {
@@ -58130,6 +64562,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutFollowUpsInput = {
@@ -58166,6 +64600,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutFollowUpsInput = {
@@ -58399,6 +64835,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFollowUpsInput = {
@@ -58435,6 +64873,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type ReminderUpsertWithWhereUniqueWithoutFollowUpInput = {
@@ -58566,6 +65006,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutMailboxingInput = {
@@ -58602,6 +65044,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutMailboxingInput = {
@@ -58736,6 +65180,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMailboxingInput = {
@@ -58772,6 +65218,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type MailboxingAttachmentUpsertWithWhereUniqueWithoutMailboxingInput = {
@@ -58851,6 +65299,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutMailboxingAttachmentsUploadedInput = {
@@ -58887,6 +65337,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutMailboxingAttachmentsUploadedInput = {
@@ -58972,6 +65424,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMailboxingAttachmentsUploadedInput = {
@@ -59008,6 +65462,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type BuildingCreateWithoutContactInput = {
@@ -59752,6 +66208,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutRemindersCreatedInput = {
@@ -59788,6 +66246,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutRemindersCreatedInput = {
@@ -59988,6 +66448,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutRemindersResponsibleInput = {
@@ -60024,6 +66486,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutRemindersResponsibleInput = {
@@ -60168,6 +66632,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRemindersCreatedInput = {
@@ -60204,6 +66670,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type FollowUpUpsertWithoutRemindersInput = {
@@ -60428,6 +66896,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRemindersResponsibleInput = {
@@ -60464,6 +66934,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type ReminderOccurrenceUpsertWithWhereUniqueWithoutReminderInput = {
@@ -61454,6 +67926,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutFlyersGeneratedInput = {
@@ -61490,6 +67964,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutFlyersGeneratedInput = {
@@ -61682,6 +68158,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFlyersGeneratedInput = {
@@ -61718,6 +68196,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type FlyerShipmentUpsertWithWhereUniqueWithoutFlyerInput = {
@@ -61797,6 +68277,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutFlyerShipmentsInput = {
@@ -61833,6 +68315,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutFlyerShipmentsInput = {
@@ -61918,6 +68402,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFlyerShipmentsInput = {
@@ -61954,6 +68440,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutBoardsCreatedInput = {
@@ -61989,6 +68477,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutBoardsCreatedInput = {
@@ -62025,6 +68515,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutBoardsCreatedInput = {
@@ -62065,6 +68557,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutBoardsOwnedInput = {
@@ -62101,6 +68595,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutBoardsOwnedInput = {
@@ -62183,6 +68679,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBoardsCreatedInput = {
@@ -62219,6 +68717,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUpsertWithoutBoardsOwnedInput = {
@@ -62265,6 +68765,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBoardsOwnedInput = {
@@ -62301,6 +68803,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type BoardColumnUpsertWithWhereUniqueWithoutBoardInput = {
@@ -62509,6 +69013,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutCardsCreatedInput = {
@@ -62545,6 +69051,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutCardsCreatedInput = {
@@ -62585,6 +69093,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutCardsResponsibleInput = {
@@ -62621,6 +69131,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutCardsResponsibleInput = {
@@ -62750,6 +69262,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardsCreatedInput = {
@@ -62786,6 +69300,8 @@ export namespace Prisma {
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUpsertWithoutCardsResponsibleInput = {
@@ -62832,6 +69348,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardsResponsibleInput = {
@@ -62868,6 +69386,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CardTagUpsertWithWhereUniqueWithoutCardInput = {
@@ -63053,6 +69573,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutCardActivitiesInput = {
@@ -63089,6 +69611,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutCardActivitiesInput = {
@@ -63180,6 +69704,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardActivitiesInput = {
@@ -63216,6 +69742,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutOcrHistoryInput = {
@@ -63251,6 +69779,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutOcrHistoryInput = {
@@ -63287,6 +69817,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutOcrHistoryInput = {
@@ -63338,6 +69870,8 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutOcrHistoryInput = {
@@ -63374,6 +69908,658 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+  }
+
+  export type ForumTopicCreateWithoutCategoryInput = {
+    title: string
+    content: string
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    author: UserCreateNestedOneWithoutForumTopicsInput
+    posts?: ForumPostCreateNestedManyWithoutTopicInput
+    tags?: ForumTagCreateNestedManyWithoutTopicsInput
+  }
+
+  export type ForumTopicUncheckedCreateWithoutCategoryInput = {
+    id?: number
+    title: string
+    content: string
+    authorId: number
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    posts?: ForumPostUncheckedCreateNestedManyWithoutTopicInput
+    tags?: ForumTagUncheckedCreateNestedManyWithoutTopicsInput
+  }
+
+  export type ForumTopicCreateOrConnectWithoutCategoryInput = {
+    where: ForumTopicWhereUniqueInput
+    create: XOR<ForumTopicCreateWithoutCategoryInput, ForumTopicUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type ForumTopicCreateManyCategoryInputEnvelope = {
+    data: ForumTopicCreateManyCategoryInput | ForumTopicCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ForumTopicUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: ForumTopicWhereUniqueInput
+    update: XOR<ForumTopicUpdateWithoutCategoryInput, ForumTopicUncheckedUpdateWithoutCategoryInput>
+    create: XOR<ForumTopicCreateWithoutCategoryInput, ForumTopicUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type ForumTopicUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: ForumTopicWhereUniqueInput
+    data: XOR<ForumTopicUpdateWithoutCategoryInput, ForumTopicUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type ForumTopicUpdateManyWithWhereWithoutCategoryInput = {
+    where: ForumTopicScalarWhereInput
+    data: XOR<ForumTopicUpdateManyMutationInput, ForumTopicUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type ForumCategoryCreateWithoutTopicsInput = {
+    title: string
+    description?: string | null
+    icon?: string | null
+    color?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumCategoryUncheckedCreateWithoutTopicsInput = {
+    id?: number
+    title: string
+    description?: string | null
+    icon?: string | null
+    color?: string | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ForumCategoryCreateOrConnectWithoutTopicsInput = {
+    where: ForumCategoryWhereUniqueInput
+    create: XOR<ForumCategoryCreateWithoutTopicsInput, ForumCategoryUncheckedCreateWithoutTopicsInput>
+  }
+
+  export type UserCreateWithoutForumTopicsInput = {
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleCreateNestedManyWithoutUserInput
+    assignments?: AssignmentCreateNestedManyWithoutUserInput
+    followUps?: FollowUpCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+  }
+
+  export type UserUncheckedCreateWithoutForumTopicsInput = {
+    id?: number
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderUncheckedCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderUncheckedCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardUncheckedCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardUncheckedCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+  }
+
+  export type UserCreateOrConnectWithoutForumTopicsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutForumTopicsInput, UserUncheckedCreateWithoutForumTopicsInput>
+  }
+
+  export type ForumPostCreateWithoutTopicInput = {
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    author: UserCreateNestedOneWithoutForumPostsInput
+  }
+
+  export type ForumPostUncheckedCreateWithoutTopicInput = {
+    id?: number
+    authorId: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ForumPostCreateOrConnectWithoutTopicInput = {
+    where: ForumPostWhereUniqueInput
+    create: XOR<ForumPostCreateWithoutTopicInput, ForumPostUncheckedCreateWithoutTopicInput>
+  }
+
+  export type ForumPostCreateManyTopicInputEnvelope = {
+    data: ForumPostCreateManyTopicInput | ForumPostCreateManyTopicInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ForumTagCreateWithoutTopicsInput = {
+    name: string
+  }
+
+  export type ForumTagUncheckedCreateWithoutTopicsInput = {
+    id?: number
+    name: string
+  }
+
+  export type ForumTagCreateOrConnectWithoutTopicsInput = {
+    where: ForumTagWhereUniqueInput
+    create: XOR<ForumTagCreateWithoutTopicsInput, ForumTagUncheckedCreateWithoutTopicsInput>
+  }
+
+  export type ForumCategoryUpsertWithoutTopicsInput = {
+    update: XOR<ForumCategoryUpdateWithoutTopicsInput, ForumCategoryUncheckedUpdateWithoutTopicsInput>
+    create: XOR<ForumCategoryCreateWithoutTopicsInput, ForumCategoryUncheckedCreateWithoutTopicsInput>
+    where?: ForumCategoryWhereInput
+  }
+
+  export type ForumCategoryUpdateToOneWithWhereWithoutTopicsInput = {
+    where?: ForumCategoryWhereInput
+    data: XOR<ForumCategoryUpdateWithoutTopicsInput, ForumCategoryUncheckedUpdateWithoutTopicsInput>
+  }
+
+  export type ForumCategoryUpdateWithoutTopicsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumCategoryUncheckedUpdateWithoutTopicsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutForumTopicsInput = {
+    update: XOR<UserUpdateWithoutForumTopicsInput, UserUncheckedUpdateWithoutForumTopicsInput>
+    create: XOR<UserCreateWithoutForumTopicsInput, UserUncheckedCreateWithoutForumTopicsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutForumTopicsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutForumTopicsInput, UserUncheckedUpdateWithoutForumTopicsInput>
+  }
+
+  export type UserUpdateWithoutForumTopicsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutForumTopicsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUncheckedUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUncheckedUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUncheckedUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUncheckedUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+  }
+
+  export type ForumPostUpsertWithWhereUniqueWithoutTopicInput = {
+    where: ForumPostWhereUniqueInput
+    update: XOR<ForumPostUpdateWithoutTopicInput, ForumPostUncheckedUpdateWithoutTopicInput>
+    create: XOR<ForumPostCreateWithoutTopicInput, ForumPostUncheckedCreateWithoutTopicInput>
+  }
+
+  export type ForumPostUpdateWithWhereUniqueWithoutTopicInput = {
+    where: ForumPostWhereUniqueInput
+    data: XOR<ForumPostUpdateWithoutTopicInput, ForumPostUncheckedUpdateWithoutTopicInput>
+  }
+
+  export type ForumPostUpdateManyWithWhereWithoutTopicInput = {
+    where: ForumPostScalarWhereInput
+    data: XOR<ForumPostUpdateManyMutationInput, ForumPostUncheckedUpdateManyWithoutTopicInput>
+  }
+
+  export type ForumTagUpsertWithWhereUniqueWithoutTopicsInput = {
+    where: ForumTagWhereUniqueInput
+    update: XOR<ForumTagUpdateWithoutTopicsInput, ForumTagUncheckedUpdateWithoutTopicsInput>
+    create: XOR<ForumTagCreateWithoutTopicsInput, ForumTagUncheckedCreateWithoutTopicsInput>
+  }
+
+  export type ForumTagUpdateWithWhereUniqueWithoutTopicsInput = {
+    where: ForumTagWhereUniqueInput
+    data: XOR<ForumTagUpdateWithoutTopicsInput, ForumTagUncheckedUpdateWithoutTopicsInput>
+  }
+
+  export type ForumTagUpdateManyWithWhereWithoutTopicsInput = {
+    where: ForumTagScalarWhereInput
+    data: XOR<ForumTagUpdateManyMutationInput, ForumTagUncheckedUpdateManyWithoutTopicsInput>
+  }
+
+  export type ForumTagScalarWhereInput = {
+    AND?: ForumTagScalarWhereInput | ForumTagScalarWhereInput[]
+    OR?: ForumTagScalarWhereInput[]
+    NOT?: ForumTagScalarWhereInput | ForumTagScalarWhereInput[]
+    id?: IntFilter<"ForumTag"> | number
+    name?: StringFilter<"ForumTag"> | string
+  }
+
+  export type ForumTopicCreateWithoutPostsInput = {
+    title: string
+    content: string
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    category: ForumCategoryCreateNestedOneWithoutTopicsInput
+    author: UserCreateNestedOneWithoutForumTopicsInput
+    tags?: ForumTagCreateNestedManyWithoutTopicsInput
+  }
+
+  export type ForumTopicUncheckedCreateWithoutPostsInput = {
+    id?: number
+    title: string
+    content: string
+    categoryId: number
+    authorId: number
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    tags?: ForumTagUncheckedCreateNestedManyWithoutTopicsInput
+  }
+
+  export type ForumTopicCreateOrConnectWithoutPostsInput = {
+    where: ForumTopicWhereUniqueInput
+    create: XOR<ForumTopicCreateWithoutPostsInput, ForumTopicUncheckedCreateWithoutPostsInput>
+  }
+
+  export type UserCreateWithoutForumPostsInput = {
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleCreateNestedManyWithoutUserInput
+    assignments?: AssignmentCreateNestedManyWithoutUserInput
+    followUps?: FollowUpCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+  }
+
+  export type UserUncheckedCreateWithoutForumPostsInput = {
+    id?: number
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderUncheckedCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderUncheckedCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardUncheckedCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardUncheckedCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+  }
+
+  export type UserCreateOrConnectWithoutForumPostsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutForumPostsInput, UserUncheckedCreateWithoutForumPostsInput>
+  }
+
+  export type ForumTopicUpsertWithoutPostsInput = {
+    update: XOR<ForumTopicUpdateWithoutPostsInput, ForumTopicUncheckedUpdateWithoutPostsInput>
+    create: XOR<ForumTopicCreateWithoutPostsInput, ForumTopicUncheckedCreateWithoutPostsInput>
+    where?: ForumTopicWhereInput
+  }
+
+  export type ForumTopicUpdateToOneWithWhereWithoutPostsInput = {
+    where?: ForumTopicWhereInput
+    data: XOR<ForumTopicUpdateWithoutPostsInput, ForumTopicUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type ForumTopicUpdateWithoutPostsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: ForumCategoryUpdateOneRequiredWithoutTopicsNestedInput
+    author?: UserUpdateOneRequiredWithoutForumTopicsNestedInput
+    tags?: ForumTagUpdateManyWithoutTopicsNestedInput
+  }
+
+  export type ForumTopicUncheckedUpdateWithoutPostsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tags?: ForumTagUncheckedUpdateManyWithoutTopicsNestedInput
+  }
+
+  export type UserUpsertWithoutForumPostsInput = {
+    update: XOR<UserUpdateWithoutForumPostsInput, UserUncheckedUpdateWithoutForumPostsInput>
+    create: XOR<UserCreateWithoutForumPostsInput, UserUncheckedCreateWithoutForumPostsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutForumPostsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutForumPostsInput, UserUncheckedUpdateWithoutForumPostsInput>
+  }
+
+  export type UserUpdateWithoutForumPostsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutForumPostsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUncheckedUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUncheckedUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUncheckedUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUncheckedUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+  }
+
+  export type ForumTopicCreateWithoutTagsInput = {
+    title: string
+    content: string
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    category: ForumCategoryCreateNestedOneWithoutTopicsInput
+    author: UserCreateNestedOneWithoutForumTopicsInput
+    posts?: ForumPostCreateNestedManyWithoutTopicInput
+  }
+
+  export type ForumTopicUncheckedCreateWithoutTagsInput = {
+    id?: number
+    title: string
+    content: string
+    categoryId: number
+    authorId: number
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    posts?: ForumPostUncheckedCreateNestedManyWithoutTopicInput
+  }
+
+  export type ForumTopicCreateOrConnectWithoutTagsInput = {
+    where: ForumTopicWhereUniqueInput
+    create: XOR<ForumTopicCreateWithoutTagsInput, ForumTopicUncheckedCreateWithoutTagsInput>
+  }
+
+  export type ForumTopicUpsertWithWhereUniqueWithoutTagsInput = {
+    where: ForumTopicWhereUniqueInput
+    update: XOR<ForumTopicUpdateWithoutTagsInput, ForumTopicUncheckedUpdateWithoutTagsInput>
+    create: XOR<ForumTopicCreateWithoutTagsInput, ForumTopicUncheckedCreateWithoutTagsInput>
+  }
+
+  export type ForumTopicUpdateWithWhereUniqueWithoutTagsInput = {
+    where: ForumTopicWhereUniqueInput
+    data: XOR<ForumTopicUpdateWithoutTagsInput, ForumTopicUncheckedUpdateWithoutTagsInput>
+  }
+
+  export type ForumTopicUpdateManyWithWhereWithoutTagsInput = {
+    where: ForumTopicScalarWhereInput
+    data: XOR<ForumTopicUpdateManyMutationInput, ForumTopicUncheckedUpdateManyWithoutTagsInput>
   }
 
   export type RolePermissionCreateManyRoleInput = {
@@ -63667,6 +70853,28 @@ export namespace Prisma {
     imageUrl: string
     extractedText?: string | null
     createdAt?: Date | string
+  }
+
+  export type ForumTopicCreateManyAuthorInput = {
+    id?: number
+    title: string
+    content: string
+    categoryId: number
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ForumPostCreateManyAuthorInput = {
+    id?: number
+    topicId: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type UserRoleUpdateWithoutUserInput = {
@@ -64397,6 +71605,74 @@ export namespace Prisma {
     imageUrl?: StringFieldUpdateOperationsInput | string
     extractedText?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumTopicUpdateWithoutAuthorInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: ForumCategoryUpdateOneRequiredWithoutTopicsNestedInput
+    posts?: ForumPostUpdateManyWithoutTopicNestedInput
+    tags?: ForumTagUpdateManyWithoutTopicsNestedInput
+  }
+
+  export type ForumTopicUncheckedUpdateWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    posts?: ForumPostUncheckedUpdateManyWithoutTopicNestedInput
+    tags?: ForumTagUncheckedUpdateManyWithoutTopicsNestedInput
+  }
+
+  export type ForumTopicUncheckedUpdateManyWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumPostUpdateWithoutAuthorInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    topic?: ForumTopicUpdateOneRequiredWithoutPostsNestedInput
+  }
+
+  export type ForumPostUncheckedUpdateWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    topicId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumPostUncheckedUpdateManyWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    topicId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type RolePermissionCreateManyPermissionInput = {
@@ -66300,6 +73576,153 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     details?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ForumTopicCreateManyCategoryInput = {
+    id?: number
+    title: string
+    content: string
+    authorId: number
+    views?: number
+    isPinned?: boolean
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ForumTopicUpdateWithoutCategoryInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    author?: UserUpdateOneRequiredWithoutForumTopicsNestedInput
+    posts?: ForumPostUpdateManyWithoutTopicNestedInput
+    tags?: ForumTagUpdateManyWithoutTopicsNestedInput
+  }
+
+  export type ForumTopicUncheckedUpdateWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    authorId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    posts?: ForumPostUncheckedUpdateManyWithoutTopicNestedInput
+    tags?: ForumTagUncheckedUpdateManyWithoutTopicsNestedInput
+  }
+
+  export type ForumTopicUncheckedUpdateManyWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    authorId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumPostCreateManyTopicInput = {
+    id?: number
+    authorId: number
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ForumPostUpdateWithoutTopicInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    author?: UserUpdateOneRequiredWithoutForumPostsNestedInput
+  }
+
+  export type ForumPostUncheckedUpdateWithoutTopicInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumPostUncheckedUpdateManyWithoutTopicInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ForumTagUpdateWithoutTopicsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ForumTagUncheckedUpdateWithoutTopicsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ForumTagUncheckedUpdateManyWithoutTopicsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ForumTopicUpdateWithoutTagsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    category?: ForumCategoryUpdateOneRequiredWithoutTopicsNestedInput
+    author?: UserUpdateOneRequiredWithoutForumTopicsNestedInput
+    posts?: ForumPostUpdateManyWithoutTopicNestedInput
+  }
+
+  export type ForumTopicUncheckedUpdateWithoutTagsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    posts?: ForumPostUncheckedUpdateManyWithoutTopicNestedInput
+  }
+
+  export type ForumTopicUncheckedUpdateManyWithoutTagsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    categoryId?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 
