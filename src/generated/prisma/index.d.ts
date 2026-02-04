@@ -163,6 +163,11 @@ export type CardTag = $Result.DefaultSelection<Prisma.$CardTagPayload>
  * 
  */
 export type CardActivity = $Result.DefaultSelection<Prisma.$CardActivityPayload>
+/**
+ * Model OcrHistory
+ * 
+ */
+export type OcrHistory = $Result.DefaultSelection<Prisma.$OcrHistoryPayload>
 
 /**
  * Enums
@@ -722,6 +727,16 @@ export class PrismaClient<
     * ```
     */
   get cardActivity(): Prisma.CardActivityDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.ocrHistory`: Exposes CRUD operations for the **OcrHistory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OcrHistories
+    * const ocrHistories = await prisma.ocrHistory.findMany()
+    * ```
+    */
+  get ocrHistory(): Prisma.OcrHistoryDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1191,7 +1206,8 @@ export namespace Prisma {
     BoardColumn: 'BoardColumn',
     BoardCard: 'BoardCard',
     CardTag: 'CardTag',
-    CardActivity: 'CardActivity'
+    CardActivity: 'CardActivity',
+    OcrHistory: 'OcrHistory'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1210,7 +1226,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "ping" | "role" | "user" | "permission" | "userRole" | "rolePermission" | "building" | "property" | "propertyAttachment" | "buildingAttachment" | "assignment" | "followUp" | "mailboxing" | "mailboxingAttachment" | "person" | "personPhone" | "reminder" | "reminderOccurrence" | "listing" | "listingType" | "listingStatus" | "propertyPerson" | "flyerTemplate" | "flyer" | "flyerShipment" | "board" | "boardColumn" | "boardCard" | "cardTag" | "cardActivity"
+      modelProps: "ping" | "role" | "user" | "permission" | "userRole" | "rolePermission" | "building" | "property" | "propertyAttachment" | "buildingAttachment" | "assignment" | "followUp" | "mailboxing" | "mailboxingAttachment" | "person" | "personPhone" | "reminder" | "reminderOccurrence" | "listing" | "listingType" | "listingStatus" | "propertyPerson" | "flyerTemplate" | "flyer" | "flyerShipment" | "board" | "boardColumn" | "boardCard" | "cardTag" | "cardActivity" | "ocrHistory"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3434,6 +3450,80 @@ export namespace Prisma {
           }
         }
       }
+      OcrHistory: {
+        payload: Prisma.$OcrHistoryPayload<ExtArgs>
+        fields: Prisma.OcrHistoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OcrHistoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OcrHistoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>
+          }
+          findFirst: {
+            args: Prisma.OcrHistoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OcrHistoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>
+          }
+          findMany: {
+            args: Prisma.OcrHistoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>[]
+          }
+          create: {
+            args: Prisma.OcrHistoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>
+          }
+          createMany: {
+            args: Prisma.OcrHistoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OcrHistoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>[]
+          }
+          delete: {
+            args: Prisma.OcrHistoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>
+          }
+          update: {
+            args: Prisma.OcrHistoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.OcrHistoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OcrHistoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OcrHistoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.OcrHistoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OcrHistoryPayload>
+          }
+          aggregate: {
+            args: Prisma.OcrHistoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOcrHistory>
+          }
+          groupBy: {
+            args: Prisma.OcrHistoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OcrHistoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OcrHistoryCountArgs<ExtArgs>
+            result: $Utils.Optional<OcrHistoryCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -3556,6 +3646,7 @@ export namespace Prisma {
     boardCard?: BoardCardOmit
     cardTag?: CardTagOmit
     cardActivity?: CardActivityOmit
+    ocrHistory?: OcrHistoryOmit
   }
 
   /* Types for Logging */
@@ -3693,6 +3784,7 @@ export namespace Prisma {
     cardsCreated: number
     cardsResponsible: number
     cardActivities: number
+    ocrHistory: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3713,6 +3805,7 @@ export namespace Prisma {
     cardsCreated?: boolean | UserCountOutputTypeCountCardsCreatedArgs
     cardsResponsible?: boolean | UserCountOutputTypeCountCardsResponsibleArgs
     cardActivities?: boolean | UserCountOutputTypeCountCardActivitiesArgs
+    ocrHistory?: boolean | UserCountOutputTypeCountOcrHistoryArgs
   }
 
   // Custom InputTypes
@@ -3843,6 +3936,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCardActivitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CardActivityWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountOcrHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OcrHistoryWhereInput
   }
 
 
@@ -6880,6 +6980,7 @@ export namespace Prisma {
     cardsCreated?: boolean | User$cardsCreatedArgs<ExtArgs>
     cardsResponsible?: boolean | User$cardsResponsibleArgs<ExtArgs>
     cardActivities?: boolean | User$cardActivitiesArgs<ExtArgs>
+    ocrHistory?: boolean | User$ocrHistoryArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -6959,6 +7060,7 @@ export namespace Prisma {
     cardsCreated?: boolean | User$cardsCreatedArgs<ExtArgs>
     cardsResponsible?: boolean | User$cardsResponsibleArgs<ExtArgs>
     cardActivities?: boolean | User$cardActivitiesArgs<ExtArgs>
+    ocrHistory?: boolean | User$ocrHistoryArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6984,6 +7086,7 @@ export namespace Prisma {
       cardsCreated: Prisma.$BoardCardPayload<ExtArgs>[]
       cardsResponsible: Prisma.$BoardCardPayload<ExtArgs>[]
       cardActivities: Prisma.$CardActivityPayload<ExtArgs>[]
+      ocrHistory: Prisma.$OcrHistoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7413,6 +7516,7 @@ export namespace Prisma {
     cardsCreated<T extends User$cardsCreatedArgs<ExtArgs> = {}>(args?: Subset<T, User$cardsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardCardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cardsResponsible<T extends User$cardsResponsibleArgs<ExtArgs> = {}>(args?: Subset<T, User$cardsResponsibleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BoardCardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cardActivities<T extends User$cardActivitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$cardActivitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ocrHistory<T extends User$ocrHistoryArgs<ExtArgs> = {}>(args?: Subset<T, User$ocrHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8251,6 +8355,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CardActivityScalarFieldEnum | CardActivityScalarFieldEnum[]
+  }
+
+  /**
+   * User.ocrHistory
+   */
+  export type User$ocrHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    where?: OcrHistoryWhereInput
+    orderBy?: OcrHistoryOrderByWithRelationInput | OcrHistoryOrderByWithRelationInput[]
+    cursor?: OcrHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OcrHistoryScalarFieldEnum | OcrHistoryScalarFieldEnum[]
   }
 
   /**
@@ -40952,6 +41080,1102 @@ export namespace Prisma {
 
 
   /**
+   * Model OcrHistory
+   */
+
+  export type AggregateOcrHistory = {
+    _count: OcrHistoryCountAggregateOutputType | null
+    _avg: OcrHistoryAvgAggregateOutputType | null
+    _sum: OcrHistorySumAggregateOutputType | null
+    _min: OcrHistoryMinAggregateOutputType | null
+    _max: OcrHistoryMaxAggregateOutputType | null
+  }
+
+  export type OcrHistoryAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type OcrHistorySumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type OcrHistoryMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    imageUrl: string | null
+    extractedText: string | null
+    createdAt: Date | null
+  }
+
+  export type OcrHistoryMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    imageUrl: string | null
+    extractedText: string | null
+    createdAt: Date | null
+  }
+
+  export type OcrHistoryCountAggregateOutputType = {
+    id: number
+    userId: number
+    imageUrl: number
+    extractedText: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type OcrHistoryAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type OcrHistorySumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type OcrHistoryMinAggregateInputType = {
+    id?: true
+    userId?: true
+    imageUrl?: true
+    extractedText?: true
+    createdAt?: true
+  }
+
+  export type OcrHistoryMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    imageUrl?: true
+    extractedText?: true
+    createdAt?: true
+  }
+
+  export type OcrHistoryCountAggregateInputType = {
+    id?: true
+    userId?: true
+    imageUrl?: true
+    extractedText?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type OcrHistoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OcrHistory to aggregate.
+     */
+    where?: OcrHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OcrHistories to fetch.
+     */
+    orderBy?: OcrHistoryOrderByWithRelationInput | OcrHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OcrHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OcrHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OcrHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OcrHistories
+    **/
+    _count?: true | OcrHistoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: OcrHistoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OcrHistorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OcrHistoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OcrHistoryMaxAggregateInputType
+  }
+
+  export type GetOcrHistoryAggregateType<T extends OcrHistoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateOcrHistory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOcrHistory[P]>
+      : GetScalarType<T[P], AggregateOcrHistory[P]>
+  }
+
+
+
+
+  export type OcrHistoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OcrHistoryWhereInput
+    orderBy?: OcrHistoryOrderByWithAggregationInput | OcrHistoryOrderByWithAggregationInput[]
+    by: OcrHistoryScalarFieldEnum[] | OcrHistoryScalarFieldEnum
+    having?: OcrHistoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OcrHistoryCountAggregateInputType | true
+    _avg?: OcrHistoryAvgAggregateInputType
+    _sum?: OcrHistorySumAggregateInputType
+    _min?: OcrHistoryMinAggregateInputType
+    _max?: OcrHistoryMaxAggregateInputType
+  }
+
+  export type OcrHistoryGroupByOutputType = {
+    id: number
+    userId: number
+    imageUrl: string
+    extractedText: string | null
+    createdAt: Date
+    _count: OcrHistoryCountAggregateOutputType | null
+    _avg: OcrHistoryAvgAggregateOutputType | null
+    _sum: OcrHistorySumAggregateOutputType | null
+    _min: OcrHistoryMinAggregateOutputType | null
+    _max: OcrHistoryMaxAggregateOutputType | null
+  }
+
+  type GetOcrHistoryGroupByPayload<T extends OcrHistoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OcrHistoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OcrHistoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OcrHistoryGroupByOutputType[P]>
+            : GetScalarType<T[P], OcrHistoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OcrHistorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    imageUrl?: boolean
+    extractedText?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ocrHistory"]>
+
+  export type OcrHistorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    imageUrl?: boolean
+    extractedText?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ocrHistory"]>
+
+  export type OcrHistorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    imageUrl?: boolean
+    extractedText?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ocrHistory"]>
+
+  export type OcrHistorySelectScalar = {
+    id?: boolean
+    userId?: boolean
+    imageUrl?: boolean
+    extractedText?: boolean
+    createdAt?: boolean
+  }
+
+  export type OcrHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "imageUrl" | "extractedText" | "createdAt", ExtArgs["result"]["ocrHistory"]>
+  export type OcrHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type OcrHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type OcrHistoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $OcrHistoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OcrHistory"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      imageUrl: string
+      extractedText: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["ocrHistory"]>
+    composites: {}
+  }
+
+  type OcrHistoryGetPayload<S extends boolean | null | undefined | OcrHistoryDefaultArgs> = $Result.GetResult<Prisma.$OcrHistoryPayload, S>
+
+  type OcrHistoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OcrHistoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OcrHistoryCountAggregateInputType | true
+    }
+
+  export interface OcrHistoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OcrHistory'], meta: { name: 'OcrHistory' } }
+    /**
+     * Find zero or one OcrHistory that matches the filter.
+     * @param {OcrHistoryFindUniqueArgs} args - Arguments to find a OcrHistory
+     * @example
+     * // Get one OcrHistory
+     * const ocrHistory = await prisma.ocrHistory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OcrHistoryFindUniqueArgs>(args: SelectSubset<T, OcrHistoryFindUniqueArgs<ExtArgs>>): Prisma__OcrHistoryClient<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OcrHistory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OcrHistoryFindUniqueOrThrowArgs} args - Arguments to find a OcrHistory
+     * @example
+     * // Get one OcrHistory
+     * const ocrHistory = await prisma.ocrHistory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OcrHistoryFindUniqueOrThrowArgs>(args: SelectSubset<T, OcrHistoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OcrHistoryClient<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OcrHistory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OcrHistoryFindFirstArgs} args - Arguments to find a OcrHistory
+     * @example
+     * // Get one OcrHistory
+     * const ocrHistory = await prisma.ocrHistory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OcrHistoryFindFirstArgs>(args?: SelectSubset<T, OcrHistoryFindFirstArgs<ExtArgs>>): Prisma__OcrHistoryClient<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OcrHistory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OcrHistoryFindFirstOrThrowArgs} args - Arguments to find a OcrHistory
+     * @example
+     * // Get one OcrHistory
+     * const ocrHistory = await prisma.ocrHistory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OcrHistoryFindFirstOrThrowArgs>(args?: SelectSubset<T, OcrHistoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__OcrHistoryClient<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OcrHistories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OcrHistoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OcrHistories
+     * const ocrHistories = await prisma.ocrHistory.findMany()
+     * 
+     * // Get first 10 OcrHistories
+     * const ocrHistories = await prisma.ocrHistory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const ocrHistoryWithIdOnly = await prisma.ocrHistory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OcrHistoryFindManyArgs>(args?: SelectSubset<T, OcrHistoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OcrHistory.
+     * @param {OcrHistoryCreateArgs} args - Arguments to create a OcrHistory.
+     * @example
+     * // Create one OcrHistory
+     * const OcrHistory = await prisma.ocrHistory.create({
+     *   data: {
+     *     // ... data to create a OcrHistory
+     *   }
+     * })
+     * 
+     */
+    create<T extends OcrHistoryCreateArgs>(args: SelectSubset<T, OcrHistoryCreateArgs<ExtArgs>>): Prisma__OcrHistoryClient<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OcrHistories.
+     * @param {OcrHistoryCreateManyArgs} args - Arguments to create many OcrHistories.
+     * @example
+     * // Create many OcrHistories
+     * const ocrHistory = await prisma.ocrHistory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OcrHistoryCreateManyArgs>(args?: SelectSubset<T, OcrHistoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OcrHistories and returns the data saved in the database.
+     * @param {OcrHistoryCreateManyAndReturnArgs} args - Arguments to create many OcrHistories.
+     * @example
+     * // Create many OcrHistories
+     * const ocrHistory = await prisma.ocrHistory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OcrHistories and only return the `id`
+     * const ocrHistoryWithIdOnly = await prisma.ocrHistory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OcrHistoryCreateManyAndReturnArgs>(args?: SelectSubset<T, OcrHistoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OcrHistory.
+     * @param {OcrHistoryDeleteArgs} args - Arguments to delete one OcrHistory.
+     * @example
+     * // Delete one OcrHistory
+     * const OcrHistory = await prisma.ocrHistory.delete({
+     *   where: {
+     *     // ... filter to delete one OcrHistory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OcrHistoryDeleteArgs>(args: SelectSubset<T, OcrHistoryDeleteArgs<ExtArgs>>): Prisma__OcrHistoryClient<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OcrHistory.
+     * @param {OcrHistoryUpdateArgs} args - Arguments to update one OcrHistory.
+     * @example
+     * // Update one OcrHistory
+     * const ocrHistory = await prisma.ocrHistory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OcrHistoryUpdateArgs>(args: SelectSubset<T, OcrHistoryUpdateArgs<ExtArgs>>): Prisma__OcrHistoryClient<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OcrHistories.
+     * @param {OcrHistoryDeleteManyArgs} args - Arguments to filter OcrHistories to delete.
+     * @example
+     * // Delete a few OcrHistories
+     * const { count } = await prisma.ocrHistory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OcrHistoryDeleteManyArgs>(args?: SelectSubset<T, OcrHistoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OcrHistories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OcrHistoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OcrHistories
+     * const ocrHistory = await prisma.ocrHistory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OcrHistoryUpdateManyArgs>(args: SelectSubset<T, OcrHistoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OcrHistories and returns the data updated in the database.
+     * @param {OcrHistoryUpdateManyAndReturnArgs} args - Arguments to update many OcrHistories.
+     * @example
+     * // Update many OcrHistories
+     * const ocrHistory = await prisma.ocrHistory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OcrHistories and only return the `id`
+     * const ocrHistoryWithIdOnly = await prisma.ocrHistory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OcrHistoryUpdateManyAndReturnArgs>(args: SelectSubset<T, OcrHistoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OcrHistory.
+     * @param {OcrHistoryUpsertArgs} args - Arguments to update or create a OcrHistory.
+     * @example
+     * // Update or create a OcrHistory
+     * const ocrHistory = await prisma.ocrHistory.upsert({
+     *   create: {
+     *     // ... data to create a OcrHistory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OcrHistory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OcrHistoryUpsertArgs>(args: SelectSubset<T, OcrHistoryUpsertArgs<ExtArgs>>): Prisma__OcrHistoryClient<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OcrHistories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OcrHistoryCountArgs} args - Arguments to filter OcrHistories to count.
+     * @example
+     * // Count the number of OcrHistories
+     * const count = await prisma.ocrHistory.count({
+     *   where: {
+     *     // ... the filter for the OcrHistories we want to count
+     *   }
+     * })
+    **/
+    count<T extends OcrHistoryCountArgs>(
+      args?: Subset<T, OcrHistoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OcrHistoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OcrHistory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OcrHistoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OcrHistoryAggregateArgs>(args: Subset<T, OcrHistoryAggregateArgs>): Prisma.PrismaPromise<GetOcrHistoryAggregateType<T>>
+
+    /**
+     * Group by OcrHistory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OcrHistoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OcrHistoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OcrHistoryGroupByArgs['orderBy'] }
+        : { orderBy?: OcrHistoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OcrHistoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOcrHistoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OcrHistory model
+   */
+  readonly fields: OcrHistoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OcrHistory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OcrHistoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OcrHistory model
+   */
+  interface OcrHistoryFieldRefs {
+    readonly id: FieldRef<"OcrHistory", 'Int'>
+    readonly userId: FieldRef<"OcrHistory", 'Int'>
+    readonly imageUrl: FieldRef<"OcrHistory", 'String'>
+    readonly extractedText: FieldRef<"OcrHistory", 'String'>
+    readonly createdAt: FieldRef<"OcrHistory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OcrHistory findUnique
+   */
+  export type OcrHistoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which OcrHistory to fetch.
+     */
+    where: OcrHistoryWhereUniqueInput
+  }
+
+  /**
+   * OcrHistory findUniqueOrThrow
+   */
+  export type OcrHistoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which OcrHistory to fetch.
+     */
+    where: OcrHistoryWhereUniqueInput
+  }
+
+  /**
+   * OcrHistory findFirst
+   */
+  export type OcrHistoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which OcrHistory to fetch.
+     */
+    where?: OcrHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OcrHistories to fetch.
+     */
+    orderBy?: OcrHistoryOrderByWithRelationInput | OcrHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OcrHistories.
+     */
+    cursor?: OcrHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OcrHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OcrHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OcrHistories.
+     */
+    distinct?: OcrHistoryScalarFieldEnum | OcrHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * OcrHistory findFirstOrThrow
+   */
+  export type OcrHistoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which OcrHistory to fetch.
+     */
+    where?: OcrHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OcrHistories to fetch.
+     */
+    orderBy?: OcrHistoryOrderByWithRelationInput | OcrHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OcrHistories.
+     */
+    cursor?: OcrHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OcrHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OcrHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OcrHistories.
+     */
+    distinct?: OcrHistoryScalarFieldEnum | OcrHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * OcrHistory findMany
+   */
+  export type OcrHistoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which OcrHistories to fetch.
+     */
+    where?: OcrHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OcrHistories to fetch.
+     */
+    orderBy?: OcrHistoryOrderByWithRelationInput | OcrHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OcrHistories.
+     */
+    cursor?: OcrHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OcrHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OcrHistories.
+     */
+    skip?: number
+    distinct?: OcrHistoryScalarFieldEnum | OcrHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * OcrHistory create
+   */
+  export type OcrHistoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OcrHistory.
+     */
+    data: XOR<OcrHistoryCreateInput, OcrHistoryUncheckedCreateInput>
+  }
+
+  /**
+   * OcrHistory createMany
+   */
+  export type OcrHistoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OcrHistories.
+     */
+    data: OcrHistoryCreateManyInput | OcrHistoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OcrHistory createManyAndReturn
+   */
+  export type OcrHistoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many OcrHistories.
+     */
+    data: OcrHistoryCreateManyInput | OcrHistoryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OcrHistory update
+   */
+  export type OcrHistoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OcrHistory.
+     */
+    data: XOR<OcrHistoryUpdateInput, OcrHistoryUncheckedUpdateInput>
+    /**
+     * Choose, which OcrHistory to update.
+     */
+    where: OcrHistoryWhereUniqueInput
+  }
+
+  /**
+   * OcrHistory updateMany
+   */
+  export type OcrHistoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OcrHistories.
+     */
+    data: XOR<OcrHistoryUpdateManyMutationInput, OcrHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which OcrHistories to update
+     */
+    where?: OcrHistoryWhereInput
+    /**
+     * Limit how many OcrHistories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OcrHistory updateManyAndReturn
+   */
+  export type OcrHistoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to update OcrHistories.
+     */
+    data: XOR<OcrHistoryUpdateManyMutationInput, OcrHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which OcrHistories to update
+     */
+    where?: OcrHistoryWhereInput
+    /**
+     * Limit how many OcrHistories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OcrHistory upsert
+   */
+  export type OcrHistoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OcrHistory to update in case it exists.
+     */
+    where: OcrHistoryWhereUniqueInput
+    /**
+     * In case the OcrHistory found by the `where` argument doesn't exist, create a new OcrHistory with this data.
+     */
+    create: XOR<OcrHistoryCreateInput, OcrHistoryUncheckedCreateInput>
+    /**
+     * In case the OcrHistory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OcrHistoryUpdateInput, OcrHistoryUncheckedUpdateInput>
+  }
+
+  /**
+   * OcrHistory delete
+   */
+  export type OcrHistoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+    /**
+     * Filter which OcrHistory to delete.
+     */
+    where: OcrHistoryWhereUniqueInput
+  }
+
+  /**
+   * OcrHistory deleteMany
+   */
+  export type OcrHistoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OcrHistories to delete
+     */
+    where?: OcrHistoryWhereInput
+    /**
+     * Limit how many OcrHistories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OcrHistory without action
+   */
+  export type OcrHistoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OcrHistory
+     */
+    select?: OcrHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OcrHistory
+     */
+    omit?: OcrHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OcrHistoryInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -41428,6 +42652,17 @@ export namespace Prisma {
   export type CardActivityScalarFieldEnum = (typeof CardActivityScalarFieldEnum)[keyof typeof CardActivityScalarFieldEnum]
 
 
+  export const OcrHistoryScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    imageUrl: 'imageUrl',
+    extractedText: 'extractedText',
+    createdAt: 'createdAt'
+  };
+
+  export type OcrHistoryScalarFieldEnum = (typeof OcrHistoryScalarFieldEnum)[keyof typeof OcrHistoryScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -41849,6 +43084,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardListRelationFilter
     cardsResponsible?: BoardCardListRelationFilter
     cardActivities?: CardActivityListRelationFilter
+    ocrHistory?: OcrHistoryListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -41885,6 +43121,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardOrderByRelationAggregateInput
     cardsResponsible?: BoardCardOrderByRelationAggregateInput
     cardActivities?: CardActivityOrderByRelationAggregateInput
+    ocrHistory?: OcrHistoryOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -41924,6 +43161,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardListRelationFilter
     cardsResponsible?: BoardCardListRelationFilter
     cardActivities?: CardActivityListRelationFilter
+    ocrHistory?: OcrHistoryListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -44305,6 +45543,63 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"CardActivity"> | Date | string
   }
 
+  export type OcrHistoryWhereInput = {
+    AND?: OcrHistoryWhereInput | OcrHistoryWhereInput[]
+    OR?: OcrHistoryWhereInput[]
+    NOT?: OcrHistoryWhereInput | OcrHistoryWhereInput[]
+    id?: IntFilter<"OcrHistory"> | number
+    userId?: IntFilter<"OcrHistory"> | number
+    imageUrl?: StringFilter<"OcrHistory"> | string
+    extractedText?: StringNullableFilter<"OcrHistory"> | string | null
+    createdAt?: DateTimeFilter<"OcrHistory"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type OcrHistoryOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    imageUrl?: SortOrder
+    extractedText?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type OcrHistoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: OcrHistoryWhereInput | OcrHistoryWhereInput[]
+    OR?: OcrHistoryWhereInput[]
+    NOT?: OcrHistoryWhereInput | OcrHistoryWhereInput[]
+    userId?: IntFilter<"OcrHistory"> | number
+    imageUrl?: StringFilter<"OcrHistory"> | string
+    extractedText?: StringNullableFilter<"OcrHistory"> | string | null
+    createdAt?: DateTimeFilter<"OcrHistory"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type OcrHistoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    imageUrl?: SortOrder
+    extractedText?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: OcrHistoryCountOrderByAggregateInput
+    _avg?: OcrHistoryAvgOrderByAggregateInput
+    _max?: OcrHistoryMaxOrderByAggregateInput
+    _min?: OcrHistoryMinOrderByAggregateInput
+    _sum?: OcrHistorySumOrderByAggregateInput
+  }
+
+  export type OcrHistoryScalarWhereWithAggregatesInput = {
+    AND?: OcrHistoryScalarWhereWithAggregatesInput | OcrHistoryScalarWhereWithAggregatesInput[]
+    OR?: OcrHistoryScalarWhereWithAggregatesInput[]
+    NOT?: OcrHistoryScalarWhereWithAggregatesInput | OcrHistoryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"OcrHistory"> | number
+    userId?: IntWithAggregatesFilter<"OcrHistory"> | number
+    imageUrl?: StringWithAggregatesFilter<"OcrHistory"> | string
+    extractedText?: StringNullableWithAggregatesFilter<"OcrHistory"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"OcrHistory"> | Date | string
+  }
+
   export type PingCreateInput = {
     value: string
   }
@@ -44438,6 +45733,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -44474,6 +45770,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -44509,6 +45806,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -44545,6 +45843,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -46985,6 +48284,58 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type OcrHistoryCreateInput = {
+    imageUrl: string
+    extractedText?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutOcrHistoryInput
+  }
+
+  export type OcrHistoryUncheckedCreateInput = {
+    id?: number
+    userId: number
+    imageUrl: string
+    extractedText?: string | null
+    createdAt?: Date | string
+  }
+
+  export type OcrHistoryUpdateInput = {
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    extractedText?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutOcrHistoryNestedInput
+  }
+
+  export type OcrHistoryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    extractedText?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OcrHistoryCreateManyInput = {
+    id?: number
+    userId: number
+    imageUrl: string
+    extractedText?: string | null
+    createdAt?: Date | string
+  }
+
+  export type OcrHistoryUpdateManyMutationInput = {
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    extractedText?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OcrHistoryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    extractedText?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -47284,6 +48635,12 @@ export namespace Prisma {
     none?: CardActivityWhereInput
   }
 
+  export type OcrHistoryListRelationFilter = {
+    every?: OcrHistoryWhereInput
+    some?: OcrHistoryWhereInput
+    none?: OcrHistoryWhereInput
+  }
+
   export type AssignmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -47333,6 +48690,10 @@ export namespace Prisma {
   }
 
   export type CardActivityOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OcrHistoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -49281,6 +50642,40 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
+  export type OcrHistoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    imageUrl?: SortOrder
+    extractedText?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type OcrHistoryAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type OcrHistoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    imageUrl?: SortOrder
+    extractedText?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type OcrHistoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    imageUrl?: SortOrder
+    extractedText?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type OcrHistorySumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -49508,6 +50903,13 @@ export namespace Prisma {
     connect?: CardActivityWhereUniqueInput | CardActivityWhereUniqueInput[]
   }
 
+  export type OcrHistoryCreateNestedManyWithoutUserInput = {
+    create?: XOR<OcrHistoryCreateWithoutUserInput, OcrHistoryUncheckedCreateWithoutUserInput> | OcrHistoryCreateWithoutUserInput[] | OcrHistoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OcrHistoryCreateOrConnectWithoutUserInput | OcrHistoryCreateOrConnectWithoutUserInput[]
+    createMany?: OcrHistoryCreateManyUserInputEnvelope
+    connect?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+  }
+
   export type UserRoleUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -49625,6 +51027,13 @@ export namespace Prisma {
     connectOrCreate?: CardActivityCreateOrConnectWithoutUserInput | CardActivityCreateOrConnectWithoutUserInput[]
     createMany?: CardActivityCreateManyUserInputEnvelope
     connect?: CardActivityWhereUniqueInput | CardActivityWhereUniqueInput[]
+  }
+
+  export type OcrHistoryUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<OcrHistoryCreateWithoutUserInput, OcrHistoryUncheckedCreateWithoutUserInput> | OcrHistoryCreateWithoutUserInput[] | OcrHistoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OcrHistoryCreateOrConnectWithoutUserInput | OcrHistoryCreateOrConnectWithoutUserInput[]
+    createMany?: OcrHistoryCreateManyUserInputEnvelope
+    connect?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -49878,6 +51287,20 @@ export namespace Prisma {
     deleteMany?: CardActivityScalarWhereInput | CardActivityScalarWhereInput[]
   }
 
+  export type OcrHistoryUpdateManyWithoutUserNestedInput = {
+    create?: XOR<OcrHistoryCreateWithoutUserInput, OcrHistoryUncheckedCreateWithoutUserInput> | OcrHistoryCreateWithoutUserInput[] | OcrHistoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OcrHistoryCreateOrConnectWithoutUserInput | OcrHistoryCreateOrConnectWithoutUserInput[]
+    upsert?: OcrHistoryUpsertWithWhereUniqueWithoutUserInput | OcrHistoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: OcrHistoryCreateManyUserInputEnvelope
+    set?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+    disconnect?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+    delete?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+    connect?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+    update?: OcrHistoryUpdateWithWhereUniqueWithoutUserInput | OcrHistoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: OcrHistoryUpdateManyWithWhereWithoutUserInput | OcrHistoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: OcrHistoryScalarWhereInput | OcrHistoryScalarWhereInput[]
+  }
+
   export type UserRoleUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -50114,6 +51537,20 @@ export namespace Prisma {
     update?: CardActivityUpdateWithWhereUniqueWithoutUserInput | CardActivityUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: CardActivityUpdateManyWithWhereWithoutUserInput | CardActivityUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: CardActivityScalarWhereInput | CardActivityScalarWhereInput[]
+  }
+
+  export type OcrHistoryUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<OcrHistoryCreateWithoutUserInput, OcrHistoryUncheckedCreateWithoutUserInput> | OcrHistoryCreateWithoutUserInput[] | OcrHistoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OcrHistoryCreateOrConnectWithoutUserInput | OcrHistoryCreateOrConnectWithoutUserInput[]
+    upsert?: OcrHistoryUpsertWithWhereUniqueWithoutUserInput | OcrHistoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: OcrHistoryCreateManyUserInputEnvelope
+    set?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+    disconnect?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+    delete?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+    connect?: OcrHistoryWhereUniqueInput | OcrHistoryWhereUniqueInput[]
+    update?: OcrHistoryUpdateWithWhereUniqueWithoutUserInput | OcrHistoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: OcrHistoryUpdateManyWithWhereWithoutUserInput | OcrHistoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: OcrHistoryScalarWhereInput | OcrHistoryScalarWhereInput[]
   }
 
   export type RolePermissionCreateNestedManyWithoutPermissionInput = {
@@ -52268,6 +53705,20 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCardActivitiesInput, UserUpdateWithoutCardActivitiesInput>, UserUncheckedUpdateWithoutCardActivitiesInput>
   }
 
+  export type UserCreateNestedOneWithoutOcrHistoryInput = {
+    create?: XOR<UserCreateWithoutOcrHistoryInput, UserUncheckedCreateWithoutOcrHistoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOcrHistoryInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutOcrHistoryNestedInput = {
+    create?: XOR<UserCreateWithoutOcrHistoryInput, UserUncheckedCreateWithoutOcrHistoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOcrHistoryInput
+    upsert?: UserUpsertWithoutOcrHistoryInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOcrHistoryInput, UserUpdateWithoutOcrHistoryInput>, UserUncheckedUpdateWithoutOcrHistoryInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -53468,6 +54919,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type OcrHistoryCreateWithoutUserInput = {
+    imageUrl: string
+    extractedText?: string | null
+    createdAt?: Date | string
+  }
+
+  export type OcrHistoryUncheckedCreateWithoutUserInput = {
+    id?: number
+    imageUrl: string
+    extractedText?: string | null
+    createdAt?: Date | string
+  }
+
+  export type OcrHistoryCreateOrConnectWithoutUserInput = {
+    where: OcrHistoryWhereUniqueInput
+    create: XOR<OcrHistoryCreateWithoutUserInput, OcrHistoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type OcrHistoryCreateManyUserInputEnvelope = {
+    data: OcrHistoryCreateManyUserInput | OcrHistoryCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserRoleUpsertWithWhereUniqueWithoutUserInput = {
     where: UserRoleWhereUniqueInput
     update: XOR<UserRoleUpdateWithoutUserInput, UserRoleUncheckedUpdateWithoutUserInput>
@@ -53970,6 +55444,33 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"CardActivity"> | Date | string
   }
 
+  export type OcrHistoryUpsertWithWhereUniqueWithoutUserInput = {
+    where: OcrHistoryWhereUniqueInput
+    update: XOR<OcrHistoryUpdateWithoutUserInput, OcrHistoryUncheckedUpdateWithoutUserInput>
+    create: XOR<OcrHistoryCreateWithoutUserInput, OcrHistoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type OcrHistoryUpdateWithWhereUniqueWithoutUserInput = {
+    where: OcrHistoryWhereUniqueInput
+    data: XOR<OcrHistoryUpdateWithoutUserInput, OcrHistoryUncheckedUpdateWithoutUserInput>
+  }
+
+  export type OcrHistoryUpdateManyWithWhereWithoutUserInput = {
+    where: OcrHistoryScalarWhereInput
+    data: XOR<OcrHistoryUpdateManyMutationInput, OcrHistoryUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type OcrHistoryScalarWhereInput = {
+    AND?: OcrHistoryScalarWhereInput | OcrHistoryScalarWhereInput[]
+    OR?: OcrHistoryScalarWhereInput[]
+    NOT?: OcrHistoryScalarWhereInput | OcrHistoryScalarWhereInput[]
+    id?: IntFilter<"OcrHistory"> | number
+    userId?: IntFilter<"OcrHistory"> | number
+    imageUrl?: StringFilter<"OcrHistory"> | string
+    extractedText?: StringNullableFilter<"OcrHistory"> | string | null
+    createdAt?: DateTimeFilter<"OcrHistory"> | Date | string
+  }
+
   export type RolePermissionCreateWithoutPermissionInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54066,6 +55567,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRolesInput = {
@@ -54101,6 +55603,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRolesInput = {
@@ -54181,6 +55684,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRolesInput = {
@@ -54216,6 +55720,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PermissionCreateWithoutRolesInput = {
@@ -55065,6 +56570,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCapturedPropertiesInput = {
@@ -55100,6 +56606,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCapturedPropertiesInput = {
@@ -55480,6 +56987,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCapturedPropertiesInput = {
@@ -55515,6 +57023,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PersonUpsertWithoutPropertiesOwnedInput = {
@@ -55804,6 +57313,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPropertyAttachmentsUploadedInput = {
@@ -55839,6 +57349,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPropertyAttachmentsUploadedInput = {
@@ -55973,6 +57484,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPropertyAttachmentsUploadedInput = {
@@ -56008,6 +57520,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BuildingCreateWithoutAttachmentsInput = {
@@ -56084,6 +57597,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBuildingAttachmentsUploadedInput = {
@@ -56119,6 +57633,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBuildingAttachmentsUploadedInput = {
@@ -56217,6 +57732,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBuildingAttachmentsUploadedInput = {
@@ -56252,6 +57768,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BuildingCreateWithoutAssignmentsInput = {
@@ -56328,6 +57845,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAssignmentsInput = {
@@ -56363,6 +57881,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAssignmentsInput = {
@@ -56461,6 +57980,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssignmentsInput = {
@@ -56496,6 +58016,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PropertyCreateWithoutFollowUpsInput = {
@@ -56608,6 +58129,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFollowUpsInput = {
@@ -56643,6 +58165,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFollowUpsInput = {
@@ -56875,6 +58398,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFollowUpsInput = {
@@ -56910,6 +58434,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReminderUpsertWithWhereUniqueWithoutFollowUpInput = {
@@ -57040,6 +58565,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMailboxingInput = {
@@ -57075,6 +58601,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMailboxingInput = {
@@ -57208,6 +58735,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMailboxingInput = {
@@ -57243,6 +58771,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MailboxingAttachmentUpsertWithWhereUniqueWithoutMailboxingInput = {
@@ -57321,6 +58850,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMailboxingAttachmentsUploadedInput = {
@@ -57356,6 +58886,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMailboxingAttachmentsUploadedInput = {
@@ -57440,6 +58971,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMailboxingAttachmentsUploadedInput = {
@@ -57475,6 +59007,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BuildingCreateWithoutContactInput = {
@@ -58218,6 +59751,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRemindersCreatedInput = {
@@ -58253,6 +59787,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRemindersCreatedInput = {
@@ -58452,6 +59987,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRemindersResponsibleInput = {
@@ -58487,6 +60023,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRemindersResponsibleInput = {
@@ -58630,6 +60167,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRemindersCreatedInput = {
@@ -58665,6 +60203,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type FollowUpUpsertWithoutRemindersInput = {
@@ -58888,6 +60427,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRemindersResponsibleInput = {
@@ -58923,6 +60463,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReminderOccurrenceUpsertWithWhereUniqueWithoutReminderInput = {
@@ -59912,6 +61453,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFlyersGeneratedInput = {
@@ -59947,6 +61489,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFlyersGeneratedInput = {
@@ -60138,6 +61681,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFlyersGeneratedInput = {
@@ -60173,6 +61717,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type FlyerShipmentUpsertWithWhereUniqueWithoutFlyerInput = {
@@ -60251,6 +61796,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFlyerShipmentsInput = {
@@ -60286,6 +61832,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFlyerShipmentsInput = {
@@ -60370,6 +61917,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFlyerShipmentsInput = {
@@ -60405,6 +61953,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutBoardsCreatedInput = {
@@ -60439,6 +61988,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBoardsCreatedInput = {
@@ -60474,6 +62024,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBoardsCreatedInput = {
@@ -60513,6 +62064,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBoardsOwnedInput = {
@@ -60548,6 +62100,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBoardsOwnedInput = {
@@ -60629,6 +62182,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBoardsCreatedInput = {
@@ -60664,6 +62218,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutBoardsOwnedInput = {
@@ -60709,6 +62264,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBoardsOwnedInput = {
@@ -60744,6 +62300,7 @@ export namespace Prisma {
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BoardColumnUpsertWithWhereUniqueWithoutBoardInput = {
@@ -60951,6 +62508,7 @@ export namespace Prisma {
     boardsOwned?: BoardCreateNestedManyWithoutOwnerInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCardsCreatedInput = {
@@ -60986,6 +62544,7 @@ export namespace Prisma {
     boardsOwned?: BoardUncheckedCreateNestedManyWithoutOwnerInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCardsCreatedInput = {
@@ -61025,6 +62584,7 @@ export namespace Prisma {
     boardsOwned?: BoardCreateNestedManyWithoutOwnerInput
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCardsResponsibleInput = {
@@ -61060,6 +62620,7 @@ export namespace Prisma {
     boardsOwned?: BoardUncheckedCreateNestedManyWithoutOwnerInput
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCardsResponsibleInput = {
@@ -61188,6 +62749,7 @@ export namespace Prisma {
     boardsOwned?: BoardUpdateManyWithoutOwnerNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardsCreatedInput = {
@@ -61223,6 +62785,7 @@ export namespace Prisma {
     boardsOwned?: BoardUncheckedUpdateManyWithoutOwnerNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutCardsResponsibleInput = {
@@ -61268,6 +62831,7 @@ export namespace Prisma {
     boardsOwned?: BoardUpdateManyWithoutOwnerNestedInput
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardsResponsibleInput = {
@@ -61303,6 +62867,7 @@ export namespace Prisma {
     boardsOwned?: BoardUncheckedUpdateManyWithoutOwnerNestedInput
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CardTagUpsertWithWhereUniqueWithoutCardInput = {
@@ -61487,6 +63052,7 @@ export namespace Prisma {
     boardsOwned?: BoardCreateNestedManyWithoutOwnerInput
     cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCardActivitiesInput = {
@@ -61522,6 +63088,7 @@ export namespace Prisma {
     boardsOwned?: BoardUncheckedCreateNestedManyWithoutOwnerInput
     cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
     cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCardActivitiesInput = {
@@ -61612,6 +63179,7 @@ export namespace Prisma {
     boardsOwned?: BoardUpdateManyWithoutOwnerNestedInput
     cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardActivitiesInput = {
@@ -61647,6 +63215,165 @@ export namespace Prisma {
     boardsOwned?: BoardUncheckedUpdateManyWithoutOwnerNestedInput
     cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
     cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutOcrHistoryInput = {
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleCreateNestedManyWithoutUserInput
+    assignments?: AssignmentCreateNestedManyWithoutUserInput
+    followUps?: FollowUpCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutOcrHistoryInput = {
+    id?: number
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderUncheckedCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderUncheckedCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardUncheckedCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardUncheckedCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutOcrHistoryInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutOcrHistoryInput, UserUncheckedCreateWithoutOcrHistoryInput>
+  }
+
+  export type UserUpsertWithoutOcrHistoryInput = {
+    update: XOR<UserUpdateWithoutOcrHistoryInput, UserUncheckedUpdateWithoutOcrHistoryInput>
+    create: XOR<UserCreateWithoutOcrHistoryInput, UserUncheckedCreateWithoutOcrHistoryInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutOcrHistoryInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutOcrHistoryInput, UserUncheckedUpdateWithoutOcrHistoryInput>
+  }
+
+  export type UserUpdateWithoutOcrHistoryInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutOcrHistoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUncheckedUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUncheckedUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUncheckedUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUncheckedUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type RolePermissionCreateManyRoleInput = {
@@ -61932,6 +63659,13 @@ export namespace Prisma {
     cardId: number
     action: string
     details?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type OcrHistoryCreateManyUserInput = {
+    id?: number
+    imageUrl: string
+    extractedText?: string | null
     createdAt?: Date | string
   }
 
@@ -62642,6 +64376,26 @@ export namespace Prisma {
     cardId?: IntFieldUpdateOperationsInput | number
     action?: StringFieldUpdateOperationsInput | string
     details?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OcrHistoryUpdateWithoutUserInput = {
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    extractedText?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OcrHistoryUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    extractedText?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OcrHistoryUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    extractedText?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

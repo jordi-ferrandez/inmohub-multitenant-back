@@ -493,6 +493,14 @@ exports.Prisma.CardActivityScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.OcrHistoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  imageUrl: 'imageUrl',
+  extractedText: 'extractedText',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -614,7 +622,8 @@ exports.Prisma.ModelName = {
   BoardColumn: 'BoardColumn',
   BoardCard: 'BoardCard',
   CardTag: 'CardTag',
-  CardActivity: 'CardActivity'
+  CardActivity: 'CardActivity',
+  OcrHistory: 'OcrHistory'
 };
 
 /**

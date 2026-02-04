@@ -64,6 +64,7 @@ model User {
   cardsCreated         BoardCard[]            @relation("CardCreator")
   cardsResponsible     BoardCard[]            @relation("CardResponsible")
   cardActivities       CardActivity[]
+  ocrHistory           OcrHistory[]
 }
 
 model Permission {
@@ -595,4 +596,15 @@ enum CardPriority {
   medium
   high
   critical
+}
+
+model OcrHistory {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @map("user_id")
+  imageUrl      String   @map("image_url")
+  extractedText String?  @map("extracted_text") @db.Text
+  createdAt     DateTime @default(now()) @map("created_at")
+  user          User     @relation(fields: [userId], references: [id])
+
+  @@map("OcrHistory")
 }
