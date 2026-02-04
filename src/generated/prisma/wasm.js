@@ -312,6 +312,8 @@ exports.Prisma.PersonScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   email: 'email',
+  birthDate: 'birthDate',
+  gender: 'gender',
   notificationPreference: 'notificationPreference',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
