@@ -9,6 +9,8 @@ import {
   GetBuildingsQuery,
   GetBuildingMailboxingsParams,
   GetBuildingMailboxingsQuery,
+  DeleteBuildingParams,
+  DeletionSummaryDTO,
 } from "../types/buildingTypes";
 import { getNameAndNumberFromStreet } from "../utils/getNameAndNumberFromStreet";
 import {
@@ -667,5 +669,482 @@ export class BuildingService {
         totalPages,
       },
     };
+  }
+
+  async getDeletionSummary(
+    params: DeleteBuildingParams
+  ): Promise<DeletionSummaryDTO> {
+    const { id } = params;
+
+    // Verificar que el edificio existe y no está eliminado
+    const building = await prisma.building.findFirst({
+      where: { id, deletedAt: null },
+      select: {
+        id: true,
+        street: true,
+        number: true,
+        block: true,
+        stair: true,
+      },
+    });
+
+    if (!building) {
+      throw new Error(`Edificio con ID ${id} no encontrado`);
+    }
+
+    // Obtener todas las propiedades del edificio
+    const properties = await prisma.property.findMany({
+      where: { buildingId: id, deletedAt: null },
+      select: { id: true },
+    });
+
+    const propertyIds = properties.map((p) => p.id);
+
+    // Contar todas las relaciones
+    const [
+      propertyAttachments,
+      propertyFollowUps,
+      propertyListings,
+      propertyReminders,
+      propertyPersons,
+      buildingAttachments,
+      assignments,
+      mailboxings,
+      mailboxingAttachments,
+      buildingReminders,
+      reminderOccurrences,
+    ] = await Promise.all([
+      // PropertyAttachments
+      prisma.propertyAttachment.count({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+      }),
+      // FollowUps
+      prisma.followUp.count({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+      }),
+      // Listings
+      prisma.listing.count({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+      }),
+      // Reminders de propiedades
+      prisma.reminder.count({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+      }),
+      // PropertyPersons (relaciones)
+      prisma.propertyPerson.count({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+      }),
+      // BuildingAttachments
+      prisma.buildingAttachment.count({
+        where: {
+          buildingId: id,
+          deletedAt: null,
+        },
+      }),
+      // Assignments
+      prisma.assignment.count({
+        where: {
+          buildingId: id,
+          deletedAt: null,
+        },
+      }),
+      // Mailboxings
+      prisma.mailboxing.count({
+        where: {
+          buildingId: id,
+          deletedAt: null,
+        },
+      }),
+      // MailboxingAttachments
+      prisma.mailboxingAttachment.count({
+        where: {
+          mailboxing: {
+            buildingId: id,
+            deletedAt: null,
+          },
+          deletedAt: null,
+        },
+      }),
+      // Reminders del edificio
+      prisma.reminder.count({
+        where: {
+          buildingId: id,
+          deletedAt: null,
+        },
+      }),
+      // ReminderOccurrences (de reminders del edificio y de propiedades)
+      prisma.reminderOccurrence.count({
+        where: {
+          OR: [
+            {
+              reminder: {
+                buildingId: id,
+                deletedAt: null,
+              },
+            },
+            {
+              reminder: {
+                propertyId: { in: propertyIds },
+                deletedAt: null,
+              },
+            },
+            {
+              followUp: {
+                propertyId: { in: propertyIds },
+                deletedAt: null,
+              },
+            },
+          ],
+          deletedAt: null,
+        },
+      }),
+    ]);
+
+    return {
+      building: {
+        id: building.id,
+        street: building.street,
+        number: building.number,
+        block: building.block,
+        stair: building.stair,
+      },
+      counts: {
+        properties: propertyIds.length,
+        propertyAttachments,
+        propertyFollowUps,
+        propertyListings,
+        propertyReminders,
+        propertyPersons,
+        buildingAttachments,
+        assignments,
+        mailboxings,
+        mailboxingAttachments,
+        buildingReminders,
+        reminderOccurrences,
+      },
+    };
+  }
+
+  async deleteBuilding(params: DeleteBuildingParams): Promise<void> {
+    const { id } = params;
+    const s3 = S3StorageService.getInstance();
+    const now = new Date();
+
+    // Verificar que el edificio existe y no está eliminado
+    const building = await prisma.building.findFirst({
+      where: { id, deletedAt: null },
+      select: {
+        id: true,
+        properties: {
+          where: { deletedAt: null },
+          select: { id: true },
+        },
+      },
+    });
+
+    if (!building) {
+      throw new Error(`Edificio con ID ${id} no encontrado`);
+    }
+
+    const propertyIds = building.properties.map((p) => p.id);
+
+    // Obtener todos los IDs relacionados antes de eliminar
+    const [
+      reminderOccurrences,
+      reminders,
+      followUps,
+      propertyAttachments,
+      listings,
+      propertyPersons,
+      mailboxingAttachments,
+      mailboxings,
+      buildingAttachments,
+      assignments,
+    ] = await Promise.all([
+      // ReminderOccurrences
+      prisma.reminderOccurrence.findMany({
+        where: {
+          OR: [
+            {
+              reminder: {
+                buildingId: id,
+                deletedAt: null,
+              },
+            },
+            {
+              reminder: {
+                propertyId: { in: propertyIds },
+                deletedAt: null,
+              },
+            },
+            {
+              followUp: {
+                propertyId: { in: propertyIds },
+                deletedAt: null,
+              },
+            },
+          ],
+          deletedAt: null,
+        },
+        select: { id: true },
+      }),
+      // Reminders
+      prisma.reminder.findMany({
+        where: {
+          OR: [
+            { buildingId: id, deletedAt: null },
+            { propertyId: { in: propertyIds }, deletedAt: null },
+          ],
+        },
+        select: { id: true },
+      }),
+      // FollowUps
+      prisma.followUp.findMany({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+        select: { id: true },
+      }),
+      // PropertyAttachments
+      prisma.propertyAttachment.findMany({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+        select: { id: true, s3Key: true },
+      }),
+      // Listings
+      prisma.listing.findMany({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+        select: { id: true },
+      }),
+      // PropertyPersons
+      prisma.propertyPerson.findMany({
+        where: {
+          propertyId: { in: propertyIds },
+          deletedAt: null,
+        },
+        select: { id: true },
+      }),
+      // MailboxingAttachments
+      prisma.mailboxingAttachment.findMany({
+        where: {
+          mailboxing: {
+            buildingId: id,
+            deletedAt: null,
+          },
+          deletedAt: null,
+        },
+        select: { id: true, s3Key: true },
+      }),
+      // Mailboxings
+      prisma.mailboxing.findMany({
+        where: {
+          buildingId: id,
+          deletedAt: null,
+        },
+        select: { id: true },
+      }),
+      // BuildingAttachments
+      prisma.buildingAttachment.findMany({
+        where: {
+          buildingId: id,
+          deletedAt: null,
+        },
+        select: { id: true, s3Key: true },
+      }),
+      // Assignments
+      prisma.assignment.findMany({
+        where: {
+          buildingId: id,
+          deletedAt: null,
+        },
+        select: { id: true },
+      }),
+    ]);
+
+    // Ejecutar eliminación en cascada dentro de una transacción
+    await prisma.$transaction(async (tx) => {
+      // 1. Eliminar ReminderOccurrences
+      if (reminderOccurrences.length > 0) {
+        await tx.reminderOccurrence.updateMany({
+          where: {
+            id: { in: reminderOccurrences.map((ro) => ro.id) },
+          },
+          data: { deletedAt: now },
+        });
+      }
+
+      // 2. Eliminar Reminders
+      if (reminders.length > 0) {
+        await tx.reminder.updateMany({
+          where: {
+            id: { in: reminders.map((r) => r.id) },
+          },
+          data: { deletedAt: now },
+        });
+      }
+
+      // 3. Eliminar FollowUps
+      if (followUps.length > 0) {
+        await tx.followUp.updateMany({
+          where: {
+            id: { in: followUps.map((fu) => fu.id) },
+          },
+          data: { deletedAt: now },
+        });
+      }
+
+      // 4. Eliminar PropertyAttachments (soft delete + S3)
+      if (propertyAttachments.length > 0) {
+        await tx.propertyAttachment.updateMany({
+          where: {
+            id: { in: propertyAttachments.map((pa) => pa.id) },
+          },
+          data: { deletedAt: now },
+        });
+
+        // Eliminar archivos de S3 (sin fallar la transacción)
+        for (const attachment of propertyAttachments) {
+          try {
+            if (attachment.s3Key) await s3.deleteFile(attachment.s3Key);
+          } catch (error) {
+            console.error(
+              `Error eliminando archivo de S3 (PropertyAttachment ${attachment.id}):`,
+              error
+            );
+          }
+        }
+      }
+
+      // 5. Eliminar Listings
+      if (listings.length > 0) {
+        await tx.listing.updateMany({
+          where: {
+            id: { in: listings.map((l) => l.id) },
+          },
+          data: { deletedAt: now },
+        });
+      }
+
+      // 6. Eliminar PropertyPersons (solo relaciones)
+      if (propertyPersons.length > 0) {
+        await tx.propertyPerson.updateMany({
+          where: {
+            id: { in: propertyPersons.map((pp) => pp.id) },
+          },
+          data: { deletedAt: now },
+        });
+      }
+
+      // 7. Eliminar Properties
+      if (propertyIds.length > 0) {
+        await tx.property.updateMany({
+          where: {
+            id: { in: propertyIds },
+          },
+          data: { deletedAt: now },
+        });
+      }
+
+      // 8. Eliminar MailboxingAttachments (soft delete + S3)
+      if (mailboxingAttachments.length > 0) {
+        await tx.mailboxingAttachment.updateMany({
+          where: {
+            id: { in: mailboxingAttachments.map((ma) => ma.id) },
+          },
+          data: { deletedAt: now },
+        });
+
+        // Eliminar archivos de S3
+        for (const attachment of mailboxingAttachments) {
+          try {
+            if (attachment.s3Key) await s3.deleteFile(attachment.s3Key);
+          } catch (error) {
+            console.error(
+              `Error eliminando archivo de S3 (MailboxingAttachment ${attachment.id}):`,
+              error
+            );
+          }
+        }
+      }
+
+      // 9. Eliminar Mailboxings
+      if (mailboxings.length > 0) {
+        await tx.mailboxing.updateMany({
+          where: {
+            id: { in: mailboxings.map((mb) => mb.id) },
+          },
+          data: { deletedAt: now },
+        });
+      }
+
+      // 10. Eliminar BuildingAttachments (soft delete + S3)
+      if (buildingAttachments.length > 0) {
+        await tx.buildingAttachment.updateMany({
+          where: {
+            id: { in: buildingAttachments.map((ba) => ba.id) },
+          },
+          data: { deletedAt: now },
+        });
+
+        // Eliminar archivos de S3
+        for (const attachment of buildingAttachments) {
+          try {
+            if (attachment.s3Key) await s3.deleteFile(attachment.s3Key);
+          } catch (error) {
+            console.error(
+              `Error eliminando archivo de S3 (BuildingAttachment ${attachment.id}):`,
+              error
+            );
+          }
+        }
+      }
+
+      // 11. Eliminar Assignments
+      if (assignments.length > 0) {
+        await tx.assignment.updateMany({
+          where: {
+            id: { in: assignments.map((a) => a.id) },
+          },
+          data: { deletedAt: now },
+        });
+      }
+
+      // 12. Limpiar referencias Person (contactId, presidentId, informerId = null)
+      await tx.building.update({
+        where: { id },
+        data: {
+          contactId: null,
+          presidentId: null,
+          informerId: null,
+        },
+      });
+
+      // 13. Eliminar Building (soft delete)
+      await tx.building.update({
+        where: { id },
+        data: { deletedAt: now },
+      });
+    });
   }
 }

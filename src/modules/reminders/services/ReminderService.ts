@@ -16,6 +16,7 @@ import {
   UpdateOccurrenceStatusRequest,
   UpdateReminderRequest,
 } from "../types";
+import { canEditReminder, canDeleteReminder } from "../utils/permissions";
 import type {
   Reminder as PrismaReminderModel,
   ReminderOccurrence as PrismaReminderOccurrenceModel,
@@ -120,12 +121,10 @@ class ReminderService {
       (ur) => ur.role.name === "Director"
     );
 
-    if (!isDirector) {
-      where.OR = [
-        { responsibleId: requesterId },
-        { creatorId: requesterId },
-      ];
-    }
+    // Guardar el OR de permisos si existe (para no-directores)
+    const permissionOR = !isDirector
+      ? [{ responsibleId: requesterId }, { creatorId: requesterId }]
+      : null;
 
     if (params.responsibleId) {
       where.responsibleId = parseInt(params.responsibleId, 10);
@@ -141,7 +140,32 @@ class ReminderService {
     }
 
     if (params.buildingId) {
-      where.buildingId = parseInt(params.buildingId, 10);
+      const buildingIdNum = parseInt(params.buildingId, 10);
+      // Incluir recordatorios que:
+      // 1. Tienen buildingId directamente asignado, O
+      // 2. Están asociados a una propiedad que pertenece a este edificio
+      const buildingOR = [
+        { buildingId: buildingIdNum },
+        {
+          property: {
+            buildingId: buildingIdNum,
+          },
+        },
+      ];
+
+      // Si hay un OR de permisos previo, combinarlo con AND
+      if (permissionOR) {
+        where.AND = [
+          { OR: permissionOR },
+          { OR: buildingOR },
+        ];
+      } else {
+        // Si no hay OR de permisos, usar directamente el OR del building
+        where.OR = buildingOR;
+      }
+    } else if (permissionOR) {
+      // Si no hay buildingId pero hay permisos, usar el OR de permisos
+      where.OR = permissionOR;
     }
 
     if (params.personId) {
@@ -153,10 +177,26 @@ class ReminderService {
     }
 
     if (params.search) {
-      where.OR = [
+      const searchOR = [
         { title: { contains: params.search, mode: "insensitive" } },
         { note: { contains: params.search, mode: "insensitive" } },
       ];
+
+      // Si ya hay un AND (por combinación de permisos y buildingId), agregar search al AND
+      if (where.AND) {
+        where.AND.push({ OR: searchOR });
+      } else if (where.OR) {
+        // Si hay un OR previo (permisos o buildingId), combinarlo con AND
+        const existingOR = where.OR;
+        where.AND = [
+          { OR: existingOR },
+          { OR: searchOR },
+        ];
+        delete where.OR;
+      } else {
+        // Si no hay OR previo, usar directamente
+        where.OR = searchOR;
+      }
     }
 
     const [reminders, total] = await Promise.all([
@@ -204,6 +244,14 @@ class ReminderService {
     input: UpdateReminderRequest,
     requesterId: number
   ): Promise<ReminderDTO> {
+    // Verificar permisos usando el sistema flexible
+    const hasPermission = await canEditReminder(id, requesterId);
+    if (!hasPermission) {
+      throw new Error(
+        "Recordatorio no encontrado o no tienes permisos para editarlo"
+      );
+    }
+
     const reminder = await prisma.reminder.findFirst({
       where: { id, deletedAt: null },
     });
@@ -211,8 +259,6 @@ class ReminderService {
     if (!reminder) {
       throw new Error("Recordatorio no encontrado");
     }
-
-    await this.ensureAccess(reminder, requesterId);
 
     let scheduledAt = reminder.scheduledAt;
     let timezone = reminder.timezone;
@@ -452,6 +498,30 @@ class ReminderService {
         ? this.isoToUtc(input.scheduledFor, timezone)
         : occurrence.scheduledFor;
 
+    // Preparar metadata con actionNote si se proporciona
+    let updatedMetadata: any = input.metadata !== undefined
+      ? input.metadata
+      : occurrence.metadata;
+
+    // Si se proporciona actionNote, agregarlo al metadata
+    if (input.actionNote && input.actionNote.trim().length > 0) {
+      const currentMetadata = (updatedMetadata as Record<string, unknown>) || {};
+      const actionNotes = Array.isArray(currentMetadata.actionNotes)
+        ? (currentMetadata.actionNotes as Array<unknown>)
+        : [];
+      
+      actionNotes.push({
+        action: input.status,
+        note: input.actionNote.trim(),
+        date: new Date().toISOString(),
+      });
+
+      updatedMetadata = {
+        ...currentMetadata,
+        actionNotes,
+      };
+    }
+
     const updated = await prisma.reminderOccurrence.update({
       where: { id: occurrenceId },
       data: {
@@ -473,10 +543,7 @@ class ReminderService {
           input.skippedReason !== undefined
             ? input.skippedReason
             : occurrence.skippedReason,
-        metadata:
-          input.metadata !== undefined
-            ? this.toJsonValue(input.metadata)
-            : this.toJsonValue(occurrence.metadata),
+        metadata: this.toJsonValue(updatedMetadata),
       },
       include: {
         reminder: {
@@ -500,6 +567,14 @@ class ReminderService {
   }
 
   async deleteReminder(id: number, requesterId: number): Promise<void> {
+    // Verificar permisos usando el sistema flexible
+    const hasPermission = await canDeleteReminder(id, requesterId);
+    if (!hasPermission) {
+      throw new Error(
+        "Recordatorio no encontrado o no tienes permisos para eliminarlo"
+      );
+    }
+
     const reminder = await prisma.reminder.findFirst({
       where: { id, deletedAt: null },
     });
@@ -507,8 +582,6 @@ class ReminderService {
     if (!reminder) {
       throw new Error("Recordatorio no encontrado");
     }
-
-    await this.ensureAccess(reminder, requesterId);
 
     await prisma.$transaction([
       prisma.reminderOccurrence.updateMany({
@@ -564,7 +637,7 @@ class ReminderService {
     ];
   }
 
-  private defaultInclude() {
+  private defaultInclude(): any {
     return {
       responsible: {
         select: {
@@ -595,6 +668,33 @@ class ReminderService {
               number: true,
             },
           },
+          propertyPersons: {
+            where: {
+              deletedAt: null,
+            },
+            select: {
+              id: true,
+              role: true,
+              person: {
+                select: {
+                  id: true,
+                  firstName: true,
+                  lastName: true,
+                  email: true,
+                  phones: {
+                    where: {
+                      deletedAt: null,
+                    },
+                    select: {
+                      id: true,
+                      phone: true,
+                      type: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
       building: {
@@ -612,6 +712,19 @@ class ReminderService {
           firstName: true,
           lastName: true,
           email: true,
+          phones: {
+            where: {
+              deletedAt: null,
+            },
+            select: {
+              id: true,
+              phone: true,
+              type: true,
+            },
+            orderBy: {
+              type: "asc", // Ordenar para priorizar Mobile
+            },
+          },
         },
       },
       followUp: {
@@ -631,7 +744,7 @@ class ReminderService {
     const metadata = reminder.metadata
       ? (reminder.metadata as Record<string, unknown>)
       : null;
-    return {
+    const dto: ReminderDTO = {
       id: reminder.id,
       title: reminder.title,
       note: reminder.note,
@@ -652,11 +765,47 @@ class ReminderService {
       updatedAt: reminder.updatedAt,
       responsible: reminder.responsible,
       creator: reminder.creator,
-      property: reminder.property,
       building: reminder.building,
-      person: reminder.person,
+      person: reminder.person
+        ? {
+            id: reminder.person.id,
+            firstName: reminder.person.firstName,
+            lastName: reminder.person.lastName,
+            email: reminder.person.email,
+            phones: reminder.person.phones?.map((p: any) => ({
+              id: p.id,
+              phone: p.phone,
+              type: p.type,
+            })) || null,
+          }
+        : null,
+      property: reminder.property
+        ? {
+            id: reminder.property.id,
+            number: reminder.property.number,
+            floor: reminder.property.floor,
+            buildingId: reminder.property.buildingId,
+            building: reminder.property.building,
+            propertyPersons: reminder.property.propertyPersons?.map((pp: any) => ({
+              id: pp.id,
+              role: pp.role,
+              person: {
+                id: pp.person.id,
+                firstName: pp.person.firstName,
+                lastName: pp.person.lastName,
+                email: pp.person.email,
+                phones: pp.person.phones?.map((p: any) => ({
+                  id: p.id,
+                  phone: p.phone,
+                  type: p.type,
+                })) || null,
+              },
+            })) || [],
+          }
+        : null,
       followUp: reminder.followUp,
     };
+    return dto;
   }
 
   private mapOccurrenceToDTO(occurrence: any): ReminderOccurrenceDTO {

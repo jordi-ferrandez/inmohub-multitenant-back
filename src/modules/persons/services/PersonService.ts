@@ -28,16 +28,11 @@ export class PersonService {
 
     return prisma.person.create({
       data: {
-        firstName: personData.firstName,
-        lastName: personData.lastName,
-        email: personData.email,
-        notificationPreference: personData.notificationPreference,
+        ...personData,
         phones: phones ? { create: phones } : undefined,
       },
       include: {
         phones: true,
-        propertiesOwned: true,
-        propertiesTenanted: true,
       },
     });
   }
@@ -89,16 +84,11 @@ export class PersonService {
     return prisma.person.update({
       where: { id },
       data: {
-        firstName: personData.firstName,
-        lastName: personData.lastName,
-        email: personData.email,
-        notificationPreference: personData.notificationPreference,
+        ...personData,
         ...(phones ? { phones: phoneOps } : {}),
       },
       include: {
         phones: true,
-        propertiesOwned: true,
-        propertiesTenanted: true,
       },
     });
   }

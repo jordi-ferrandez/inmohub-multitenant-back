@@ -17,6 +17,7 @@ import {
   ForgotPasswordRequest,
   ResetPasswordRequest,
   UpdateProfileRequest,
+  UpdateUserPasswordRequest,
 } from "../types";
 
 const SALT_ROUNDS = getEnvironmentVariables().SALT_ROUNDS;
@@ -774,6 +775,66 @@ class AuthService {
       data: { passwordHash },
     });
 
+    await this.mailerService.sendPasswordChangedNotification(
+      user.email,
+      user.firstName
+    );
+  }
+
+  async updateUserPassword(
+    userId: number,
+    input: UpdateUserPasswordRequest,
+    requesterId: number
+  ): Promise<void> {
+    // Verificar que el usuario existe
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    // Verificar que el requester es director o está cambiando su propia contraseña
+    const requester = await prisma.user.findUnique({
+      where: { id: requesterId },
+      include: {
+        roles: {
+          where: { deletedAt: null },
+          include: {
+            role: true,
+          },
+        },
+      },
+    });
+
+    if (!requester) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    const isDirector = requester.roles.some(
+      (ur) => ur.role.name === "Director" && !ur.role.deletedAt
+    );
+    const isOwnPassword = requesterId === userId;
+
+    if (!isDirector && !isOwnPassword) {
+      throw new Error(
+        "No tienes permisos para cambiar la contraseña de este usuario"
+      );
+    }
+
+    // Hashear nueva contraseña
+    const newPasswordHash = await hash(input.newPassword, SALT_ROUNDS);
+
+    // Actualizar contraseña
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        passwordHash: newPasswordHash,
+      },
+    });
+
+    // Enviar notificación (opcional, David lo tenía así)
     await this.mailerService.sendPasswordChangedNotification(
       user.email,
       user.firstName

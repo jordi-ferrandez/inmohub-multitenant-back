@@ -28,6 +28,16 @@ export type BuildingsGroupedByStreetDTO = {
 
 export type GetBuildingsGroupedByStreetsDTO = BuildingsGroupedByStreetDTO[];
 
+export const getBuildingsGroupedByStreetsQuerySchema = z.object({
+  page: z.coerce.number().min(1).optional().default(1),
+  limit: z.coerce.number().min(1).max(100).optional().default(10),
+  search: z.string().optional(),
+});
+
+export type GetBuildingsGroupedByStreetsQuery = z.infer<
+  typeof getBuildingsGroupedByStreetsQuerySchema
+>;
+
 export const getBuildingsQuerySchema = z.object({
   page: z.coerce.number().min(1).optional().default(1),
   limit: z.coerce.number().min(1).max(100).optional().default(10),
@@ -49,6 +59,7 @@ export type GetBuildingsByStreetNameParams = z.infer<
 export const getBuildingsByStreetNameQuerySchema = z.object({
   page: z.coerce.number().min(1).optional().default(1),
   limit: z.coerce.number().min(1).max(100).optional().default(10),
+  search: z.string().optional(),
 });
 
 export type GetBuildingsByStreetNameQuery = z.infer<
@@ -81,3 +92,32 @@ export const getBuildingMailboxingsQuerySchema = z.object({
 export type GetBuildingMailboxingsQuery = z.infer<
   typeof getBuildingMailboxingsQuerySchema
 >;
+export type DeletionSummaryDTO = {
+  building: {
+    id: number;
+    street: string;
+    number: number;
+    block: string | null;
+    stair: string | null;
+  };
+  counts: {
+    properties: number;
+    propertyAttachments: number;
+    propertyFollowUps: number;
+    propertyListings: number;
+    propertyReminders: number;
+    propertyPersons: number;
+    buildingAttachments: number;
+    assignments: number;
+    mailboxings: number;
+    mailboxingAttachments: number;
+    buildingReminders: number;
+    reminderOccurrences: number;
+  };
+};
+
+export const deleteBuildingParamsSchema = z.object({
+  id: z.coerce.number().int().positive(),
+});
+
+export type DeleteBuildingParams = z.infer<typeof deleteBuildingParamsSchema>;

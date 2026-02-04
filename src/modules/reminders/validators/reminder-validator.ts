@@ -95,7 +95,24 @@ const updateOccurrenceSchema = z.object({
   skippedReason: z.string().optional(),
   followUpId: z.coerce.number().int().positive().nullable().optional(),
   scheduledFor: z.string().datetime().optional(),
+  actionNote: z.string().min(1, "La observación es obligatoria").optional(),
   metadata: z.record(z.any()).nullable().optional(),
+}).refine((data) => {
+  // Si se cambia el estado a completed, skipped o cancelled, actionNote es obligatorio
+  // También si se cambia scheduledFor (snooze), actionNote es obligatorio
+  const requiresActionNote = 
+    data.status === "completed" || 
+    data.status === "skipped" || 
+    data.status === "cancelled" ||
+    (data.status === "pending" && data.scheduledFor !== undefined);
+  
+  if (requiresActionNote) {
+    return data.actionNote !== undefined && data.actionNote.trim().length > 0;
+  }
+  return true;
+}, {
+  message: "La observación es obligatoria al cambiar el estado o reprogramar el recordatorio",
+  path: ["actionNote"],
 });
 
 const statusUpdateSchema = z.object({

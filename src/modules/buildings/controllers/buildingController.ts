@@ -168,4 +168,36 @@ export class BuildingController {
       );
     }
   }
+
+    async getDeletionSummary(req: Request, res: Response): Promise<void> {
+    try {
+      const params = req.paramsValidated as DeleteBuildingParams;
+      const summary = await this.BuildingService.getDeletionSummary(params);
+      successResponse(res, summary, 200);
+    } catch (error: any) {
+      errorResponse(
+        res,
+        error.message || "Error al obtener el resumen de eliminación",
+        500
+      );
+    }
+  }
+
+    async deleteBuilding(req: Request, res: Response): Promise<void> {
+    try {
+      const params = req.paramsValidated as DeleteBuildingParams;
+      await this.BuildingService.deleteBuilding(params);
+      successResponse(
+        res,
+        { message: "Edificio eliminado correctamente" },
+        200
+      );
+    } catch (error: any) {
+      errorResponse(
+        res,
+        error.message || "Error al eliminar el edificio",
+        500
+      );
+    }
+  }
 }
