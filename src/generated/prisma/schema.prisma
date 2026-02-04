@@ -56,7 +56,10 @@ model User {
   updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
 
+  completedTours String[] @default([]) @map("completed_tours")
+
   // Board relations
+  boardsCreated    Board[]        @relation("BoardCreator")
   boardsOwned      Board[]        @relation("BoardOwner")
   cardsCreated     BoardCard[]    @relation("CardCreator")
   cardsResponsible BoardCard[]    @relation("CardResponsible")
@@ -281,6 +284,8 @@ model Person {
   firstName              String                 @map("first_name")
   lastName               String                 @map("last_name")
   email                  String?                @unique
+  birthDate              DateTime?              @map("birth_date")
+  gender                 String?
   notificationPreference NotificationPreference @default(NONE) @map("notification_preference")
   createdAt              DateTime               @default(now()) @map("created_at")
   updatedAt              DateTime               @default(now()) @updatedAt @map("updated_at")
@@ -519,11 +524,13 @@ model Board {
   title       String
   description String?
   isPrivate   Boolean   @default(false)
+  creatorId   Int       @map("creator_id")
   ownerId     Int       @map("owner_id")
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt   DateTime? @map("deleted_at")
 
+  creator User          @relation("BoardCreator", fields: [creatorId], references: [id])
   owner   User          @relation("BoardOwner", fields: [ownerId], references: [id])
   columns BoardColumn[]
 }

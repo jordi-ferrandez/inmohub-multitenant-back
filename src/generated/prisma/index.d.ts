@@ -21974,6 +21974,8 @@ export namespace Prisma {
     firstName: string | null
     lastName: string | null
     email: string | null
+    birthDate: Date | null
+    gender: string | null
     notificationPreference: $Enums.NotificationPreference | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -21985,6 +21987,8 @@ export namespace Prisma {
     firstName: string | null
     lastName: string | null
     email: string | null
+    birthDate: Date | null
+    gender: string | null
     notificationPreference: $Enums.NotificationPreference | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -21996,6 +22000,8 @@ export namespace Prisma {
     firstName: number
     lastName: number
     email: number
+    birthDate: number
+    gender: number
     notificationPreference: number
     createdAt: number
     updatedAt: number
@@ -22017,6 +22023,8 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     email?: true
+    birthDate?: true
+    gender?: true
     notificationPreference?: true
     createdAt?: true
     updatedAt?: true
@@ -22028,6 +22036,8 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     email?: true
+    birthDate?: true
+    gender?: true
     notificationPreference?: true
     createdAt?: true
     updatedAt?: true
@@ -22039,6 +22049,8 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     email?: true
+    birthDate?: true
+    gender?: true
     notificationPreference?: true
     createdAt?: true
     updatedAt?: true
@@ -22137,6 +22149,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email: string | null
+    birthDate: Date | null
+    gender: string | null
     notificationPreference: $Enums.NotificationPreference
     createdAt: Date
     updatedAt: Date
@@ -22167,6 +22181,8 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     email?: boolean
+    birthDate?: boolean
+    gender?: boolean
     notificationPreference?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -22187,6 +22203,8 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     email?: boolean
+    birthDate?: boolean
+    gender?: boolean
     notificationPreference?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -22198,6 +22216,8 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     email?: boolean
+    birthDate?: boolean
+    gender?: boolean
     notificationPreference?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -22209,13 +22229,15 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     email?: boolean
+    birthDate?: boolean
+    gender?: boolean
     notificationPreference?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type PersonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "notificationPreference" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["person"]>
+  export type PersonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "birthDate" | "gender" | "notificationPreference" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["person"]>
   export type PersonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     contactBuildings?: boolean | Person$contactBuildingsArgs<ExtArgs>
     informerBuildings?: boolean | Person$informerBuildingsArgs<ExtArgs>
@@ -22247,6 +22269,8 @@ export namespace Prisma {
       firstName: string
       lastName: string
       email: string | null
+      birthDate: Date | null
+      gender: string | null
       notificationPreference: $Enums.NotificationPreference
       createdAt: Date
       updatedAt: Date
@@ -22686,6 +22710,8 @@ export namespace Prisma {
     readonly firstName: FieldRef<"Person", 'String'>
     readonly lastName: FieldRef<"Person", 'String'>
     readonly email: FieldRef<"Person", 'String'>
+    readonly birthDate: FieldRef<"Person", 'DateTime'>
+    readonly gender: FieldRef<"Person", 'String'>
     readonly notificationPreference: FieldRef<"Person", 'NotificationPreference'>
     readonly createdAt: FieldRef<"Person", 'DateTime'>
     readonly updatedAt: FieldRef<"Person", 'DateTime'>
@@ -41173,6 +41199,8 @@ export namespace Prisma {
     firstName: 'firstName',
     lastName: 'lastName',
     email: 'email',
+    birthDate: 'birthDate',
+    gender: 'gender',
     notificationPreference: 'notificationPreference',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -42995,6 +43023,8 @@ export namespace Prisma {
     firstName?: StringFilter<"Person"> | string
     lastName?: StringFilter<"Person"> | string
     email?: StringNullableFilter<"Person"> | string | null
+    birthDate?: DateTimeNullableFilter<"Person"> | Date | string | null
+    gender?: StringNullableFilter<"Person"> | string | null
     notificationPreference?: EnumNotificationPreferenceFilter<"Person"> | $Enums.NotificationPreference
     createdAt?: DateTimeFilter<"Person"> | Date | string
     updatedAt?: DateTimeFilter<"Person"> | Date | string
@@ -43014,6 +43044,8 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     email?: SortOrderInput | SortOrder
+    birthDate?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
     notificationPreference?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -43036,6 +43068,8 @@ export namespace Prisma {
     NOT?: PersonWhereInput | PersonWhereInput[]
     firstName?: StringFilter<"Person"> | string
     lastName?: StringFilter<"Person"> | string
+    birthDate?: DateTimeNullableFilter<"Person"> | Date | string | null
+    gender?: StringNullableFilter<"Person"> | string | null
     notificationPreference?: EnumNotificationPreferenceFilter<"Person"> | $Enums.NotificationPreference
     createdAt?: DateTimeFilter<"Person"> | Date | string
     updatedAt?: DateTimeFilter<"Person"> | Date | string
@@ -43055,6 +43089,8 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     email?: SortOrderInput | SortOrder
+    birthDate?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
     notificationPreference?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -43074,6 +43110,8 @@ export namespace Prisma {
     firstName?: StringWithAggregatesFilter<"Person"> | string
     lastName?: StringWithAggregatesFilter<"Person"> | string
     email?: StringNullableWithAggregatesFilter<"Person"> | string | null
+    birthDate?: DateTimeNullableWithAggregatesFilter<"Person"> | Date | string | null
+    gender?: StringNullableWithAggregatesFilter<"Person"> | string | null
     notificationPreference?: EnumNotificationPreferenceWithAggregatesFilter<"Person"> | $Enums.NotificationPreference
     createdAt?: DateTimeWithAggregatesFilter<"Person"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Person"> | Date | string
@@ -45657,6 +45695,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45676,6 +45716,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45694,6 +45736,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45713,6 +45757,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45732,6 +45778,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -45742,6 +45790,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -45753,6 +45803,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48218,6 +48270,8 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     email?: SortOrder
+    birthDate?: SortOrder
+    gender?: SortOrder
     notificationPreference?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -48233,6 +48287,8 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     email?: SortOrder
+    birthDate?: SortOrder
+    gender?: SortOrder
     notificationPreference?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -48244,6 +48300,8 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     email?: SortOrder
+    birthDate?: SortOrder
+    gender?: SortOrder
     notificationPreference?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -54299,6 +54357,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54317,6 +54377,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54339,6 +54401,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54357,6 +54421,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54379,6 +54445,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54397,6 +54465,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -54650,6 +54720,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54668,6 +54740,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54696,6 +54770,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54714,6 +54790,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54742,6 +54820,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54760,6 +54840,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55029,6 +55111,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55047,6 +55131,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55069,6 +55155,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55087,6 +55175,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -55442,6 +55532,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55460,6 +55552,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55488,6 +55582,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55506,6 +55602,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57956,6 +58054,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -57974,6 +58074,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58007,6 +58109,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58025,6 +58129,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58196,6 +58302,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58214,6 +58322,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -58616,6 +58726,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58634,6 +58746,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59359,6 +59473,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59377,6 +59493,8 @@ export namespace Prisma {
     firstName: string
     lastName: string
     email?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
     notificationPreference?: $Enums.NotificationPreference
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -59488,6 +59606,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -59506,6 +59626,8 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
     notificationPreference?: EnumNotificationPreferenceFieldUpdateOperationsInput | $Enums.NotificationPreference
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
