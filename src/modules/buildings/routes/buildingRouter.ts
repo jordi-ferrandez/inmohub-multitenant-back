@@ -1,7 +1,7 @@
 import express from "express";
 import { BuildingAttachmentController, BuildingController } from "../controllers";
 import { bindAllMethods } from "@core/utils";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken,requireDirectorRole } from "@core/middlewares";
 import {
   validateGetBuildingById,
   validateGetBuildings,
@@ -11,6 +11,7 @@ import {
   validateUpdateBuildingAttachment,
   validateDeleteBuildingAttachment,
   validateGetBuildingMailboxings,
+  validateDeleteBuilding,
 } from "../validators";
 import { upload } from "@core/config/multer";
 
@@ -81,6 +82,22 @@ buildingRouter.delete(
   authenticationToken,
   validateDeleteBuildingAttachment,
   buildingAttachmentController.delete
+);
+
+buildingRouter.get(
+  "/:id/deletion-summary",
+  authenticationToken,
+  requireDirectorRole,
+  validateDeleteBuilding,
+  buildingController.getDeletionSummary
+);
+
+buildingRouter.delete(
+  "/:id",
+  authenticationToken,
+  requireDirectorRole,
+  validateDeleteBuilding,
+  buildingController.deleteBuilding
 );
 
 export { buildingRouter };

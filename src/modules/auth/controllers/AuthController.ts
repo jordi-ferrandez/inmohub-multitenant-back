@@ -11,6 +11,7 @@ import {
   ForgotPasswordRequest,
   ResetPasswordRequest,
   UpdateProfileRequest,
+  UpdateUserPasswordRequest,
 } from "../types";
 import { AuthService } from "../services";
 import { errorResponse, successResponse, paginatedResponse } from "@core/utils";
@@ -512,6 +513,49 @@ class AuthController {
       return;
     } catch (error: any) {
       errorResponse(res, error.message || "Error al resetear onboarding", 400);
+      return;
+    }
+  }
+
+  async updateUserPassword(
+    req: Request<{ id: string }, {}, UpdateUserPasswordRequest>,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const requesterIdStr = req.user?.userId;
+      if (!requesterIdStr) {
+        errorResponse(res, "Usuario no autenticado", 401);
+        return;
+      }
+
+      const requesterId = parseInt(requesterIdStr, 10);
+      if (isNaN(requesterId)) {
+        errorResponse(res, "ID de usuario inválido", 400);
+        return;
+      }
+
+      const params = req.paramsValidated as UserParams;
+      const userId = parseInt(params.id, 10);
+      const passwordData = req.bodyValidated as UpdateUserPasswordRequest;
+
+      await this.authService.updateUserPassword(
+        userId,
+        passwordData,
+        requesterId
+      );
+      successResponse(
+        res,
+        { message: "Contraseña actualizada correctamente" },
+        200
+      );
+      return;
+    } catch (error: any) {
+      errorResponse(
+        res,
+        error.message || "Error al actualizar contraseña",
+        400
+      );
       return;
     }
   }

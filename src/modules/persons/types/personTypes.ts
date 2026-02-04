@@ -3,6 +3,7 @@ import { z } from "zod";
 export const phoneTypeEnum = z.enum(["Mobile", "Home", "Work", "Other"]);
 
 
+export const genderEnum = z.enum(["Masculino", "Femenino", "Otro"]);
 
 export const personPhoneSchema = z.object({
   phone: z
@@ -27,7 +28,11 @@ export const createPersonBodySchema = z.object({
   firstName: z.string().min(1, "El nombre es requerido"),
   lastName: z.string().min(1, "El apellido es requerido"),
   email: z.string().email("El email debe ser válido").optional().nullable(),
-  notificationPreference: z.enum(["EMAIL", "WHATSAPP", "SMS", "NONE"]).optional(),
+  birthDate: z.coerce.date().optional(),
+  gender: genderEnum.optional(),
+  notificationPreference: z
+    .enum(["EMAIL", "WHATSAPP", "SMS", "NONE"])
+    .optional(),
   phones: z.array(personPhoneSchema).optional(),
 });
 
@@ -35,7 +40,11 @@ export const updatePersonBodySchema = z.object({
   firstName: z.string().min(1, "El nombre es requerido").optional(),
   lastName: z.string().min(1, "El apellido es requerido").optional(),
   email: z.string().email("El email debe ser válido").optional(),
-  notificationPreference: z.enum(["EMAIL", "WHATSAPP", "SMS", "NONE"]).optional(),
+  birthDate: z.coerce.date().optional(),
+  gender: genderEnum.optional(),
+  notificationPreference: z
+    .enum(["EMAIL", "WHATSAPP", "SMS", "NONE"])
+    .optional(),
   phones: z.array(personPhoneUpdateSchema).optional(),
 });
 

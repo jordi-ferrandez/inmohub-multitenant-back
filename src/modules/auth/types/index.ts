@@ -12,3 +12,4 @@ export * from "./user-params";
 export * from "./forgot-password-request";
 export * from "./reset-password-request";
 export * from "./update-profile-request";
+export * from "./update-user-password-request";

@@ -94,16 +94,35 @@ class MailboxingService {
     return this.mapToDTO(mailboxing);
   }
 
-  async getMailboxingById(
-    id: number,
-    mailboxerId: number
-  ): Promise<MailboxingDTO> {
-    const mailboxing = await prisma.mailboxing.findFirst({
-      where: {
-        id,
-        deletedAt: null,
-        mailboxerId, // Solo el buzoneador que lo creó puede verlo
+  async getMailboxingById(id: number, userId: number): Promise<MailboxingDTO> {
+    // Verificar si el usuario es director
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        roles: {
+          include: {
+            role: true,
+          },
+        },
       },
+    });
+
+    const isDirector = user?.roles.some((ur) => ur.role.name === "Director");
+
+    // Construir la condición where según el rol del usuario
+    const whereCondition: any = {
+      id,
+      deletedAt: null,
+    };
+
+    // Si no es director, solo puede ver sus propios buzoneamientos
+    if (!isDirector) {
+      whereCondition.mailboxerId = userId;
+    }
+    // Si es director, puede ver cualquier buzoneamiento (no agregamos restricción de mailboxerId)
+
+    const mailboxing = await prisma.mailboxing.findFirst({
+      where: whereCondition,
       include: {
         mailboxer: {
           select: {

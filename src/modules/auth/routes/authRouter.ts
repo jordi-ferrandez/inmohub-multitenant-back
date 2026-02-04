@@ -14,6 +14,7 @@ import {
   validateUserQuery,
   validateUserParams,
   validateUserSearch,
+  validateUpdateUserPassword,
 } from "../validators";
 import { authenticationToken, requireDirectorRole } from "@core/middlewares";
 
@@ -108,6 +109,14 @@ authRouter.post(
   requireDirectorRole,
   validateUserParams,
   authController.resetOnboarding
+);
+authRouter.post(
+  "/users/:id/password",
+  authenticationToken,
+  requireDirectorRole,
+  validateUserParams,
+  validateUpdateUserPassword,
+  authController.updateUserPassword
 );
 authRouter.get(
   "/roles",

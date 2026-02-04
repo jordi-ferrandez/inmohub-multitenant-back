@@ -17,6 +17,10 @@ import {
 } from "@modules/reminders/types";
 import { reminderService } from "@modules/reminders/services";
 import { notificationService } from "@modules/notifications/services/NotificationService";
+import {
+  canEditFollowUp,
+  canDeleteFollowUp,
+} from "../utils/permissions";
 
 class FollowUpService {
   async createFollowUp(
@@ -156,15 +160,33 @@ class FollowUpService {
   }
 
   async getFollowUpById(id: number, userId: number): Promise<FollowUpDTO> {
-    const followUp = await prisma.followUp.findFirst({
-      where: {
-        id,
-        deletedAt: null, // Excluir seguimientos eliminados
-        OR: [
-          { sellerId: userId }, // El usuario es el vendedor
-          { seller: { roles: { some: { role: { name: "Director" } } } } }, // O es director
-        ],
+    // Verificar si el usuario es director
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        roles: {
+          include: {
+            role: true,
+          },
+        },
       },
+    });
+
+    const isDirector = user?.roles.some((ur) => ur.role.name === "Director");
+
+    // Construir la condición where según el rol del usuario
+    const whereCondition: any = {
+      id,
+      deletedAt: null, // Excluir seguimientos eliminados
+    };
+
+    // Si no es director, solo puede ver sus propios seguimientos
+    if (!isDirector) {
+      whereCondition.sellerId = userId;
+    }
+
+    const followUp = await prisma.followUp.findFirst({
+      where: whereCondition,
       include: {
         seller: {
           select: {
@@ -327,17 +349,23 @@ class FollowUpService {
     input: UpdateFollowUpRequest,
     userId: number
   ): Promise<FollowUpDTO> {
+    // Verificar permisos usando el sistema flexible
+    const hasPermission = await canEditFollowUp(id, userId);
+    if (!hasPermission) {
+      throw new Error(
+        "Seguimiento no encontrado o no tienes permisos para modificarlo"
+      );
+    }
+
     const followUp = await prisma.followUp.findFirst({
       where: {
         id,
-        sellerId: userId, // Solo el vendedor puede actualizar sus seguimientos
+        deletedAt: null,
       },
     });
 
     if (!followUp) {
-      throw new Error(
-        "Seguimiento no encontrado o no tienes permisos para modificarlo"
-      );
+      throw new Error("Seguimiento no encontrado");
     }
 
     // Validar la lógica de negocio según la nueva estructura
@@ -395,17 +423,23 @@ class FollowUpService {
   }
 
   async deleteFollowUp(id: number, userId: number): Promise<void> {
+    // Verificar permisos usando el sistema flexible
+    const hasPermission = await canDeleteFollowUp(id, userId);
+    if (!hasPermission) {
+      throw new Error(
+        "Seguimiento no encontrado o no tienes permisos para eliminarlo"
+      );
+    }
+
     const followUp = await prisma.followUp.findFirst({
       where: {
         id,
-        sellerId: userId, // Solo el vendedor puede eliminar sus seguimientos
+        deletedAt: null,
       },
     });
 
     if (!followUp) {
-      throw new Error(
-        "Seguimiento no encontrado o no tienes permisos para eliminarlo"
-      );
+      throw new Error("Seguimiento no encontrado");
     }
 
     await prisma.followUp.update({

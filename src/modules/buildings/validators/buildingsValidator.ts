@@ -12,6 +12,9 @@ import {
   GetBuildingMailboxingsParams,
   getBuildingMailboxingsQuerySchema,
   GetBuildingMailboxingsQuery,
+  deleteBuildingParamsSchema,
+  DeleteBuildingParams,
+  getBuildingsGroupedByStreetsQuerySchema,
 } from "../types/buildingTypes";
 
 export const validateGetBuildings = (
@@ -85,5 +88,18 @@ export const validateGetBuildingMailboxings = (
   }
   req.queryValidated = resultQuery.data as GetBuildingMailboxingsQuery;
 
+  next();
+};
+export const validateDeleteBuilding = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const resultParams = deleteBuildingParamsSchema.safeParse(req.params);
+  if (!resultParams.success) {
+    errorResponse(res, resultParams.error.message, 400);
+    return;
+  }
+  req.paramsValidated = resultParams.data as DeleteBuildingParams;
   next();
 };

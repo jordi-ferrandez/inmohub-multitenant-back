@@ -195,3 +195,30 @@ export const validateUpdateUserRoles = (
   req.bodyValidated = result.data;
   next();
 };
+
+export const updateUserPasswordSchema = z.object({
+  newPassword: z
+    .string()
+    .min(8, "La contraseña debe tener al menos 8 caracteres")
+    .regex(/[A-Z]/, "Debe contener al menos una mayúscula")
+    .regex(/[0-9]/, "Debe contener al menos un número"),
+});
+
+export const validateUpdateUserPassword = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
+  const result = updateUserPasswordSchema.safeParse(req.body);
+
+  if (!result.success) {
+    const details = result.error.errors.map((err) => ({
+      field: err.path.join("."),
+      message: err.message,
+    }));
+    errorResponse(res, "Datos de entrada inválidos", 400, details);
+    return;
+  }
+  req.bodyValidated = result.data;
+  next();
+};

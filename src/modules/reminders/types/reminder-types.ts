@@ -20,6 +20,22 @@ export interface ReminderUserSummary {
   email: string | null;
 }
 
+export interface ReminderPropertyPerson {
+  id: number;
+  role: "owner" | "tenant";
+  person: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string | null;
+    phones?: Array<{
+      id: number;
+      phone: string;
+      type: string | null;
+    }> | null;
+  };
+}
+
 export interface ReminderPropertySummary {
   id: number;
   number: string;
@@ -30,6 +46,7 @@ export interface ReminderPropertySummary {
     street: string;
     number: number;
   } | null;
+  propertyPersons?: ReminderPropertyPerson[];
 }
 
 export interface ReminderPersonSummary {
@@ -37,6 +54,11 @@ export interface ReminderPersonSummary {
   firstName: string;
   lastName: string;
   email: string;
+  phones?: Array<{
+    id: number;
+    phone: string;
+    type: string | null;
+  }> | null;
 }
 
 export interface ReminderFollowUpSummary {
@@ -113,6 +135,7 @@ export interface ReminderDTO {
   metadata: Record<string, unknown> | null;
   createdAt: Date;
   updatedAt: Date;
+  recurrenceDescription?: string;
   responsible?: ReminderUserSummary | null;
   creator?: ReminderUserSummary | null;
   property?: ReminderPropertySummary | null;
@@ -152,6 +175,7 @@ export interface UpdateOccurrenceStatusRequest {
   skippedReason?: string;
   followUpId?: number | null;
   scheduledFor?: string;
+  actionNote?: string;
   metadata?: Record<string, unknown> | null;
 }
 
@@ -187,3 +211,4 @@ export interface AgendaResponse {
     responsibleId?: number;
   };
 }
+
