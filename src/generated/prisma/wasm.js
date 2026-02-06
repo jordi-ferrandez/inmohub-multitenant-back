@@ -541,6 +541,52 @@ exports.Prisma.ForumTagScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.ValuationWidgetConfigScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  userId: 'userId',
+  logoUrl: 'logoUrl',
+  primaryColor: 'primaryColor',
+  secondaryColor: 'secondaryColor',
+  contactEmail: 'contactEmail',
+  contactPhone: 'contactPhone',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ValuationRequestScalarFieldEnum = {
+  id: 'id',
+  widgetConfigId: 'widgetConfigId',
+  address: 'address',
+  municipality: 'municipality',
+  province: 'province',
+  zipCode: 'zipCode',
+  type: 'type',
+  builtM2: 'builtM2',
+  rooms: 'rooms',
+  bathrooms: 'bathrooms',
+  yearBuilt: 'yearBuilt',
+  state: 'state',
+  floor: 'floor',
+  hasElevator: 'hasElevator',
+  hasGarage: 'hasGarage',
+  hasTerrace: 'hasTerrace',
+  hasPool: 'hasPool',
+  hasGarden: 'hasGarden',
+  hasStorage: 'hasStorage',
+  contactName: 'contactName',
+  contactPhone: 'contactPhone',
+  contactEmail: 'contactEmail',
+  estimatedPrice: 'estimatedPrice',
+  priceRangeMin: 'priceRangeMin',
+  priceRangeMax: 'priceRangeMax',
+  createdAt: 'createdAt',
+  generatedById: 'generatedById',
+  propertyId: 'propertyId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -667,7 +713,9 @@ exports.Prisma.ModelName = {
   ForumCategory: 'ForumCategory',
   ForumTopic: 'ForumTopic',
   ForumPost: 'ForumPost',
-  ForumTag: 'ForumTag'
+  ForumTag: 'ForumTag',
+  ValuationWidgetConfig: 'ValuationWidgetConfig',
+  ValuationRequest: 'ValuationRequest'
 };
 
 /**

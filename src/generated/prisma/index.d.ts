@@ -188,6 +188,16 @@ export type ForumPost = $Result.DefaultSelection<Prisma.$ForumPostPayload>
  * 
  */
 export type ForumTag = $Result.DefaultSelection<Prisma.$ForumTagPayload>
+/**
+ * Model ValuationWidgetConfig
+ * 
+ */
+export type ValuationWidgetConfig = $Result.DefaultSelection<Prisma.$ValuationWidgetConfigPayload>
+/**
+ * Model ValuationRequest
+ * 
+ */
+export type ValuationRequest = $Result.DefaultSelection<Prisma.$ValuationRequestPayload>
 
 /**
  * Enums
@@ -797,6 +807,26 @@ export class PrismaClient<
     * ```
     */
   get forumTag(): Prisma.ForumTagDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.valuationWidgetConfig`: Exposes CRUD operations for the **ValuationWidgetConfig** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ValuationWidgetConfigs
+    * const valuationWidgetConfigs = await prisma.valuationWidgetConfig.findMany()
+    * ```
+    */
+  get valuationWidgetConfig(): Prisma.ValuationWidgetConfigDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.valuationRequest`: Exposes CRUD operations for the **ValuationRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ValuationRequests
+    * const valuationRequests = await prisma.valuationRequest.findMany()
+    * ```
+    */
+  get valuationRequest(): Prisma.ValuationRequestDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1271,7 +1301,9 @@ export namespace Prisma {
     ForumCategory: 'ForumCategory',
     ForumTopic: 'ForumTopic',
     ForumPost: 'ForumPost',
-    ForumTag: 'ForumTag'
+    ForumTag: 'ForumTag',
+    ValuationWidgetConfig: 'ValuationWidgetConfig',
+    ValuationRequest: 'ValuationRequest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1290,7 +1322,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "ping" | "role" | "user" | "permission" | "userRole" | "rolePermission" | "building" | "property" | "propertyAttachment" | "buildingAttachment" | "assignment" | "followUp" | "mailboxing" | "mailboxingAttachment" | "person" | "personPhone" | "reminder" | "reminderOccurrence" | "listing" | "listingType" | "listingStatus" | "propertyPerson" | "flyerTemplate" | "flyer" | "flyerShipment" | "board" | "boardColumn" | "boardCard" | "cardTag" | "cardActivity" | "ocrHistory" | "forumCategory" | "forumTopic" | "forumPost" | "forumTag"
+      modelProps: "ping" | "role" | "user" | "permission" | "userRole" | "rolePermission" | "building" | "property" | "propertyAttachment" | "buildingAttachment" | "assignment" | "followUp" | "mailboxing" | "mailboxingAttachment" | "person" | "personPhone" | "reminder" | "reminderOccurrence" | "listing" | "listingType" | "listingStatus" | "propertyPerson" | "flyerTemplate" | "flyer" | "flyerShipment" | "board" | "boardColumn" | "boardCard" | "cardTag" | "cardActivity" | "ocrHistory" | "forumCategory" | "forumTopic" | "forumPost" | "forumTag" | "valuationWidgetConfig" | "valuationRequest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3884,6 +3916,154 @@ export namespace Prisma {
           }
         }
       }
+      ValuationWidgetConfig: {
+        payload: Prisma.$ValuationWidgetConfigPayload<ExtArgs>
+        fields: Prisma.ValuationWidgetConfigFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ValuationWidgetConfigFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ValuationWidgetConfigFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>
+          }
+          findFirst: {
+            args: Prisma.ValuationWidgetConfigFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ValuationWidgetConfigFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>
+          }
+          findMany: {
+            args: Prisma.ValuationWidgetConfigFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>[]
+          }
+          create: {
+            args: Prisma.ValuationWidgetConfigCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>
+          }
+          createMany: {
+            args: Prisma.ValuationWidgetConfigCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ValuationWidgetConfigCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>[]
+          }
+          delete: {
+            args: Prisma.ValuationWidgetConfigDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>
+          }
+          update: {
+            args: Prisma.ValuationWidgetConfigUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>
+          }
+          deleteMany: {
+            args: Prisma.ValuationWidgetConfigDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ValuationWidgetConfigUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ValuationWidgetConfigUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>[]
+          }
+          upsert: {
+            args: Prisma.ValuationWidgetConfigUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationWidgetConfigPayload>
+          }
+          aggregate: {
+            args: Prisma.ValuationWidgetConfigAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateValuationWidgetConfig>
+          }
+          groupBy: {
+            args: Prisma.ValuationWidgetConfigGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ValuationWidgetConfigGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ValuationWidgetConfigCountArgs<ExtArgs>
+            result: $Utils.Optional<ValuationWidgetConfigCountAggregateOutputType> | number
+          }
+        }
+      }
+      ValuationRequest: {
+        payload: Prisma.$ValuationRequestPayload<ExtArgs>
+        fields: Prisma.ValuationRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ValuationRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ValuationRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.ValuationRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ValuationRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>
+          }
+          findMany: {
+            args: Prisma.ValuationRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>[]
+          }
+          create: {
+            args: Prisma.ValuationRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>
+          }
+          createMany: {
+            args: Prisma.ValuationRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ValuationRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.ValuationRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>
+          }
+          update: {
+            args: Prisma.ValuationRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.ValuationRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ValuationRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ValuationRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.ValuationRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ValuationRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.ValuationRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateValuationRequest>
+          }
+          groupBy: {
+            args: Prisma.ValuationRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ValuationRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ValuationRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<ValuationRequestCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -4011,6 +4191,8 @@ export namespace Prisma {
     forumTopic?: ForumTopicOmit
     forumPost?: ForumPostOmit
     forumTag?: ForumTagOmit
+    valuationWidgetConfig?: ValuationWidgetConfigOmit
+    valuationRequest?: ValuationRequestOmit
   }
 
   /* Types for Logging */
@@ -4151,6 +4333,8 @@ export namespace Prisma {
     ocrHistory: number
     forumTopics: number
     forumPosts: number
+    valuationConfigs: number
+    valuationsGenerated: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4174,6 +4358,8 @@ export namespace Prisma {
     ocrHistory?: boolean | UserCountOutputTypeCountOcrHistoryArgs
     forumTopics?: boolean | UserCountOutputTypeCountForumTopicsArgs
     forumPosts?: boolean | UserCountOutputTypeCountForumPostsArgs
+    valuationConfigs?: boolean | UserCountOutputTypeCountValuationConfigsArgs
+    valuationsGenerated?: boolean | UserCountOutputTypeCountValuationsGeneratedArgs
   }
 
   // Custom InputTypes
@@ -4327,6 +4513,20 @@ export namespace Prisma {
     where?: ForumPostWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountValuationConfigsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ValuationWidgetConfigWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountValuationsGeneratedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ValuationRequestWhereInput
+  }
+
 
   /**
    * Count Type PermissionCountOutputType
@@ -4437,6 +4637,7 @@ export namespace Prisma {
     propertyPersons: number
     reminders: number
     flyers: number
+    valuations: number
   }
 
   export type PropertyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4446,6 +4647,7 @@ export namespace Prisma {
     propertyPersons?: boolean | PropertyCountOutputTypeCountPropertyPersonsArgs
     reminders?: boolean | PropertyCountOutputTypeCountRemindersArgs
     flyers?: boolean | PropertyCountOutputTypeCountFlyersArgs
+    valuations?: boolean | PropertyCountOutputTypeCountValuationsArgs
   }
 
   // Custom InputTypes
@@ -4499,6 +4701,13 @@ export namespace Prisma {
    */
   export type PropertyCountOutputTypeCountFlyersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FlyerWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountValuationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ValuationRequestWhereInput
   }
 
 
@@ -5023,6 +5232,37 @@ export namespace Prisma {
    */
   export type ForumTagCountOutputTypeCountTopicsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ForumTopicWhereInput
+  }
+
+
+  /**
+   * Count Type ValuationWidgetConfigCountOutputType
+   */
+
+  export type ValuationWidgetConfigCountOutputType = {
+    requests: number
+  }
+
+  export type ValuationWidgetConfigCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    requests?: boolean | ValuationWidgetConfigCountOutputTypeCountRequestsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ValuationWidgetConfigCountOutputType without action
+   */
+  export type ValuationWidgetConfigCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfigCountOutputType
+     */
+    select?: ValuationWidgetConfigCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ValuationWidgetConfigCountOutputType without action
+   */
+  export type ValuationWidgetConfigCountOutputTypeCountRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ValuationRequestWhereInput
   }
 
 
@@ -7467,6 +7707,8 @@ export namespace Prisma {
     ocrHistory?: boolean | User$ocrHistoryArgs<ExtArgs>
     forumTopics?: boolean | User$forumTopicsArgs<ExtArgs>
     forumPosts?: boolean | User$forumPostsArgs<ExtArgs>
+    valuationConfigs?: boolean | User$valuationConfigsArgs<ExtArgs>
+    valuationsGenerated?: boolean | User$valuationsGeneratedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -7549,6 +7791,8 @@ export namespace Prisma {
     ocrHistory?: boolean | User$ocrHistoryArgs<ExtArgs>
     forumTopics?: boolean | User$forumTopicsArgs<ExtArgs>
     forumPosts?: boolean | User$forumPostsArgs<ExtArgs>
+    valuationConfigs?: boolean | User$valuationConfigsArgs<ExtArgs>
+    valuationsGenerated?: boolean | User$valuationsGeneratedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7577,6 +7821,8 @@ export namespace Prisma {
       ocrHistory: Prisma.$OcrHistoryPayload<ExtArgs>[]
       forumTopics: Prisma.$ForumTopicPayload<ExtArgs>[]
       forumPosts: Prisma.$ForumPostPayload<ExtArgs>[]
+      valuationConfigs: Prisma.$ValuationWidgetConfigPayload<ExtArgs>[]
+      valuationsGenerated: Prisma.$ValuationRequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8009,6 +8255,8 @@ export namespace Prisma {
     ocrHistory<T extends User$ocrHistoryArgs<ExtArgs> = {}>(args?: Subset<T, User$ocrHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OcrHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     forumTopics<T extends User$forumTopicsArgs<ExtArgs> = {}>(args?: Subset<T, User$forumTopicsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     forumPosts<T extends User$forumPostsArgs<ExtArgs> = {}>(args?: Subset<T, User$forumPostsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    valuationConfigs<T extends User$valuationConfigsArgs<ExtArgs> = {}>(args?: Subset<T, User$valuationConfigsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    valuationsGenerated<T extends User$valuationsGeneratedArgs<ExtArgs> = {}>(args?: Subset<T, User$valuationsGeneratedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8919,6 +9167,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ForumPostScalarFieldEnum | ForumPostScalarFieldEnum[]
+  }
+
+  /**
+   * User.valuationConfigs
+   */
+  export type User$valuationConfigsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    where?: ValuationWidgetConfigWhereInput
+    orderBy?: ValuationWidgetConfigOrderByWithRelationInput | ValuationWidgetConfigOrderByWithRelationInput[]
+    cursor?: ValuationWidgetConfigWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ValuationWidgetConfigScalarFieldEnum | ValuationWidgetConfigScalarFieldEnum[]
+  }
+
+  /**
+   * User.valuationsGenerated
+   */
+  export type User$valuationsGeneratedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    where?: ValuationRequestWhereInput
+    orderBy?: ValuationRequestOrderByWithRelationInput | ValuationRequestOrderByWithRelationInput[]
+    cursor?: ValuationRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ValuationRequestScalarFieldEnum | ValuationRequestScalarFieldEnum[]
   }
 
   /**
@@ -14115,6 +14411,7 @@ export namespace Prisma {
     propertyPersons?: boolean | Property$propertyPersonsArgs<ExtArgs>
     reminders?: boolean | Property$remindersArgs<ExtArgs>
     flyers?: boolean | Property$flyersArgs<ExtArgs>
+    valuations?: boolean | Property$valuationsArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -14234,6 +14531,7 @@ export namespace Prisma {
     propertyPersons?: boolean | Property$propertyPersonsArgs<ExtArgs>
     reminders?: boolean | Property$remindersArgs<ExtArgs>
     flyers?: boolean | Property$flyersArgs<ExtArgs>
+    valuations?: boolean | Property$valuationsArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14262,6 +14560,7 @@ export namespace Prisma {
       propertyPersons: Prisma.$PropertyPersonPayload<ExtArgs>[]
       reminders: Prisma.$ReminderPayload<ExtArgs>[]
       flyers: Prisma.$FlyerPayload<ExtArgs>[]
+      valuations: Prisma.$ValuationRequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -14697,6 +14996,7 @@ export namespace Prisma {
     propertyPersons<T extends Property$propertyPersonsArgs<ExtArgs> = {}>(args?: Subset<T, Property$propertyPersonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPersonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reminders<T extends Property$remindersArgs<ExtArgs> = {}>(args?: Subset<T, Property$remindersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReminderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     flyers<T extends Property$flyersArgs<ExtArgs> = {}>(args?: Subset<T, Property$flyersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FlyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    valuations<T extends Property$valuationsArgs<ExtArgs> = {}>(args?: Subset<T, Property$valuationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15349,6 +15649,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FlyerScalarFieldEnum | FlyerScalarFieldEnum[]
+  }
+
+  /**
+   * Property.valuations
+   */
+  export type Property$valuationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    where?: ValuationRequestWhereInput
+    orderBy?: ValuationRequestOrderByWithRelationInput | ValuationRequestOrderByWithRelationInput[]
+    cursor?: ValuationRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ValuationRequestScalarFieldEnum | ValuationRequestScalarFieldEnum[]
   }
 
   /**
@@ -47310,6 +47634,2727 @@ export namespace Prisma {
 
 
   /**
+   * Model ValuationWidgetConfig
+   */
+
+  export type AggregateValuationWidgetConfig = {
+    _count: ValuationWidgetConfigCountAggregateOutputType | null
+    _avg: ValuationWidgetConfigAvgAggregateOutputType | null
+    _sum: ValuationWidgetConfigSumAggregateOutputType | null
+    _min: ValuationWidgetConfigMinAggregateOutputType | null
+    _max: ValuationWidgetConfigMaxAggregateOutputType | null
+  }
+
+  export type ValuationWidgetConfigAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type ValuationWidgetConfigSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type ValuationWidgetConfigMinAggregateOutputType = {
+    id: number | null
+    slug: string | null
+    name: string | null
+    userId: number | null
+    logoUrl: string | null
+    primaryColor: string | null
+    secondaryColor: string | null
+    contactEmail: string | null
+    contactPhone: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ValuationWidgetConfigMaxAggregateOutputType = {
+    id: number | null
+    slug: string | null
+    name: string | null
+    userId: number | null
+    logoUrl: string | null
+    primaryColor: string | null
+    secondaryColor: string | null
+    contactEmail: string | null
+    contactPhone: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ValuationWidgetConfigCountAggregateOutputType = {
+    id: number
+    slug: number
+    name: number
+    userId: number
+    logoUrl: number
+    primaryColor: number
+    secondaryColor: number
+    contactEmail: number
+    contactPhone: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ValuationWidgetConfigAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type ValuationWidgetConfigSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type ValuationWidgetConfigMinAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    userId?: true
+    logoUrl?: true
+    primaryColor?: true
+    secondaryColor?: true
+    contactEmail?: true
+    contactPhone?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ValuationWidgetConfigMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    userId?: true
+    logoUrl?: true
+    primaryColor?: true
+    secondaryColor?: true
+    contactEmail?: true
+    contactPhone?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ValuationWidgetConfigCountAggregateInputType = {
+    id?: true
+    slug?: true
+    name?: true
+    userId?: true
+    logoUrl?: true
+    primaryColor?: true
+    secondaryColor?: true
+    contactEmail?: true
+    contactPhone?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ValuationWidgetConfigAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ValuationWidgetConfig to aggregate.
+     */
+    where?: ValuationWidgetConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ValuationWidgetConfigs to fetch.
+     */
+    orderBy?: ValuationWidgetConfigOrderByWithRelationInput | ValuationWidgetConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ValuationWidgetConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ValuationWidgetConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ValuationWidgetConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ValuationWidgetConfigs
+    **/
+    _count?: true | ValuationWidgetConfigCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ValuationWidgetConfigAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ValuationWidgetConfigSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ValuationWidgetConfigMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ValuationWidgetConfigMaxAggregateInputType
+  }
+
+  export type GetValuationWidgetConfigAggregateType<T extends ValuationWidgetConfigAggregateArgs> = {
+        [P in keyof T & keyof AggregateValuationWidgetConfig]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateValuationWidgetConfig[P]>
+      : GetScalarType<T[P], AggregateValuationWidgetConfig[P]>
+  }
+
+
+
+
+  export type ValuationWidgetConfigGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ValuationWidgetConfigWhereInput
+    orderBy?: ValuationWidgetConfigOrderByWithAggregationInput | ValuationWidgetConfigOrderByWithAggregationInput[]
+    by: ValuationWidgetConfigScalarFieldEnum[] | ValuationWidgetConfigScalarFieldEnum
+    having?: ValuationWidgetConfigScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ValuationWidgetConfigCountAggregateInputType | true
+    _avg?: ValuationWidgetConfigAvgAggregateInputType
+    _sum?: ValuationWidgetConfigSumAggregateInputType
+    _min?: ValuationWidgetConfigMinAggregateInputType
+    _max?: ValuationWidgetConfigMaxAggregateInputType
+  }
+
+  export type ValuationWidgetConfigGroupByOutputType = {
+    id: number
+    slug: string
+    name: string
+    userId: number
+    logoUrl: string | null
+    primaryColor: string | null
+    secondaryColor: string | null
+    contactEmail: string | null
+    contactPhone: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: ValuationWidgetConfigCountAggregateOutputType | null
+    _avg: ValuationWidgetConfigAvgAggregateOutputType | null
+    _sum: ValuationWidgetConfigSumAggregateOutputType | null
+    _min: ValuationWidgetConfigMinAggregateOutputType | null
+    _max: ValuationWidgetConfigMaxAggregateOutputType | null
+  }
+
+  type GetValuationWidgetConfigGroupByPayload<T extends ValuationWidgetConfigGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ValuationWidgetConfigGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ValuationWidgetConfigGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ValuationWidgetConfigGroupByOutputType[P]>
+            : GetScalarType<T[P], ValuationWidgetConfigGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ValuationWidgetConfigSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    userId?: boolean
+    logoUrl?: boolean
+    primaryColor?: boolean
+    secondaryColor?: boolean
+    contactEmail?: boolean
+    contactPhone?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    requests?: boolean | ValuationWidgetConfig$requestsArgs<ExtArgs>
+    _count?: boolean | ValuationWidgetConfigCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["valuationWidgetConfig"]>
+
+  export type ValuationWidgetConfigSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    userId?: boolean
+    logoUrl?: boolean
+    primaryColor?: boolean
+    secondaryColor?: boolean
+    contactEmail?: boolean
+    contactPhone?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["valuationWidgetConfig"]>
+
+  export type ValuationWidgetConfigSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    userId?: boolean
+    logoUrl?: boolean
+    primaryColor?: boolean
+    secondaryColor?: boolean
+    contactEmail?: boolean
+    contactPhone?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["valuationWidgetConfig"]>
+
+  export type ValuationWidgetConfigSelectScalar = {
+    id?: boolean
+    slug?: boolean
+    name?: boolean
+    userId?: boolean
+    logoUrl?: boolean
+    primaryColor?: boolean
+    secondaryColor?: boolean
+    contactEmail?: boolean
+    contactPhone?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ValuationWidgetConfigOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "name" | "userId" | "logoUrl" | "primaryColor" | "secondaryColor" | "contactEmail" | "contactPhone" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["valuationWidgetConfig"]>
+  export type ValuationWidgetConfigInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    requests?: boolean | ValuationWidgetConfig$requestsArgs<ExtArgs>
+    _count?: boolean | ValuationWidgetConfigCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ValuationWidgetConfigIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ValuationWidgetConfigIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ValuationWidgetConfigPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ValuationWidgetConfig"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      requests: Prisma.$ValuationRequestPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      slug: string
+      name: string
+      userId: number
+      logoUrl: string | null
+      primaryColor: string | null
+      secondaryColor: string | null
+      contactEmail: string | null
+      contactPhone: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["valuationWidgetConfig"]>
+    composites: {}
+  }
+
+  type ValuationWidgetConfigGetPayload<S extends boolean | null | undefined | ValuationWidgetConfigDefaultArgs> = $Result.GetResult<Prisma.$ValuationWidgetConfigPayload, S>
+
+  type ValuationWidgetConfigCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ValuationWidgetConfigFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ValuationWidgetConfigCountAggregateInputType | true
+    }
+
+  export interface ValuationWidgetConfigDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ValuationWidgetConfig'], meta: { name: 'ValuationWidgetConfig' } }
+    /**
+     * Find zero or one ValuationWidgetConfig that matches the filter.
+     * @param {ValuationWidgetConfigFindUniqueArgs} args - Arguments to find a ValuationWidgetConfig
+     * @example
+     * // Get one ValuationWidgetConfig
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ValuationWidgetConfigFindUniqueArgs>(args: SelectSubset<T, ValuationWidgetConfigFindUniqueArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ValuationWidgetConfig that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ValuationWidgetConfigFindUniqueOrThrowArgs} args - Arguments to find a ValuationWidgetConfig
+     * @example
+     * // Get one ValuationWidgetConfig
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ValuationWidgetConfigFindUniqueOrThrowArgs>(args: SelectSubset<T, ValuationWidgetConfigFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ValuationWidgetConfig that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationWidgetConfigFindFirstArgs} args - Arguments to find a ValuationWidgetConfig
+     * @example
+     * // Get one ValuationWidgetConfig
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ValuationWidgetConfigFindFirstArgs>(args?: SelectSubset<T, ValuationWidgetConfigFindFirstArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ValuationWidgetConfig that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationWidgetConfigFindFirstOrThrowArgs} args - Arguments to find a ValuationWidgetConfig
+     * @example
+     * // Get one ValuationWidgetConfig
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ValuationWidgetConfigFindFirstOrThrowArgs>(args?: SelectSubset<T, ValuationWidgetConfigFindFirstOrThrowArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ValuationWidgetConfigs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationWidgetConfigFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ValuationWidgetConfigs
+     * const valuationWidgetConfigs = await prisma.valuationWidgetConfig.findMany()
+     * 
+     * // Get first 10 ValuationWidgetConfigs
+     * const valuationWidgetConfigs = await prisma.valuationWidgetConfig.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const valuationWidgetConfigWithIdOnly = await prisma.valuationWidgetConfig.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ValuationWidgetConfigFindManyArgs>(args?: SelectSubset<T, ValuationWidgetConfigFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ValuationWidgetConfig.
+     * @param {ValuationWidgetConfigCreateArgs} args - Arguments to create a ValuationWidgetConfig.
+     * @example
+     * // Create one ValuationWidgetConfig
+     * const ValuationWidgetConfig = await prisma.valuationWidgetConfig.create({
+     *   data: {
+     *     // ... data to create a ValuationWidgetConfig
+     *   }
+     * })
+     * 
+     */
+    create<T extends ValuationWidgetConfigCreateArgs>(args: SelectSubset<T, ValuationWidgetConfigCreateArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ValuationWidgetConfigs.
+     * @param {ValuationWidgetConfigCreateManyArgs} args - Arguments to create many ValuationWidgetConfigs.
+     * @example
+     * // Create many ValuationWidgetConfigs
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ValuationWidgetConfigCreateManyArgs>(args?: SelectSubset<T, ValuationWidgetConfigCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ValuationWidgetConfigs and returns the data saved in the database.
+     * @param {ValuationWidgetConfigCreateManyAndReturnArgs} args - Arguments to create many ValuationWidgetConfigs.
+     * @example
+     * // Create many ValuationWidgetConfigs
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ValuationWidgetConfigs and only return the `id`
+     * const valuationWidgetConfigWithIdOnly = await prisma.valuationWidgetConfig.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ValuationWidgetConfigCreateManyAndReturnArgs>(args?: SelectSubset<T, ValuationWidgetConfigCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ValuationWidgetConfig.
+     * @param {ValuationWidgetConfigDeleteArgs} args - Arguments to delete one ValuationWidgetConfig.
+     * @example
+     * // Delete one ValuationWidgetConfig
+     * const ValuationWidgetConfig = await prisma.valuationWidgetConfig.delete({
+     *   where: {
+     *     // ... filter to delete one ValuationWidgetConfig
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ValuationWidgetConfigDeleteArgs>(args: SelectSubset<T, ValuationWidgetConfigDeleteArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ValuationWidgetConfig.
+     * @param {ValuationWidgetConfigUpdateArgs} args - Arguments to update one ValuationWidgetConfig.
+     * @example
+     * // Update one ValuationWidgetConfig
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ValuationWidgetConfigUpdateArgs>(args: SelectSubset<T, ValuationWidgetConfigUpdateArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ValuationWidgetConfigs.
+     * @param {ValuationWidgetConfigDeleteManyArgs} args - Arguments to filter ValuationWidgetConfigs to delete.
+     * @example
+     * // Delete a few ValuationWidgetConfigs
+     * const { count } = await prisma.valuationWidgetConfig.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ValuationWidgetConfigDeleteManyArgs>(args?: SelectSubset<T, ValuationWidgetConfigDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ValuationWidgetConfigs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationWidgetConfigUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ValuationWidgetConfigs
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ValuationWidgetConfigUpdateManyArgs>(args: SelectSubset<T, ValuationWidgetConfigUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ValuationWidgetConfigs and returns the data updated in the database.
+     * @param {ValuationWidgetConfigUpdateManyAndReturnArgs} args - Arguments to update many ValuationWidgetConfigs.
+     * @example
+     * // Update many ValuationWidgetConfigs
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ValuationWidgetConfigs and only return the `id`
+     * const valuationWidgetConfigWithIdOnly = await prisma.valuationWidgetConfig.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ValuationWidgetConfigUpdateManyAndReturnArgs>(args: SelectSubset<T, ValuationWidgetConfigUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ValuationWidgetConfig.
+     * @param {ValuationWidgetConfigUpsertArgs} args - Arguments to update or create a ValuationWidgetConfig.
+     * @example
+     * // Update or create a ValuationWidgetConfig
+     * const valuationWidgetConfig = await prisma.valuationWidgetConfig.upsert({
+     *   create: {
+     *     // ... data to create a ValuationWidgetConfig
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ValuationWidgetConfig we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ValuationWidgetConfigUpsertArgs>(args: SelectSubset<T, ValuationWidgetConfigUpsertArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ValuationWidgetConfigs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationWidgetConfigCountArgs} args - Arguments to filter ValuationWidgetConfigs to count.
+     * @example
+     * // Count the number of ValuationWidgetConfigs
+     * const count = await prisma.valuationWidgetConfig.count({
+     *   where: {
+     *     // ... the filter for the ValuationWidgetConfigs we want to count
+     *   }
+     * })
+    **/
+    count<T extends ValuationWidgetConfigCountArgs>(
+      args?: Subset<T, ValuationWidgetConfigCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ValuationWidgetConfigCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ValuationWidgetConfig.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationWidgetConfigAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ValuationWidgetConfigAggregateArgs>(args: Subset<T, ValuationWidgetConfigAggregateArgs>): Prisma.PrismaPromise<GetValuationWidgetConfigAggregateType<T>>
+
+    /**
+     * Group by ValuationWidgetConfig.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationWidgetConfigGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ValuationWidgetConfigGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ValuationWidgetConfigGroupByArgs['orderBy'] }
+        : { orderBy?: ValuationWidgetConfigGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ValuationWidgetConfigGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetValuationWidgetConfigGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ValuationWidgetConfig model
+   */
+  readonly fields: ValuationWidgetConfigFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ValuationWidgetConfig.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ValuationWidgetConfigClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    requests<T extends ValuationWidgetConfig$requestsArgs<ExtArgs> = {}>(args?: Subset<T, ValuationWidgetConfig$requestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ValuationWidgetConfig model
+   */
+  interface ValuationWidgetConfigFieldRefs {
+    readonly id: FieldRef<"ValuationWidgetConfig", 'Int'>
+    readonly slug: FieldRef<"ValuationWidgetConfig", 'String'>
+    readonly name: FieldRef<"ValuationWidgetConfig", 'String'>
+    readonly userId: FieldRef<"ValuationWidgetConfig", 'Int'>
+    readonly logoUrl: FieldRef<"ValuationWidgetConfig", 'String'>
+    readonly primaryColor: FieldRef<"ValuationWidgetConfig", 'String'>
+    readonly secondaryColor: FieldRef<"ValuationWidgetConfig", 'String'>
+    readonly contactEmail: FieldRef<"ValuationWidgetConfig", 'String'>
+    readonly contactPhone: FieldRef<"ValuationWidgetConfig", 'String'>
+    readonly isActive: FieldRef<"ValuationWidgetConfig", 'Boolean'>
+    readonly createdAt: FieldRef<"ValuationWidgetConfig", 'DateTime'>
+    readonly updatedAt: FieldRef<"ValuationWidgetConfig", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ValuationWidgetConfig findUnique
+   */
+  export type ValuationWidgetConfigFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationWidgetConfig to fetch.
+     */
+    where: ValuationWidgetConfigWhereUniqueInput
+  }
+
+  /**
+   * ValuationWidgetConfig findUniqueOrThrow
+   */
+  export type ValuationWidgetConfigFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationWidgetConfig to fetch.
+     */
+    where: ValuationWidgetConfigWhereUniqueInput
+  }
+
+  /**
+   * ValuationWidgetConfig findFirst
+   */
+  export type ValuationWidgetConfigFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationWidgetConfig to fetch.
+     */
+    where?: ValuationWidgetConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ValuationWidgetConfigs to fetch.
+     */
+    orderBy?: ValuationWidgetConfigOrderByWithRelationInput | ValuationWidgetConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ValuationWidgetConfigs.
+     */
+    cursor?: ValuationWidgetConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ValuationWidgetConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ValuationWidgetConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ValuationWidgetConfigs.
+     */
+    distinct?: ValuationWidgetConfigScalarFieldEnum | ValuationWidgetConfigScalarFieldEnum[]
+  }
+
+  /**
+   * ValuationWidgetConfig findFirstOrThrow
+   */
+  export type ValuationWidgetConfigFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationWidgetConfig to fetch.
+     */
+    where?: ValuationWidgetConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ValuationWidgetConfigs to fetch.
+     */
+    orderBy?: ValuationWidgetConfigOrderByWithRelationInput | ValuationWidgetConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ValuationWidgetConfigs.
+     */
+    cursor?: ValuationWidgetConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ValuationWidgetConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ValuationWidgetConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ValuationWidgetConfigs.
+     */
+    distinct?: ValuationWidgetConfigScalarFieldEnum | ValuationWidgetConfigScalarFieldEnum[]
+  }
+
+  /**
+   * ValuationWidgetConfig findMany
+   */
+  export type ValuationWidgetConfigFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationWidgetConfigs to fetch.
+     */
+    where?: ValuationWidgetConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ValuationWidgetConfigs to fetch.
+     */
+    orderBy?: ValuationWidgetConfigOrderByWithRelationInput | ValuationWidgetConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ValuationWidgetConfigs.
+     */
+    cursor?: ValuationWidgetConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ValuationWidgetConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ValuationWidgetConfigs.
+     */
+    skip?: number
+    distinct?: ValuationWidgetConfigScalarFieldEnum | ValuationWidgetConfigScalarFieldEnum[]
+  }
+
+  /**
+   * ValuationWidgetConfig create
+   */
+  export type ValuationWidgetConfigCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ValuationWidgetConfig.
+     */
+    data: XOR<ValuationWidgetConfigCreateInput, ValuationWidgetConfigUncheckedCreateInput>
+  }
+
+  /**
+   * ValuationWidgetConfig createMany
+   */
+  export type ValuationWidgetConfigCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ValuationWidgetConfigs.
+     */
+    data: ValuationWidgetConfigCreateManyInput | ValuationWidgetConfigCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ValuationWidgetConfig createManyAndReturn
+   */
+  export type ValuationWidgetConfigCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * The data used to create many ValuationWidgetConfigs.
+     */
+    data: ValuationWidgetConfigCreateManyInput | ValuationWidgetConfigCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ValuationWidgetConfig update
+   */
+  export type ValuationWidgetConfigUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ValuationWidgetConfig.
+     */
+    data: XOR<ValuationWidgetConfigUpdateInput, ValuationWidgetConfigUncheckedUpdateInput>
+    /**
+     * Choose, which ValuationWidgetConfig to update.
+     */
+    where: ValuationWidgetConfigWhereUniqueInput
+  }
+
+  /**
+   * ValuationWidgetConfig updateMany
+   */
+  export type ValuationWidgetConfigUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ValuationWidgetConfigs.
+     */
+    data: XOR<ValuationWidgetConfigUpdateManyMutationInput, ValuationWidgetConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which ValuationWidgetConfigs to update
+     */
+    where?: ValuationWidgetConfigWhereInput
+    /**
+     * Limit how many ValuationWidgetConfigs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ValuationWidgetConfig updateManyAndReturn
+   */
+  export type ValuationWidgetConfigUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * The data used to update ValuationWidgetConfigs.
+     */
+    data: XOR<ValuationWidgetConfigUpdateManyMutationInput, ValuationWidgetConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which ValuationWidgetConfigs to update
+     */
+    where?: ValuationWidgetConfigWhereInput
+    /**
+     * Limit how many ValuationWidgetConfigs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ValuationWidgetConfig upsert
+   */
+  export type ValuationWidgetConfigUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ValuationWidgetConfig to update in case it exists.
+     */
+    where: ValuationWidgetConfigWhereUniqueInput
+    /**
+     * In case the ValuationWidgetConfig found by the `where` argument doesn't exist, create a new ValuationWidgetConfig with this data.
+     */
+    create: XOR<ValuationWidgetConfigCreateInput, ValuationWidgetConfigUncheckedCreateInput>
+    /**
+     * In case the ValuationWidgetConfig was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ValuationWidgetConfigUpdateInput, ValuationWidgetConfigUncheckedUpdateInput>
+  }
+
+  /**
+   * ValuationWidgetConfig delete
+   */
+  export type ValuationWidgetConfigDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    /**
+     * Filter which ValuationWidgetConfig to delete.
+     */
+    where: ValuationWidgetConfigWhereUniqueInput
+  }
+
+  /**
+   * ValuationWidgetConfig deleteMany
+   */
+  export type ValuationWidgetConfigDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ValuationWidgetConfigs to delete
+     */
+    where?: ValuationWidgetConfigWhereInput
+    /**
+     * Limit how many ValuationWidgetConfigs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ValuationWidgetConfig.requests
+   */
+  export type ValuationWidgetConfig$requestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    where?: ValuationRequestWhereInput
+    orderBy?: ValuationRequestOrderByWithRelationInput | ValuationRequestOrderByWithRelationInput[]
+    cursor?: ValuationRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ValuationRequestScalarFieldEnum | ValuationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ValuationWidgetConfig without action
+   */
+  export type ValuationWidgetConfigDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ValuationRequest
+   */
+
+  export type AggregateValuationRequest = {
+    _count: ValuationRequestCountAggregateOutputType | null
+    _avg: ValuationRequestAvgAggregateOutputType | null
+    _sum: ValuationRequestSumAggregateOutputType | null
+    _min: ValuationRequestMinAggregateOutputType | null
+    _max: ValuationRequestMaxAggregateOutputType | null
+  }
+
+  export type ValuationRequestAvgAggregateOutputType = {
+    id: number | null
+    widgetConfigId: number | null
+    builtM2: number | null
+    rooms: number | null
+    bathrooms: number | null
+    yearBuilt: number | null
+    estimatedPrice: Decimal | null
+    priceRangeMin: Decimal | null
+    priceRangeMax: Decimal | null
+    generatedById: number | null
+    propertyId: number | null
+  }
+
+  export type ValuationRequestSumAggregateOutputType = {
+    id: number | null
+    widgetConfigId: number | null
+    builtM2: number | null
+    rooms: number | null
+    bathrooms: number | null
+    yearBuilt: number | null
+    estimatedPrice: Decimal | null
+    priceRangeMin: Decimal | null
+    priceRangeMax: Decimal | null
+    generatedById: number | null
+    propertyId: number | null
+  }
+
+  export type ValuationRequestMinAggregateOutputType = {
+    id: number | null
+    widgetConfigId: number | null
+    address: string | null
+    municipality: string | null
+    province: string | null
+    zipCode: string | null
+    type: string | null
+    builtM2: number | null
+    rooms: number | null
+    bathrooms: number | null
+    yearBuilt: number | null
+    state: string | null
+    floor: string | null
+    hasElevator: boolean | null
+    hasGarage: boolean | null
+    hasTerrace: boolean | null
+    hasPool: boolean | null
+    hasGarden: boolean | null
+    hasStorage: boolean | null
+    contactName: string | null
+    contactPhone: string | null
+    contactEmail: string | null
+    estimatedPrice: Decimal | null
+    priceRangeMin: Decimal | null
+    priceRangeMax: Decimal | null
+    createdAt: Date | null
+    generatedById: number | null
+    propertyId: number | null
+  }
+
+  export type ValuationRequestMaxAggregateOutputType = {
+    id: number | null
+    widgetConfigId: number | null
+    address: string | null
+    municipality: string | null
+    province: string | null
+    zipCode: string | null
+    type: string | null
+    builtM2: number | null
+    rooms: number | null
+    bathrooms: number | null
+    yearBuilt: number | null
+    state: string | null
+    floor: string | null
+    hasElevator: boolean | null
+    hasGarage: boolean | null
+    hasTerrace: boolean | null
+    hasPool: boolean | null
+    hasGarden: boolean | null
+    hasStorage: boolean | null
+    contactName: string | null
+    contactPhone: string | null
+    contactEmail: string | null
+    estimatedPrice: Decimal | null
+    priceRangeMin: Decimal | null
+    priceRangeMax: Decimal | null
+    createdAt: Date | null
+    generatedById: number | null
+    propertyId: number | null
+  }
+
+  export type ValuationRequestCountAggregateOutputType = {
+    id: number
+    widgetConfigId: number
+    address: number
+    municipality: number
+    province: number
+    zipCode: number
+    type: number
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt: number
+    state: number
+    floor: number
+    hasElevator: number
+    hasGarage: number
+    hasTerrace: number
+    hasPool: number
+    hasGarden: number
+    hasStorage: number
+    contactName: number
+    contactPhone: number
+    contactEmail: number
+    estimatedPrice: number
+    priceRangeMin: number
+    priceRangeMax: number
+    createdAt: number
+    generatedById: number
+    propertyId: number
+    _all: number
+  }
+
+
+  export type ValuationRequestAvgAggregateInputType = {
+    id?: true
+    widgetConfigId?: true
+    builtM2?: true
+    rooms?: true
+    bathrooms?: true
+    yearBuilt?: true
+    estimatedPrice?: true
+    priceRangeMin?: true
+    priceRangeMax?: true
+    generatedById?: true
+    propertyId?: true
+  }
+
+  export type ValuationRequestSumAggregateInputType = {
+    id?: true
+    widgetConfigId?: true
+    builtM2?: true
+    rooms?: true
+    bathrooms?: true
+    yearBuilt?: true
+    estimatedPrice?: true
+    priceRangeMin?: true
+    priceRangeMax?: true
+    generatedById?: true
+    propertyId?: true
+  }
+
+  export type ValuationRequestMinAggregateInputType = {
+    id?: true
+    widgetConfigId?: true
+    address?: true
+    municipality?: true
+    province?: true
+    zipCode?: true
+    type?: true
+    builtM2?: true
+    rooms?: true
+    bathrooms?: true
+    yearBuilt?: true
+    state?: true
+    floor?: true
+    hasElevator?: true
+    hasGarage?: true
+    hasTerrace?: true
+    hasPool?: true
+    hasGarden?: true
+    hasStorage?: true
+    contactName?: true
+    contactPhone?: true
+    contactEmail?: true
+    estimatedPrice?: true
+    priceRangeMin?: true
+    priceRangeMax?: true
+    createdAt?: true
+    generatedById?: true
+    propertyId?: true
+  }
+
+  export type ValuationRequestMaxAggregateInputType = {
+    id?: true
+    widgetConfigId?: true
+    address?: true
+    municipality?: true
+    province?: true
+    zipCode?: true
+    type?: true
+    builtM2?: true
+    rooms?: true
+    bathrooms?: true
+    yearBuilt?: true
+    state?: true
+    floor?: true
+    hasElevator?: true
+    hasGarage?: true
+    hasTerrace?: true
+    hasPool?: true
+    hasGarden?: true
+    hasStorage?: true
+    contactName?: true
+    contactPhone?: true
+    contactEmail?: true
+    estimatedPrice?: true
+    priceRangeMin?: true
+    priceRangeMax?: true
+    createdAt?: true
+    generatedById?: true
+    propertyId?: true
+  }
+
+  export type ValuationRequestCountAggregateInputType = {
+    id?: true
+    widgetConfigId?: true
+    address?: true
+    municipality?: true
+    province?: true
+    zipCode?: true
+    type?: true
+    builtM2?: true
+    rooms?: true
+    bathrooms?: true
+    yearBuilt?: true
+    state?: true
+    floor?: true
+    hasElevator?: true
+    hasGarage?: true
+    hasTerrace?: true
+    hasPool?: true
+    hasGarden?: true
+    hasStorage?: true
+    contactName?: true
+    contactPhone?: true
+    contactEmail?: true
+    estimatedPrice?: true
+    priceRangeMin?: true
+    priceRangeMax?: true
+    createdAt?: true
+    generatedById?: true
+    propertyId?: true
+    _all?: true
+  }
+
+  export type ValuationRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ValuationRequest to aggregate.
+     */
+    where?: ValuationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ValuationRequests to fetch.
+     */
+    orderBy?: ValuationRequestOrderByWithRelationInput | ValuationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ValuationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ValuationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ValuationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ValuationRequests
+    **/
+    _count?: true | ValuationRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ValuationRequestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ValuationRequestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ValuationRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ValuationRequestMaxAggregateInputType
+  }
+
+  export type GetValuationRequestAggregateType<T extends ValuationRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateValuationRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateValuationRequest[P]>
+      : GetScalarType<T[P], AggregateValuationRequest[P]>
+  }
+
+
+
+
+  export type ValuationRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ValuationRequestWhereInput
+    orderBy?: ValuationRequestOrderByWithAggregationInput | ValuationRequestOrderByWithAggregationInput[]
+    by: ValuationRequestScalarFieldEnum[] | ValuationRequestScalarFieldEnum
+    having?: ValuationRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ValuationRequestCountAggregateInputType | true
+    _avg?: ValuationRequestAvgAggregateInputType
+    _sum?: ValuationRequestSumAggregateInputType
+    _min?: ValuationRequestMinAggregateInputType
+    _max?: ValuationRequestMaxAggregateInputType
+  }
+
+  export type ValuationRequestGroupByOutputType = {
+    id: number
+    widgetConfigId: number | null
+    address: string
+    municipality: string | null
+    province: string | null
+    zipCode: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt: number | null
+    state: string | null
+    floor: string | null
+    hasElevator: boolean
+    hasGarage: boolean
+    hasTerrace: boolean
+    hasPool: boolean
+    hasGarden: boolean
+    hasStorage: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal
+    priceRangeMin: Decimal
+    priceRangeMax: Decimal
+    createdAt: Date
+    generatedById: number | null
+    propertyId: number | null
+    _count: ValuationRequestCountAggregateOutputType | null
+    _avg: ValuationRequestAvgAggregateOutputType | null
+    _sum: ValuationRequestSumAggregateOutputType | null
+    _min: ValuationRequestMinAggregateOutputType | null
+    _max: ValuationRequestMaxAggregateOutputType | null
+  }
+
+  type GetValuationRequestGroupByPayload<T extends ValuationRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ValuationRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ValuationRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ValuationRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], ValuationRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ValuationRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    widgetConfigId?: boolean
+    address?: boolean
+    municipality?: boolean
+    province?: boolean
+    zipCode?: boolean
+    type?: boolean
+    builtM2?: boolean
+    rooms?: boolean
+    bathrooms?: boolean
+    yearBuilt?: boolean
+    state?: boolean
+    floor?: boolean
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName?: boolean
+    contactPhone?: boolean
+    contactEmail?: boolean
+    estimatedPrice?: boolean
+    priceRangeMin?: boolean
+    priceRangeMax?: boolean
+    createdAt?: boolean
+    generatedById?: boolean
+    propertyId?: boolean
+    config?: boolean | ValuationRequest$configArgs<ExtArgs>
+    generatedBy?: boolean | ValuationRequest$generatedByArgs<ExtArgs>
+    property?: boolean | ValuationRequest$propertyArgs<ExtArgs>
+  }, ExtArgs["result"]["valuationRequest"]>
+
+  export type ValuationRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    widgetConfigId?: boolean
+    address?: boolean
+    municipality?: boolean
+    province?: boolean
+    zipCode?: boolean
+    type?: boolean
+    builtM2?: boolean
+    rooms?: boolean
+    bathrooms?: boolean
+    yearBuilt?: boolean
+    state?: boolean
+    floor?: boolean
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName?: boolean
+    contactPhone?: boolean
+    contactEmail?: boolean
+    estimatedPrice?: boolean
+    priceRangeMin?: boolean
+    priceRangeMax?: boolean
+    createdAt?: boolean
+    generatedById?: boolean
+    propertyId?: boolean
+    config?: boolean | ValuationRequest$configArgs<ExtArgs>
+    generatedBy?: boolean | ValuationRequest$generatedByArgs<ExtArgs>
+    property?: boolean | ValuationRequest$propertyArgs<ExtArgs>
+  }, ExtArgs["result"]["valuationRequest"]>
+
+  export type ValuationRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    widgetConfigId?: boolean
+    address?: boolean
+    municipality?: boolean
+    province?: boolean
+    zipCode?: boolean
+    type?: boolean
+    builtM2?: boolean
+    rooms?: boolean
+    bathrooms?: boolean
+    yearBuilt?: boolean
+    state?: boolean
+    floor?: boolean
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName?: boolean
+    contactPhone?: boolean
+    contactEmail?: boolean
+    estimatedPrice?: boolean
+    priceRangeMin?: boolean
+    priceRangeMax?: boolean
+    createdAt?: boolean
+    generatedById?: boolean
+    propertyId?: boolean
+    config?: boolean | ValuationRequest$configArgs<ExtArgs>
+    generatedBy?: boolean | ValuationRequest$generatedByArgs<ExtArgs>
+    property?: boolean | ValuationRequest$propertyArgs<ExtArgs>
+  }, ExtArgs["result"]["valuationRequest"]>
+
+  export type ValuationRequestSelectScalar = {
+    id?: boolean
+    widgetConfigId?: boolean
+    address?: boolean
+    municipality?: boolean
+    province?: boolean
+    zipCode?: boolean
+    type?: boolean
+    builtM2?: boolean
+    rooms?: boolean
+    bathrooms?: boolean
+    yearBuilt?: boolean
+    state?: boolean
+    floor?: boolean
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName?: boolean
+    contactPhone?: boolean
+    contactEmail?: boolean
+    estimatedPrice?: boolean
+    priceRangeMin?: boolean
+    priceRangeMax?: boolean
+    createdAt?: boolean
+    generatedById?: boolean
+    propertyId?: boolean
+  }
+
+  export type ValuationRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "widgetConfigId" | "address" | "municipality" | "province" | "zipCode" | "type" | "builtM2" | "rooms" | "bathrooms" | "yearBuilt" | "state" | "floor" | "hasElevator" | "hasGarage" | "hasTerrace" | "hasPool" | "hasGarden" | "hasStorage" | "contactName" | "contactPhone" | "contactEmail" | "estimatedPrice" | "priceRangeMin" | "priceRangeMax" | "createdAt" | "generatedById" | "propertyId", ExtArgs["result"]["valuationRequest"]>
+  export type ValuationRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    config?: boolean | ValuationRequest$configArgs<ExtArgs>
+    generatedBy?: boolean | ValuationRequest$generatedByArgs<ExtArgs>
+    property?: boolean | ValuationRequest$propertyArgs<ExtArgs>
+  }
+  export type ValuationRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    config?: boolean | ValuationRequest$configArgs<ExtArgs>
+    generatedBy?: boolean | ValuationRequest$generatedByArgs<ExtArgs>
+    property?: boolean | ValuationRequest$propertyArgs<ExtArgs>
+  }
+  export type ValuationRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    config?: boolean | ValuationRequest$configArgs<ExtArgs>
+    generatedBy?: boolean | ValuationRequest$generatedByArgs<ExtArgs>
+    property?: boolean | ValuationRequest$propertyArgs<ExtArgs>
+  }
+
+  export type $ValuationRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ValuationRequest"
+    objects: {
+      config: Prisma.$ValuationWidgetConfigPayload<ExtArgs> | null
+      generatedBy: Prisma.$UserPayload<ExtArgs> | null
+      property: Prisma.$PropertyPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      widgetConfigId: number | null
+      address: string
+      municipality: string | null
+      province: string | null
+      zipCode: string | null
+      type: string
+      builtM2: number
+      rooms: number
+      bathrooms: number
+      yearBuilt: number | null
+      state: string | null
+      floor: string | null
+      hasElevator: boolean
+      hasGarage: boolean
+      hasTerrace: boolean
+      hasPool: boolean
+      hasGarden: boolean
+      hasStorage: boolean
+      contactName: string
+      contactPhone: string
+      contactEmail: string
+      estimatedPrice: Prisma.Decimal
+      priceRangeMin: Prisma.Decimal
+      priceRangeMax: Prisma.Decimal
+      createdAt: Date
+      generatedById: number | null
+      propertyId: number | null
+    }, ExtArgs["result"]["valuationRequest"]>
+    composites: {}
+  }
+
+  type ValuationRequestGetPayload<S extends boolean | null | undefined | ValuationRequestDefaultArgs> = $Result.GetResult<Prisma.$ValuationRequestPayload, S>
+
+  type ValuationRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ValuationRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ValuationRequestCountAggregateInputType | true
+    }
+
+  export interface ValuationRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ValuationRequest'], meta: { name: 'ValuationRequest' } }
+    /**
+     * Find zero or one ValuationRequest that matches the filter.
+     * @param {ValuationRequestFindUniqueArgs} args - Arguments to find a ValuationRequest
+     * @example
+     * // Get one ValuationRequest
+     * const valuationRequest = await prisma.valuationRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ValuationRequestFindUniqueArgs>(args: SelectSubset<T, ValuationRequestFindUniqueArgs<ExtArgs>>): Prisma__ValuationRequestClient<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ValuationRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ValuationRequestFindUniqueOrThrowArgs} args - Arguments to find a ValuationRequest
+     * @example
+     * // Get one ValuationRequest
+     * const valuationRequest = await prisma.valuationRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ValuationRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, ValuationRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ValuationRequestClient<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ValuationRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationRequestFindFirstArgs} args - Arguments to find a ValuationRequest
+     * @example
+     * // Get one ValuationRequest
+     * const valuationRequest = await prisma.valuationRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ValuationRequestFindFirstArgs>(args?: SelectSubset<T, ValuationRequestFindFirstArgs<ExtArgs>>): Prisma__ValuationRequestClient<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ValuationRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationRequestFindFirstOrThrowArgs} args - Arguments to find a ValuationRequest
+     * @example
+     * // Get one ValuationRequest
+     * const valuationRequest = await prisma.valuationRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ValuationRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, ValuationRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__ValuationRequestClient<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ValuationRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ValuationRequests
+     * const valuationRequests = await prisma.valuationRequest.findMany()
+     * 
+     * // Get first 10 ValuationRequests
+     * const valuationRequests = await prisma.valuationRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const valuationRequestWithIdOnly = await prisma.valuationRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ValuationRequestFindManyArgs>(args?: SelectSubset<T, ValuationRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ValuationRequest.
+     * @param {ValuationRequestCreateArgs} args - Arguments to create a ValuationRequest.
+     * @example
+     * // Create one ValuationRequest
+     * const ValuationRequest = await prisma.valuationRequest.create({
+     *   data: {
+     *     // ... data to create a ValuationRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends ValuationRequestCreateArgs>(args: SelectSubset<T, ValuationRequestCreateArgs<ExtArgs>>): Prisma__ValuationRequestClient<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ValuationRequests.
+     * @param {ValuationRequestCreateManyArgs} args - Arguments to create many ValuationRequests.
+     * @example
+     * // Create many ValuationRequests
+     * const valuationRequest = await prisma.valuationRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ValuationRequestCreateManyArgs>(args?: SelectSubset<T, ValuationRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ValuationRequests and returns the data saved in the database.
+     * @param {ValuationRequestCreateManyAndReturnArgs} args - Arguments to create many ValuationRequests.
+     * @example
+     * // Create many ValuationRequests
+     * const valuationRequest = await prisma.valuationRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ValuationRequests and only return the `id`
+     * const valuationRequestWithIdOnly = await prisma.valuationRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ValuationRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, ValuationRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ValuationRequest.
+     * @param {ValuationRequestDeleteArgs} args - Arguments to delete one ValuationRequest.
+     * @example
+     * // Delete one ValuationRequest
+     * const ValuationRequest = await prisma.valuationRequest.delete({
+     *   where: {
+     *     // ... filter to delete one ValuationRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ValuationRequestDeleteArgs>(args: SelectSubset<T, ValuationRequestDeleteArgs<ExtArgs>>): Prisma__ValuationRequestClient<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ValuationRequest.
+     * @param {ValuationRequestUpdateArgs} args - Arguments to update one ValuationRequest.
+     * @example
+     * // Update one ValuationRequest
+     * const valuationRequest = await prisma.valuationRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ValuationRequestUpdateArgs>(args: SelectSubset<T, ValuationRequestUpdateArgs<ExtArgs>>): Prisma__ValuationRequestClient<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ValuationRequests.
+     * @param {ValuationRequestDeleteManyArgs} args - Arguments to filter ValuationRequests to delete.
+     * @example
+     * // Delete a few ValuationRequests
+     * const { count } = await prisma.valuationRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ValuationRequestDeleteManyArgs>(args?: SelectSubset<T, ValuationRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ValuationRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ValuationRequests
+     * const valuationRequest = await prisma.valuationRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ValuationRequestUpdateManyArgs>(args: SelectSubset<T, ValuationRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ValuationRequests and returns the data updated in the database.
+     * @param {ValuationRequestUpdateManyAndReturnArgs} args - Arguments to update many ValuationRequests.
+     * @example
+     * // Update many ValuationRequests
+     * const valuationRequest = await prisma.valuationRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ValuationRequests and only return the `id`
+     * const valuationRequestWithIdOnly = await prisma.valuationRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ValuationRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, ValuationRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ValuationRequest.
+     * @param {ValuationRequestUpsertArgs} args - Arguments to update or create a ValuationRequest.
+     * @example
+     * // Update or create a ValuationRequest
+     * const valuationRequest = await prisma.valuationRequest.upsert({
+     *   create: {
+     *     // ... data to create a ValuationRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ValuationRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ValuationRequestUpsertArgs>(args: SelectSubset<T, ValuationRequestUpsertArgs<ExtArgs>>): Prisma__ValuationRequestClient<$Result.GetResult<Prisma.$ValuationRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ValuationRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationRequestCountArgs} args - Arguments to filter ValuationRequests to count.
+     * @example
+     * // Count the number of ValuationRequests
+     * const count = await prisma.valuationRequest.count({
+     *   where: {
+     *     // ... the filter for the ValuationRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends ValuationRequestCountArgs>(
+      args?: Subset<T, ValuationRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ValuationRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ValuationRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ValuationRequestAggregateArgs>(args: Subset<T, ValuationRequestAggregateArgs>): Prisma.PrismaPromise<GetValuationRequestAggregateType<T>>
+
+    /**
+     * Group by ValuationRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValuationRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ValuationRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ValuationRequestGroupByArgs['orderBy'] }
+        : { orderBy?: ValuationRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ValuationRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetValuationRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ValuationRequest model
+   */
+  readonly fields: ValuationRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ValuationRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ValuationRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    config<T extends ValuationRequest$configArgs<ExtArgs> = {}>(args?: Subset<T, ValuationRequest$configArgs<ExtArgs>>): Prisma__ValuationWidgetConfigClient<$Result.GetResult<Prisma.$ValuationWidgetConfigPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    generatedBy<T extends ValuationRequest$generatedByArgs<ExtArgs> = {}>(args?: Subset<T, ValuationRequest$generatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    property<T extends ValuationRequest$propertyArgs<ExtArgs> = {}>(args?: Subset<T, ValuationRequest$propertyArgs<ExtArgs>>): Prisma__PropertyClient<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ValuationRequest model
+   */
+  interface ValuationRequestFieldRefs {
+    readonly id: FieldRef<"ValuationRequest", 'Int'>
+    readonly widgetConfigId: FieldRef<"ValuationRequest", 'Int'>
+    readonly address: FieldRef<"ValuationRequest", 'String'>
+    readonly municipality: FieldRef<"ValuationRequest", 'String'>
+    readonly province: FieldRef<"ValuationRequest", 'String'>
+    readonly zipCode: FieldRef<"ValuationRequest", 'String'>
+    readonly type: FieldRef<"ValuationRequest", 'String'>
+    readonly builtM2: FieldRef<"ValuationRequest", 'Float'>
+    readonly rooms: FieldRef<"ValuationRequest", 'Int'>
+    readonly bathrooms: FieldRef<"ValuationRequest", 'Int'>
+    readonly yearBuilt: FieldRef<"ValuationRequest", 'Int'>
+    readonly state: FieldRef<"ValuationRequest", 'String'>
+    readonly floor: FieldRef<"ValuationRequest", 'String'>
+    readonly hasElevator: FieldRef<"ValuationRequest", 'Boolean'>
+    readonly hasGarage: FieldRef<"ValuationRequest", 'Boolean'>
+    readonly hasTerrace: FieldRef<"ValuationRequest", 'Boolean'>
+    readonly hasPool: FieldRef<"ValuationRequest", 'Boolean'>
+    readonly hasGarden: FieldRef<"ValuationRequest", 'Boolean'>
+    readonly hasStorage: FieldRef<"ValuationRequest", 'Boolean'>
+    readonly contactName: FieldRef<"ValuationRequest", 'String'>
+    readonly contactPhone: FieldRef<"ValuationRequest", 'String'>
+    readonly contactEmail: FieldRef<"ValuationRequest", 'String'>
+    readonly estimatedPrice: FieldRef<"ValuationRequest", 'Decimal'>
+    readonly priceRangeMin: FieldRef<"ValuationRequest", 'Decimal'>
+    readonly priceRangeMax: FieldRef<"ValuationRequest", 'Decimal'>
+    readonly createdAt: FieldRef<"ValuationRequest", 'DateTime'>
+    readonly generatedById: FieldRef<"ValuationRequest", 'Int'>
+    readonly propertyId: FieldRef<"ValuationRequest", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ValuationRequest findUnique
+   */
+  export type ValuationRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationRequest to fetch.
+     */
+    where: ValuationRequestWhereUniqueInput
+  }
+
+  /**
+   * ValuationRequest findUniqueOrThrow
+   */
+  export type ValuationRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationRequest to fetch.
+     */
+    where: ValuationRequestWhereUniqueInput
+  }
+
+  /**
+   * ValuationRequest findFirst
+   */
+  export type ValuationRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationRequest to fetch.
+     */
+    where?: ValuationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ValuationRequests to fetch.
+     */
+    orderBy?: ValuationRequestOrderByWithRelationInput | ValuationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ValuationRequests.
+     */
+    cursor?: ValuationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ValuationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ValuationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ValuationRequests.
+     */
+    distinct?: ValuationRequestScalarFieldEnum | ValuationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ValuationRequest findFirstOrThrow
+   */
+  export type ValuationRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationRequest to fetch.
+     */
+    where?: ValuationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ValuationRequests to fetch.
+     */
+    orderBy?: ValuationRequestOrderByWithRelationInput | ValuationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ValuationRequests.
+     */
+    cursor?: ValuationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ValuationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ValuationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ValuationRequests.
+     */
+    distinct?: ValuationRequestScalarFieldEnum | ValuationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ValuationRequest findMany
+   */
+  export type ValuationRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ValuationRequests to fetch.
+     */
+    where?: ValuationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ValuationRequests to fetch.
+     */
+    orderBy?: ValuationRequestOrderByWithRelationInput | ValuationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ValuationRequests.
+     */
+    cursor?: ValuationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ValuationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ValuationRequests.
+     */
+    skip?: number
+    distinct?: ValuationRequestScalarFieldEnum | ValuationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ValuationRequest create
+   */
+  export type ValuationRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ValuationRequest.
+     */
+    data: XOR<ValuationRequestCreateInput, ValuationRequestUncheckedCreateInput>
+  }
+
+  /**
+   * ValuationRequest createMany
+   */
+  export type ValuationRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ValuationRequests.
+     */
+    data: ValuationRequestCreateManyInput | ValuationRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ValuationRequest createManyAndReturn
+   */
+  export type ValuationRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many ValuationRequests.
+     */
+    data: ValuationRequestCreateManyInput | ValuationRequestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ValuationRequest update
+   */
+  export type ValuationRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ValuationRequest.
+     */
+    data: XOR<ValuationRequestUpdateInput, ValuationRequestUncheckedUpdateInput>
+    /**
+     * Choose, which ValuationRequest to update.
+     */
+    where: ValuationRequestWhereUniqueInput
+  }
+
+  /**
+   * ValuationRequest updateMany
+   */
+  export type ValuationRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ValuationRequests.
+     */
+    data: XOR<ValuationRequestUpdateManyMutationInput, ValuationRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which ValuationRequests to update
+     */
+    where?: ValuationRequestWhereInput
+    /**
+     * Limit how many ValuationRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ValuationRequest updateManyAndReturn
+   */
+  export type ValuationRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update ValuationRequests.
+     */
+    data: XOR<ValuationRequestUpdateManyMutationInput, ValuationRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which ValuationRequests to update
+     */
+    where?: ValuationRequestWhereInput
+    /**
+     * Limit how many ValuationRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ValuationRequest upsert
+   */
+  export type ValuationRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ValuationRequest to update in case it exists.
+     */
+    where: ValuationRequestWhereUniqueInput
+    /**
+     * In case the ValuationRequest found by the `where` argument doesn't exist, create a new ValuationRequest with this data.
+     */
+    create: XOR<ValuationRequestCreateInput, ValuationRequestUncheckedCreateInput>
+    /**
+     * In case the ValuationRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ValuationRequestUpdateInput, ValuationRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * ValuationRequest delete
+   */
+  export type ValuationRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+    /**
+     * Filter which ValuationRequest to delete.
+     */
+    where: ValuationRequestWhereUniqueInput
+  }
+
+  /**
+   * ValuationRequest deleteMany
+   */
+  export type ValuationRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ValuationRequests to delete
+     */
+    where?: ValuationRequestWhereInput
+    /**
+     * Limit how many ValuationRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ValuationRequest.config
+   */
+  export type ValuationRequest$configArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationWidgetConfig
+     */
+    select?: ValuationWidgetConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationWidgetConfig
+     */
+    omit?: ValuationWidgetConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationWidgetConfigInclude<ExtArgs> | null
+    where?: ValuationWidgetConfigWhereInput
+  }
+
+  /**
+   * ValuationRequest.generatedBy
+   */
+  export type ValuationRequest$generatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * ValuationRequest.property
+   */
+  export type ValuationRequest$propertyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+  }
+
+  /**
+   * ValuationRequest without action
+   */
+  export type ValuationRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValuationRequest
+     */
+    select?: ValuationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ValuationRequest
+     */
+    omit?: ValuationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ValuationRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -47849,6 +50894,58 @@ export namespace Prisma {
   export type ForumTagScalarFieldEnum = (typeof ForumTagScalarFieldEnum)[keyof typeof ForumTagScalarFieldEnum]
 
 
+  export const ValuationWidgetConfigScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    name: 'name',
+    userId: 'userId',
+    logoUrl: 'logoUrl',
+    primaryColor: 'primaryColor',
+    secondaryColor: 'secondaryColor',
+    contactEmail: 'contactEmail',
+    contactPhone: 'contactPhone',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ValuationWidgetConfigScalarFieldEnum = (typeof ValuationWidgetConfigScalarFieldEnum)[keyof typeof ValuationWidgetConfigScalarFieldEnum]
+
+
+  export const ValuationRequestScalarFieldEnum: {
+    id: 'id',
+    widgetConfigId: 'widgetConfigId',
+    address: 'address',
+    municipality: 'municipality',
+    province: 'province',
+    zipCode: 'zipCode',
+    type: 'type',
+    builtM2: 'builtM2',
+    rooms: 'rooms',
+    bathrooms: 'bathrooms',
+    yearBuilt: 'yearBuilt',
+    state: 'state',
+    floor: 'floor',
+    hasElevator: 'hasElevator',
+    hasGarage: 'hasGarage',
+    hasTerrace: 'hasTerrace',
+    hasPool: 'hasPool',
+    hasGarden: 'hasGarden',
+    hasStorage: 'hasStorage',
+    contactName: 'contactName',
+    contactPhone: 'contactPhone',
+    contactEmail: 'contactEmail',
+    estimatedPrice: 'estimatedPrice',
+    priceRangeMin: 'priceRangeMin',
+    priceRangeMax: 'priceRangeMax',
+    createdAt: 'createdAt',
+    generatedById: 'generatedById',
+    propertyId: 'propertyId'
+  };
+
+  export type ValuationRequestScalarFieldEnum = (typeof ValuationRequestScalarFieldEnum)[keyof typeof ValuationRequestScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -48273,6 +51370,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryListRelationFilter
     forumTopics?: ForumTopicListRelationFilter
     forumPosts?: ForumPostListRelationFilter
+    valuationConfigs?: ValuationWidgetConfigListRelationFilter
+    valuationsGenerated?: ValuationRequestListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -48312,6 +51411,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryOrderByRelationAggregateInput
     forumTopics?: ForumTopicOrderByRelationAggregateInput
     forumPosts?: ForumPostOrderByRelationAggregateInput
+    valuationConfigs?: ValuationWidgetConfigOrderByRelationAggregateInput
+    valuationsGenerated?: ValuationRequestOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -48354,6 +51455,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryListRelationFilter
     forumTopics?: ForumTopicListRelationFilter
     forumPosts?: ForumPostListRelationFilter
+    valuationConfigs?: ValuationWidgetConfigListRelationFilter
+    valuationsGenerated?: ValuationRequestListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -48744,6 +51847,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonListRelationFilter
     reminders?: ReminderListRelationFilter
     flyers?: FlyerListRelationFilter
+    valuations?: ValuationRequestListRelationFilter
   }
 
   export type PropertyOrderByWithRelationInput = {
@@ -48786,6 +51890,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonOrderByRelationAggregateInput
     reminders?: ReminderOrderByRelationAggregateInput
     flyers?: FlyerOrderByRelationAggregateInput
+    valuations?: ValuationRequestOrderByRelationAggregateInput
   }
 
   export type PropertyWhereUniqueInput = Prisma.AtLeast<{
@@ -48832,6 +51937,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonListRelationFilter
     reminders?: ReminderListRelationFilter
     flyers?: FlyerListRelationFilter
+    valuations?: ValuationRequestListRelationFilter
   }, "id" | "number_floor_buildingId">
 
   export type PropertyOrderByWithAggregationInput = {
@@ -51072,6 +54178,279 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"ForumTag"> | string
   }
 
+  export type ValuationWidgetConfigWhereInput = {
+    AND?: ValuationWidgetConfigWhereInput | ValuationWidgetConfigWhereInput[]
+    OR?: ValuationWidgetConfigWhereInput[]
+    NOT?: ValuationWidgetConfigWhereInput | ValuationWidgetConfigWhereInput[]
+    id?: IntFilter<"ValuationWidgetConfig"> | number
+    slug?: StringFilter<"ValuationWidgetConfig"> | string
+    name?: StringFilter<"ValuationWidgetConfig"> | string
+    userId?: IntFilter<"ValuationWidgetConfig"> | number
+    logoUrl?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    primaryColor?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    secondaryColor?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    contactEmail?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    contactPhone?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    isActive?: BoolFilter<"ValuationWidgetConfig"> | boolean
+    createdAt?: DateTimeFilter<"ValuationWidgetConfig"> | Date | string
+    updatedAt?: DateTimeFilter<"ValuationWidgetConfig"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    requests?: ValuationRequestListRelationFilter
+  }
+
+  export type ValuationWidgetConfigOrderByWithRelationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    primaryColor?: SortOrderInput | SortOrder
+    secondaryColor?: SortOrderInput | SortOrder
+    contactEmail?: SortOrderInput | SortOrder
+    contactPhone?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    requests?: ValuationRequestOrderByRelationAggregateInput
+  }
+
+  export type ValuationWidgetConfigWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    slug?: string
+    AND?: ValuationWidgetConfigWhereInput | ValuationWidgetConfigWhereInput[]
+    OR?: ValuationWidgetConfigWhereInput[]
+    NOT?: ValuationWidgetConfigWhereInput | ValuationWidgetConfigWhereInput[]
+    name?: StringFilter<"ValuationWidgetConfig"> | string
+    userId?: IntFilter<"ValuationWidgetConfig"> | number
+    logoUrl?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    primaryColor?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    secondaryColor?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    contactEmail?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    contactPhone?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    isActive?: BoolFilter<"ValuationWidgetConfig"> | boolean
+    createdAt?: DateTimeFilter<"ValuationWidgetConfig"> | Date | string
+    updatedAt?: DateTimeFilter<"ValuationWidgetConfig"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    requests?: ValuationRequestListRelationFilter
+  }, "id" | "slug">
+
+  export type ValuationWidgetConfigOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    primaryColor?: SortOrderInput | SortOrder
+    secondaryColor?: SortOrderInput | SortOrder
+    contactEmail?: SortOrderInput | SortOrder
+    contactPhone?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ValuationWidgetConfigCountOrderByAggregateInput
+    _avg?: ValuationWidgetConfigAvgOrderByAggregateInput
+    _max?: ValuationWidgetConfigMaxOrderByAggregateInput
+    _min?: ValuationWidgetConfigMinOrderByAggregateInput
+    _sum?: ValuationWidgetConfigSumOrderByAggregateInput
+  }
+
+  export type ValuationWidgetConfigScalarWhereWithAggregatesInput = {
+    AND?: ValuationWidgetConfigScalarWhereWithAggregatesInput | ValuationWidgetConfigScalarWhereWithAggregatesInput[]
+    OR?: ValuationWidgetConfigScalarWhereWithAggregatesInput[]
+    NOT?: ValuationWidgetConfigScalarWhereWithAggregatesInput | ValuationWidgetConfigScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ValuationWidgetConfig"> | number
+    slug?: StringWithAggregatesFilter<"ValuationWidgetConfig"> | string
+    name?: StringWithAggregatesFilter<"ValuationWidgetConfig"> | string
+    userId?: IntWithAggregatesFilter<"ValuationWidgetConfig"> | number
+    logoUrl?: StringNullableWithAggregatesFilter<"ValuationWidgetConfig"> | string | null
+    primaryColor?: StringNullableWithAggregatesFilter<"ValuationWidgetConfig"> | string | null
+    secondaryColor?: StringNullableWithAggregatesFilter<"ValuationWidgetConfig"> | string | null
+    contactEmail?: StringNullableWithAggregatesFilter<"ValuationWidgetConfig"> | string | null
+    contactPhone?: StringNullableWithAggregatesFilter<"ValuationWidgetConfig"> | string | null
+    isActive?: BoolWithAggregatesFilter<"ValuationWidgetConfig"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ValuationWidgetConfig"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ValuationWidgetConfig"> | Date | string
+  }
+
+  export type ValuationRequestWhereInput = {
+    AND?: ValuationRequestWhereInput | ValuationRequestWhereInput[]
+    OR?: ValuationRequestWhereInput[]
+    NOT?: ValuationRequestWhereInput | ValuationRequestWhereInput[]
+    id?: IntFilter<"ValuationRequest"> | number
+    widgetConfigId?: IntNullableFilter<"ValuationRequest"> | number | null
+    address?: StringFilter<"ValuationRequest"> | string
+    municipality?: StringNullableFilter<"ValuationRequest"> | string | null
+    province?: StringNullableFilter<"ValuationRequest"> | string | null
+    zipCode?: StringNullableFilter<"ValuationRequest"> | string | null
+    type?: StringFilter<"ValuationRequest"> | string
+    builtM2?: FloatFilter<"ValuationRequest"> | number
+    rooms?: IntFilter<"ValuationRequest"> | number
+    bathrooms?: IntFilter<"ValuationRequest"> | number
+    yearBuilt?: IntNullableFilter<"ValuationRequest"> | number | null
+    state?: StringNullableFilter<"ValuationRequest"> | string | null
+    floor?: StringNullableFilter<"ValuationRequest"> | string | null
+    hasElevator?: BoolFilter<"ValuationRequest"> | boolean
+    hasGarage?: BoolFilter<"ValuationRequest"> | boolean
+    hasTerrace?: BoolFilter<"ValuationRequest"> | boolean
+    hasPool?: BoolFilter<"ValuationRequest"> | boolean
+    hasGarden?: BoolFilter<"ValuationRequest"> | boolean
+    hasStorage?: BoolFilter<"ValuationRequest"> | boolean
+    contactName?: StringFilter<"ValuationRequest"> | string
+    contactPhone?: StringFilter<"ValuationRequest"> | string
+    contactEmail?: StringFilter<"ValuationRequest"> | string
+    estimatedPrice?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"ValuationRequest"> | Date | string
+    generatedById?: IntNullableFilter<"ValuationRequest"> | number | null
+    propertyId?: IntNullableFilter<"ValuationRequest"> | number | null
+    config?: XOR<ValuationWidgetConfigNullableScalarRelationFilter, ValuationWidgetConfigWhereInput> | null
+    generatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    property?: XOR<PropertyNullableScalarRelationFilter, PropertyWhereInput> | null
+  }
+
+  export type ValuationRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    widgetConfigId?: SortOrderInput | SortOrder
+    address?: SortOrder
+    municipality?: SortOrderInput | SortOrder
+    province?: SortOrderInput | SortOrder
+    zipCode?: SortOrderInput | SortOrder
+    type?: SortOrder
+    builtM2?: SortOrder
+    rooms?: SortOrder
+    bathrooms?: SortOrder
+    yearBuilt?: SortOrderInput | SortOrder
+    state?: SortOrderInput | SortOrder
+    floor?: SortOrderInput | SortOrder
+    hasElevator?: SortOrder
+    hasGarage?: SortOrder
+    hasTerrace?: SortOrder
+    hasPool?: SortOrder
+    hasGarden?: SortOrder
+    hasStorage?: SortOrder
+    contactName?: SortOrder
+    contactPhone?: SortOrder
+    contactEmail?: SortOrder
+    estimatedPrice?: SortOrder
+    priceRangeMin?: SortOrder
+    priceRangeMax?: SortOrder
+    createdAt?: SortOrder
+    generatedById?: SortOrderInput | SortOrder
+    propertyId?: SortOrderInput | SortOrder
+    config?: ValuationWidgetConfigOrderByWithRelationInput
+    generatedBy?: UserOrderByWithRelationInput
+    property?: PropertyOrderByWithRelationInput
+  }
+
+  export type ValuationRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ValuationRequestWhereInput | ValuationRequestWhereInput[]
+    OR?: ValuationRequestWhereInput[]
+    NOT?: ValuationRequestWhereInput | ValuationRequestWhereInput[]
+    widgetConfigId?: IntNullableFilter<"ValuationRequest"> | number | null
+    address?: StringFilter<"ValuationRequest"> | string
+    municipality?: StringNullableFilter<"ValuationRequest"> | string | null
+    province?: StringNullableFilter<"ValuationRequest"> | string | null
+    zipCode?: StringNullableFilter<"ValuationRequest"> | string | null
+    type?: StringFilter<"ValuationRequest"> | string
+    builtM2?: FloatFilter<"ValuationRequest"> | number
+    rooms?: IntFilter<"ValuationRequest"> | number
+    bathrooms?: IntFilter<"ValuationRequest"> | number
+    yearBuilt?: IntNullableFilter<"ValuationRequest"> | number | null
+    state?: StringNullableFilter<"ValuationRequest"> | string | null
+    floor?: StringNullableFilter<"ValuationRequest"> | string | null
+    hasElevator?: BoolFilter<"ValuationRequest"> | boolean
+    hasGarage?: BoolFilter<"ValuationRequest"> | boolean
+    hasTerrace?: BoolFilter<"ValuationRequest"> | boolean
+    hasPool?: BoolFilter<"ValuationRequest"> | boolean
+    hasGarden?: BoolFilter<"ValuationRequest"> | boolean
+    hasStorage?: BoolFilter<"ValuationRequest"> | boolean
+    contactName?: StringFilter<"ValuationRequest"> | string
+    contactPhone?: StringFilter<"ValuationRequest"> | string
+    contactEmail?: StringFilter<"ValuationRequest"> | string
+    estimatedPrice?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"ValuationRequest"> | Date | string
+    generatedById?: IntNullableFilter<"ValuationRequest"> | number | null
+    propertyId?: IntNullableFilter<"ValuationRequest"> | number | null
+    config?: XOR<ValuationWidgetConfigNullableScalarRelationFilter, ValuationWidgetConfigWhereInput> | null
+    generatedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    property?: XOR<PropertyNullableScalarRelationFilter, PropertyWhereInput> | null
+  }, "id">
+
+  export type ValuationRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    widgetConfigId?: SortOrderInput | SortOrder
+    address?: SortOrder
+    municipality?: SortOrderInput | SortOrder
+    province?: SortOrderInput | SortOrder
+    zipCode?: SortOrderInput | SortOrder
+    type?: SortOrder
+    builtM2?: SortOrder
+    rooms?: SortOrder
+    bathrooms?: SortOrder
+    yearBuilt?: SortOrderInput | SortOrder
+    state?: SortOrderInput | SortOrder
+    floor?: SortOrderInput | SortOrder
+    hasElevator?: SortOrder
+    hasGarage?: SortOrder
+    hasTerrace?: SortOrder
+    hasPool?: SortOrder
+    hasGarden?: SortOrder
+    hasStorage?: SortOrder
+    contactName?: SortOrder
+    contactPhone?: SortOrder
+    contactEmail?: SortOrder
+    estimatedPrice?: SortOrder
+    priceRangeMin?: SortOrder
+    priceRangeMax?: SortOrder
+    createdAt?: SortOrder
+    generatedById?: SortOrderInput | SortOrder
+    propertyId?: SortOrderInput | SortOrder
+    _count?: ValuationRequestCountOrderByAggregateInput
+    _avg?: ValuationRequestAvgOrderByAggregateInput
+    _max?: ValuationRequestMaxOrderByAggregateInput
+    _min?: ValuationRequestMinOrderByAggregateInput
+    _sum?: ValuationRequestSumOrderByAggregateInput
+  }
+
+  export type ValuationRequestScalarWhereWithAggregatesInput = {
+    AND?: ValuationRequestScalarWhereWithAggregatesInput | ValuationRequestScalarWhereWithAggregatesInput[]
+    OR?: ValuationRequestScalarWhereWithAggregatesInput[]
+    NOT?: ValuationRequestScalarWhereWithAggregatesInput | ValuationRequestScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ValuationRequest"> | number
+    widgetConfigId?: IntNullableWithAggregatesFilter<"ValuationRequest"> | number | null
+    address?: StringWithAggregatesFilter<"ValuationRequest"> | string
+    municipality?: StringNullableWithAggregatesFilter<"ValuationRequest"> | string | null
+    province?: StringNullableWithAggregatesFilter<"ValuationRequest"> | string | null
+    zipCode?: StringNullableWithAggregatesFilter<"ValuationRequest"> | string | null
+    type?: StringWithAggregatesFilter<"ValuationRequest"> | string
+    builtM2?: FloatWithAggregatesFilter<"ValuationRequest"> | number
+    rooms?: IntWithAggregatesFilter<"ValuationRequest"> | number
+    bathrooms?: IntWithAggregatesFilter<"ValuationRequest"> | number
+    yearBuilt?: IntNullableWithAggregatesFilter<"ValuationRequest"> | number | null
+    state?: StringNullableWithAggregatesFilter<"ValuationRequest"> | string | null
+    floor?: StringNullableWithAggregatesFilter<"ValuationRequest"> | string | null
+    hasElevator?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
+    hasGarage?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
+    hasTerrace?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
+    hasPool?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
+    hasGarden?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
+    hasStorage?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
+    contactName?: StringWithAggregatesFilter<"ValuationRequest"> | string
+    contactPhone?: StringWithAggregatesFilter<"ValuationRequest"> | string
+    contactEmail?: StringWithAggregatesFilter<"ValuationRequest"> | string
+    estimatedPrice?: DecimalWithAggregatesFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalWithAggregatesFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalWithAggregatesFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeWithAggregatesFilter<"ValuationRequest"> | Date | string
+    generatedById?: IntNullableWithAggregatesFilter<"ValuationRequest"> | number | null
+    propertyId?: IntNullableWithAggregatesFilter<"ValuationRequest"> | number | null
+  }
+
   export type PingCreateInput = {
     value: string
   }
@@ -51208,6 +54587,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -51247,6 +54628,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUpdateInput = {
@@ -51285,6 +54668,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -51324,6 +54709,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -51708,6 +55095,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateInput = {
@@ -51746,6 +55134,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUpdateInput = {
@@ -51783,6 +55172,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateInput = {
@@ -51821,6 +55211,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyCreateManyInput = {
@@ -54096,6 +57487,322 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ValuationWidgetConfigCreateInput = {
+    slug: string
+    name: string
+    logoUrl?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    contactEmail?: string | null
+    contactPhone?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutValuationConfigsInput
+    requests?: ValuationRequestCreateNestedManyWithoutConfigInput
+  }
+
+  export type ValuationWidgetConfigUncheckedCreateInput = {
+    id?: number
+    slug: string
+    name: string
+    userId: number
+    logoUrl?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    contactEmail?: string | null
+    contactPhone?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    requests?: ValuationRequestUncheckedCreateNestedManyWithoutConfigInput
+  }
+
+  export type ValuationWidgetConfigUpdateInput = {
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutValuationConfigsNestedInput
+    requests?: ValuationRequestUpdateManyWithoutConfigNestedInput
+  }
+
+  export type ValuationWidgetConfigUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requests?: ValuationRequestUncheckedUpdateManyWithoutConfigNestedInput
+  }
+
+  export type ValuationWidgetConfigCreateManyInput = {
+    id?: number
+    slug: string
+    name: string
+    userId: number
+    logoUrl?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    contactEmail?: string | null
+    contactPhone?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ValuationWidgetConfigUpdateManyMutationInput = {
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ValuationWidgetConfigUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ValuationRequestCreateInput = {
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    config?: ValuationWidgetConfigCreateNestedOneWithoutRequestsInput
+    generatedBy?: UserCreateNestedOneWithoutValuationsGeneratedInput
+    property?: PropertyCreateNestedOneWithoutValuationsInput
+  }
+
+  export type ValuationRequestUncheckedCreateInput = {
+    id?: number
+    widgetConfigId?: number | null
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    generatedById?: number | null
+    propertyId?: number | null
+  }
+
+  export type ValuationRequestUpdateInput = {
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    config?: ValuationWidgetConfigUpdateOneWithoutRequestsNestedInput
+    generatedBy?: UserUpdateOneWithoutValuationsGeneratedNestedInput
+    property?: PropertyUpdateOneWithoutValuationsNestedInput
+  }
+
+  export type ValuationRequestUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    widgetConfigId?: NullableIntFieldUpdateOperationsInput | number | null
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedById?: NullableIntFieldUpdateOperationsInput | number | null
+    propertyId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ValuationRequestCreateManyInput = {
+    id?: number
+    widgetConfigId?: number | null
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    generatedById?: number | null
+    propertyId?: number | null
+  }
+
+  export type ValuationRequestUpdateManyMutationInput = {
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ValuationRequestUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    widgetConfigId?: NullableIntFieldUpdateOperationsInput | number | null
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedById?: NullableIntFieldUpdateOperationsInput | number | null
+    propertyId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -54413,6 +58120,18 @@ export namespace Prisma {
     none?: ForumPostWhereInput
   }
 
+  export type ValuationWidgetConfigListRelationFilter = {
+    every?: ValuationWidgetConfigWhereInput
+    some?: ValuationWidgetConfigWhereInput
+    none?: ValuationWidgetConfigWhereInput
+  }
+
+  export type ValuationRequestListRelationFilter = {
+    every?: ValuationRequestWhereInput
+    some?: ValuationRequestWhereInput
+    none?: ValuationRequestWhereInput
+  }
+
   export type AssignmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -54474,6 +58193,14 @@ export namespace Prisma {
   }
 
   export type ForumPostOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ValuationWidgetConfigOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ValuationRequestOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -56640,6 +60367,214 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type ValuationWidgetConfigCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    logoUrl?: SortOrder
+    primaryColor?: SortOrder
+    secondaryColor?: SortOrder
+    contactEmail?: SortOrder
+    contactPhone?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ValuationWidgetConfigAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ValuationWidgetConfigMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    logoUrl?: SortOrder
+    primaryColor?: SortOrder
+    secondaryColor?: SortOrder
+    contactEmail?: SortOrder
+    contactPhone?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ValuationWidgetConfigMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    logoUrl?: SortOrder
+    primaryColor?: SortOrder
+    secondaryColor?: SortOrder
+    contactEmail?: SortOrder
+    contactPhone?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ValuationWidgetConfigSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type ValuationWidgetConfigNullableScalarRelationFilter = {
+    is?: ValuationWidgetConfigWhereInput | null
+    isNot?: ValuationWidgetConfigWhereInput | null
+  }
+
+  export type ValuationRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    widgetConfigId?: SortOrder
+    address?: SortOrder
+    municipality?: SortOrder
+    province?: SortOrder
+    zipCode?: SortOrder
+    type?: SortOrder
+    builtM2?: SortOrder
+    rooms?: SortOrder
+    bathrooms?: SortOrder
+    yearBuilt?: SortOrder
+    state?: SortOrder
+    floor?: SortOrder
+    hasElevator?: SortOrder
+    hasGarage?: SortOrder
+    hasTerrace?: SortOrder
+    hasPool?: SortOrder
+    hasGarden?: SortOrder
+    hasStorage?: SortOrder
+    contactName?: SortOrder
+    contactPhone?: SortOrder
+    contactEmail?: SortOrder
+    estimatedPrice?: SortOrder
+    priceRangeMin?: SortOrder
+    priceRangeMax?: SortOrder
+    createdAt?: SortOrder
+    generatedById?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type ValuationRequestAvgOrderByAggregateInput = {
+    id?: SortOrder
+    widgetConfigId?: SortOrder
+    builtM2?: SortOrder
+    rooms?: SortOrder
+    bathrooms?: SortOrder
+    yearBuilt?: SortOrder
+    estimatedPrice?: SortOrder
+    priceRangeMin?: SortOrder
+    priceRangeMax?: SortOrder
+    generatedById?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type ValuationRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    widgetConfigId?: SortOrder
+    address?: SortOrder
+    municipality?: SortOrder
+    province?: SortOrder
+    zipCode?: SortOrder
+    type?: SortOrder
+    builtM2?: SortOrder
+    rooms?: SortOrder
+    bathrooms?: SortOrder
+    yearBuilt?: SortOrder
+    state?: SortOrder
+    floor?: SortOrder
+    hasElevator?: SortOrder
+    hasGarage?: SortOrder
+    hasTerrace?: SortOrder
+    hasPool?: SortOrder
+    hasGarden?: SortOrder
+    hasStorage?: SortOrder
+    contactName?: SortOrder
+    contactPhone?: SortOrder
+    contactEmail?: SortOrder
+    estimatedPrice?: SortOrder
+    priceRangeMin?: SortOrder
+    priceRangeMax?: SortOrder
+    createdAt?: SortOrder
+    generatedById?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type ValuationRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    widgetConfigId?: SortOrder
+    address?: SortOrder
+    municipality?: SortOrder
+    province?: SortOrder
+    zipCode?: SortOrder
+    type?: SortOrder
+    builtM2?: SortOrder
+    rooms?: SortOrder
+    bathrooms?: SortOrder
+    yearBuilt?: SortOrder
+    state?: SortOrder
+    floor?: SortOrder
+    hasElevator?: SortOrder
+    hasGarage?: SortOrder
+    hasTerrace?: SortOrder
+    hasPool?: SortOrder
+    hasGarden?: SortOrder
+    hasStorage?: SortOrder
+    contactName?: SortOrder
+    contactPhone?: SortOrder
+    contactEmail?: SortOrder
+    estimatedPrice?: SortOrder
+    priceRangeMin?: SortOrder
+    priceRangeMax?: SortOrder
+    createdAt?: SortOrder
+    generatedById?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type ValuationRequestSumOrderByAggregateInput = {
+    id?: SortOrder
+    widgetConfigId?: SortOrder
+    builtM2?: SortOrder
+    rooms?: SortOrder
+    bathrooms?: SortOrder
+    yearBuilt?: SortOrder
+    estimatedPrice?: SortOrder
+    priceRangeMin?: SortOrder
+    priceRangeMax?: SortOrder
+    generatedById?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -56888,6 +60823,20 @@ export namespace Prisma {
     connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
   }
 
+  export type ValuationWidgetConfigCreateNestedManyWithoutUserInput = {
+    create?: XOR<ValuationWidgetConfigCreateWithoutUserInput, ValuationWidgetConfigUncheckedCreateWithoutUserInput> | ValuationWidgetConfigCreateWithoutUserInput[] | ValuationWidgetConfigUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ValuationWidgetConfigCreateOrConnectWithoutUserInput | ValuationWidgetConfigCreateOrConnectWithoutUserInput[]
+    createMany?: ValuationWidgetConfigCreateManyUserInputEnvelope
+    connect?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+  }
+
+  export type ValuationRequestCreateNestedManyWithoutGeneratedByInput = {
+    create?: XOR<ValuationRequestCreateWithoutGeneratedByInput, ValuationRequestUncheckedCreateWithoutGeneratedByInput> | ValuationRequestCreateWithoutGeneratedByInput[] | ValuationRequestUncheckedCreateWithoutGeneratedByInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutGeneratedByInput | ValuationRequestCreateOrConnectWithoutGeneratedByInput[]
+    createMany?: ValuationRequestCreateManyGeneratedByInputEnvelope
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+  }
+
   export type UserRoleUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -57026,6 +60975,20 @@ export namespace Prisma {
     connectOrCreate?: ForumPostCreateOrConnectWithoutAuthorInput | ForumPostCreateOrConnectWithoutAuthorInput[]
     createMany?: ForumPostCreateManyAuthorInputEnvelope
     connect?: ForumPostWhereUniqueInput | ForumPostWhereUniqueInput[]
+  }
+
+  export type ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ValuationWidgetConfigCreateWithoutUserInput, ValuationWidgetConfigUncheckedCreateWithoutUserInput> | ValuationWidgetConfigCreateWithoutUserInput[] | ValuationWidgetConfigUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ValuationWidgetConfigCreateOrConnectWithoutUserInput | ValuationWidgetConfigCreateOrConnectWithoutUserInput[]
+    createMany?: ValuationWidgetConfigCreateManyUserInputEnvelope
+    connect?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+  }
+
+  export type ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput = {
+    create?: XOR<ValuationRequestCreateWithoutGeneratedByInput, ValuationRequestUncheckedCreateWithoutGeneratedByInput> | ValuationRequestCreateWithoutGeneratedByInput[] | ValuationRequestUncheckedCreateWithoutGeneratedByInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutGeneratedByInput | ValuationRequestCreateOrConnectWithoutGeneratedByInput[]
+    createMany?: ValuationRequestCreateManyGeneratedByInputEnvelope
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -57321,6 +61284,34 @@ export namespace Prisma {
     deleteMany?: ForumPostScalarWhereInput | ForumPostScalarWhereInput[]
   }
 
+  export type ValuationWidgetConfigUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ValuationWidgetConfigCreateWithoutUserInput, ValuationWidgetConfigUncheckedCreateWithoutUserInput> | ValuationWidgetConfigCreateWithoutUserInput[] | ValuationWidgetConfigUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ValuationWidgetConfigCreateOrConnectWithoutUserInput | ValuationWidgetConfigCreateOrConnectWithoutUserInput[]
+    upsert?: ValuationWidgetConfigUpsertWithWhereUniqueWithoutUserInput | ValuationWidgetConfigUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ValuationWidgetConfigCreateManyUserInputEnvelope
+    set?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+    disconnect?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+    delete?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+    connect?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+    update?: ValuationWidgetConfigUpdateWithWhereUniqueWithoutUserInput | ValuationWidgetConfigUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ValuationWidgetConfigUpdateManyWithWhereWithoutUserInput | ValuationWidgetConfigUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ValuationWidgetConfigScalarWhereInput | ValuationWidgetConfigScalarWhereInput[]
+  }
+
+  export type ValuationRequestUpdateManyWithoutGeneratedByNestedInput = {
+    create?: XOR<ValuationRequestCreateWithoutGeneratedByInput, ValuationRequestUncheckedCreateWithoutGeneratedByInput> | ValuationRequestCreateWithoutGeneratedByInput[] | ValuationRequestUncheckedCreateWithoutGeneratedByInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutGeneratedByInput | ValuationRequestCreateOrConnectWithoutGeneratedByInput[]
+    upsert?: ValuationRequestUpsertWithWhereUniqueWithoutGeneratedByInput | ValuationRequestUpsertWithWhereUniqueWithoutGeneratedByInput[]
+    createMany?: ValuationRequestCreateManyGeneratedByInputEnvelope
+    set?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    disconnect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    delete?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    update?: ValuationRequestUpdateWithWhereUniqueWithoutGeneratedByInput | ValuationRequestUpdateWithWhereUniqueWithoutGeneratedByInput[]
+    updateMany?: ValuationRequestUpdateManyWithWhereWithoutGeneratedByInput | ValuationRequestUpdateManyWithWhereWithoutGeneratedByInput[]
+    deleteMany?: ValuationRequestScalarWhereInput | ValuationRequestScalarWhereInput[]
+  }
+
   export type UserRoleUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserRoleCreateWithoutUserInput, UserRoleUncheckedCreateWithoutUserInput> | UserRoleCreateWithoutUserInput[] | UserRoleUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUserInput | UserRoleCreateOrConnectWithoutUserInput[]
@@ -57599,6 +61590,34 @@ export namespace Prisma {
     update?: ForumPostUpdateWithWhereUniqueWithoutAuthorInput | ForumPostUpdateWithWhereUniqueWithoutAuthorInput[]
     updateMany?: ForumPostUpdateManyWithWhereWithoutAuthorInput | ForumPostUpdateManyWithWhereWithoutAuthorInput[]
     deleteMany?: ForumPostScalarWhereInput | ForumPostScalarWhereInput[]
+  }
+
+  export type ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ValuationWidgetConfigCreateWithoutUserInput, ValuationWidgetConfigUncheckedCreateWithoutUserInput> | ValuationWidgetConfigCreateWithoutUserInput[] | ValuationWidgetConfigUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ValuationWidgetConfigCreateOrConnectWithoutUserInput | ValuationWidgetConfigCreateOrConnectWithoutUserInput[]
+    upsert?: ValuationWidgetConfigUpsertWithWhereUniqueWithoutUserInput | ValuationWidgetConfigUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ValuationWidgetConfigCreateManyUserInputEnvelope
+    set?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+    disconnect?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+    delete?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+    connect?: ValuationWidgetConfigWhereUniqueInput | ValuationWidgetConfigWhereUniqueInput[]
+    update?: ValuationWidgetConfigUpdateWithWhereUniqueWithoutUserInput | ValuationWidgetConfigUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ValuationWidgetConfigUpdateManyWithWhereWithoutUserInput | ValuationWidgetConfigUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ValuationWidgetConfigScalarWhereInput | ValuationWidgetConfigScalarWhereInput[]
+  }
+
+  export type ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput = {
+    create?: XOR<ValuationRequestCreateWithoutGeneratedByInput, ValuationRequestUncheckedCreateWithoutGeneratedByInput> | ValuationRequestCreateWithoutGeneratedByInput[] | ValuationRequestUncheckedCreateWithoutGeneratedByInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutGeneratedByInput | ValuationRequestCreateOrConnectWithoutGeneratedByInput[]
+    upsert?: ValuationRequestUpsertWithWhereUniqueWithoutGeneratedByInput | ValuationRequestUpsertWithWhereUniqueWithoutGeneratedByInput[]
+    createMany?: ValuationRequestCreateManyGeneratedByInputEnvelope
+    set?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    disconnect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    delete?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    update?: ValuationRequestUpdateWithWhereUniqueWithoutGeneratedByInput | ValuationRequestUpdateWithWhereUniqueWithoutGeneratedByInput[]
+    updateMany?: ValuationRequestUpdateManyWithWhereWithoutGeneratedByInput | ValuationRequestUpdateManyWithWhereWithoutGeneratedByInput[]
+    deleteMany?: ValuationRequestScalarWhereInput | ValuationRequestScalarWhereInput[]
   }
 
   export type RolePermissionCreateNestedManyWithoutPermissionInput = {
@@ -58031,6 +62050,13 @@ export namespace Prisma {
     connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
   }
 
+  export type ValuationRequestCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ValuationRequestCreateWithoutPropertyInput, ValuationRequestUncheckedCreateWithoutPropertyInput> | ValuationRequestCreateWithoutPropertyInput[] | ValuationRequestUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutPropertyInput | ValuationRequestCreateOrConnectWithoutPropertyInput[]
+    createMany?: ValuationRequestCreateManyPropertyInputEnvelope
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+  }
+
   export type FollowUpUncheckedCreateNestedManyWithoutPropertyInput = {
     create?: XOR<FollowUpCreateWithoutPropertyInput, FollowUpUncheckedCreateWithoutPropertyInput> | FollowUpCreateWithoutPropertyInput[] | FollowUpUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: FollowUpCreateOrConnectWithoutPropertyInput | FollowUpCreateOrConnectWithoutPropertyInput[]
@@ -58071,6 +62097,13 @@ export namespace Prisma {
     connectOrCreate?: FlyerCreateOrConnectWithoutPropertyInput | FlyerCreateOrConnectWithoutPropertyInput[]
     createMany?: FlyerCreateManyPropertyInputEnvelope
     connect?: FlyerWhereUniqueInput | FlyerWhereUniqueInput[]
+  }
+
+  export type ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ValuationRequestCreateWithoutPropertyInput, ValuationRequestUncheckedCreateWithoutPropertyInput> | ValuationRequestCreateWithoutPropertyInput[] | ValuationRequestUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutPropertyInput | ValuationRequestCreateOrConnectWithoutPropertyInput[]
+    createMany?: ValuationRequestCreateManyPropertyInputEnvelope
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
   }
 
   export type NullableDecimalFieldUpdateOperationsInput = {
@@ -58207,6 +62240,20 @@ export namespace Prisma {
     deleteMany?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
   }
 
+  export type ValuationRequestUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ValuationRequestCreateWithoutPropertyInput, ValuationRequestUncheckedCreateWithoutPropertyInput> | ValuationRequestCreateWithoutPropertyInput[] | ValuationRequestUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutPropertyInput | ValuationRequestCreateOrConnectWithoutPropertyInput[]
+    upsert?: ValuationRequestUpsertWithWhereUniqueWithoutPropertyInput | ValuationRequestUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ValuationRequestCreateManyPropertyInputEnvelope
+    set?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    disconnect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    delete?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    update?: ValuationRequestUpdateWithWhereUniqueWithoutPropertyInput | ValuationRequestUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ValuationRequestUpdateManyWithWhereWithoutPropertyInput | ValuationRequestUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ValuationRequestScalarWhereInput | ValuationRequestScalarWhereInput[]
+  }
+
   export type FollowUpUncheckedUpdateManyWithoutPropertyNestedInput = {
     create?: XOR<FollowUpCreateWithoutPropertyInput, FollowUpUncheckedCreateWithoutPropertyInput> | FollowUpCreateWithoutPropertyInput[] | FollowUpUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: FollowUpCreateOrConnectWithoutPropertyInput | FollowUpCreateOrConnectWithoutPropertyInput[]
@@ -58289,6 +62336,20 @@ export namespace Prisma {
     update?: FlyerUpdateWithWhereUniqueWithoutPropertyInput | FlyerUpdateWithWhereUniqueWithoutPropertyInput[]
     updateMany?: FlyerUpdateManyWithWhereWithoutPropertyInput | FlyerUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: FlyerScalarWhereInput | FlyerScalarWhereInput[]
+  }
+
+  export type ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ValuationRequestCreateWithoutPropertyInput, ValuationRequestUncheckedCreateWithoutPropertyInput> | ValuationRequestCreateWithoutPropertyInput[] | ValuationRequestUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutPropertyInput | ValuationRequestCreateOrConnectWithoutPropertyInput[]
+    upsert?: ValuationRequestUpsertWithWhereUniqueWithoutPropertyInput | ValuationRequestUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ValuationRequestCreateManyPropertyInputEnvelope
+    set?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    disconnect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    delete?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    update?: ValuationRequestUpdateWithWhereUniqueWithoutPropertyInput | ValuationRequestUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ValuationRequestUpdateManyWithWhereWithoutPropertyInput | ValuationRequestUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ValuationRequestScalarWhereInput | ValuationRequestScalarWhereInput[]
   }
 
   export type PropertyCreateNestedOneWithoutAttachmentsInput = {
@@ -59983,6 +64044,118 @@ export namespace Prisma {
     deleteMany?: ForumTopicScalarWhereInput | ForumTopicScalarWhereInput[]
   }
 
+  export type UserCreateNestedOneWithoutValuationConfigsInput = {
+    create?: XOR<UserCreateWithoutValuationConfigsInput, UserUncheckedCreateWithoutValuationConfigsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutValuationConfigsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ValuationRequestCreateNestedManyWithoutConfigInput = {
+    create?: XOR<ValuationRequestCreateWithoutConfigInput, ValuationRequestUncheckedCreateWithoutConfigInput> | ValuationRequestCreateWithoutConfigInput[] | ValuationRequestUncheckedCreateWithoutConfigInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutConfigInput | ValuationRequestCreateOrConnectWithoutConfigInput[]
+    createMany?: ValuationRequestCreateManyConfigInputEnvelope
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+  }
+
+  export type ValuationRequestUncheckedCreateNestedManyWithoutConfigInput = {
+    create?: XOR<ValuationRequestCreateWithoutConfigInput, ValuationRequestUncheckedCreateWithoutConfigInput> | ValuationRequestCreateWithoutConfigInput[] | ValuationRequestUncheckedCreateWithoutConfigInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutConfigInput | ValuationRequestCreateOrConnectWithoutConfigInput[]
+    createMany?: ValuationRequestCreateManyConfigInputEnvelope
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutValuationConfigsNestedInput = {
+    create?: XOR<UserCreateWithoutValuationConfigsInput, UserUncheckedCreateWithoutValuationConfigsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutValuationConfigsInput
+    upsert?: UserUpsertWithoutValuationConfigsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutValuationConfigsInput, UserUpdateWithoutValuationConfigsInput>, UserUncheckedUpdateWithoutValuationConfigsInput>
+  }
+
+  export type ValuationRequestUpdateManyWithoutConfigNestedInput = {
+    create?: XOR<ValuationRequestCreateWithoutConfigInput, ValuationRequestUncheckedCreateWithoutConfigInput> | ValuationRequestCreateWithoutConfigInput[] | ValuationRequestUncheckedCreateWithoutConfigInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutConfigInput | ValuationRequestCreateOrConnectWithoutConfigInput[]
+    upsert?: ValuationRequestUpsertWithWhereUniqueWithoutConfigInput | ValuationRequestUpsertWithWhereUniqueWithoutConfigInput[]
+    createMany?: ValuationRequestCreateManyConfigInputEnvelope
+    set?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    disconnect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    delete?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    update?: ValuationRequestUpdateWithWhereUniqueWithoutConfigInput | ValuationRequestUpdateWithWhereUniqueWithoutConfigInput[]
+    updateMany?: ValuationRequestUpdateManyWithWhereWithoutConfigInput | ValuationRequestUpdateManyWithWhereWithoutConfigInput[]
+    deleteMany?: ValuationRequestScalarWhereInput | ValuationRequestScalarWhereInput[]
+  }
+
+  export type ValuationRequestUncheckedUpdateManyWithoutConfigNestedInput = {
+    create?: XOR<ValuationRequestCreateWithoutConfigInput, ValuationRequestUncheckedCreateWithoutConfigInput> | ValuationRequestCreateWithoutConfigInput[] | ValuationRequestUncheckedCreateWithoutConfigInput[]
+    connectOrCreate?: ValuationRequestCreateOrConnectWithoutConfigInput | ValuationRequestCreateOrConnectWithoutConfigInput[]
+    upsert?: ValuationRequestUpsertWithWhereUniqueWithoutConfigInput | ValuationRequestUpsertWithWhereUniqueWithoutConfigInput[]
+    createMany?: ValuationRequestCreateManyConfigInputEnvelope
+    set?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    disconnect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    delete?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    connect?: ValuationRequestWhereUniqueInput | ValuationRequestWhereUniqueInput[]
+    update?: ValuationRequestUpdateWithWhereUniqueWithoutConfigInput | ValuationRequestUpdateWithWhereUniqueWithoutConfigInput[]
+    updateMany?: ValuationRequestUpdateManyWithWhereWithoutConfigInput | ValuationRequestUpdateManyWithWhereWithoutConfigInput[]
+    deleteMany?: ValuationRequestScalarWhereInput | ValuationRequestScalarWhereInput[]
+  }
+
+  export type ValuationWidgetConfigCreateNestedOneWithoutRequestsInput = {
+    create?: XOR<ValuationWidgetConfigCreateWithoutRequestsInput, ValuationWidgetConfigUncheckedCreateWithoutRequestsInput>
+    connectOrCreate?: ValuationWidgetConfigCreateOrConnectWithoutRequestsInput
+    connect?: ValuationWidgetConfigWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutValuationsGeneratedInput = {
+    create?: XOR<UserCreateWithoutValuationsGeneratedInput, UserUncheckedCreateWithoutValuationsGeneratedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutValuationsGeneratedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type PropertyCreateNestedOneWithoutValuationsInput = {
+    create?: XOR<PropertyCreateWithoutValuationsInput, PropertyUncheckedCreateWithoutValuationsInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutValuationsInput
+    connect?: PropertyWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ValuationWidgetConfigUpdateOneWithoutRequestsNestedInput = {
+    create?: XOR<ValuationWidgetConfigCreateWithoutRequestsInput, ValuationWidgetConfigUncheckedCreateWithoutRequestsInput>
+    connectOrCreate?: ValuationWidgetConfigCreateOrConnectWithoutRequestsInput
+    upsert?: ValuationWidgetConfigUpsertWithoutRequestsInput
+    disconnect?: ValuationWidgetConfigWhereInput | boolean
+    delete?: ValuationWidgetConfigWhereInput | boolean
+    connect?: ValuationWidgetConfigWhereUniqueInput
+    update?: XOR<XOR<ValuationWidgetConfigUpdateToOneWithWhereWithoutRequestsInput, ValuationWidgetConfigUpdateWithoutRequestsInput>, ValuationWidgetConfigUncheckedUpdateWithoutRequestsInput>
+  }
+
+  export type UserUpdateOneWithoutValuationsGeneratedNestedInput = {
+    create?: XOR<UserCreateWithoutValuationsGeneratedInput, UserUncheckedCreateWithoutValuationsGeneratedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutValuationsGeneratedInput
+    upsert?: UserUpsertWithoutValuationsGeneratedInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutValuationsGeneratedInput, UserUpdateWithoutValuationsGeneratedInput>, UserUncheckedUpdateWithoutValuationsGeneratedInput>
+  }
+
+  export type PropertyUpdateOneWithoutValuationsNestedInput = {
+    create?: XOR<PropertyCreateWithoutValuationsInput, PropertyUncheckedCreateWithoutValuationsInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutValuationsInput
+    upsert?: PropertyUpsertWithoutValuationsInput
+    disconnect?: PropertyWhereInput | boolean
+    delete?: PropertyWhereInput | boolean
+    connect?: PropertyWhereUniqueInput
+    update?: XOR<XOR<PropertyUpdateToOneWithWhereWithoutValuationsInput, PropertyUpdateWithoutValuationsInput>, PropertyUncheckedUpdateWithoutValuationsInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -60431,6 +64604,22 @@ export namespace Prisma {
     _max?: NestedEnumCardPriorityFilter<$PrismaModel>
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type RolePermissionCreateWithoutRoleInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -60804,6 +64993,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutCapturedByInput = {
@@ -60841,6 +65031,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutCapturedByInput = {
@@ -61269,6 +65460,114 @@ export namespace Prisma {
 
   export type ForumPostCreateManyAuthorInputEnvelope = {
     data: ForumPostCreateManyAuthorInput | ForumPostCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ValuationWidgetConfigCreateWithoutUserInput = {
+    slug: string
+    name: string
+    logoUrl?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    contactEmail?: string | null
+    contactPhone?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    requests?: ValuationRequestCreateNestedManyWithoutConfigInput
+  }
+
+  export type ValuationWidgetConfigUncheckedCreateWithoutUserInput = {
+    id?: number
+    slug: string
+    name: string
+    logoUrl?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    contactEmail?: string | null
+    contactPhone?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    requests?: ValuationRequestUncheckedCreateNestedManyWithoutConfigInput
+  }
+
+  export type ValuationWidgetConfigCreateOrConnectWithoutUserInput = {
+    where: ValuationWidgetConfigWhereUniqueInput
+    create: XOR<ValuationWidgetConfigCreateWithoutUserInput, ValuationWidgetConfigUncheckedCreateWithoutUserInput>
+  }
+
+  export type ValuationWidgetConfigCreateManyUserInputEnvelope = {
+    data: ValuationWidgetConfigCreateManyUserInput | ValuationWidgetConfigCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ValuationRequestCreateWithoutGeneratedByInput = {
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    config?: ValuationWidgetConfigCreateNestedOneWithoutRequestsInput
+    property?: PropertyCreateNestedOneWithoutValuationsInput
+  }
+
+  export type ValuationRequestUncheckedCreateWithoutGeneratedByInput = {
+    id?: number
+    widgetConfigId?: number | null
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    propertyId?: number | null
+  }
+
+  export type ValuationRequestCreateOrConnectWithoutGeneratedByInput = {
+    where: ValuationRequestWhereUniqueInput
+    create: XOR<ValuationRequestCreateWithoutGeneratedByInput, ValuationRequestUncheckedCreateWithoutGeneratedByInput>
+  }
+
+  export type ValuationRequestCreateManyGeneratedByInputEnvelope = {
+    data: ValuationRequestCreateManyGeneratedByInput | ValuationRequestCreateManyGeneratedByInput[]
     skipDuplicates?: boolean
   }
 
@@ -61863,6 +66162,90 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"ForumPost"> | Date | string | null
   }
 
+  export type ValuationWidgetConfigUpsertWithWhereUniqueWithoutUserInput = {
+    where: ValuationWidgetConfigWhereUniqueInput
+    update: XOR<ValuationWidgetConfigUpdateWithoutUserInput, ValuationWidgetConfigUncheckedUpdateWithoutUserInput>
+    create: XOR<ValuationWidgetConfigCreateWithoutUserInput, ValuationWidgetConfigUncheckedCreateWithoutUserInput>
+  }
+
+  export type ValuationWidgetConfigUpdateWithWhereUniqueWithoutUserInput = {
+    where: ValuationWidgetConfigWhereUniqueInput
+    data: XOR<ValuationWidgetConfigUpdateWithoutUserInput, ValuationWidgetConfigUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ValuationWidgetConfigUpdateManyWithWhereWithoutUserInput = {
+    where: ValuationWidgetConfigScalarWhereInput
+    data: XOR<ValuationWidgetConfigUpdateManyMutationInput, ValuationWidgetConfigUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ValuationWidgetConfigScalarWhereInput = {
+    AND?: ValuationWidgetConfigScalarWhereInput | ValuationWidgetConfigScalarWhereInput[]
+    OR?: ValuationWidgetConfigScalarWhereInput[]
+    NOT?: ValuationWidgetConfigScalarWhereInput | ValuationWidgetConfigScalarWhereInput[]
+    id?: IntFilter<"ValuationWidgetConfig"> | number
+    slug?: StringFilter<"ValuationWidgetConfig"> | string
+    name?: StringFilter<"ValuationWidgetConfig"> | string
+    userId?: IntFilter<"ValuationWidgetConfig"> | number
+    logoUrl?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    primaryColor?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    secondaryColor?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    contactEmail?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    contactPhone?: StringNullableFilter<"ValuationWidgetConfig"> | string | null
+    isActive?: BoolFilter<"ValuationWidgetConfig"> | boolean
+    createdAt?: DateTimeFilter<"ValuationWidgetConfig"> | Date | string
+    updatedAt?: DateTimeFilter<"ValuationWidgetConfig"> | Date | string
+  }
+
+  export type ValuationRequestUpsertWithWhereUniqueWithoutGeneratedByInput = {
+    where: ValuationRequestWhereUniqueInput
+    update: XOR<ValuationRequestUpdateWithoutGeneratedByInput, ValuationRequestUncheckedUpdateWithoutGeneratedByInput>
+    create: XOR<ValuationRequestCreateWithoutGeneratedByInput, ValuationRequestUncheckedCreateWithoutGeneratedByInput>
+  }
+
+  export type ValuationRequestUpdateWithWhereUniqueWithoutGeneratedByInput = {
+    where: ValuationRequestWhereUniqueInput
+    data: XOR<ValuationRequestUpdateWithoutGeneratedByInput, ValuationRequestUncheckedUpdateWithoutGeneratedByInput>
+  }
+
+  export type ValuationRequestUpdateManyWithWhereWithoutGeneratedByInput = {
+    where: ValuationRequestScalarWhereInput
+    data: XOR<ValuationRequestUpdateManyMutationInput, ValuationRequestUncheckedUpdateManyWithoutGeneratedByInput>
+  }
+
+  export type ValuationRequestScalarWhereInput = {
+    AND?: ValuationRequestScalarWhereInput | ValuationRequestScalarWhereInput[]
+    OR?: ValuationRequestScalarWhereInput[]
+    NOT?: ValuationRequestScalarWhereInput | ValuationRequestScalarWhereInput[]
+    id?: IntFilter<"ValuationRequest"> | number
+    widgetConfigId?: IntNullableFilter<"ValuationRequest"> | number | null
+    address?: StringFilter<"ValuationRequest"> | string
+    municipality?: StringNullableFilter<"ValuationRequest"> | string | null
+    province?: StringNullableFilter<"ValuationRequest"> | string | null
+    zipCode?: StringNullableFilter<"ValuationRequest"> | string | null
+    type?: StringFilter<"ValuationRequest"> | string
+    builtM2?: FloatFilter<"ValuationRequest"> | number
+    rooms?: IntFilter<"ValuationRequest"> | number
+    bathrooms?: IntFilter<"ValuationRequest"> | number
+    yearBuilt?: IntNullableFilter<"ValuationRequest"> | number | null
+    state?: StringNullableFilter<"ValuationRequest"> | string | null
+    floor?: StringNullableFilter<"ValuationRequest"> | string | null
+    hasElevator?: BoolFilter<"ValuationRequest"> | boolean
+    hasGarage?: BoolFilter<"ValuationRequest"> | boolean
+    hasTerrace?: BoolFilter<"ValuationRequest"> | boolean
+    hasPool?: BoolFilter<"ValuationRequest"> | boolean
+    hasGarden?: BoolFilter<"ValuationRequest"> | boolean
+    hasStorage?: BoolFilter<"ValuationRequest"> | boolean
+    contactName?: StringFilter<"ValuationRequest"> | string
+    contactPhone?: StringFilter<"ValuationRequest"> | string
+    contactEmail?: StringFilter<"ValuationRequest"> | string
+    estimatedPrice?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"ValuationRequest"> | Date | string
+    generatedById?: IntNullableFilter<"ValuationRequest"> | number | null
+    propertyId?: IntNullableFilter<"ValuationRequest"> | number | null
+  }
+
   export type RolePermissionCreateWithoutPermissionInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -61962,6 +66345,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutRolesInput = {
@@ -62000,6 +66385,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutRolesInput = {
@@ -62083,6 +66470,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRolesInput = {
@@ -62121,6 +66510,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type PermissionCreateWithoutRolesInput = {
@@ -62492,6 +66883,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutBuildingInput = {
@@ -62529,6 +66921,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutBuildingInput = {
@@ -62973,6 +67366,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutCapturedPropertiesInput = {
@@ -63011,6 +67406,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutCapturedPropertiesInput = {
@@ -63254,6 +67651,75 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ValuationRequestCreateWithoutPropertyInput = {
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    config?: ValuationWidgetConfigCreateNestedOneWithoutRequestsInput
+    generatedBy?: UserCreateNestedOneWithoutValuationsGeneratedInput
+  }
+
+  export type ValuationRequestUncheckedCreateWithoutPropertyInput = {
+    id?: number
+    widgetConfigId?: number | null
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    generatedById?: number | null
+  }
+
+  export type ValuationRequestCreateOrConnectWithoutPropertyInput = {
+    where: ValuationRequestWhereUniqueInput
+    create: XOR<ValuationRequestCreateWithoutPropertyInput, ValuationRequestUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ValuationRequestCreateManyPropertyInputEnvelope = {
+    data: ValuationRequestCreateManyPropertyInput | ValuationRequestCreateManyPropertyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type FollowUpUpsertWithWhereUniqueWithoutPropertyInput = {
     where: FollowUpWhereUniqueInput
     update: XOR<FollowUpUpdateWithoutPropertyInput, FollowUpUncheckedUpdateWithoutPropertyInput>
@@ -63394,6 +67860,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCapturedPropertiesInput = {
@@ -63432,6 +67900,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type PersonUpsertWithoutPropertiesOwnedInput = {
@@ -63611,6 +68081,22 @@ export namespace Prisma {
     data: XOR<FlyerUpdateManyMutationInput, FlyerUncheckedUpdateManyWithoutPropertyInput>
   }
 
+  export type ValuationRequestUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: ValuationRequestWhereUniqueInput
+    update: XOR<ValuationRequestUpdateWithoutPropertyInput, ValuationRequestUncheckedUpdateWithoutPropertyInput>
+    create: XOR<ValuationRequestCreateWithoutPropertyInput, ValuationRequestUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ValuationRequestUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: ValuationRequestWhereUniqueInput
+    data: XOR<ValuationRequestUpdateWithoutPropertyInput, ValuationRequestUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type ValuationRequestUpdateManyWithWhereWithoutPropertyInput = {
+    where: ValuationRequestScalarWhereInput
+    data: XOR<ValuationRequestUpdateManyMutationInput, ValuationRequestUncheckedUpdateManyWithoutPropertyInput>
+  }
+
   export type PropertyCreateWithoutAttachmentsInput = {
     inmovillaCode: number
     number: string
@@ -63645,6 +68131,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutAttachmentsInput = {
@@ -63682,6 +68169,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutAttachmentsInput = {
@@ -63724,6 +68212,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutPropertyAttachmentsUploadedInput = {
@@ -63762,6 +68252,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutPropertyAttachmentsUploadedInput = {
@@ -63814,6 +68306,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutAttachmentsInput = {
@@ -63851,6 +68344,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserUpsertWithoutPropertyAttachmentsUploadedInput = {
@@ -63899,6 +68393,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPropertyAttachmentsUploadedInput = {
@@ -63937,6 +68433,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type BuildingCreateWithoutAttachmentsInput = {
@@ -64016,6 +68514,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutBuildingAttachmentsUploadedInput = {
@@ -64054,6 +68554,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutBuildingAttachmentsUploadedInput = {
@@ -64155,6 +68657,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBuildingAttachmentsUploadedInput = {
@@ -64193,6 +68697,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type BuildingCreateWithoutAssignmentsInput = {
@@ -64272,6 +68778,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutAssignmentsInput = {
@@ -64310,6 +68818,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutAssignmentsInput = {
@@ -64411,6 +68921,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssignmentsInput = {
@@ -64449,6 +68961,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type PropertyCreateWithoutFollowUpsInput = {
@@ -64485,6 +68999,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutFollowUpsInput = {
@@ -64522,6 +69037,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutFollowUpsInput = {
@@ -64564,6 +69080,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutFollowUpsInput = {
@@ -64602,6 +69120,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutFollowUpsInput = {
@@ -64752,6 +69272,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutFollowUpsInput = {
@@ -64789,6 +69310,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserUpsertWithoutFollowUpsInput = {
@@ -64837,6 +69359,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFollowUpsInput = {
@@ -64875,6 +69399,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type ReminderUpsertWithWhereUniqueWithoutFollowUpInput = {
@@ -65008,6 +69534,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutMailboxingInput = {
@@ -65046,6 +69574,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutMailboxingInput = {
@@ -65182,6 +69712,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMailboxingInput = {
@@ -65220,6 +69752,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type MailboxingAttachmentUpsertWithWhereUniqueWithoutMailboxingInput = {
@@ -65301,6 +69835,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutMailboxingAttachmentsUploadedInput = {
@@ -65339,6 +69875,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutMailboxingAttachmentsUploadedInput = {
@@ -65426,6 +69964,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMailboxingAttachmentsUploadedInput = {
@@ -65464,6 +70004,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type BuildingCreateWithoutContactInput = {
@@ -65668,6 +70210,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutOwnerInput = {
@@ -65705,6 +70248,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutOwnerInput = {
@@ -65751,6 +70295,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutTenantInput = {
@@ -65788,6 +70333,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutTenantInput = {
@@ -66210,6 +70756,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutRemindersCreatedInput = {
@@ -66248,6 +70796,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutRemindersCreatedInput = {
@@ -66371,6 +70921,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutRemindersInput = {
@@ -66408,6 +70959,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutRemindersInput = {
@@ -66450,6 +71002,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutRemindersResponsibleInput = {
@@ -66488,6 +71042,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutRemindersResponsibleInput = {
@@ -66634,6 +71190,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRemindersCreatedInput = {
@@ -66672,6 +71230,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type FollowUpUpsertWithoutRemindersInput = {
@@ -66813,6 +71373,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutRemindersInput = {
@@ -66850,6 +71411,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserUpsertWithoutRemindersResponsibleInput = {
@@ -66898,6 +71460,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRemindersResponsibleInput = {
@@ -66936,6 +71500,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type ReminderOccurrenceUpsertWithWhereUniqueWithoutReminderInput = {
@@ -67212,6 +71778,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutListingsInput = {
@@ -67249,6 +71816,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutListingsInput = {
@@ -67353,6 +71921,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutListingsInput = {
@@ -67390,6 +71959,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type ListingCreateWithoutListingTypeInput = {
@@ -67560,6 +72130,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
     flyers?: FlyerCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutPropertyPersonsInput = {
@@ -67597,6 +72168,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
     flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutPropertyPersonsInput = {
@@ -67699,6 +72271,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutPropertyPersonsInput = {
@@ -67736,6 +72309,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type FlyerCreateWithoutTemplateInput = {
@@ -67821,6 +72395,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
     reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutFlyersInput = {
@@ -67858,6 +72433,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
     propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
     reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    valuations?: ValuationRequestUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutFlyersInput = {
@@ -67928,6 +72504,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutFlyersGeneratedInput = {
@@ -67966,6 +72544,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutFlyersGeneratedInput = {
@@ -68041,6 +72621,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutFlyersInput = {
@@ -68078,6 +72659,7 @@ export namespace Prisma {
     attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type FlyerTemplateUpsertWithoutFlyersInput = {
@@ -68160,6 +72742,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFlyersGeneratedInput = {
@@ -68198,6 +72782,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type FlyerShipmentUpsertWithWhereUniqueWithoutFlyerInput = {
@@ -68279,6 +72865,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutFlyerShipmentsInput = {
@@ -68317,6 +72905,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutFlyerShipmentsInput = {
@@ -68404,6 +72994,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFlyerShipmentsInput = {
@@ -68442,6 +73034,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserCreateWithoutBoardsCreatedInput = {
@@ -68479,6 +73073,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutBoardsCreatedInput = {
@@ -68517,6 +73113,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutBoardsCreatedInput = {
@@ -68559,6 +73157,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutBoardsOwnedInput = {
@@ -68597,6 +73197,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutBoardsOwnedInput = {
@@ -68681,6 +73283,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBoardsCreatedInput = {
@@ -68719,6 +73323,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUpsertWithoutBoardsOwnedInput = {
@@ -68767,6 +73373,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBoardsOwnedInput = {
@@ -68805,6 +73413,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type BoardColumnUpsertWithWhereUniqueWithoutBoardInput = {
@@ -69015,6 +73625,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutCardsCreatedInput = {
@@ -69053,6 +73665,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutCardsCreatedInput = {
@@ -69095,6 +73709,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutCardsResponsibleInput = {
@@ -69133,6 +73749,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutCardsResponsibleInput = {
@@ -69264,6 +73882,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardsCreatedInput = {
@@ -69302,6 +73922,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUpsertWithoutCardsResponsibleInput = {
@@ -69350,6 +73972,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardsResponsibleInput = {
@@ -69388,6 +74012,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type CardTagUpsertWithWhereUniqueWithoutCardInput = {
@@ -69575,6 +74201,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutCardActivitiesInput = {
@@ -69613,6 +74241,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutCardActivitiesInput = {
@@ -69706,6 +74336,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCardActivitiesInput = {
@@ -69744,6 +74376,8 @@ export namespace Prisma {
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserCreateWithoutOcrHistoryInput = {
@@ -69781,6 +74415,8 @@ export namespace Prisma {
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutOcrHistoryInput = {
@@ -69819,6 +74455,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutOcrHistoryInput = {
@@ -69872,6 +74510,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutOcrHistoryInput = {
@@ -69910,6 +74550,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type ForumTopicCreateWithoutCategoryInput = {
@@ -70028,6 +74670,8 @@ export namespace Prisma {
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutForumTopicsInput = {
@@ -70066,6 +74710,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutForumTopicsInput = {
@@ -70192,6 +74838,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutForumTopicsInput = {
@@ -70230,6 +74878,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type ForumPostUpsertWithWhereUniqueWithoutTopicInput = {
@@ -70341,6 +74991,8 @@ export namespace Prisma {
     cardActivities?: CardActivityCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserUncheckedCreateWithoutForumPostsInput = {
@@ -70379,6 +75031,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
     ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
     forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
   }
 
   export type UserCreateOrConnectWithoutForumPostsInput = {
@@ -70472,6 +75126,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutForumPostsInput = {
@@ -70510,6 +75166,8 @@ export namespace Prisma {
     cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
     ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
     forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
   }
 
   export type ForumTopicCreateWithoutTagsInput = {
@@ -70560,6 +75218,679 @@ export namespace Prisma {
   export type ForumTopicUpdateManyWithWhereWithoutTagsInput = {
     where: ForumTopicScalarWhereInput
     data: XOR<ForumTopicUpdateManyMutationInput, ForumTopicUncheckedUpdateManyWithoutTagsInput>
+  }
+
+  export type UserCreateWithoutValuationConfigsInput = {
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleCreateNestedManyWithoutUserInput
+    assignments?: AssignmentCreateNestedManyWithoutUserInput
+    followUps?: FollowUpCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationsGenerated?: ValuationRequestCreateNestedManyWithoutGeneratedByInput
+  }
+
+  export type UserUncheckedCreateWithoutValuationConfigsInput = {
+    id?: number
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderUncheckedCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderUncheckedCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardUncheckedCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardUncheckedCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationsGenerated?: ValuationRequestUncheckedCreateNestedManyWithoutGeneratedByInput
+  }
+
+  export type UserCreateOrConnectWithoutValuationConfigsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutValuationConfigsInput, UserUncheckedCreateWithoutValuationConfigsInput>
+  }
+
+  export type ValuationRequestCreateWithoutConfigInput = {
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    generatedBy?: UserCreateNestedOneWithoutValuationsGeneratedInput
+    property?: PropertyCreateNestedOneWithoutValuationsInput
+  }
+
+  export type ValuationRequestUncheckedCreateWithoutConfigInput = {
+    id?: number
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    generatedById?: number | null
+    propertyId?: number | null
+  }
+
+  export type ValuationRequestCreateOrConnectWithoutConfigInput = {
+    where: ValuationRequestWhereUniqueInput
+    create: XOR<ValuationRequestCreateWithoutConfigInput, ValuationRequestUncheckedCreateWithoutConfigInput>
+  }
+
+  export type ValuationRequestCreateManyConfigInputEnvelope = {
+    data: ValuationRequestCreateManyConfigInput | ValuationRequestCreateManyConfigInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutValuationConfigsInput = {
+    update: XOR<UserUpdateWithoutValuationConfigsInput, UserUncheckedUpdateWithoutValuationConfigsInput>
+    create: XOR<UserCreateWithoutValuationConfigsInput, UserUncheckedCreateWithoutValuationConfigsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutValuationConfigsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutValuationConfigsInput, UserUncheckedUpdateWithoutValuationConfigsInput>
+  }
+
+  export type UserUpdateWithoutValuationConfigsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationsGenerated?: ValuationRequestUpdateManyWithoutGeneratedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutValuationConfigsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUncheckedUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUncheckedUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUncheckedUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUncheckedUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationsGenerated?: ValuationRequestUncheckedUpdateManyWithoutGeneratedByNestedInput
+  }
+
+  export type ValuationRequestUpsertWithWhereUniqueWithoutConfigInput = {
+    where: ValuationRequestWhereUniqueInput
+    update: XOR<ValuationRequestUpdateWithoutConfigInput, ValuationRequestUncheckedUpdateWithoutConfigInput>
+    create: XOR<ValuationRequestCreateWithoutConfigInput, ValuationRequestUncheckedCreateWithoutConfigInput>
+  }
+
+  export type ValuationRequestUpdateWithWhereUniqueWithoutConfigInput = {
+    where: ValuationRequestWhereUniqueInput
+    data: XOR<ValuationRequestUpdateWithoutConfigInput, ValuationRequestUncheckedUpdateWithoutConfigInput>
+  }
+
+  export type ValuationRequestUpdateManyWithWhereWithoutConfigInput = {
+    where: ValuationRequestScalarWhereInput
+    data: XOR<ValuationRequestUpdateManyMutationInput, ValuationRequestUncheckedUpdateManyWithoutConfigInput>
+  }
+
+  export type ValuationWidgetConfigCreateWithoutRequestsInput = {
+    slug: string
+    name: string
+    logoUrl?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    contactEmail?: string | null
+    contactPhone?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutValuationConfigsInput
+  }
+
+  export type ValuationWidgetConfigUncheckedCreateWithoutRequestsInput = {
+    id?: number
+    slug: string
+    name: string
+    userId: number
+    logoUrl?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    contactEmail?: string | null
+    contactPhone?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ValuationWidgetConfigCreateOrConnectWithoutRequestsInput = {
+    where: ValuationWidgetConfigWhereUniqueInput
+    create: XOR<ValuationWidgetConfigCreateWithoutRequestsInput, ValuationWidgetConfigUncheckedCreateWithoutRequestsInput>
+  }
+
+  export type UserCreateWithoutValuationsGeneratedInput = {
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleCreateNestedManyWithoutUserInput
+    assignments?: AssignmentCreateNestedManyWithoutUserInput
+    followUps?: FollowUpCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutValuationsGeneratedInput = {
+    id?: number
+    email: string
+    passwordHash: string
+    firstName: string
+    lastName: string
+    phone?: string | null
+    avatarUrl?: string | null
+    isActive?: boolean
+    emailVerified?: Date | string | null
+    verificationToken?: string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    completedTours?: UserCreatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutUserInput
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutSellerInput
+    mailboxing?: MailboxingUncheckedCreateNestedManyWithoutMailboxerInput
+    remindersCreated?: ReminderUncheckedCreateNestedManyWithoutCreatorInput
+    remindersResponsible?: ReminderUncheckedCreateNestedManyWithoutResponsibleInput
+    capturedProperties?: PropertyUncheckedCreateNestedManyWithoutCapturedByInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+    flyersGenerated?: FlyerUncheckedCreateNestedManyWithoutGeneratedByInput
+    flyerShipments?: FlyerShipmentUncheckedCreateNestedManyWithoutUserInput
+    boardsCreated?: BoardUncheckedCreateNestedManyWithoutCreatorInput
+    boardsOwned?: BoardUncheckedCreateNestedManyWithoutOwnerInput
+    cardsCreated?: BoardCardUncheckedCreateNestedManyWithoutCreatorInput
+    cardsResponsible?: BoardCardUncheckedCreateNestedManyWithoutResponsibleInput
+    cardActivities?: CardActivityUncheckedCreateNestedManyWithoutUserInput
+    ocrHistory?: OcrHistoryUncheckedCreateNestedManyWithoutUserInput
+    forumTopics?: ForumTopicUncheckedCreateNestedManyWithoutAuthorInput
+    forumPosts?: ForumPostUncheckedCreateNestedManyWithoutAuthorInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutValuationsGeneratedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutValuationsGeneratedInput, UserUncheckedCreateWithoutValuationsGeneratedInput>
+  }
+
+  export type PropertyCreateWithoutValuationsInput = {
+    inmovillaCode: number
+    number: string
+    floor: number
+    appraisalPrice?: Decimal | DecimalJsLike | number | string | null
+    occupiedBy?: string | null
+    importantNotice?: string | null
+    rso_comment?: string | null
+    noDisturb?: boolean
+    noDoormat?: boolean
+    noBell?: boolean
+    noCounter?: boolean
+    soldRentedUs?: boolean
+    branch?: string | null
+    salePrice?: Decimal | DecimalJsLike | number | string | null
+    rentalPrice?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.PropertyStatus
+    isPresident?: boolean
+    isInformer?: boolean
+    isSecondResidence?: boolean
+    isOpportunity?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    description?: string | null
+    followUps?: FollowUpCreateNestedManyWithoutPropertyInput
+    listings?: ListingCreateNestedManyWithoutPropertyInput
+    building: BuildingCreateNestedOneWithoutPropertiesInput
+    capturedBy?: UserCreateNestedOneWithoutCapturedPropertiesInput
+    owner?: PersonCreateNestedOneWithoutPropertiesOwnedInput
+    tenant?: PersonCreateNestedOneWithoutPropertiesTenantedInput
+    attachments?: PropertyAttachmentCreateNestedManyWithoutPropertyInput
+    propertyPersons?: PropertyPersonCreateNestedManyWithoutPropertyInput
+    reminders?: ReminderCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyUncheckedCreateWithoutValuationsInput = {
+    id?: number
+    inmovillaCode: number
+    number: string
+    floor: number
+    buildingId: number
+    ownerId?: number | null
+    tenantId?: number | null
+    capturedById?: number | null
+    appraisalPrice?: Decimal | DecimalJsLike | number | string | null
+    occupiedBy?: string | null
+    importantNotice?: string | null
+    rso_comment?: string | null
+    noDisturb?: boolean
+    noDoormat?: boolean
+    noBell?: boolean
+    noCounter?: boolean
+    soldRentedUs?: boolean
+    branch?: string | null
+    salePrice?: Decimal | DecimalJsLike | number | string | null
+    rentalPrice?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.PropertyStatus
+    isPresident?: boolean
+    isInformer?: boolean
+    isSecondResidence?: boolean
+    isOpportunity?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    description?: string | null
+    followUps?: FollowUpUncheckedCreateNestedManyWithoutPropertyInput
+    listings?: ListingUncheckedCreateNestedManyWithoutPropertyInput
+    attachments?: PropertyAttachmentUncheckedCreateNestedManyWithoutPropertyInput
+    propertyPersons?: PropertyPersonUncheckedCreateNestedManyWithoutPropertyInput
+    reminders?: ReminderUncheckedCreateNestedManyWithoutPropertyInput
+    flyers?: FlyerUncheckedCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyCreateOrConnectWithoutValuationsInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutValuationsInput, PropertyUncheckedCreateWithoutValuationsInput>
+  }
+
+  export type ValuationWidgetConfigUpsertWithoutRequestsInput = {
+    update: XOR<ValuationWidgetConfigUpdateWithoutRequestsInput, ValuationWidgetConfigUncheckedUpdateWithoutRequestsInput>
+    create: XOR<ValuationWidgetConfigCreateWithoutRequestsInput, ValuationWidgetConfigUncheckedCreateWithoutRequestsInput>
+    where?: ValuationWidgetConfigWhereInput
+  }
+
+  export type ValuationWidgetConfigUpdateToOneWithWhereWithoutRequestsInput = {
+    where?: ValuationWidgetConfigWhereInput
+    data: XOR<ValuationWidgetConfigUpdateWithoutRequestsInput, ValuationWidgetConfigUncheckedUpdateWithoutRequestsInput>
+  }
+
+  export type ValuationWidgetConfigUpdateWithoutRequestsInput = {
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutValuationConfigsNestedInput
+  }
+
+  export type ValuationWidgetConfigUncheckedUpdateWithoutRequestsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutValuationsGeneratedInput = {
+    update: XOR<UserUpdateWithoutValuationsGeneratedInput, UserUncheckedUpdateWithoutValuationsGeneratedInput>
+    create: XOR<UserCreateWithoutValuationsGeneratedInput, UserUncheckedCreateWithoutValuationsGeneratedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutValuationsGeneratedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutValuationsGeneratedInput, UserUncheckedUpdateWithoutValuationsGeneratedInput>
+  }
+
+  export type UserUpdateWithoutValuationsGeneratedInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutValuationsGeneratedInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedTours?: UserUpdatecompletedToursInput | string[]
+    roles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutUserNestedInput
+    followUps?: FollowUpUncheckedUpdateManyWithoutSellerNestedInput
+    mailboxing?: MailboxingUncheckedUpdateManyWithoutMailboxerNestedInput
+    remindersCreated?: ReminderUncheckedUpdateManyWithoutCreatorNestedInput
+    remindersResponsible?: ReminderUncheckedUpdateManyWithoutResponsibleNestedInput
+    capturedProperties?: PropertyUncheckedUpdateManyWithoutCapturedByNestedInput
+    propertyAttachmentsUploaded?: PropertyAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    buildingAttachmentsUploaded?: BuildingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    mailboxingAttachmentsUploaded?: MailboxingAttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+    flyersGenerated?: FlyerUncheckedUpdateManyWithoutGeneratedByNestedInput
+    flyerShipments?: FlyerShipmentUncheckedUpdateManyWithoutUserNestedInput
+    boardsCreated?: BoardUncheckedUpdateManyWithoutCreatorNestedInput
+    boardsOwned?: BoardUncheckedUpdateManyWithoutOwnerNestedInput
+    cardsCreated?: BoardCardUncheckedUpdateManyWithoutCreatorNestedInput
+    cardsResponsible?: BoardCardUncheckedUpdateManyWithoutResponsibleNestedInput
+    cardActivities?: CardActivityUncheckedUpdateManyWithoutUserNestedInput
+    ocrHistory?: OcrHistoryUncheckedUpdateManyWithoutUserNestedInput
+    forumTopics?: ForumTopicUncheckedUpdateManyWithoutAuthorNestedInput
+    forumPosts?: ForumPostUncheckedUpdateManyWithoutAuthorNestedInput
+    valuationConfigs?: ValuationWidgetConfigUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type PropertyUpsertWithoutValuationsInput = {
+    update: XOR<PropertyUpdateWithoutValuationsInput, PropertyUncheckedUpdateWithoutValuationsInput>
+    create: XOR<PropertyCreateWithoutValuationsInput, PropertyUncheckedCreateWithoutValuationsInput>
+    where?: PropertyWhereInput
+  }
+
+  export type PropertyUpdateToOneWithWhereWithoutValuationsInput = {
+    where?: PropertyWhereInput
+    data: XOR<PropertyUpdateWithoutValuationsInput, PropertyUncheckedUpdateWithoutValuationsInput>
+  }
+
+  export type PropertyUpdateWithoutValuationsInput = {
+    inmovillaCode?: IntFieldUpdateOperationsInput | number
+    number?: StringFieldUpdateOperationsInput | string
+    floor?: IntFieldUpdateOperationsInput | number
+    appraisalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    occupiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    importantNotice?: NullableStringFieldUpdateOperationsInput | string | null
+    rso_comment?: NullableStringFieldUpdateOperationsInput | string | null
+    noDisturb?: BoolFieldUpdateOperationsInput | boolean
+    noDoormat?: BoolFieldUpdateOperationsInput | boolean
+    noBell?: BoolFieldUpdateOperationsInput | boolean
+    noCounter?: BoolFieldUpdateOperationsInput | boolean
+    soldRentedUs?: BoolFieldUpdateOperationsInput | boolean
+    branch?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    isPresident?: BoolFieldUpdateOperationsInput | boolean
+    isInformer?: BoolFieldUpdateOperationsInput | boolean
+    isSecondResidence?: BoolFieldUpdateOperationsInput | boolean
+    isOpportunity?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    followUps?: FollowUpUpdateManyWithoutPropertyNestedInput
+    listings?: ListingUpdateManyWithoutPropertyNestedInput
+    building?: BuildingUpdateOneRequiredWithoutPropertiesNestedInput
+    capturedBy?: UserUpdateOneWithoutCapturedPropertiesNestedInput
+    owner?: PersonUpdateOneWithoutPropertiesOwnedNestedInput
+    tenant?: PersonUpdateOneWithoutPropertiesTenantedNestedInput
+    attachments?: PropertyAttachmentUpdateManyWithoutPropertyNestedInput
+    propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
+    reminders?: ReminderUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutValuationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    inmovillaCode?: IntFieldUpdateOperationsInput | number
+    number?: StringFieldUpdateOperationsInput | string
+    floor?: IntFieldUpdateOperationsInput | number
+    buildingId?: IntFieldUpdateOperationsInput | number
+    ownerId?: NullableIntFieldUpdateOperationsInput | number | null
+    tenantId?: NullableIntFieldUpdateOperationsInput | number | null
+    capturedById?: NullableIntFieldUpdateOperationsInput | number | null
+    appraisalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    occupiedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    importantNotice?: NullableStringFieldUpdateOperationsInput | string | null
+    rso_comment?: NullableStringFieldUpdateOperationsInput | string | null
+    noDisturb?: BoolFieldUpdateOperationsInput | boolean
+    noDoormat?: BoolFieldUpdateOperationsInput | boolean
+    noBell?: BoolFieldUpdateOperationsInput | boolean
+    noCounter?: BoolFieldUpdateOperationsInput | boolean
+    soldRentedUs?: BoolFieldUpdateOperationsInput | boolean
+    branch?: NullableStringFieldUpdateOperationsInput | string | null
+    salePrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    rentalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    isPresident?: BoolFieldUpdateOperationsInput | boolean
+    isInformer?: BoolFieldUpdateOperationsInput | boolean
+    isSecondResidence?: BoolFieldUpdateOperationsInput | boolean
+    isOpportunity?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    followUps?: FollowUpUncheckedUpdateManyWithoutPropertyNestedInput
+    listings?: ListingUncheckedUpdateManyWithoutPropertyNestedInput
+    attachments?: PropertyAttachmentUncheckedUpdateManyWithoutPropertyNestedInput
+    propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
+    reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
+    flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type RolePermissionCreateManyRoleInput = {
@@ -70877,6 +76208,50 @@ export namespace Prisma {
     deletedAt?: Date | string | null
   }
 
+  export type ValuationWidgetConfigCreateManyUserInput = {
+    id?: number
+    slug: string
+    name: string
+    logoUrl?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    contactEmail?: string | null
+    contactPhone?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ValuationRequestCreateManyGeneratedByInput = {
+    id?: number
+    widgetConfigId?: number | null
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    propertyId?: number | null
+  }
+
   export type UserRoleUpdateWithoutUserInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -71174,6 +76549,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutCapturedByInput = {
@@ -71211,6 +76587,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutCapturedByInput = {
@@ -71675,6 +77052,138 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type ValuationWidgetConfigUpdateWithoutUserInput = {
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requests?: ValuationRequestUpdateManyWithoutConfigNestedInput
+  }
+
+  export type ValuationWidgetConfigUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requests?: ValuationRequestUncheckedUpdateManyWithoutConfigNestedInput
+  }
+
+  export type ValuationWidgetConfigUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ValuationRequestUpdateWithoutGeneratedByInput = {
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    config?: ValuationWidgetConfigUpdateOneWithoutRequestsNestedInput
+    property?: PropertyUpdateOneWithoutValuationsNestedInput
+  }
+
+  export type ValuationRequestUncheckedUpdateWithoutGeneratedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    widgetConfigId?: NullableIntFieldUpdateOperationsInput | number | null
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    propertyId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ValuationRequestUncheckedUpdateManyWithoutGeneratedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    widgetConfigId?: NullableIntFieldUpdateOperationsInput | number | null
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    propertyId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type RolePermissionCreateManyPermissionInput = {
     roleId: number
     createdAt?: Date | string
@@ -71928,6 +77437,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutBuildingInput = {
@@ -71965,6 +77475,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutBuildingInput = {
@@ -72139,6 +77650,36 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+  }
+
+  export type ValuationRequestCreateManyPropertyInput = {
+    id?: number
+    widgetConfigId?: number | null
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    generatedById?: number | null
   }
 
   export type FollowUpUpdateWithoutPropertyInput = {
@@ -72378,6 +77919,95 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ValuationRequestUpdateWithoutPropertyInput = {
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    config?: ValuationWidgetConfigUpdateOneWithoutRequestsNestedInput
+    generatedBy?: UserUpdateOneWithoutValuationsGeneratedNestedInput
+  }
+
+  export type ValuationRequestUncheckedUpdateWithoutPropertyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    widgetConfigId?: NullableIntFieldUpdateOperationsInput | number | null
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedById?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ValuationRequestUncheckedUpdateManyWithoutPropertyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    widgetConfigId?: NullableIntFieldUpdateOperationsInput | number | null
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedById?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ReminderCreateManyFollowUpInput = {
@@ -72943,6 +78573,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutOwnerInput = {
@@ -72980,6 +78611,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutOwnerInput = {
@@ -73047,6 +78679,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutTenantInput = {
@@ -73084,6 +78717,7 @@ export namespace Prisma {
     propertyPersons?: PropertyPersonUncheckedUpdateManyWithoutPropertyNestedInput
     reminders?: ReminderUncheckedUpdateManyWithoutPropertyNestedInput
     flyers?: FlyerUncheckedUpdateManyWithoutPropertyNestedInput
+    valuations?: ValuationRequestUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutTenantInput = {
@@ -73723,6 +79357,125 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ValuationRequestCreateManyConfigInput = {
+    id?: number
+    address: string
+    municipality?: string | null
+    province?: string | null
+    zipCode?: string | null
+    type: string
+    builtM2: number
+    rooms: number
+    bathrooms: number
+    yearBuilt?: number | null
+    state?: string | null
+    floor?: string | null
+    hasElevator?: boolean
+    hasGarage?: boolean
+    hasTerrace?: boolean
+    hasPool?: boolean
+    hasGarden?: boolean
+    hasStorage?: boolean
+    contactName: string
+    contactPhone: string
+    contactEmail: string
+    estimatedPrice: Decimal | DecimalJsLike | number | string
+    priceRangeMin: Decimal | DecimalJsLike | number | string
+    priceRangeMax: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    generatedById?: number | null
+    propertyId?: number | null
+  }
+
+  export type ValuationRequestUpdateWithoutConfigInput = {
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedBy?: UserUpdateOneWithoutValuationsGeneratedNestedInput
+    property?: PropertyUpdateOneWithoutValuationsNestedInput
+  }
+
+  export type ValuationRequestUncheckedUpdateWithoutConfigInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedById?: NullableIntFieldUpdateOperationsInput | number | null
+    propertyId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ValuationRequestUncheckedUpdateManyWithoutConfigInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    municipality?: NullableStringFieldUpdateOperationsInput | string | null
+    province?: NullableStringFieldUpdateOperationsInput | string | null
+    zipCode?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    builtM2?: FloatFieldUpdateOperationsInput | number
+    rooms?: IntFieldUpdateOperationsInput | number
+    bathrooms?: IntFieldUpdateOperationsInput | number
+    yearBuilt?: NullableIntFieldUpdateOperationsInput | number | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    floor?: NullableStringFieldUpdateOperationsInput | string | null
+    hasElevator?: BoolFieldUpdateOperationsInput | boolean
+    hasGarage?: BoolFieldUpdateOperationsInput | boolean
+    hasTerrace?: BoolFieldUpdateOperationsInput | boolean
+    hasPool?: BoolFieldUpdateOperationsInput | boolean
+    hasGarden?: BoolFieldUpdateOperationsInput | boolean
+    hasStorage?: BoolFieldUpdateOperationsInput | boolean
+    contactName?: StringFieldUpdateOperationsInput | string
+    contactPhone?: StringFieldUpdateOperationsInput | string
+    contactEmail?: StringFieldUpdateOperationsInput | string
+    estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedById?: NullableIntFieldUpdateOperationsInput | number | null
+    propertyId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 
