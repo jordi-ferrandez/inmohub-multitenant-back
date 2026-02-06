@@ -5,6 +5,7 @@ import { randomUUID } from "crypto";
 import path from "path";
 import { promises as fs } from "fs";
 import axios from "axios";
+import { createWorker } from "tesseract.js";
 
 export interface AiContext {
   route: string;
@@ -69,12 +70,8 @@ export const extractTextFromImage = async (
   userId: number
 ): Promise<{ text: string; imageUrl: string }> => {
   console.log("🚀 Starting OCR process for user:", userId);
-  const apiKey = process.env.OPENROUTER_API_KEY;
-  
-  if (!apiKey) {
-    console.error("❌ OPENROUTER_API_KEY is missing in process.env");
-    throw new Error("OPENROUTER_API_KEY is not set.");
-  }
+
+
 
   // 1. Upload to S3
   const s3 = S3StorageService.getInstance();
@@ -96,51 +93,17 @@ export const extractTextFromImage = async (
     const imageUrl = s3.getPublicUrl(key);
     console.log("✅ Image uploaded to S3:", imageUrl);
 
-    // 2. Call OpenRouter with Vision model
-    const base64Image = fileBuffer.toString("base64");
-    console.log("🤖 Calling OpenRouter with Vision model...");
+    // 2. Call Tesseract.js
+    console.log("🤖 Calling Tesseract.js...");
 
     try {
-      const response = await axios.post(
-        "https://openrouter.ai/api/v1/chat/completions",
-        {
-          model: "google/gemini-2.0-flash-001",
-          messages: [
-            {
-              role: "user",
-              content: [
-                {
-                  type: "text",
-                  text: "Identify and transcribe all the text in this image. Return only the transcribed text precisely as it appears, preserving the structure if possible. If there is no text, return an empty string. If it's a document, mailbox, or sign, extract the relevant information."
-                },
-                {
-                  type: "image_url",
-                  image_url: {
-                    url: `data:${file.mimetype};base64,${base64Image}`
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            "HTTP-Referer": SITE_URL,
-            "X-Title": SITE_NAME,
-          },
-          maxContentLength: Infinity,
-          maxBodyLength: Infinity
-        }
-      );
+      const worker = await createWorker(['spa', 'eng']);
+      const { data: { text } } = await worker.recognize(file.path);
+      await worker.terminate();
 
-      console.log("📄 OpenRouter response received");
+      console.log("📄 Tesseract text extracted");
       
-      if (!response.data.choices || !response.data.choices[0]) {
-        throw new Error("Invalid response format from OpenRouter");
-      }
-
-      const extractedText = response.data.choices[0].message.content;
+      const extractedText = text;
 
       // 3. Save to History (Optional but recommended)
       try {
@@ -160,15 +123,8 @@ export const extractTextFromImage = async (
       return { text: extractedText, imageUrl };
 
     } catch (visionError: any) {
-      const rawMessage = visionError.response?.data?.error?.message || visionError.message;
-      console.error("❌ OpenRouter Vision Error:", rawMessage);
-      
-      let userFriendlyMessage = rawMessage;
-      if (rawMessage.includes("Insufficient credits") || rawMessage.includes("Credit balance is too low")) {
-        userFriendlyMessage = "fondos insuficientes";
-      }
-      
-      throw new Error(userFriendlyMessage);
+      console.error("❌ Tesseract Error:", visionError.message);
+      throw new Error("Error extracting text using Tesseract: " + visionError.message);
     }
 
   } catch (error: any) {
