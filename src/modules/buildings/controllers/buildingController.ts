@@ -8,6 +8,7 @@ import {
   GetBuildingsQuery,
   GetBuildingMailboxingsParams,
   GetBuildingMailboxingsQuery,
+  DeleteBuildingParams,
 } from "../types/buildingTypes";
 
 export class BuildingController {

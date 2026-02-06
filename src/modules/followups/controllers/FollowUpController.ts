@@ -240,6 +240,20 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups/directors/overview:
+   *   get:
+   *     tags: [FollowUps]
+   *     summary: Vista general de seguimientos para directores
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Resumen general de seguimientos
+   *       403:
+   *         description: Acceso denegado (requiere rol de director)
+   */
   async getDirectorsFollowUpOverview(
     req: Request,
     res: Response
@@ -320,6 +334,24 @@ export class FollowUpController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/followups/completed:
+   *   get:
+   *     tags: [FollowUps]
+   *     summary: Obtener seguimientos completados
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: userId
+   *         schema:
+   *           type: integer
+   *         description: Filtrar por usuario (opcional, para directores)
+   *     responses:
+   *       200:
+   *         description: Lista de seguimientos completados
+   */
   async getCompletedFollowUps(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
