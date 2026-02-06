@@ -2,6 +2,51 @@ import { Request, Response } from "express";
 import { chatWithAi, extractTextFromImage } from "./service";
 import { successResponse, errorResponse } from "@core/utils";
 
+/**
+ * @openapi
+ * /v1/ai/chat:
+ *   post:
+ *     tags: [AI]
+ *     summary: Chat with the AI assistant
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - messages
+ *             properties:
+ *               messages:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     role:
+ *                       type: string
+ *                       enum: [system, user, assistant]
+ *                     content:
+ *                       type: string
+ *               context:
+ *                 type: object
+ *                 properties:
+ *                   route:
+ *                     type: string
+ *                   screenTitle:
+ *                     type: string
+ *                   visibleData:
+ *                     type: object
+ *     responses:
+ *       200:
+ *         description: AI response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
 export const handleChat = async (req: Request, res: Response): Promise<void> => {
   try {
     const { messages, context } = req.body;
@@ -19,6 +64,41 @@ export const handleChat = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
+/**
+ * @openapi
+ * /v1/ai/ocr:
+ *   post:
+ *     tags: [AI]
+ *     summary: Extract text from an uploaded image
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Text extracted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 text:
+ *                   type: string
+ *                 imageUrl:
+ *                   type: string
+ *       400:
+ *         description: Image is required
+ *       401:
+ *         description: Unauthorized
+ */
 export const handleOcr = async (req: Request, res: Response): Promise<void> => {
   try {
     const userIdStr = req.user?.userId;

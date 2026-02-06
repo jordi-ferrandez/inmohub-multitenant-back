@@ -4,6 +4,16 @@ import { successResponse, errorResponse } from "@core/utils";
 
 export const forumController = {
   // Categories
+  /**
+   * @openapi
+   * /v1/forum/categories:
+   *   get:
+   *     tags: [Forum]
+   *     summary: Get all forum categories
+   *     responses:
+   *       200:
+   *         description: List of categories
+   */
   getCategories: async (req: Request, res: Response) => {
     try {
       const categories = await forumService.getCategories();
@@ -13,6 +23,27 @@ export const forumController = {
     }
   },
 
+  /**
+   * @openapi
+   * /v1/forum/categories:
+   *   post:
+   *     tags: [Forum]
+   *     summary: Create a new forum category
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               name:
+   *                 type: string
+   *               description:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Category created
+   */
   createCategory: async (req: Request, res: Response) => {
     try {
       // Basic check for admin could be added here
@@ -24,6 +55,29 @@ export const forumController = {
   },
 
   // Topics
+  /**
+   * @openapi
+   * /v1/forum/topics:
+   *   get:
+   *     tags: [Forum]
+   *     summary: Get forum topics
+   *     parameters:
+   *       - in: query
+   *         name: categoryId
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: List of topics
+   */
   getTopics: async (req: Request, res: Response) => {
     try {
       const categoryId = req.query.categoryId ? parseInt(req.query.categoryId as string) : undefined;
@@ -37,6 +91,24 @@ export const forumController = {
     }
   },
 
+  /**
+   * @openapi
+   * /v1/forum/topics/{id}:
+   *   get:
+   *     tags: [Forum]
+   *     summary: Get a topic by ID
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Topic details
+   *       404:
+   *         description: Topic not found
+   */
   getTopicById: async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id);
@@ -51,6 +123,31 @@ export const forumController = {
     }
   },
 
+  /**
+   * @openapi
+   * /v1/forum/topics:
+   *   post:
+   *     tags: [Forum]
+   *     summary: Create a new topic
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               title:
+   *                 type: string
+   *               content:
+   *                 type: string
+   *               categoryId:
+   *                 type: integer
+   *     responses:
+   *       201:
+   *         description: Topic created
+   */
   createTopic: async (req: Request, res: Response) => {
     try {
       const userId = parseInt(req.user?.userId as string);
@@ -65,6 +162,29 @@ export const forumController = {
   },
 
   // Posts
+  /**
+   * @openapi
+   * /v1/forum/posts:
+   *   post:
+   *     tags: [Forum]
+   *     summary: Create a new post in a topic
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               topicId:
+   *                 type: integer
+   *               content:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Post created
+   */
   createPost: async (req: Request, res: Response) => {
     try {
       const userId = parseInt(req.user?.userId as string);
@@ -79,6 +199,36 @@ export const forumController = {
   },
 
   // Moderation (simplified)
+  /**
+   * @openapi
+   * /v1/forum/topics/{id}/moderate:
+   *   post:
+   *     tags: [Forum]
+   *     summary: Moderate a topic (lock, pin, delete)
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               action:
+   *                 type: string
+   *                 enum: [lock, pin, delete]
+   *               value:
+   *                 type: boolean
+   *     responses:
+   *       200:
+   *         description: Action performed
+   */
   moderateTopic: async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id);
@@ -105,6 +255,24 @@ export const forumController = {
     }
   },
 
+  /**
+   * @openapi
+   * /v1/forum/posts/{id}:
+   *   delete:
+   *     tags: [Forum]
+   *     summary: Delete a post
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Post deleted
+   */
   deletePost: async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id);

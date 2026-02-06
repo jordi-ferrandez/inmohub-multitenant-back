@@ -117,6 +117,24 @@ export class AgentController {
   }
 
   // Obtener historial de seguimientos de una propiedad específica
+  /**
+   * @openapi
+   * /v1/agents/properties/{propertyId}/followups:
+   *   get:
+   *     tags: [Agents]
+   *     summary: Obtener historial de seguimientos de una propiedad específica (para agentes)
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: propertyId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Historial de seguimientos de la propiedad
+   */
   async getPropertyFollowUpsHistory(
     req: Request,
     res: Response
