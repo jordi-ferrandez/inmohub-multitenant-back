@@ -1,5 +1,5 @@
 import { prisma } from "@core/lib";
-import { Prisma, Property } from "./../../../../generated/prisma";
+import { Prisma, Property } from "../../../generated/prisma";
 import {
   GetPropertiesQuery,
 } from "../types/propertyTypes";
