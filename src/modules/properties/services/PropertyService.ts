@@ -99,7 +99,7 @@ export class PropertyService {
           }
         }   
 			}),
-			prisma.building.count(),
+			prisma.property.count(),
 		]);			
 		
 		if (!property) throw new Error("No existe properties");
