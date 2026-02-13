@@ -49213,9 +49213,9 @@ export namespace Prisma {
     hasPool: boolean
     hasGarden: boolean
     hasStorage: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName: string | null
+    contactPhone: string | null
+    contactEmail: string | null
     estimatedPrice: Decimal
     priceRangeMin: Decimal
     priceRangeMax: Decimal
@@ -49420,9 +49420,9 @@ export namespace Prisma {
       hasPool: boolean
       hasGarden: boolean
       hasStorage: boolean
-      contactName: string
-      contactPhone: string
-      contactEmail: string
+      contactName: string | null
+      contactPhone: string | null
+      contactEmail: string | null
       estimatedPrice: Prisma.Decimal
       priceRangeMin: Prisma.Decimal
       priceRangeMax: Prisma.Decimal
@@ -54296,9 +54296,9 @@ export namespace Prisma {
     hasPool?: BoolFilter<"ValuationRequest"> | boolean
     hasGarden?: BoolFilter<"ValuationRequest"> | boolean
     hasStorage?: BoolFilter<"ValuationRequest"> | boolean
-    contactName?: StringFilter<"ValuationRequest"> | string
-    contactPhone?: StringFilter<"ValuationRequest"> | string
-    contactEmail?: StringFilter<"ValuationRequest"> | string
+    contactName?: StringNullableFilter<"ValuationRequest"> | string | null
+    contactPhone?: StringNullableFilter<"ValuationRequest"> | string | null
+    contactEmail?: StringNullableFilter<"ValuationRequest"> | string | null
     estimatedPrice?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
@@ -54330,9 +54330,9 @@ export namespace Prisma {
     hasPool?: SortOrder
     hasGarden?: SortOrder
     hasStorage?: SortOrder
-    contactName?: SortOrder
-    contactPhone?: SortOrder
-    contactEmail?: SortOrder
+    contactName?: SortOrderInput | SortOrder
+    contactPhone?: SortOrderInput | SortOrder
+    contactEmail?: SortOrderInput | SortOrder
     estimatedPrice?: SortOrder
     priceRangeMin?: SortOrder
     priceRangeMax?: SortOrder
@@ -54367,9 +54367,9 @@ export namespace Prisma {
     hasPool?: BoolFilter<"ValuationRequest"> | boolean
     hasGarden?: BoolFilter<"ValuationRequest"> | boolean
     hasStorage?: BoolFilter<"ValuationRequest"> | boolean
-    contactName?: StringFilter<"ValuationRequest"> | string
-    contactPhone?: StringFilter<"ValuationRequest"> | string
-    contactEmail?: StringFilter<"ValuationRequest"> | string
+    contactName?: StringNullableFilter<"ValuationRequest"> | string | null
+    contactPhone?: StringNullableFilter<"ValuationRequest"> | string | null
+    contactEmail?: StringNullableFilter<"ValuationRequest"> | string | null
     estimatedPrice?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
@@ -54401,9 +54401,9 @@ export namespace Prisma {
     hasPool?: SortOrder
     hasGarden?: SortOrder
     hasStorage?: SortOrder
-    contactName?: SortOrder
-    contactPhone?: SortOrder
-    contactEmail?: SortOrder
+    contactName?: SortOrderInput | SortOrder
+    contactPhone?: SortOrderInput | SortOrder
+    contactEmail?: SortOrderInput | SortOrder
     estimatedPrice?: SortOrder
     priceRangeMin?: SortOrder
     priceRangeMax?: SortOrder
@@ -54440,9 +54440,9 @@ export namespace Prisma {
     hasPool?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
     hasGarden?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
     hasStorage?: BoolWithAggregatesFilter<"ValuationRequest"> | boolean
-    contactName?: StringWithAggregatesFilter<"ValuationRequest"> | string
-    contactPhone?: StringWithAggregatesFilter<"ValuationRequest"> | string
-    contactEmail?: StringWithAggregatesFilter<"ValuationRequest"> | string
+    contactName?: StringNullableWithAggregatesFilter<"ValuationRequest"> | string | null
+    contactPhone?: StringNullableWithAggregatesFilter<"ValuationRequest"> | string | null
+    contactEmail?: StringNullableWithAggregatesFilter<"ValuationRequest"> | string | null
     estimatedPrice?: DecimalWithAggregatesFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalWithAggregatesFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalWithAggregatesFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
@@ -57610,9 +57610,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -57642,9 +57642,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -57671,9 +57671,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -57703,9 +57703,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -57734,9 +57734,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -57763,9 +57763,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -57792,9 +57792,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -65520,9 +65520,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -65551,9 +65551,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -66235,9 +66235,9 @@ export namespace Prisma {
     hasPool?: BoolFilter<"ValuationRequest"> | boolean
     hasGarden?: BoolFilter<"ValuationRequest"> | boolean
     hasStorage?: BoolFilter<"ValuationRequest"> | boolean
-    contactName?: StringFilter<"ValuationRequest"> | string
-    contactPhone?: StringFilter<"ValuationRequest"> | string
-    contactEmail?: StringFilter<"ValuationRequest"> | string
+    contactName?: StringNullableFilter<"ValuationRequest"> | string | null
+    contactPhone?: StringNullableFilter<"ValuationRequest"> | string | null
+    contactEmail?: StringNullableFilter<"ValuationRequest"> | string | null
     estimatedPrice?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFilter<"ValuationRequest"> | Decimal | DecimalJsLike | number | string
@@ -67669,9 +67669,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -67700,9 +67700,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -75322,9 +75322,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -75352,9 +75352,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -76242,9 +76242,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -77113,9 +77113,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -77144,9 +77144,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -77174,9 +77174,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -77672,9 +77672,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -77939,9 +77939,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -77970,9 +77970,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -78000,9 +78000,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -79378,9 +79378,9 @@ export namespace Prisma {
     hasPool?: boolean
     hasGarden?: boolean
     hasStorage?: boolean
-    contactName: string
-    contactPhone: string
-    contactEmail: string
+    contactName?: string | null
+    contactPhone?: string | null
+    contactEmail?: string | null
     estimatedPrice: Decimal | DecimalJsLike | number | string
     priceRangeMin: Decimal | DecimalJsLike | number | string
     priceRangeMax: Decimal | DecimalJsLike | number | string
@@ -79407,9 +79407,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -79437,9 +79437,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -79467,9 +79467,9 @@ export namespace Prisma {
     hasPool?: BoolFieldUpdateOperationsInput | boolean
     hasGarden?: BoolFieldUpdateOperationsInput | boolean
     hasStorage?: BoolFieldUpdateOperationsInput | boolean
-    contactName?: StringFieldUpdateOperationsInput | string
-    contactPhone?: StringFieldUpdateOperationsInput | string
-    contactEmail?: StringFieldUpdateOperationsInput | string
+    contactName?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactEmail?: NullableStringFieldUpdateOperationsInput | string | null
     estimatedPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMin?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     priceRangeMax?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string

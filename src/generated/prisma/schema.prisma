@@ -59,11 +59,16 @@ model User {
   completedTours String[] @default([]) @map("completed_tours")
 
   // Board relations
-  boardsCreated    Board[]        @relation("BoardCreator")
-  boardsOwned      Board[]        @relation("BoardOwner")
-  cardsCreated     BoardCard[]    @relation("CardCreator")
-  cardsResponsible BoardCard[]    @relation("CardResponsible")
-  cardActivities   CardActivity[]
+  boardsCreated       Board[]                 @relation("BoardCreator")
+  boardsOwned         Board[]                 @relation("BoardOwner")
+  cardsCreated        BoardCard[]             @relation("CardCreator")
+  cardsResponsible    BoardCard[]             @relation("CardResponsible")
+  cardActivities      CardActivity[]
+  ocrHistory          OcrHistory[]
+  forumTopics         ForumTopic[]
+  forumPosts          ForumPost[]
+  valuationConfigs    ValuationWidgetConfig[]
+  valuationsGenerated ValuationRequest[]      @relation("ValuationGeneratedBy")
 }
 
 model Permission {
@@ -171,6 +176,7 @@ model Property {
   propertyPersons   PropertyPerson[]
   reminders         Reminder[]
   flyers            Flyer[]
+  valuations        ValuationRequest[]
 
   @@unique([number, floor, buildingId])
   @@index([buildingId], map: "idx_property_building")
@@ -595,4 +601,140 @@ enum CardPriority {
   medium
   high
   critical
+}
+
+model OcrHistory {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @map("user_id")
+  imageUrl      String   @map("image_url")
+  extractedText String?  @map("extracted_text") @db.Text
+  createdAt     DateTime @default(now()) @map("created_at")
+  user          User     @relation(fields: [userId], references: [id])
+
+  @@map("OcrHistory")
+}
+
+model ForumCategory {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  icon        String? // Lucide icon name or URL
+  color       String? // Hex color for the category
+  order       Int          @default(0)
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @default(now()) @updatedAt @map("updated_at")
+  topics      ForumTopic[]
+
+  @@map("ForumCategory")
+}
+
+model ForumTopic {
+  id         Int       @id @default(autoincrement())
+  title      String
+  content    String    @db.Text
+  categoryId Int       @map("category_id")
+  authorId   Int       @map("author_id")
+  views      Int       @default(0)
+  isPinned   Boolean   @default(false) @map("is_pinned")
+  isLocked   Boolean   @default(false) @map("is_locked")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt  DateTime? @map("deleted_at")
+
+  category ForumCategory @relation(fields: [categoryId], references: [id])
+  author   User          @relation(fields: [authorId], references: [id])
+  posts    ForumPost[]
+  tags     ForumTag[]
+
+  @@map("ForumTopic")
+}
+
+model ForumPost {
+  id        Int       @id @default(autoincrement())
+  topicId   Int       @map("topic_id")
+  authorId  Int       @map("author_id")
+  content   String    @db.Text
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  topic  ForumTopic @relation(fields: [topicId], references: [id])
+  author User       @relation(fields: [authorId], references: [id])
+
+  @@map("ForumPost")
+}
+
+model ForumTag {
+  id     Int          @id @default(autoincrement())
+  name   String       @unique
+  topics ForumTopic[]
+
+  @@map("ForumTag")
+}
+
+model ValuationWidgetConfig {
+  id             Int      @id @default(autoincrement())
+  slug           String   @unique
+  name           String
+  userId         Int      @map("user_id")
+  logoUrl        String?  @map("logo_url")
+  primaryColor   String?  @default("#000000") @map("primary_color")
+  secondaryColor String?  @default("#ffffff") @map("secondary_color")
+  contactEmail   String?  @map("contact_email")
+  contactPhone   String?  @map("contact_phone")
+  isActive       Boolean  @default(true) @map("is_active")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
+
+  user     User               @relation(fields: [userId], references: [id])
+  requests ValuationRequest[]
+
+  @@map("ValuationWidgetConfig")
+}
+
+model ValuationRequest {
+  id             Int  @id @default(autoincrement())
+  widgetConfigId Int? @map("widget_config_id")
+
+  // Property Data
+  address      String
+  municipality String?
+  province     String?
+  zipCode      String? @map("zip_code")
+  type         String
+  builtM2      Float   @map("built_m2")
+  rooms        Int
+  bathrooms    Int
+  yearBuilt    Int?    @map("year_built")
+  state        String?
+  floor        String?
+  hasElevator  Boolean @default(false) @map("has_elevator")
+  hasGarage    Boolean @default(false) @map("has_garage")
+  hasTerrace   Boolean @default(false) @map("has_terrace")
+  hasPool      Boolean @default(false) @map("has_pool")
+  hasGarden    Boolean @default(false) @map("has_garden")
+  hasStorage   Boolean @default(false) @map("has_storage")
+
+  // Contact Data
+  contactName  String? @map("contact_name")
+  contactPhone String? @map("contact_phone")
+  contactEmail String? @map("contact_email")
+
+  // Result
+  estimatedPrice Decimal @map("estimated_price")
+  priceRangeMin  Decimal @map("price_range_min")
+  priceRangeMax  Decimal @map("price_range_max")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  config ValuationWidgetConfig? @relation(fields: [widgetConfigId], references: [id])
+
+  // Internal Valuation fields
+  generatedById Int? @map("generated_by_id")
+  propertyId    Int? @map("property_id")
+
+  generatedBy User?     @relation("ValuationGeneratedBy", fields: [generatedById], references: [id])
+  property    Property? @relation(fields: [propertyId], references: [id])
+
+  @@map("ValuationRequest")
 }

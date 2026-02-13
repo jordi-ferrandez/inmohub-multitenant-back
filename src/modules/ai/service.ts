@@ -135,7 +135,7 @@ CURRENT CONTEXT:
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "google/gemini-2.0-flash-001",
+        model: "stepfun/step-3.5-flash:free",
         messages: currentMessages,
         tools: aiTools,
         tool_choice: "auto",
@@ -188,6 +188,10 @@ CURRENT CONTEXT:
 
     return message.content;
   } catch (error: any) {
+    if (error.response?.status === 402) {
+      console.error("❌ OpenRouter Error: Payment Required (No credits remaining)");
+      throw new Error("El asistente ha agotado sus créditos de OpenRouter. Por favor, recarga el saldo de tu cuenta.");
+    }
     console.error("AI Service Error:", error.response?.data || error.message);
     throw error;
   }
