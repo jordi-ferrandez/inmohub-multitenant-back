@@ -22,7 +22,7 @@ import type {
   ReminderOccurrence as PrismaReminderOccurrenceModel,
   Prisma,
   $Enums,
-} from "@generated/prisma";
+} from "./../../../../generated/prisma";
 
 const DEFAULT_TIMEZONE = "Europe/Madrid";
 

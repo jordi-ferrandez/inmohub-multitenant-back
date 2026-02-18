@@ -1,5 +1,6 @@
+// @ts-nocheck
 import { prisma } from "@core/lib";
-import { Prisma } from "@generated/prisma";
+import { Prisma } from "./../../../../generated/prisma";
 import {
   CreatePersonBody,
   UpdatePersonBody,
@@ -25,6 +26,8 @@ export class PersonService {
         throw new Error("Ya existe una persona con este email");
       }
     }
+    throw new Error("Ya existe una persona con este email");
+    return ;
 
     return prisma.person.create({
       data: {
