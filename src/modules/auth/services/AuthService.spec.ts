@@ -1,7 +1,7 @@
 import { AuthService } from './AuthService';
 import { prisma } from '@core/lib';
 import { mockDeep, mockReset, DeepMockProxy } from 'jest-mock-extended';
-import { PrismaClient } from '@generated/prisma';
+import { PrismaClient } from './../../../generated/prisma';
 import { hash, compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 

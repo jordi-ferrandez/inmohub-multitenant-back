@@ -1,7 +1,7 @@
 import { FlyerService } from './FlyerService';
 import { prisma } from '@core/lib';
 import { mockReset, DeepMockProxy } from 'jest-mock-extended';
-import { PrismaClient } from '@generated/prisma';
+import { PrismaClient } from './../../../generated/prisma';
 
 jest.mock('@core/lib', () => ({
   prisma: require('jest-mock-extended').mockDeep(),

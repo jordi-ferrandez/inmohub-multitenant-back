@@ -1,7 +1,7 @@
 import { BuildingAttachmentService } from './BuildingAttachmentService';
 import { prisma } from '@core/lib';
 import { mockReset, DeepMockProxy } from 'jest-mock-extended';
-import { PrismaClient } from '@generated/prisma';
+import { PrismaClient } from './../../../generated/prisma';
 import { S3StorageService } from '@core/services';
 
 jest.mock('@core/lib', () => ({

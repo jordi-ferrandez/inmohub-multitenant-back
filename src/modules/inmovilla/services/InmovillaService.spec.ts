@@ -1,7 +1,7 @@
 import { InmovillaService } from './InmovillaService';
 import { prisma } from '@core/lib';
 import { mockReset, DeepMockProxy } from 'jest-mock-extended';
-import { PrismaClient } from '@generated/prisma';
+import { PrismaClient } from './../../../generated/prisma';
 import { BatchProcessor } from '@core/utils/BatchProcessor';
 
 jest.mock('@core/lib', () => ({

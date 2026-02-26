@@ -2,7 +2,7 @@ import request from 'supertest';
 import { app } from '../../app';
 import { prisma } from '@core/lib';
 import { DeepMockProxy } from 'jest-mock-extended';
-import { PrismaClient } from '@generated/prisma';
+import { PrismaClient } from './../../../generated/prisma';
 
 // Mock the prisma instance used by the app
 jest.mock('@core/lib', () => ({
