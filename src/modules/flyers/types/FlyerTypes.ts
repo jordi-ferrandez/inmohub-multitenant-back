@@ -1,4 +1,4 @@
-import { Flyer, FlyerTemplate } from "@generated/prisma";
+import { Flyer, FlyerTemplate } from "./../../../../generated/prisma";
 
 export interface CreateFlyerDTO {
   propertyId: number;

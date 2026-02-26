@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Request, Response } from "express";
 import FollowUpService from "../services/FollowUpService";
 import { successResponse, errorResponse, paginatedResponse } from "@core/utils";

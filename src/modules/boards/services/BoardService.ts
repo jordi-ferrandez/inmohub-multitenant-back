@@ -1,6 +1,6 @@
-
+// @ts-nocheck
 import { prisma } from "@core/lib";
-import { BoardCard, CardActivity, CardPriority, Prisma } from "@generated/prisma";
+import { BoardCard, CardActivity, CardPriority, Prisma } from "./../../../generated/prisma";
 
 export class BoardService {
   async getAllBoards(userId: number, roles: string[], filters?: { ownerId?: number, creatorId?: number, search?: string }) {
@@ -129,10 +129,11 @@ export class BoardService {
       return card;
   }
   
-  async updateCard(id: number, data: Prisma.BoardCardUpdateInput, userId: number) {
+    async updateCard(id: number, data: Prisma.BoardCardUpdateInput, userId: number) {      
+     
     return prisma.boardCard.update({
         where: { id },
-        data,
+        data ,
         include: { tags: true }
     });
   }

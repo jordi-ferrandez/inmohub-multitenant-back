@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Property } from "@generated/prisma";
+import { Property } from "./../../../../generated/prisma";
 
 export type CreateBuildingDTO = {
   street: string;

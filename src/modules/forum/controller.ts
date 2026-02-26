@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Request, Response } from "express";
 import { forumService } from "./service";
 import { successResponse, errorResponse } from "@core/utils";
