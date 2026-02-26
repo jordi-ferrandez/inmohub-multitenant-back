@@ -7,7 +7,10 @@ echo "DB_USER: $DB_USER"
 echo "DB_NAME: $DB_NAME"
 echo "DB_PASSWORD: [protegido]"
 # Obtener el nombre del servicio de DB basado en NODE_ENV
-if [ "$NODE_ENV" = "development" ]; then
+if [ "$NODE_ENV" = "local" ]; then
+    echo "Entorno local detectado. Usando variables de entorno proporcionadas."
+    # No sobrescribir variables, usar las del docker-compose
+elif [ "$NODE_ENV" = "development" ]; then
     DB_HOST="db-develop"
     DB_NAME="inmohub_develop"  # Nombre exacto para desarrollo
 elif [ "$NODE_ENV" = "staging" ]; then
