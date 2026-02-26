@@ -647,7 +647,31 @@ async function main() {
   await seedFlyerTemplates();
   console.log("✅ Plantillas de flyers creadas");
 
+  await seedValuationConfig();
+  console.log("✅ Configuración de valoración creada");
+
   await seedAlerts();
+}
+
+async function seedValuationConfig() {
+  const agent = await prisma.user.findUnique({ where: { email: "agent@example.com" } });
+  if (!agent) {
+    console.warn("⚠️ No se encontró agente para la configuración de valoración.");
+    return;
+  }
+
+  await prisma.valuationWidgetConfig.upsert({
+    where: { slug: "default" },
+    update: {},
+    create: {
+      slug: "default",
+      name: "InmoHub Valoraciones",
+      userId: agent.id,
+      primaryColor: "#2563eb",
+      secondaryColor: "#ffffff",
+      contactEmail: "valoraciones@inmohub.com",
+    }
+  });
 
   console.log("🎉 Seed completado");
 }

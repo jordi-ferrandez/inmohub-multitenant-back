@@ -16,6 +16,8 @@ import { flyerRouter } from "@modules/flyers/routes/flyer.routes";
 import { boardRouter } from "@modules/boards/routes";
 import { forumRouter } from "@modules/forum/routes";
 
+import valuationRouter from "@modules/valuations/routes/valuationRoutes";
+
 function routerAPI(app: Express) {
   const router = express.Router();
   app.use("/api/v1", router);
@@ -34,6 +36,7 @@ function routerAPI(app: Express) {
   router.use("/flyers", flyerRouter);
   router.use("/boards", boardRouter);
   router.use("/forum", forumRouter);
+  router.use("/valuations", valuationRouter);
   router.use("/", testRouter);
 }
 export { routerAPI };

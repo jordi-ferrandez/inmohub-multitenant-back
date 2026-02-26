@@ -49,14 +49,23 @@ import { successResponse, errorResponse } from "@core/utils";
  */
 export const handleChat = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { messages, context } = req.body;
+    const { messages, context, mode } = req.body;
 
     if (!messages || !Array.isArray(messages)) {
       errorResponse(res, "Invalid messages format", 400);
       return;
     }
 
-    const response = await chatWithAi(messages, context || {});
+    const userId = req.user?.userId ? parseInt(req.user.userId, 10) : undefined;
+    const userRole = req.user?.roles?.[0]?.name; // Primary role
+
+    const augmentedContext = {
+      ...(context || {}),
+      userId,
+      userRole,
+    };
+
+    const response = await chatWithAi(messages, augmentedContext, mode);
     successResponse(res, { message: response });
   } catch (error: any) {
     console.error("Chat Controller Error:", error);
@@ -73,51 +82,35 @@ export const handleChat = async (req: Request, res: Response): Promise<void> => 
  *     security:
  *       - bearerAuth: []
  *     requestBody:
- *       required: true
  *       content:
  *         multipart/form-data:
  *           schema:
  *             type: object
  *             properties:
- *               image:
+ *               file:
  *                 type: string
  *                 format: binary
  *     responses:
  *       200:
- *         description: Text extracted successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 text:
- *                   type: string
- *                 imageUrl:
- *                   type: string
- *       400:
- *         description: Image is required
- *       401:
- *         description: Unauthorized
+ *         description: Successfully extracted text
  */
 export const handleOcr = async (req: Request, res: Response): Promise<void> => {
   try {
+    if (!req.file) {
+      errorResponse(res, "No file uploaded", 400);
+      return;
+    }
+
     const userIdStr = req.user?.userId;
     if (!userIdStr) {
-      errorResponse(res, "Usuario no autenticado", 401);
+      errorResponse(res, "User not authenticated", 401);
       return;
     }
 
-    const userId = parseInt(userIdStr, 10);
-    if (!req.file) {
-      errorResponse(res, "Debe proporcionar una imagen", 400);
-      return;
-    }
-
-    const result = await extractTextFromImage(req.file, userId);
+    const result = await extractTextFromImage(req.file, parseInt(userIdStr, 10));
     successResponse(res, result);
   } catch (error: any) {
     console.error("OCR Controller Error:", error);
-    const status = error.message === "fondos insuficientes" ? 402 : 500;
-    errorResponse(res, error.message || "Error al procesar la imagen", status);
+    errorResponse(res, error.message || "Internal Server Error", 500);
   }
 };

@@ -7,37 +7,126 @@ import { promises as fs } from "fs";
 import axios from "axios";
 import { createWorker } from "tesseract.js";
 
+import { aiTools } from "./tools";
+import { reminderService } from "../reminders/services/ReminderService";
+import { assignmentService } from "../assignments/services/AssignmentService";
+
 export interface AiContext {
   route: string;
   visibleData?: any;
   screenTitle?: string;
+  userId?: number;
+  userRole?: string;
 }
 
 export interface ChatMessage {
-  role: "system" | "user" | "assistant";
+  role: "system" | "user" | "assistant" | "tool";
   content: string | any[];
+  tool_call_id?: string;
+  name?: string;
 }
 
 const SITE_URL = process.env.SITE_URL || "http://localhost:3000";
 const SITE_NAME = "InmoHub";
 
-export const chatWithAi = async (messages: ChatMessage[], context: AiContext) => {
+const dispatchTool = async (toolCall: any, context: AiContext) => {
+  const { name, arguments: argsString } = toolCall.function;
+  const args = JSON.parse(argsString);
+
+  console.log(`🛠️ Executing tool: ${name}`, args);
+
+  try {
+    switch (name) {
+      case "search_agents": {
+        const agents = await prisma.user.findMany({
+          where: {
+            OR: [
+              { firstName: { contains: args.name, mode: "insensitive" } },
+              { lastName: { contains: args.name, mode: "insensitive" } },
+            ],
+            roles: { some: { role: { name: "agent" } } }
+          },
+          select: { id: true, firstName: true, lastName: true, email: true }
+        });
+        return JSON.stringify(agents);
+      }
+
+      case "create_reminder": {
+        if (!context.userId) return "Error: User ID required.";
+        const result = await reminderService.createReminder(
+          {
+            title: args.title,
+            note: args.note,
+            responsibleId: args.responsibleId,
+            scheduledAt: args.scheduledAt,
+            buildingId: args.buildingId,
+            propertyId: args.propertyId,
+            recurrence: { type: "once" }
+          },
+          context.userId
+        );
+        return JSON.stringify({ success: true, reminderId: result.id });
+      }
+
+      case "assign_agent_to_building": {
+        if (context.userRole !== "director") {
+          return "Error: Solo los Directores pueden realizar asignaciones de edificios.";
+        }
+        const result = await assignmentService.createAssignment({
+          userId: args.userId,
+          buildingId: args.buildingId,
+          startDate: args.startDate,
+          endDate: args.endDate,
+          type: "Following"
+        });
+        return JSON.stringify({ success: true, assignmentId: result.id });
+      }
+
+      default:
+        return "Tool not implemented";
+    }
+  } catch (error: any) {
+    console.error(`❌ Tool Execution Error (${name}):`, error.message);
+    return `Error executing tool ${name}: ${error.message}`;
+  }
+};
+
+export const chatWithAi = async (messages: any[], context: AiContext, mode: 'screen' | 'rag' = 'screen') => {
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
     console.warn("OPENROUTER_API_KEY is not set. AI features may not work.");
+    throw new Error("AI service not configured.");
   }
 
   const systemPrompt = `
-You are a helpful AI assistant for the InmoHub CRM.
-Current Context:
-Route: ${context.route}
-Screen Title: ${context.screenTitle || "Unknown"}
-Visible Data: ${JSON.stringify(context.visibleData || {}, null, 2)}
+You are the "InmoHub Knowledge Agent", a premium AI assistant for the InmoHub CRM (Real Estate Management System). 
+Your role is to guide users AND help them perform actions in the CRM.
 
-Use this context to answer the user's questions. 
+USER INFO:
+- Role: ${context.userRole || "Unknown"}
+- User ID: ${context.userId || "Unknown"}
+
+CORE MODULES:
+1. **Edificios & Búsqueda** (/dashboard/search-properties): Manage building assignments.
+2. **Propiedades** (/dashboard/porperties/[id]): Individual flat details.
+3. **Gestión de Personas** (/dashboard/persons): Client database.
+4. **Seguimientos & Tareas**: Reminders and visits.
+
+INSTRUCTIONS:
+1. **Actionable AI**: If a user wants to "assign", "schedule", "create a visit", or "search an agent", USE THE TOOLS provided. 
+2. **Role Restrictions**: 
+   - Directores: Can do anything, including assigning buildings to agents.
+   - Agentes: Can schedule reminders/visits for themselves or others, but NOT assign buildings.
+3. **Multistep**: If you don't know an ID (agent or building), use "search_agents" or check "Visible Data".
+4. **Tone**: Executive, expert, and helpful. Support the user in Spanish.
+
+CURRENT CONTEXT:
+- Route: ${context.route}
+- Screen Title: ${context.screenTitle || "Navigation"}
+- Visible Data: ${JSON.stringify(context.visibleData || {}, null, 2)}
 `;
 
-  const finalMessages = [
+  let currentMessages: any[] = [
     { role: "system", content: systemPrompt },
     ...messages,
   ];
@@ -46,8 +135,12 @@ Use this context to answer the user's questions.
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "mistralai/mistral-7b-instruct:free",
-        messages: finalMessages,
+        model: "stepfun/step-3.5-flash:free",
+        messages: currentMessages,
+        tools: aiTools,
+        tool_choice: "auto",
+        temperature: 0.7,
+        max_tokens: 1500,
       },
       {
         headers: {
@@ -58,8 +151,47 @@ Use this context to answer the user's questions.
       }
     );
 
-    return response.data.choices[0].message.content;
+    let message = response.data.choices[0].message;
+
+    if (message.tool_calls) {
+      currentMessages.push(message);
+
+      // Execute all tool calls
+      for (const toolCall of message.tool_calls) {
+        const result = await dispatchTool(toolCall, context);
+        currentMessages.push({
+          role: "tool",
+          tool_call_id: toolCall.id,
+          name: toolCall.function.name,
+          content: result
+        });
+      }
+
+      // Second call to get final response after tool results
+      const secondResponse = await axios.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          model: "google/gemini-2.0-flash-001",
+          messages: currentMessages,
+          temperature: 0.7,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "HTTP-Referer": SITE_URL,
+            "X-Title": SITE_NAME,
+          },
+        }
+      );
+      return secondResponse.data.choices[0].message.content;
+    }
+
+    return message.content;
   } catch (error: any) {
+    if (error.response?.status === 402) {
+      console.error("❌ OpenRouter Error: Payment Required (No credits remaining)");
+      throw new Error("El asistente ha agotado sus créditos de OpenRouter. Por favor, recarga el saldo de tu cuenta.");
+    }
     console.error("AI Service Error:", error.response?.data || error.message);
     throw error;
   }
@@ -69,20 +201,12 @@ export const extractTextFromImage = async (
   file: Express.Multer.File,
   userId: number
 ): Promise<{ text: string; imageUrl: string }> => {
-  console.log("🚀 Starting OCR process for user:", userId);
-
-
-
-  // 1. Upload to S3
   const s3 = S3StorageService.getInstance();
   const extension = path.extname(file.originalname).toLowerCase();
   const key = prependS3EnvPrefix(`ocr/${userId}/${Date.now()}-${randomUUID()}${extension}`);
   
   try {
-    console.log("📂 Reading local file:", file.path);
     const fileBuffer = await fs.readFile(file.path);
-
-    console.log("☁️ Uploading to S3:", key);
     await s3.uploadFile({
       key,
       body: fileBuffer,
@@ -91,54 +215,25 @@ export const extractTextFromImage = async (
     });
 
     const imageUrl = s3.getPublicUrl(key);
-    console.log("✅ Image uploaded to S3:", imageUrl);
-
-    // 2. Call Tesseract.js
-    console.log("🤖 Calling Tesseract.js...");
-
-    try {
-      const worker = await createWorker(['spa', 'eng']);
-      const { data: { text } } = await worker.recognize(file.path);
-      await worker.terminate();
-
-      console.log("📄 Tesseract text extracted");
-      
-      const extractedText = text;
-
-      // 3. Save to History (Optional but recommended)
-      try {
-          console.log("💾 Saving to OcrHistory...");
-          await prisma.ocrHistory.create({
-            data: {
-              userId,
-              imageUrl,
-              extractedText,
-            }
-          });
-          console.log("✅ Saved to history");
-      } catch (dbError) {
-          console.error("⚠️ Error saving to history (non-fatal):", dbError);
+    const worker = await createWorker(['spa', 'eng']);
+    const { data: { text } } = await worker.recognize(file.path);
+    await worker.terminate();
+    
+    await prisma.ocrHistory.create({
+      data: {
+        userId,
+        imageUrl,
+        extractedText: text,
       }
+    });
 
-      return { text: extractedText, imageUrl };
-
-    } catch (visionError: any) {
-      console.error("❌ Tesseract Error:", visionError.message);
-      throw new Error("Error extracting text using Tesseract: " + visionError.message);
-    }
-
+    return { text, imageUrl };
   } catch (error: any) {
-    console.error("❌ OCR Service Final Error:", error.message);
+    console.error("❌ OCR Service Error:", error.message);
     throw error;
   } finally {
-    // Clean up local file
     try {
-      if (file.path) {
-        console.log("扫 Cleaning up local file:", file.path);
-        await fs.unlink(file.path);
-      }
-    } catch (e) {
-      console.warn("⚠️ Could not delete temp file", e);
-    }
+      if (file.path) await fs.unlink(file.path);
+    } catch (e) {}
   }
 };
