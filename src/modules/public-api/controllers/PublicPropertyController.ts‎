@@ -1,0 +1,207 @@
+import { Request, Response } from 'express';
+import { prisma } from '@core/lib';
+import { publicApiService } from '../services/PublicApiService';
+import { successResponse, errorResponse, paginatedResponse } from '@core/utils';
+
+export class PublicPropertyController {
+  
+  /**
+   * @openapi
+   * /public/v1/properties:
+   *   get:
+   *     tags: [Public API - Properties]
+   *     summary: List all properties for the company
+   *     security:
+   *       - ApiKeyAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: sortBy
+   *         schema:
+   *           type: string
+   *       - in: query
+   *         name: sortOrder
+   *         schema:
+   *           type: string
+   *           enum: [asc, desc]
+   *       - in: query
+   *         name: status
+   *         schema:
+   *           type: string
+   *       - in: query
+   *         name: include
+   *         description: Comma-separated relations to include (e.g., building,owner)
+   *         schema:
+   *           type: string
+   *     responses:
+   *       200:
+   *         description: List of properties
+   */
+  async getAll(req: Request, res: Response) {
+    try {
+      const { companyId, userId } = req.apiKey;
+      const result = await publicApiService.findMany(prisma.property, { companyId, userId }, req.query);
+      
+      const pagination = {
+        totalItems: result.pagination.total,
+        page: result.pagination.page,
+        limit: result.pagination.limit,
+        totalPages: result.pagination.totalPages,
+      };
+      
+      paginatedResponse(res, result.data, pagination);
+    } catch (error: any) {
+      errorResponse(res, error.message || 'Error fetching properties', 500);
+    }
+  }
+
+  /**
+   * @openapi
+   * /public/v1/properties/{id}:
+   *   get:
+   *     tags: [Public API - Properties]
+   *     summary: Get property by ID
+   *     security:
+   *       - ApiKeyAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: include
+   *         description: Comma-separated relations to include
+   *         schema:
+   *           type: string
+   *     responses:
+   *       200:
+   *         description: Property details
+   */
+  async getById(req: Request, res: Response) {
+    try {
+      const id = parseInt(req.params.id);
+      const { companyId, userId } = req.apiKey;
+      const property = await publicApiService.findOne(prisma.property, id, { companyId, userId }, req.query.include);
+      successResponse(res, property);
+    } catch (error: any) {
+      errorResponse(res, error.message || 'Property not found', 404);
+    }
+  }
+
+  /**
+   * @openapi
+   * /public/v1/properties:
+   *   post:
+   *     tags: [Public API - Properties]
+   *     summary: Create a new property
+   *     security:
+   *       - ApiKeyAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             required: [number, floor, buildingId]
+   *     responses:
+   *       201:
+   *         description: Created property
+   */
+  async create(req: Request, res: Response) {
+    try {
+      const data = req.body;
+      const { companyId, userId } = req.apiKey;
+      
+      const property = await prisma.property.create({
+        data: {
+          ...data,
+          companyId,
+          capturedById: userId // Auto-assign to key owner
+        }
+      });
+      
+      successResponse(res, property, 201);
+    } catch (error: any) {
+      errorResponse(res, error.message || 'Error creating property', 400);
+    }
+  }
+
+  /**
+   * @openapi
+   * /public/v1/properties/{id}:
+   *   patch:
+   *     tags: [Public API - Properties]
+   *     summary: Update an existing property
+   *     security:
+   *       - ApiKeyAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Updated property
+   */
+  async update(req: Request, res: Response) {
+    try {
+      const id = parseInt(req.params.id);
+      const data = req.body;
+      const { companyId, userId } = req.apiKey;
+      
+      // Enforce check before update
+      await publicApiService.findOne(prisma.property, id, { companyId, userId });
+      
+      const property = await prisma.property.update({
+        where: { id },
+        data
+      });
+      
+      successResponse(res, property);
+    } catch (error: any) {
+      errorResponse(res, error.message || 'Error updating property', 400);
+    }
+  }
+
+  /**
+   * @openapi
+   * /public/v1/properties/{id}:
+   *   delete:
+   *     tags: [Public API - Properties]
+   *     summary: Delete a property
+   *     security:
+   *       - ApiKeyAuth: []
+   *     responses:
+   *       200:
+   *         description: Property deleted successfully
+   */
+  async delete(req: Request, res: Response) {
+    try {
+      const id = parseInt(req.params.id);
+      const { companyId, userId } = req.apiKey;
+      
+      // Enforce check before delete
+      await publicApiService.findOne(prisma.property, id, { companyId, userId });
+      
+      await prisma.property.update({
+        where: { id },
+        data: { deletedAt: new Date() }
+      });
+      
+      successResponse(res, { message: 'Property deleted successfully' });
+    } catch (error: any) {
+      errorResponse(res, error.message || 'Error deleting property', 400);
+    }
+  }
+}
+
+export const publicPropertyController = new PublicPropertyController();

@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")  
+  url      = env("DATABASE_URL")
 }
 
 model Ping {
@@ -25,19 +25,19 @@ model Role {
 }
 
 model User {
-  id           Int        @id @default(autoincrement())
-  email        String     @unique
-  passwordHash String     @map("password_hash")
-  firstName    String     @map("first_name")
-  lastName     String     @map("last_name")
-  phone        String?
-  avatarUrl    String?    @map("avatar_url")
-  isActive     Boolean    @default(true) @map("is_active")
-  emailVerified        DateTime? @map("email_verified")
-  verificationToken    String?   @map("verification_token")
-  resetPasswordToken   String?   @map("reset_password_token")
-  resetPasswordExpires DateTime? @map("reset_password_expires")
-  roles        UserRole[]
+  id                   Int        @id @default(autoincrement())
+  email                String     @unique
+  passwordHash         String     @map("password_hash")
+  firstName            String     @map("first_name")
+  lastName             String     @map("last_name")
+  phone                String?
+  avatarUrl            String?    @map("avatar_url")
+  isActive             Boolean    @default(true) @map("is_active")
+  emailVerified        DateTime?  @map("email_verified")
+  verificationToken    String?    @map("verification_token")
+  resetPasswordToken   String?    @map("reset_password_token")
+  resetPasswordExpires DateTime?  @map("reset_password_expires")
+  roles                UserRole[]
 
   assignments          Assignment[]
   followUps            FollowUp[]
@@ -56,19 +56,23 @@ model User {
   updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
 
-  completedTours String[] @map("completed_tours") @default([])
+  completedTours String[] @default([]) @map("completed_tours")
 
   // Board relations
-  boardsCreated        Board[]                @relation("BoardCreator")
-  boardsOwned          Board[]                @relation("BoardOwner")
-  cardsCreated         BoardCard[]            @relation("CardCreator")
-  cardsResponsible     BoardCard[]            @relation("CardResponsible")
-  cardActivities       CardActivity[]
-  ocrHistory           OcrHistory[]
-  forumTopics          ForumTopic[]
-  forumPosts           ForumPost[]
-  valuationConfigs     ValuationWidgetConfig[]
-  valuationsGenerated  ValuationRequest[]     @relation("ValuationGeneratedBy")
+  boardsCreated       Board[]                 @relation("BoardCreator")
+  boardsOwned         Board[]                 @relation("BoardOwner")
+  cardsCreated        BoardCard[]             @relation("CardCreator")
+  cardsResponsible    BoardCard[]             @relation("CardResponsible")
+  cardActivities      CardActivity[]
+  ocrHistory          OcrHistory[]
+  forumTopics         ForumTopic[]
+  forumPosts          ForumPost[]
+  valuationConfigs    ValuationWidgetConfig[]
+  valuationsGenerated ValuationRequest[]      @relation("ValuationGeneratedBy")
+
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
+  apiKeys   ApiKey[]
 }
 
 model Permission {
@@ -131,6 +135,9 @@ model Building {
   properties  Property[]
   reminders   Reminder[]
 
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
+
   @@unique([number, block, stair, street])
   @@index([number, block, stair, street], map: "idx_building")
   @@index([street], map: "idx_building_street")
@@ -177,6 +184,9 @@ model Property {
   reminders         Reminder[]
   flyers            Flyer[]
   valuations        ValuationRequest[]
+
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
 
   @@unique([number, floor, buildingId])
   @@index([buildingId], map: "idx_property_building")
@@ -248,6 +258,9 @@ model FollowUp {
   reminders           Reminder[]
   reminderOccurrences ReminderOccurrence[]
 
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
+
   @@index([sellerId], map: "idx_follow_up_seller")
   @@index([propertyId], map: "idx_follow_up_property")
   @@index([plannedDate], map: "idx_follow_up_planned")
@@ -286,24 +299,27 @@ model MailboxingAttachment {
 }
 
 model Person {
-  id                 Int              @id @default(autoincrement())
-  firstName          String           @map("first_name")
-  lastName           String           @map("last_name")
-  email              String?          @unique
-  birthDate          DateTime?        @map("birth_date")
-  gender             String?
+  id                     Int                    @id @default(autoincrement())
+  firstName              String                 @map("first_name")
+  lastName               String                 @map("last_name")
+  email                  String?                @unique
+  birthDate              DateTime?              @map("birth_date")
+  gender                 String?
   notificationPreference NotificationPreference @default(NONE) @map("notification_preference")
   createdAt              DateTime               @default(now()) @map("created_at")
-  updatedAt          DateTime         @default(now()) @updatedAt @map("updated_at")
-  deletedAt          DateTime?        @map("deleted_at")
-  contactBuildings   Building[]       @relation("BuildingContact")
-  informerBuildings  Building[]       @relation("BuildingInformer")
-  presidentBuildings Building[]       @relation("BuildingPresident")
-  phones             PersonPhone[]
-  propertiesOwned    Property[]       @relation("PropertyOwner")
-  propertiesTenanted Property[]       @relation("PropertyTenant")
-  propertyPersons    PropertyPerson[]
-  reminders          Reminder[]
+  updatedAt              DateTime               @default(now()) @updatedAt @map("updated_at")
+  deletedAt              DateTime?              @map("deleted_at")
+  contactBuildings       Building[]             @relation("BuildingContact")
+  informerBuildings      Building[]             @relation("BuildingInformer")
+  presidentBuildings     Building[]             @relation("BuildingPresident")
+  phones                 PersonPhone[]
+  propertiesOwned        Property[]             @relation("PropertyOwner")
+  propertiesTenanted     Property[]             @relation("PropertyTenant")
+  propertyPersons        PropertyPerson[]
+  reminders              Reminder[]
+
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
 }
 
 model PersonPhone {
@@ -344,6 +360,9 @@ model Reminder {
   property         Property?              @relation(fields: [propertyId], references: [id])
   responsible      User                   @relation("ReminderResponsible", fields: [responsibleId], references: [id])
   occurrences      ReminderOccurrence[]
+
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
 
   @@index([responsibleId], map: "idx_reminder_responsible")
   @@index([scheduledAt], map: "idx_reminder_scheduled_at")
@@ -485,33 +504,33 @@ enum NotificationPreference {
 }
 
 model FlyerTemplate {
-  id           Int      @id @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   name         String
   description  String?
-  thumbnailUrl String?  @map("thumbnail_url")
-  content      String?  // HTML/SVG template content
-  isActive     Boolean  @default(true) @map("is_active")
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @default(now()) @updatedAt @map("updated_at")
+  thumbnailUrl String?   @map("thumbnail_url")
+  content      String? // HTML/SVG template content
+  isActive     Boolean   @default(true) @map("is_active")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt    DateTime? @map("deleted_at")
   flyers       Flyer[]
 }
 
 model Flyer {
-  id             Int             @id @default(autoincrement())
-  propertyId     Int             @map("property_id")
-  templateId     Int             @map("template_id")
-  generatedById  Int             @map("generated_by_id")
-  qrContent      String          @map("qr_content")
-  pdfUrl         String?         @map("pdf_url")
-  createdAt      DateTime        @default(now()) @map("created_at")
-  updatedAt      DateTime        @default(now()) @updatedAt @map("updated_at")
-  deletedAt      DateTime?       @map("deleted_at")
-  
-  property       Property        @relation(fields: [propertyId], references: [id])
-  template       FlyerTemplate   @relation(fields: [templateId], references: [id])
-  generatedBy    User            @relation("FlyerGeneratedBy", fields: [generatedById], references: [id])
-  shipments      FlyerShipment[]
+  id            Int       @id @default(autoincrement())
+  propertyId    Int       @map("property_id")
+  templateId    Int       @map("template_id")
+  generatedById Int       @map("generated_by_id")
+  qrContent     String    @map("qr_content")
+  pdfUrl        String?   @map("pdf_url")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+
+  property    Property        @relation(fields: [propertyId], references: [id])
+  template    FlyerTemplate   @relation(fields: [templateId], references: [id])
+  generatedBy User            @relation("FlyerGeneratedBy", fields: [generatedById], references: [id])
+  shipments   FlyerShipment[]
 }
 
 model FlyerShipment {
@@ -520,68 +539,71 @@ model FlyerShipment {
   userId    Int      @map("user_id")
   notes     String?
   createdAt DateTime @default(now()) @map("created_at")
-  
-  flyer     Flyer    @relation(fields: [flyerId], references: [id])
-  user      User     @relation(fields: [userId], references: [id])
+
+  flyer Flyer @relation(fields: [flyerId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
 }
 
 model Board {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   title       String
   description String?
-  isPrivate   Boolean  @default(false)
-  creatorId   Int      @map("creator_id")
-  ownerId     Int      @map("owner_id")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+  isPrivate   Boolean   @default(false)
+  creatorId   Int       @map("creator_id")
+  ownerId     Int       @map("owner_id")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt   DateTime? @map("deleted_at")
-  
-  creator     User     @relation("BoardCreator", fields: [creatorId], references: [id])
-  owner       User     @relation("BoardOwner", fields: [ownerId], references: [id])
-  columns     BoardColumn[]
+
+  creator User          @relation("BoardCreator", fields: [creatorId], references: [id])
+  owner   User          @relation("BoardOwner", fields: [ownerId], references: [id])
+  columns BoardColumn[]
+
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
 }
 
 model BoardColumn {
-  id        Int      @id @default(autoincrement())
-  boardId   Int      @map("board_id")
+  id        Int       @id @default(autoincrement())
+  boardId   Int       @map("board_id")
   title     String
   order     Int
-  isSystem  Boolean  @default(false)
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  isSystem  Boolean   @default(false)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
-  
-  board     Board    @relation(fields: [boardId], references: [id])
-  cards     BoardCard[]
+
+  board Board       @relation(fields: [boardId], references: [id])
+  cards BoardCard[]
 }
 
 model BoardCard {
-  id          Int      @id @default(autoincrement())
-  columnId    Int      @map("column_id")
-  title       String
-  description String?
-  priority    CardPriority @default(medium)
-  dueDate     DateTime? @map("due_date")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
-  deletedAt   DateTime? @map("deleted_at")
-  creatorId   Int      @map("creator_id")
-  responsibleId Int?   @map("responsible_id")
+  id            Int          @id @default(autoincrement())
+  columnId      Int          @map("column_id")
+  title         String
+  description   String?
+  priority      CardPriority @default(medium)
+  dueDate       DateTime?    @map("due_date")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @default(now()) @updatedAt @map("updated_at")
+  deletedAt     DateTime?    @map("deleted_at")
+  creatorId     Int          @map("creator_id")
+  responsibleId Int?         @map("responsible_id")
 
-  column      BoardColumn @relation(fields: [columnId], references: [id])
-  creator     User        @relation("CardCreator", fields: [creatorId], references: [id])
-  responsible User?       @relation("CardResponsible", fields: [responsibleId], references: [id])
+  column      BoardColumn    @relation(fields: [columnId], references: [id])
+  creator     User           @relation("CardCreator", fields: [creatorId], references: [id])
+  responsible User?          @relation("CardResponsible", fields: [responsibleId], references: [id])
   tags        CardTag[]
   activities  CardActivity[]
 }
 
 model CardTag {
-  id        Int      @id @default(autoincrement())
-  cardId    Int      @map("card_id")
-  name      String
-  color     String?
-  
-  card      BoardCard @relation(fields: [cardId], references: [id])
+  id     Int     @id @default(autoincrement())
+  cardId Int     @map("card_id")
+  name   String
+  color  String?
+
+  card BoardCard @relation(fields: [cardId], references: [id])
 }
 
 model CardActivity {
@@ -592,8 +614,8 @@ model CardActivity {
   details   Json?
   createdAt DateTime @default(now()) @map("created_at")
 
-  card      BoardCard @relation(fields: [cardId], references: [id])
-  user      User      @relation(fields: [userId], references: [id])
+  card BoardCard @relation(fields: [cardId], references: [id])
+  user User      @relation(fields: [userId], references: [id])
 }
 
 enum CardPriority {
@@ -618,8 +640,8 @@ model ForumCategory {
   id          Int          @id @default(autoincrement())
   title       String
   description String?
-  icon        String?      // Lucide icon name or URL
-  color       String?      // Hex color for the category
+  icon        String? // Lucide icon name or URL
+  color       String? // Hex color for the category
   order       Int          @default(0)
   createdAt   DateTime     @default(now()) @map("created_at")
   updatedAt   DateTime     @default(now()) @updatedAt @map("updated_at")
@@ -629,22 +651,25 @@ model ForumCategory {
 }
 
 model ForumTopic {
-  id          Int           @id @default(autoincrement())
-  title       String
-  content     String        @db.Text
-  categoryId  Int           @map("category_id")
-  authorId    Int           @map("author_id")
-  views       Int           @default(0)
-  isPinned    Boolean       @default(false) @map("is_pinned")
-  isLocked    Boolean       @default(false) @map("is_locked")
-  createdAt   DateTime      @default(now()) @map("created_at")
-  updatedAt   DateTime      @default(now()) @updatedAt @map("updated_at")
-  deletedAt   DateTime?     @map("deleted_at")
-  
-  category    ForumCategory @relation(fields: [categoryId], references: [id])
-  author      User          @relation(fields: [authorId], references: [id])
-  posts       ForumPost[]
-  tags        ForumTag[]
+  id         Int       @id @default(autoincrement())
+  title      String
+  content    String    @db.Text
+  categoryId Int       @map("category_id")
+  authorId   Int       @map("author_id")
+  views      Int       @default(0)
+  isPinned   Boolean   @default(false) @map("is_pinned")
+  isLocked   Boolean   @default(false) @map("is_locked")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt  DateTime? @map("deleted_at")
+
+  category ForumCategory @relation(fields: [categoryId], references: [id])
+  author   User          @relation(fields: [authorId], references: [id])
+  posts    ForumPost[]
+  tags     ForumTag[]
+
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
 
   @@map("ForumTopic")
 }
@@ -658,8 +683,8 @@ model ForumPost {
   updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
 
-  topic     ForumTopic @relation(fields: [topicId], references: [id])
-  author    User       @relation(fields: [authorId], references: [id])
+  topic  ForumTopic @relation(fields: [topicId], references: [id])
+  author User       @relation(fields: [authorId], references: [id])
 
   @@map("ForumPost")
 }
@@ -673,68 +698,130 @@ model ForumTag {
 }
 
 model ValuationWidgetConfig {
-  id            Int      @id @default(autoincrement())
-  slug          String   @unique
-  name          String
-  userId        Int      @map("user_id")
-  logoUrl       String?  @map("logo_url")
-  primaryColor  String?  @map("primary_color") @default("#000000")
-  secondaryColor String? @map("secondary_color") @default("#ffffff")
-  contactEmail  String?  @map("contact_email")
-  contactPhone  String?  @map("contact_phone")
-  isActive      Boolean  @default(true) @map("is_active")
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @default(now()) @updatedAt @map("updated_at")
-  
-  user          User     @relation(fields: [userId], references: [id])
-  requests      ValuationRequest[]
+  id             Int      @id @default(autoincrement())
+  slug           String   @unique
+  name           String
+  userId         Int      @map("user_id")
+  logoUrl        String?  @map("logo_url")
+  primaryColor   String?  @default("#000000") @map("primary_color")
+  secondaryColor String?  @default("#ffffff") @map("secondary_color")
+  contactEmail   String?  @map("contact_email")
+  contactPhone   String?  @map("contact_phone")
+  isActive       Boolean  @default(true) @map("is_active")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
+
+  user     User               @relation(fields: [userId], references: [id])
+  requests ValuationRequest[]
 
   @@map("ValuationWidgetConfig")
 }
 
 model ValuationRequest {
-  id            Int      @id @default(autoincrement())
-  widgetConfigId Int?    @map("widget_config_id")
-  
+  id             Int  @id @default(autoincrement())
+  widgetConfigId Int? @map("widget_config_id")
+
   // Property Data
-  address       String
-  municipality  String?
-  province      String?
-  zipCode       String?  @map("zip_code")
-  type          String
-  builtM2       Float    @map("built_m2")
-  rooms         Int
-  bathrooms     Int
-  yearBuilt     Int?     @map("year_built")
-  state         String?
-  floor         String?
-  hasElevator   Boolean  @default(false) @map("has_elevator")
-  hasGarage     Boolean  @default(false) @map("has_garage")
-  hasTerrace    Boolean  @default(false) @map("has_terrace")
-  hasPool       Boolean  @default(false) @map("has_pool")
-  hasGarden     Boolean  @default(false) @map("has_garden")
-  hasStorage    Boolean  @default(false) @map("has_storage")
-  
+  address      String
+  municipality String?
+  province     String?
+  zipCode      String? @map("zip_code")
+  type         String
+  builtM2      Float   @map("built_m2")
+  rooms        Int
+  bathrooms    Int
+  yearBuilt    Int?    @map("year_built")
+  state        String?
+  floor        String?
+  hasElevator  Boolean @default(false) @map("has_elevator")
+  hasGarage    Boolean @default(false) @map("has_garage")
+  hasTerrace   Boolean @default(false) @map("has_terrace")
+  hasPool      Boolean @default(false) @map("has_pool")
+  hasGarden    Boolean @default(false) @map("has_garden")
+  hasStorage   Boolean @default(false) @map("has_storage")
+
   // Contact Data
-  contactName   String?  @map("contact_name")
-  contactPhone  String?  @map("contact_phone")
-  contactEmail  String?  @map("contact_email")
-  
+  contactName  String? @map("contact_name")
+  contactPhone String? @map("contact_phone")
+  contactEmail String? @map("contact_email")
+
   // Result
   estimatedPrice Decimal @map("estimated_price")
   priceRangeMin  Decimal @map("price_range_min")
   priceRangeMax  Decimal @map("price_range_max")
-  
-  createdAt     DateTime @default(now()) @map("created_at")
-  
-  config        ValuationWidgetConfig? @relation(fields: [widgetConfigId], references: [id])
-  
-  // Internal Valuation fields
-  generatedById Int?     @map("generated_by_id")
-  propertyId    Int?     @map("property_id")
 
-  generatedBy   User?    @relation("ValuationGeneratedBy", fields: [generatedById], references: [id])
-  property      Property? @relation(fields: [propertyId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+
+  config ValuationWidgetConfig? @relation(fields: [widgetConfigId], references: [id])
+
+  // Internal Valuation fields
+  generatedById Int? @map("generated_by_id")
+  propertyId    Int? @map("property_id")
+
+  generatedBy User?     @relation("ValuationGeneratedBy", fields: [generatedById], references: [id])
+  property    Property? @relation(fields: [propertyId], references: [id])
+
+  companyId Int?     @map("company_id")
+  company   Company? @relation(fields: [companyId], references: [id])
 
   @@map("ValuationRequest")
+}
+
+model Company {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  isActive  Boolean   @default(true) @map("is_active")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  users         User[]
+  apiKeys       ApiKey[]
+  properties    Property[]
+  buildings     Building[]
+  persons       Person[]
+  followUps     FollowUp[]
+  reminders     Reminder[]
+  boards        Board[]
+  forumTopics   ForumTopic[]
+  valuationReqs ValuationRequest[]
+
+  @@map("Company")
+}
+
+model ApiKey {
+  id            Int       @id @default(autoincrement())
+  name          String    @map("name")
+  keyHash       String    @unique @map("key_hash")
+  prefix        String    @map("prefix")
+  companyId     Int?      @map("company_id")
+  userId        Int       @map("user_id")
+  scopes        String[]  @default([])
+  lastUsedAt    DateTime? @map("last_used_at")
+  expiresAt     DateTime? @map("expires_at")
+  isActive      Boolean   @default(true) @map("is_active")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  restrictedIps String[]  @default([]) @map("restricted_ips")
+
+  company Company? @relation(fields: [companyId], references: [id])
+  user    User     @relation(fields: [userId], references: [id])
+  logs    ApiLog[]
+
+  @@map("ApiKey")
+}
+
+model ApiLog {
+  id        Int      @id @default(autoincrement())
+  apiKeyId  Int      @map("api_key_id")
+  endpoint  String
+  method    String
+  status    Int
+  duration  Int // in ms
+  ip        String?
+  timestamp DateTime @default(now())
+
+  apiKey ApiKey @relation(fields: [apiKeyId], references: [id])
+
+  @@map("ApiLog")
 }
