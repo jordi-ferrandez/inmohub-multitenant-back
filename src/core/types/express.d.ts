@@ -1,12 +1,12 @@
-import { UserQueryParams, UserParams } from "@modules/auth/types";
-import { MailboxingQueryParams } from "@modules/mailboxing/types";
+import { UserQueryParams, UserParams } from '@modules/auth/types';
+import { MailboxingQueryParams } from '@modules/mailboxing/types';
 import {
   AgendaQueryParams as ReminderAgendaQueryParams,
   ReminderQueryParams,
   UpdateOccurrenceStatusRequest,
   UpdateReminderRequest,
   CreateReminderRequest,
-} from "@modules/reminders/types";
+} from '@modules/reminders/types';
 
 declare global {
   namespace Express {
@@ -24,6 +24,7 @@ declare global {
         | UpdateReminderRequest
         | UpdateOccurrenceStatusRequest
         | any;
+      apiKey?: any;
     }
   }
 }

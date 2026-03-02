@@ -1,24 +1,25 @@
 /// <reference types="node" />
 
-import { PrismaClient } from "../generated/prisma";
-import bcrypt from "bcryptjs";
+import { PrismaClient } from '../generated/prisma';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
 async function seedRolesAndPermissions() {
   const roles = [
-    { name: "Agent", displayName: "Agente" },
-    { name: "Director", displayName: "Director" },
-    { name: "Responsible", displayName: "Responsable" },
-    { name: "Mailboxer", displayName: "Buzoneador" },
+    { name: 'Agent', displayName: 'Agente' },
+    { name: 'Director', displayName: 'Director' },
+    { name: 'Responsible', displayName: 'Responsable' },
+    { name: 'Mailboxer', displayName: 'Buzoneador' },
+    { name: 'Enterprise', displayName: 'Empresa' },
   ];
 
   const permissions = [
-    { action: "view", module: "properties" },
-    { action: "edit", module: "properties" },
-    { action: "manage", module: "assignments" },
-    { action: "view", module: "mailboxing" },
-    { action: "manage", module: "users" },
+    { action: 'view', module: 'properties' },
+    { action: 'edit', module: 'properties' },
+    { action: 'manage', module: 'assignments' },
+    { action: 'view', module: 'mailboxing' },
+    { action: 'manage', module: 'users' },
   ];
 
   const roleRecords = await Promise.all(
@@ -27,8 +28,8 @@ async function seedRolesAndPermissions() {
         where: { name: role.name },
         update: { displayName: role.displayName },
         create: role,
-      })
-    )
+      }),
+    ),
   );
 
   const permissionRecords = await Promise.all(
@@ -42,28 +43,35 @@ async function seedRolesAndPermissions() {
         },
         update: {},
         create: permission,
-      })
-    )
+      }),
+    ),
   );
 
   const permissionsByModule = Object.fromEntries(
     permissionRecords.map((permission) => [
       `${permission.action}:${permission.module}`,
       permission,
-    ])
+    ]),
   );
 
   const rolePermissionsMap: Record<string, string[]> = {
     Director: [
-      "view:properties",
-      "edit:properties",
-      "manage:assignments",
-      "view:mailboxing",
-      "manage:users",
+      'view:properties',
+      'edit:properties',
+      'manage:assignments',
+      'view:mailboxing',
+      'manage:users',
     ],
-    Agent: ["view:properties", "edit:properties"],
-    Responsible: ["view:properties", "manage:assignments"],
-    Mailboxer: ["view:properties", "view:mailboxing"],
+    Agent: ['view:properties', 'edit:properties'],
+    Responsible: ['view:properties', 'manage:assignments'],
+    Mailboxer: ['view:properties', 'view:mailboxing'],
+    Enterprise: [
+      'view:properties',
+      'edit:properties',
+      'manage:assignments',
+      'view:mailboxing',
+      'manage:users',
+    ],
   };
 
   for (const role of roleRecords) {
@@ -90,32 +98,38 @@ async function seedRolesAndPermissions() {
 }
 
 async function seedUsers() {
-  const passwordHash = await bcrypt.hash("InmoHub123!", 10);
+  const passwordHash = await bcrypt.hash('InmoHub123!', 10);
 
   const users = [
     {
-      email: "director@example.com",
-      firstName: "Diana",
-      lastName: "Director",
-      roles: ["Director"],
+      email: 'director@example.com',
+      firstName: 'Diana',
+      lastName: 'Director',
+      roles: ['Director'],
     },
     {
-      email: "agent@example.com",
-      firstName: "Alberto",
-      lastName: "Agente",
-      roles: ["Agent"],
+      email: 'agent@example.com',
+      firstName: 'Alberto',
+      lastName: 'Agente',
+      roles: ['Agent'],
     },
     {
-      email: "responsible@example.com",
-      firstName: "Raquel",
-      lastName: "Responsable",
-      roles: ["Responsible"],
+      email: 'responsible@example.com',
+      firstName: 'Raquel',
+      lastName: 'Responsable',
+      roles: ['Responsible'],
     },
     {
-      email: "mailboxer@example.com",
-      firstName: "Mario",
-      lastName: "Buzoneador",
-      roles: ["Mailboxer"],
+      email: 'mailboxer@example.com',
+      firstName: 'Mario',
+      lastName: 'Buzoneador',
+      roles: ['Mailboxer'],
+    },
+    {
+      email: 'empresa@example.com',
+      firstName: 'Entidad',
+      lastName: 'Corporativa',
+      roles: ['Enterprise'],
     },
   ];
 
@@ -154,29 +168,29 @@ async function seedUsers() {
 async function seedPersons() {
   const persons = [
     {
-      firstName: "Carlos",
-      lastName: "Contact",
-      email: "carlos.contact@example.com",
+      firstName: 'Carlos',
+      lastName: 'Contact',
+      email: 'carlos.contact@example.com',
     },
     {
-      firstName: "Paula",
-      lastName: "President",
-      email: "paula.president@example.com",
+      firstName: 'Paula',
+      lastName: 'President',
+      email: 'paula.president@example.com',
     },
     {
-      firstName: "Ignacio",
-      lastName: "Informer",
-      email: "ignacio.informer@example.com",
+      firstName: 'Ignacio',
+      lastName: 'Informer',
+      email: 'ignacio.informer@example.com',
     },
     {
-      firstName: "Olivia",
-      lastName: "Owner",
-      email: "olivia.owner@example.com",
+      firstName: 'Olivia',
+      lastName: 'Owner',
+      email: 'olivia.owner@example.com',
     },
     {
-      firstName: "Tomas",
-      lastName: "Tenant",
-      email: "tomas.tenant@example.com",
+      firstName: 'Tomas',
+      lastName: 'Tenant',
+      email: 'tomas.tenant@example.com',
     },
   ];
 
@@ -189,8 +203,8 @@ async function seedPersons() {
           lastName: person.lastName,
         },
         create: person,
-      })
-    )
+      }),
+    ),
   );
 }
 
@@ -198,26 +212,26 @@ async function seedBuildingsAndProperties() {
   const [contact, president, informer, owner, tenant, agent] =
     await Promise.all([
       prisma.person.findUnique({
-        where: { email: "carlos.contact@example.com" },
+        where: { email: 'carlos.contact@example.com' },
       }),
       prisma.person.findUnique({
-        where: { email: "paula.president@example.com" },
+        where: { email: 'paula.president@example.com' },
       }),
       prisma.person.findUnique({
-        where: { email: "ignacio.informer@example.com" },
+        where: { email: 'ignacio.informer@example.com' },
       }),
       prisma.person.findUnique({
-        where: { email: "olivia.owner@example.com" },
+        where: { email: 'olivia.owner@example.com' },
       }),
       prisma.person.findUnique({
-        where: { email: "tomas.tenant@example.com" },
+        where: { email: 'tomas.tenant@example.com' },
       }),
-      prisma.user.findUnique({ where: { email: "agent@example.com" } }),
+      prisma.user.findUnique({ where: { email: 'agent@example.com' } }),
     ]);
 
   if (!contact || !president || !informer || !owner || !tenant || !agent) {
     throw new Error(
-      "👥 Personas o usuarios requeridos no encontrados. Ejecuta seedPersons y seedUsers primero."
+      '👥 Personas o usuarios requeridos no encontrados. Ejecuta seedPersons y seedUsers primero.',
     );
   }
 
@@ -225,9 +239,9 @@ async function seedBuildingsAndProperties() {
     where: {
       number_block_stair_street: {
         number: 101,
-        block: "A",
-        stair: "1",
-        street: "Avenida Central",
+        block: 'A',
+        stair: '1',
+        street: 'Avenida Central',
       },
     },
     update: {
@@ -236,10 +250,10 @@ async function seedBuildingsAndProperties() {
       informerId: informer.id,
     },
     create: {
-      street: "Avenida Central",
+      street: 'Avenida Central',
       number: 101,
-      block: "A",
-      stair: "1",
+      block: 'A',
+      stair: '1',
       contactId: contact.id,
       presidentId: president.id,
       informerId: informer.id,
@@ -249,29 +263,29 @@ async function seedBuildingsAndProperties() {
   const properties = [
     {
       inmovillaCode: 1001,
-      number: "1A",
+      number: '1A',
       floor: 1,
       ownerId: owner.id,
       tenantId: tenant.id,
       capturedById: agent.id,
-      status: "sin_estado" as const,
+      status: 'sin_estado' as const,
     },
     {
       inmovillaCode: 1002,
-      number: "2B",
+      number: '2B',
       floor: 2,
       ownerId: owner.id,
       capturedById: agent.id,
-      status: "noticia_venta" as const,
+      status: 'noticia_venta' as const,
       salePrice: 245000,
     },
     {
       inmovillaCode: 1003,
-      number: "3C",
+      number: '3C',
       floor: 3,
       ownerId: owner.id,
       capturedById: agent.id,
-      status: "noticia_alquiler" as const,
+      status: 'noticia_alquiler' as const,
       rentalPrice: 950,
     },
   ];
@@ -304,18 +318,18 @@ async function seedBuildingsAndProperties() {
 async function seedAssignments() {
   const building = await prisma.building.findFirst();
   const agent = await prisma.user.findUnique({
-    where: { email: "agent@example.com" },
+    where: { email: 'agent@example.com' },
   });
   const responsible = await prisma.user.findUnique({
-    where: { email: "responsible@example.com" },
+    where: { email: 'responsible@example.com' },
   });
   const mailboxer = await prisma.user.findUnique({
-    where: { email: "mailboxer@example.com" },
+    where: { email: 'mailboxer@example.com' },
   });
 
   if (!building || !agent || !responsible || !mailboxer) {
     console.warn(
-      "⚠️ No se encontraron datos necesarios para asignaciones. Saltando."
+      '⚠️ No se encontraron datos necesarios para asignaciones. Saltando.',
     );
     return;
   }
@@ -324,23 +338,23 @@ async function seedAssignments() {
     {
       userId: agent.id,
       buildingId: building.id,
-      type: "Following" as const,
-      startDate: new Date("2025-02-01T09:00:00Z"),
-      endDate: new Date("2025-02-08T17:00:00Z"),
+      type: 'Following' as const,
+      startDate: new Date('2025-02-01T09:00:00Z'),
+      endDate: new Date('2025-02-08T17:00:00Z'),
     },
     {
       userId: responsible.id,
       buildingId: building.id,
-      type: "Following" as const,
-      startDate: new Date("2025-02-09T09:00:00Z"),
-      endDate: new Date("2025-02-16T17:00:00Z"),
+      type: 'Following' as const,
+      startDate: new Date('2025-02-09T09:00:00Z'),
+      endDate: new Date('2025-02-16T17:00:00Z'),
     },
     {
       userId: mailboxer.id,
       buildingId: building.id,
-      type: "Mailboxing" as const,
-      startDate: new Date("2025-02-05T09:00:00Z"),
-      endDate: new Date("2025-02-05T17:00:00Z"),
+      type: 'Mailboxing' as const,
+      startDate: new Date('2025-02-05T09:00:00Z'),
+      endDate: new Date('2025-02-05T17:00:00Z'),
     },
   ];
 
@@ -371,15 +385,15 @@ async function seedAssignments() {
 async function seedFollowUps() {
   const property = await prisma.property.findFirst();
   const agent = await prisma.user.findUnique({
-    where: { email: "agent@example.com" },
+    where: { email: 'agent@example.com' },
   });
   const director = await prisma.user.findUnique({
-    where: { email: "director@example.com" },
+    where: { email: 'director@example.com' },
   });
 
   if (!property || !agent || !director) {
     console.warn(
-      "⚠️ No se encontraron datos necesarios para seguimientos. Saltando."
+      '⚠️ No se encontraron datos necesarios para seguimientos. Saltando.',
     );
     return;
   }
@@ -389,16 +403,16 @@ async function seedFollowUps() {
       sellerId: agent.id,
       propertyId: property.id,
       wasContacted: true,
-      contactType: "Directo",
-      executedDate: new Date("2025-02-02T10:30:00Z"),
-      comment: "Propietario interesado en valorar oferta de venta.",
+      contactType: 'Directo',
+      executedDate: new Date('2025-02-02T10:30:00Z'),
+      comment: 'Propietario interesado en valorar oferta de venta.',
     },
     {
       sellerId: director.id,
       propertyId: property.id,
       wasContacted: false,
-      plannedDate: new Date("2025-02-10T11:00:00Z"),
-      comment: "Programar llamada de seguimiento para cerrar visita.",
+      plannedDate: new Date('2025-02-10T11:00:00Z'),
+      comment: 'Programar llamada de seguimiento para cerrar visita.',
     },
   ];
 
@@ -420,11 +434,11 @@ async function seedFollowUps() {
 async function seedMailboxing() {
   const building = await prisma.building.findFirst();
   const mailboxer = await prisma.user.findUnique({
-    where: { email: "mailboxer@example.com" },
+    where: { email: 'mailboxer@example.com' },
   });
 
   if (!building || !mailboxer) {
-    console.warn("⚠️ No se encontraron datos para buzoneo. Saltando.");
+    console.warn('⚠️ No se encontraron datos para buzoneo. Saltando.');
     return;
   }
 
@@ -432,15 +446,15 @@ async function seedMailboxing() {
     {
       mailboxerId: mailboxer.id,
       buildingId: building.id,
-      comment: "Entrega de folletería de captación.",
-      date: new Date("2025-02-05T12:00:00Z"),
-      status: "inside" as const,
+      comment: 'Entrega de folletería de captación.',
+      date: new Date('2025-02-05T12:00:00Z'),
+      status: 'inside' as const,
       attachments: [
         {
-          fileName: "campaña-puertas-1.jpg",
-          s3Key: "develop/mailboxing-attachments/campaña-puertas-1.jpg",
-          url: "https://s3.mock/inmohub-media/develop/mailboxing-attachments/campaña-puertas-1.jpg",
-          mimeType: "image/jpeg",
+          fileName: 'campaña-puertas-1.jpg',
+          s3Key: 'develop/mailboxing-attachments/campaña-puertas-1.jpg',
+          url: 'https://s3.mock/inmohub-media/develop/mailboxing-attachments/campaña-puertas-1.jpg',
+          mimeType: 'image/jpeg',
           fileSize: 245_678,
         },
       ],
@@ -448,15 +462,15 @@ async function seedMailboxing() {
     {
       mailboxerId: mailboxer.id,
       buildingId: building.id,
-      comment: "Entrega de flyer informativo.",
-      date: new Date("2025-02-12T11:30:00Z"),
-      status: "no_disturb" as const,
+      comment: 'Entrega de flyer informativo.',
+      date: new Date('2025-02-12T11:30:00Z'),
+      status: 'no_disturb' as const,
       attachments: [
         {
-          fileName: "cartel-porteria.png",
-          s3Key: "develop/mailboxing-attachments/cartel-porteria.png",
-          url: "https://s3.mock/inmohub-media/develop/mailboxing-attachments/cartel-porteria.png",
-          mimeType: "image/png",
+          fileName: 'cartel-porteria.png',
+          s3Key: 'develop/mailboxing-attachments/cartel-porteria.png',
+          url: 'https://s3.mock/inmohub-media/develop/mailboxing-attachments/cartel-porteria.png',
+          mimeType: 'image/png',
           fileSize: 198_765,
         },
       ],
@@ -488,7 +502,7 @@ async function seedMailboxing() {
 
     for (const attachment of entry.attachments) {
       const already = mailboxingRecord.attachments.find(
-        (item) => item.s3Key === attachment.s3Key
+        (item) => item.s3Key === attachment.s3Key,
       );
       if (already) continue;
 
@@ -509,31 +523,31 @@ async function seedMailboxing() {
 
 async function seedAttachments() {
   const [property, building, agent] = await Promise.all([
-    prisma.property.findFirst({ where: { number: "1A" } }),
+    prisma.property.findFirst({ where: { number: '1A' } }),
     prisma.building.findFirst(),
-    prisma.user.findUnique({ where: { email: "agent@example.com" } }),
+    prisma.user.findUnique({ where: { email: 'agent@example.com' } }),
   ]);
 
   if (!property || !building || !agent) {
-    console.warn("⚠️ No se encontraron recursos para adjuntos. Saltando.");
+    console.warn('⚠️ No se encontraron recursos para adjuntos. Saltando.');
     return;
   }
 
   const propertyAttachments = [
     {
       propertyId: property.id,
-      fileName: "fachada.jpg",
-      s3Key: "develop/property-attachments/1A-fachada.jpg",
-      url: "https://s3.mock/inmohub-media/develop/property-attachments/1A-fachada.jpg",
-      mimeType: "image/jpeg",
+      fileName: 'fachada.jpg',
+      s3Key: 'develop/property-attachments/1A-fachada.jpg',
+      url: 'https://s3.mock/inmohub-media/develop/property-attachments/1A-fachada.jpg',
+      mimeType: 'image/jpeg',
       fileSize: 512_944,
     },
     {
       propertyId: property.id,
-      fileName: "plano.pdf",
-      s3Key: "develop/property-attachments/1A-plano.pdf",
-      url: "https://s3.mock/inmohub-media/develop/property-attachments/1A-plano.pdf",
-      mimeType: "application/pdf",
+      fileName: 'plano.pdf',
+      s3Key: 'develop/property-attachments/1A-plano.pdf',
+      url: 'https://s3.mock/inmohub-media/develop/property-attachments/1A-plano.pdf',
+      mimeType: 'application/pdf',
       fileSize: 1_024_000,
     },
   ];
@@ -556,10 +570,10 @@ async function seedAttachments() {
   const buildingAttachments = [
     {
       buildingId: building.id,
-      fileName: "acta-comunidad.pdf",
-      s3Key: "develop/building-attachments/101-acta-comunidad.pdf",
-      url: "https://s3.mock/inmohub-media/develop/building-attachments/101-acta-comunidad.pdf",
-      mimeType: "application/pdf",
+      fileName: 'acta-comunidad.pdf',
+      s3Key: 'develop/building-attachments/101-acta-comunidad.pdf',
+      url: 'https://s3.mock/inmohub-media/develop/building-attachments/101-acta-comunidad.pdf',
+      mimeType: 'application/pdf',
       fileSize: 860_122,
     },
   ];
@@ -584,24 +598,26 @@ async function seedFlyerTemplates() {
   const templates = [
     {
       id: 1,
-      name: "Moderno",
-      description: "Diseño limpio y minimalista con fotos grandes.",
-      thumbnailUrl: "https://via.placeholder.com/150?text=Moderno",
-      content: "modern",
+      name: 'Moderno',
+      description: 'Diseño limpio y minimalista con fotos grandes.',
+      thumbnailUrl: 'https://via.placeholder.com/150?text=Moderno',
+      content: 'modern',
     },
     {
       id: 2,
-      name: "Clásico",
-      description: "Diseño elegante y tradicional, ideal para propiedades de lujo.",
-      thumbnailUrl: "https://via.placeholder.com/150?text=Clasico",
-      content: "classic",
+      name: 'Clásico',
+      description:
+        'Diseño elegante y tradicional, ideal para propiedades de lujo.',
+      thumbnailUrl: 'https://via.placeholder.com/150?text=Clasico',
+      content: 'classic',
     },
     {
       id: 3,
-      name: "Compacto",
-      description: "Ideal para buzoneo rápido, con información clave a la vista.",
-      thumbnailUrl: "https://via.placeholder.com/150?text=Compacto",
-      content: "compact",
+      name: 'Compacto',
+      description:
+        'Ideal para buzoneo rápido, con información clave a la vista.',
+      thumbnailUrl: 'https://via.placeholder.com/150?text=Compacto',
+      content: 'compact',
     },
   ];
 
@@ -615,70 +631,74 @@ async function seedFlyerTemplates() {
 }
 
 async function seedAlerts() {
-  console.warn("ℹ️ El modelo Alert no existe en el esquema. Seed omitido.");
+  console.warn('ℹ️ El modelo Alert no existe en el esquema. Seed omitido.');
 }
 
 async function main() {
-  console.log("🌱 Iniciando seed...");
+  console.log('🌱 Iniciando seed...');
   await seedRolesAndPermissions();
-  console.log("✅ Roles y permisos listos");
+  console.log('✅ Roles y permisos listos');
 
   await seedUsers();
-  console.log("✅ Usuarios creados");
+  console.log('✅ Usuarios creados');
 
   await seedPersons();
-  console.log("✅ Personas creadas");
+  console.log('✅ Personas creadas');
 
   await seedBuildingsAndProperties();
-  console.log("✅ Edificios y propiedades creadas");
+  console.log('✅ Edificios y propiedades creadas');
 
   await seedAssignments();
-  console.log("✅ Asignaciones creadas");
+  console.log('✅ Asignaciones creadas');
 
   await seedFollowUps();
-  console.log("✅ Seguimientos creados");
+  console.log('✅ Seguimientos creados');
 
   await seedAttachments();
-  console.log("✅ Adjuntos mock generados");
+  console.log('✅ Adjuntos mock generados');
 
   await seedMailboxing();
-  console.log("✅ Registros de buzoneo creados");
+  console.log('✅ Registros de buzoneo creados');
 
   await seedFlyerTemplates();
-  console.log("✅ Plantillas de flyers creadas");
+  console.log('✅ Plantillas de flyers creadas');
 
   await seedValuationConfig();
-  console.log("✅ Configuración de valoración creada");
+  console.log('✅ Configuración de valoración creada');
 
   await seedAlerts();
 }
 
 async function seedValuationConfig() {
-  const agent = await prisma.user.findUnique({ where: { email: "agent@example.com" } });
+  const agent = await prisma.user.findUnique({
+    where: { email: 'agent@example.com' },
+  });
   if (!agent) {
-    console.warn("⚠️ No se encontró agente para la configuración de valoración.");
+    console.warn(
+      '⚠️ No se encontró agente para la configuración de valoración.',
+    );
     return;
   }
 
   await prisma.valuationWidgetConfig.upsert({
-    where: { slug: "default" },
+    where: { slug: 'default' },
     update: {},
     create: {
-      slug: "default",
-      name: "InmoHub Valoraciones",
+      slug: 'default',
+      name: 'InmoHub Valoraciones',
       userId: agent.id,
-      primaryColor: "#2563eb",
-      secondaryColor: "#ffffff",
-      contactEmail: "valoraciones@inmohub.com",
-    }
+      primaryColor: '#2563eb',
+      secondaryColor: '#ffffff',
+      contactEmail: 'valoraciones@inmohub.com',
+    },
   });
 
-  console.log("🎉 Seed completado");
+  console.log('🎉 Seed completado');
 }
 
 main()
   .catch((e) => {
-    console.error("❌ Seed falló:", e);
+    console.error('❌ Seed falló:', e);
     process.exit(1);
   })
   .finally(async () => {
