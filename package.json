@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node -r dotenv/config -r tsconfig-paths/register dist/server.js",
-    "build": "tsc && (cp -r src/generated dist/generated || true) && tsc-alias",
+    "build": "tsc && tsc-alias",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
