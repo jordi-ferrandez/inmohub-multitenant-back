@@ -22,12 +22,12 @@ FROM node:24-alpine
 RUN apk add --no-cache postgresql-client bash
 WORKDIR /app
 
-# 5) Sólo traemos dist, node_modules y prisma
+# 5) Sólo traemos dist, node_modules, prisma y generated
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/prisma ./prisma
-# COPY --from=builder /app/src/generated ./src/generated (Ya incluido en dist)
+COPY --from=builder /app/generated ./generated
 COPY --from=builder /app/tsconfig.json ./
 COPY entrypoint.sh /entrypoint.sh
 
