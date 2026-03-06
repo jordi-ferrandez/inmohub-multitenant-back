@@ -41,8 +41,8 @@ done
 echo "PostgreSQL disponible, continuando..."
 
 # Migraciones
-echo "Aplicando migraciones..."
-npx prisma migrate deploy
+echo "Aplicando migraciones/schema..."
+npx prisma db push --accept-data-loss
 
 # Seeding solo para desarrollo
 #if [ "$NODE_ENV" = "development" ]; then
@@ -51,7 +51,12 @@ npx prisma migrate deploy
 #fi
 
 
-# Iniciar aplicación
-echo "Iniciando aplicación..."
-# exec node dist/server.js
-exec npm start
+# Iniciar aplicación o ejecutar comando
+if [ $# -eq 0 ]; then
+  echo "Iniciando aplicación..."
+  exec npm start
+else
+  echo "Ejecutando comando: $@"
+  exec "$@"
+fi
+

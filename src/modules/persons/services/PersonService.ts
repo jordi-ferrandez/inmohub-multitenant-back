@@ -26,8 +26,6 @@ export class PersonService {
         throw new Error("Ya existe una persona con este email");
       }
     }
-    throw new Error("Ya existe una persona con este email");
-    return ;
 
     return prisma.person.create({
       data: {

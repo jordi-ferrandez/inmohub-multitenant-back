@@ -636,41 +636,27 @@ model OcrHistory {
   @@map("OcrHistory")
 }
 
-model ForumCategory {
-  id          Int          @id @default(autoincrement())
-  title       String
-  description String?
-  icon        String? // Lucide icon name or URL
-  color       String? // Hex color for the category
-  order       Int          @default(0)
-  createdAt   DateTime     @default(now()) @map("created_at")
-  updatedAt   DateTime     @default(now()) @updatedAt @map("updated_at")
-  topics      ForumTopic[]
-
-  @@map("ForumCategory")
-}
-
 model ForumTopic {
-  id         Int       @id @default(autoincrement())
-  title      String
-  content    String    @db.Text
-  categoryId Int       @map("category_id")
-  authorId   Int       @map("author_id")
-  views      Int       @default(0)
-  isPinned   Boolean   @default(false) @map("is_pinned")
-  isLocked   Boolean   @default(false) @map("is_locked")
-  createdAt  DateTime  @default(now()) @map("created_at")
-  updatedAt  DateTime  @default(now()) @updatedAt @map("updated_at")
-  deletedAt  DateTime? @map("deleted_at")
+  id        Int       @id @default(autoincrement())
+  title     String
+  content   String    @db.Text
+  category  String    // Nombre libre de la categoría (string)
+  authorId  Int       @map("author_id")
+  views     Int       @default(0)
+  isPinned  Boolean   @default(false) @map("is_pinned")
+  isLocked  Boolean   @default(false) @map("is_locked")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
-  category ForumCategory @relation(fields: [categoryId], references: [id])
-  author   User          @relation(fields: [authorId], references: [id])
-  posts    ForumPost[]
-  tags     ForumTag[]
+  author  User        @relation(fields: [authorId], references: [id])
+  posts   ForumPost[]
+  tags    ForumTag[]
 
   companyId Int?     @map("company_id")
   company   Company? @relation(fields: [companyId], references: [id])
 
+  @@index([category])
   @@map("ForumTopic")
 }
 
