@@ -1,28 +1,39 @@
 import { prisma } from "@core/lib";
 
-export const forumService = {
-  // Categories
-  getCategories: async () => {
-    return await prisma.forumCategory.findMany({
-      orderBy: { order: "asc" },
-      include: {
-        _count: {
-          select: { topics: true },
-        },
-      },
-    });
-  },
+// Lista predefinida de categorías (ahora son strings simples)
+export const FORUM_CATEGORIES = [
+  "Captación y Mercado",
+  "Marketing Inmobiliario",
+  "Legal y Fiscalidad",
+  "Tecnología e IA",
+  "Cafetería (Off-topic)",
+];
 
-  createCategory: async (data: { title: string; description?: string; icon?: string; color?: string; order?: number }) => {
-    return await prisma.forumCategory.create({
-      data,
+export const forumService = {
+  // Categorías: ahora son strings estáticos
+  getCategories: async () => {
+    // Devolvemos las categorías predefinidas junto con el conteo de topics de cada una
+    const counts = await prisma.forumTopic.groupBy({
+      by: ["category"],
+      where: { deletedAt: null },
+      _count: { id: true },
+    });
+
+    return FORUM_CATEGORIES.map((cat) => {
+      const found = counts.find((c) => c.category === cat);
+      return {
+        name: cat,
+        topicCount: found?._count?.id ?? 0,
+      };
     });
   },
 
   // Topics
-  getTopics: async (categoryId?: number, page = 1, limit = 20) => {
+  getTopics: async (category?: string, page = 1, limit = 20) => {
     const skip = (page - 1) * limit;
-    const where = categoryId ? { categoryId, deletedAt: null } : { deletedAt: null };
+    const where = category
+      ? { category, deletedAt: null }
+      : { deletedAt: null };
 
     const [topics, total] = await Promise.all([
       prisma.forumTopic.findMany({
@@ -59,7 +70,6 @@ export const forumService = {
         author: {
           select: { id: true, firstName: true, lastName: true, avatarUrl: true },
         },
-        category: true,
         tags: true,
         posts: {
           where: { deletedAt: null },
@@ -74,18 +84,20 @@ export const forumService = {
     });
   },
 
-  createTopic: async (data: { title: string; content: string; categoryId: number; authorId: number; tags?: string[] }) => {
+  createTopic: async (data: { title: string; content: string; category: string; authorId: number; tags?: string[] }) => {
     const { tags, ...topicData } = data;
-    
+
     return await prisma.forumTopic.create({
       data: {
         ...topicData,
-        tags: tags ? {
-          connectOrCreate: tags.map(tag => ({
-            where: { name: tag },
-            create: { name: tag }
-          }))
-        } : undefined
+        tags: tags
+          ? {
+              connectOrCreate: tags.map((tag) => ({
+                where: { name: tag },
+                create: { name: tag },
+              })),
+            }
+          : undefined,
       },
     });
   },

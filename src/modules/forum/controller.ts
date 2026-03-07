@@ -24,35 +24,9 @@ export const forumController = {
     }
   },
 
-  /**
-   * @openapi
-   * /v1/forum/categories:
-   *   post:
-   *     tags: [Forum]
-   *     summary: Create a new forum category
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *             properties:
-   *               name:
-   *                 type: string
-   *               description:
-   *                 type: string
-   *     responses:
-   *       201:
-   *         description: Category created
-   */
   createCategory: async (req: Request, res: Response) => {
-    try {
-      // Basic check for admin could be added here
-      const category = await forumService.createCategory(req.body);
-      successResponse(res, category, 201);
-    } catch (error: any) {
-      errorResponse(res, error.message, 500);
-    }
+    // Las categorías ahora son cadenas predefinidas, no se crean en BD
+    errorResponse(res, "Las categorías son gestionadas internamente", 400);
   },
 
   // Topics
@@ -81,11 +55,11 @@ export const forumController = {
    */
   getTopics: async (req: Request, res: Response) => {
     try {
-      const categoryId = req.query.categoryId ? parseInt(req.query.categoryId as string) : undefined;
+      const category = req.query.category as string | undefined;
       const page = req.query.page ? parseInt(req.query.page as string) : 1;
       const limit = req.query.limit ? parseInt(req.query.limit as string) : 20;
 
-      const result = await forumService.getTopics(categoryId, page, limit);
+      const result = await forumService.getTopics(category, page, limit);
       successResponse(res, result);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
