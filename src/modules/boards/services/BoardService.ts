@@ -161,6 +161,12 @@ export class BoardService {
       }
       return card;
   }
+
+  async deleteCard(id: number, userId: number) {
+      return prisma.boardCard.delete({
+          where: { id }
+      });
+  }
   
   async getDailyActivity(userId: number) {
        const startOfDay = new Date();
