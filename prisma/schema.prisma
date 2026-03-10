@@ -603,7 +603,7 @@ model CardTag {
   name   String
   color  String?
 
-  card BoardCard @relation(fields: [cardId], references: [id])
+  card BoardCard @relation(fields: [cardId], references: [id], onDelete: Cascade)
 }
 
 model CardActivity {
@@ -614,7 +614,7 @@ model CardActivity {
   details   Json?
   createdAt DateTime @default(now()) @map("created_at")
 
-  card BoardCard @relation(fields: [cardId], references: [id])
+  card BoardCard @relation(fields: [cardId], references: [id], onDelete: Cascade)
   user User      @relation(fields: [userId], references: [id])
 }
 

@@ -17,5 +17,6 @@ boardRouter.post("/:id/columns", boardController.createColumn);
 boardRouter.post("/cards", boardController.createCard);
 boardRouter.put("/cards/:id/move", boardController.moveCard);
 boardRouter.put("/cards/:id", boardController.updateCard);
+boardRouter.delete("/cards/:id", boardController.deleteCard);
 
 export default boardRouter;

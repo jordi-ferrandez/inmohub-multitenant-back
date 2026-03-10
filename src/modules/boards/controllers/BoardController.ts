@@ -213,6 +213,35 @@ export class BoardController {
       res.status(400).json({ message: error.message });
     }
   }
+
+  /**
+   * @openapi
+   * /v1/boards/cards/{id}:
+   *   delete:
+   *     tags: [Boards]
+   *     summary: Eliminar una tarjeta
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Tarjeta eliminada
+   */
+  async deleteCard(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const userId = req.user?.userId;
+      await this.service.deleteCard(Number(id), Number(userId));
+      res.json({ message: "Card deleted" });
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  }
   
   async getDailyActivity(req: Request, res: Response) {
     try {
