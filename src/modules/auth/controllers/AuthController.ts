@@ -559,6 +559,30 @@ class AuthController {
       return;
     }
   }
+
+  async sendResetPasswordLink(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const params = req.paramsValidated as UserParams;
+      await this.authService.sendResetPasswordLink(parseInt(params.id));
+      successResponse(
+        res,
+        { message: "Enlace de restablecimiento enviado correctamente" },
+        200
+      );
+      return;
+    } catch (error: any) {
+      errorResponse(
+        res,
+        error.message || "Error al enviar enlace de restablecimiento",
+        400
+      );
+      return;
+    }
+  }
 }
 
 export { AuthController };

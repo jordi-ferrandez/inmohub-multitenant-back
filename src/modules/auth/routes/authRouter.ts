@@ -118,6 +118,13 @@ authRouter.post(
   validateUpdateUserPassword,
   authController.updateUserPassword
 );
+authRouter.post(
+  "/users/:id/send-reset-link",
+  authenticationToken,
+  requireDirectorRole,
+  validateUserParams,
+  authController.sendResetPasswordLink
+);
 authRouter.get(
   "/roles",
   authenticationToken,
