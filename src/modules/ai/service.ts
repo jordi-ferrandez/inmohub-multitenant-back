@@ -26,7 +26,7 @@ export interface ChatMessage {
   name?: string;
 }
 
-const SITE_URL = process.env.SITE_URL || "http://localhost:3000";
+const SITE_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 const SITE_NAME = "InmoHub";
 
 const dispatchTool = async (toolCall: any, context: AiContext) => {

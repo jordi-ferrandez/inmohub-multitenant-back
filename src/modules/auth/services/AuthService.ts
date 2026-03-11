@@ -997,6 +997,33 @@ class AuthService {
       completedTours: user.completedTours || [],
     };
   }
+
+  async sendResetPasswordLink(userId: number): Promise<void> {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const resetExpires = new Date(Date.now() + 3600000); // 1 hour
+
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        resetPasswordToken: resetToken,
+        resetPasswordExpires: resetExpires,
+      },
+    });
+
+    await this.mailerService.sendPasswordResetEmail(
+      user.email,
+      user.firstName,
+      resetToken
+    );
+  }
 }
 
 export { AuthService };
