@@ -46,13 +46,10 @@ router.get(
   followUpController.getFollowUps
 );
 
-// Actualizar seguimiento - Solo el agente que lo creó
-router.put(
-  "/:id",
-  requireAgentRole,
-  validateRequest(updateFollowUpSchema),
-  followUpController.updateFollowUp
-);
+// Actualizar seguimiento - Agentes y Directores
+router.route("/:id")
+  .patch(requireAgentOrDirectorRole, validateRequest(updateFollowUpSchema), followUpController.updateFollowUp)
+  .put(requireAgentOrDirectorRole, validateRequest(updateFollowUpSchema), followUpController.updateFollowUp);
 
 // Eliminar seguimiento - Solo el agente que lo creó
 router.delete(

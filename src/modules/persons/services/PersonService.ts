@@ -64,14 +64,27 @@ export class PersonService {
       }
     }
 
-    // Manejar teléfonos: actualizar existentes y crear nuevos
+    // Manejar teléfonos: eliminar los que no vienen, actualizar existentes y crear nuevos
     let phoneOps = {};
     if (phones) {
+      // 1. Identificar teléfonos a eliminar (soft delete)
+      const incomingIds = phones.filter((p) => p.id).map((p) => p.id as number);
+      
+      await prisma.personPhone.updateMany({
+        where: {
+          personId: id,
+          id: { notIn: incomingIds },
+          deletedAt: null,
+        },
+        data: { deletedAt: new Date() },
+      });
+
+      // 2. Preparar actualizaciones y creaciones
       const phonesToUpdate = phones.filter((phone) => phone.id);
       const phonesToCreate = phones.filter((phone) => !phone.id);
 
       phoneOps = {
-        updateMany: phonesToUpdate.map((phone) => ({
+        update: phonesToUpdate.map((phone) => ({
           where: { id: phone.id },
           data: { phone: phone.phone, type: phone.type },
         })),
