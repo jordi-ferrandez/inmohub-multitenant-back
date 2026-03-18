@@ -269,7 +269,9 @@ class FollowUpService {
 
     // Nuevos filtros del sistema refactorizado
     if (wasContacted !== undefined) {
-      where.wasContacted = wasContacted;
+      where.wasContacted = typeof wasContacted === 'string' 
+        ? wasContacted === 'true' 
+        : wasContacted;
     }
     if (contactType) {
       where.contactType = contactType;
