@@ -23,7 +23,7 @@ function authenticationToken(req: Request, res: Response, next: NextFunction) {
   }
   verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
-      errorResponse(res, "Invalid token", 403);
+      errorResponse(res, "Invalid token", 401);
       return;
     }
     req.user = decoded as JwtPayload;
