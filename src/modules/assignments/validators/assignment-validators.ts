@@ -7,7 +7,7 @@ import {
   AssignmentParams,
 } from "../types";
 import { errorResponse } from "@core/utils/apiResponse";
-import { normalizeDateToUTC, getUserTimezone } from "@core/utils/dateUtils";
+import { normalizeDateToUTC, normalizeEndDateToUTC, getUserTimezone } from "@core/utils/dateUtils";
 
 // Schema base sin transformación de fechas (se hace en el middleware)
 const createAssignmentSchemaBase = z
@@ -169,8 +169,8 @@ export const validateCreateAssignment = (
     ...result.data,
     startDate: normalizeDateToUTC(result.data.startDate, userTimezone),
     endDate: result.data.endDate
-      ? normalizeDateToUTC(result.data.endDate, userTimezone)
-      : undefined,
+      ? normalizeEndDateToUTC(result.data.endDate, userTimezone)
+      : normalizeEndDateToUTC(result.data.startDate, userTimezone), // Si no viene, es hasta el final de startDate
   };
 
   // Validar que endDate >= startDate después de normalización
@@ -213,7 +213,7 @@ export const validateUpdateAssignment = (
       startDate: normalizeDateToUTC(result.data.startDate, userTimezone),
     }),
     ...(result.data.endDate && {
-      endDate: normalizeDateToUTC(result.data.endDate, userTimezone),
+      endDate: normalizeEndDateToUTC(result.data.endDate, userTimezone),
     }),
   };
 
