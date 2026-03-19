@@ -40,12 +40,51 @@ export function normalizeDateToUTC(
 
   // Si ya es ISO string completo, parsearlo normalmente
   // Luxon maneja automáticamente el timezone si está incluido
-  const parsed = DateTime.fromISO(dateString);
+  const parsed = DateTime.fromISO(dateString as string);
   if (parsed.isValid) {
     return parsed.toUTC().toJSDate();
   }
 
   // Fallback: parseo estándar de JavaScript
+  return new Date(dateString);
+}
+
+/**
+ * Normaliza una fecha de solo día (YYYY-MM-DD) al final del día (23:59:59.999) en UTC
+ * Interpreta la fecha como el final del día en el timezone del usuario
+ *
+ * @param dateString - String en formato YYYY-MM-DD o Date object
+ * @param userTimezone - Timezone del usuario
+ * @returns Date object en UTC
+ */
+export function normalizeEndDateToUTC(
+  dateString: string | Date,
+  userTimezone?: string
+): Date {
+  // Si ya es un Date object, retornarlo
+  if (dateString instanceof Date) {
+    return dateString;
+  }
+
+  // Si es string YYYY-MM-DD, interpretarlo como final del día en timezone del usuario
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateString as string)) {
+    if (userTimezone) {
+      const localEndOfDay = DateTime.fromISO(dateString as string, {
+        zone: userTimezone,
+      }).endOf("day");
+      return localEndOfDay.toUTC().toJSDate();
+    }
+
+    const [year, month, day] = (dateString as string).split("-").map(Number);
+    return new Date(Date.UTC(year, month - 1, day, 23, 59, 59, 999));
+  }
+
+  // Si ya es ISO string completo, parsearlo normalmente
+  const parsed = DateTime.fromISO(dateString as string);
+  if (parsed.isValid) {
+    return parsed.toUTC().toJSDate();
+  }
+
   return new Date(dateString);
 }
 
