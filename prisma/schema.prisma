@@ -184,6 +184,7 @@ model Property {
   reminders         Reminder[]
   flyers            Flyer[]
   valuations        ValuationRequest[]
+  mailboxing        MailboxingProperty[]
 
   companyId Int?     @map("company_id")
   company   Company? @relation(fields: [companyId], references: [id])
@@ -267,19 +268,36 @@ model FollowUp {
   @@index([executedDate], map: "idx_follow_up_executed")
 }
 
+enum MailboxingExecutionStatus {
+  pending
+  completed
+  skipped
+  cancelled
+}
+
 model Mailboxing {
-  id          Int                    @id @default(autoincrement())
-  mailboxerId Int                    @map("mailboxer_id")
-  buildingId  Int                    @map("building_id")
-  status      MailboxingStatus       @default(outside)
-  comment     String?
-  date        DateTime               @map("date")
-  createdAt   DateTime               @default(now()) @map("created_at")
+  id               Int                       @id @default(autoincrement())
+  mailboxerId      Int                       @map("mailboxer_id")
+  buildingId       Int                       @map("building_id")
+  status           MailboxingStatus          @default(outside)
+  executionStatus  MailboxingExecutionStatus @default(completed) @map("execution_status")
+  comment          String?
+  date             DateTime                  @map("date")
+  createdAt        DateTime                  @default(now()) @map("created_at")
   updatedAt   DateTime               @default(now()) @updatedAt @map("updated_at")
   deletedAt   DateTime?              @map("deleted_at")
   building    Building               @relation(fields: [buildingId], references: [id])
+  properties  MailboxingProperty[]
   mailboxer   User                   @relation(fields: [mailboxerId], references: [id])
   attachments MailboxingAttachment[]
+}
+
+model MailboxingProperty {
+  id           Int        @id @default(autoincrement())
+  mailboxingId Int        @map("mailboxing_id")
+  propertyId   Int        @map("property_id")
+  mailboxing   Mailboxing @relation(fields: [mailboxingId], references: [id])
+  property     Property   @relation(fields: [propertyId], references: [id])
 }
 
 model MailboxingAttachment {

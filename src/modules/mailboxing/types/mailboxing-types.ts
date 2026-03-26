@@ -1,4 +1,5 @@
 export type MailboxingStatus = "inside" | "outside" | "no_disturb";
+export type MailboxingExecutionStatus = "pending" | "completed" | "skipped" | "cancelled";
 
 export interface MailboxingDTO {
   id: number;
@@ -17,7 +18,14 @@ export interface MailboxingDTO {
     block?: string;
     stair?: string;
   };
+  propertyIds?: number[];
+  properties?: {
+    id: number;
+    number: string;
+    floor: number;
+  }[];
   status: MailboxingStatus;
+  executionStatus: MailboxingExecutionStatus;
   comment?: string;
   date: Date;
   createdAt: Date;
@@ -28,13 +36,17 @@ export interface MailboxingDTO {
 
 export interface CreateMailboxingRequest {
   buildingId: number;
+  propertyIds?: number[];
   status: MailboxingStatus;
+  executionStatus?: MailboxingExecutionStatus;
   comment?: string;
   date: string; // ISO date string
+  mailboxerId?: number;
 }
 
 export interface UpdateMailboxingRequest {
   status?: MailboxingStatus;
+  executionStatus?: MailboxingExecutionStatus;
   comment?: string;
   date?: string; // ISO date string
 }
@@ -45,6 +57,7 @@ export interface MailboxingQueryParams {
   buildingId?: number;
   mailboxerId?: number;
   status?: MailboxingStatus;
+  executionStatus?: MailboxingExecutionStatus;
   startDate?: string;
   endDate?: string;
 }

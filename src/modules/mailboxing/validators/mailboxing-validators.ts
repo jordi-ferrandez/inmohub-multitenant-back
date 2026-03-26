@@ -10,10 +10,14 @@ import { errorResponse } from "@core/utils/apiResponse";
 
 export const mailboxingStatusSchema = z.enum(["inside", "outside", "no_disturb"]);
 
+const mailboxingExecutionStatusSchema = z.enum(["pending", "completed", "skipped", "cancelled"]);
+
 // Schema base sin transformación de fechas (se hace en el middleware)
 const createMailboxingSchemaBase = z.object({
   buildingId: z.number().int().positive("ID de edificio inválido"),
+  propertyIds: z.array(z.number().int().positive()).optional(),
   status: mailboxingStatusSchema,
+  executionStatus: mailboxingExecutionStatusSchema.optional(),
   comment: z
     .string()
     .max(1000, "El comentario no puede exceder 1000 caracteres")
@@ -23,6 +27,7 @@ const createMailboxingSchemaBase = z.object({
     z.string().datetime("Formato de fecha inválido (ISO 8601)"),
     z.coerce.date(),
   ]),
+  mailboxerId: z.number().int().positive().optional(),
 });
 
 // Middleware de validación con normalización de fechas
@@ -54,6 +59,7 @@ export const validateCreateMailboxing = (
 // Schema base sin transformación de fechas (se hace en el middleware)
 const updateMailboxingSchemaBase = z.object({
   status: mailboxingStatusSchema.optional(),
+  executionStatus: mailboxingExecutionStatusSchema.optional(),
   comment: z
     .string()
     .max(1000, "El comentario no puede exceder 1000 caracteres")

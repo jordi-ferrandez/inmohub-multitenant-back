@@ -43,8 +43,14 @@ class MailboxingService {
         mailboxerId,
         buildingId: input.buildingId,
         status: input.status,
+        executionStatus: input.executionStatus || "completed",
         comment: input.comment,
         date: new Date(input.date),
+        properties: input.propertyIds && input.propertyIds.length > 0 ? {
+          create: input.propertyIds.map(id => ({
+            propertyId: id
+          }))
+        } : undefined,
       },
       include: {
         mailboxer: {
@@ -62,6 +68,17 @@ class MailboxingService {
             number: true,
             block: true,
             stair: true,
+          },
+        },
+        properties: {
+          include: {
+            property: {
+              select: {
+                id: true,
+                number: true,
+                floor: true,
+              },
+            },
           },
         },
         attachments: {
@@ -206,6 +223,10 @@ class MailboxingService {
       where.status = query.status;
     }
 
+    if (query.executionStatus) {
+      where.executionStatus = query.executionStatus;
+    }
+
     if (query.startDate || query.endDate) {
       where.date = {};
       if (query.startDate) {
@@ -235,6 +256,17 @@ class MailboxingService {
               number: true,
               block: true,
               stair: true,
+            },
+          },
+          properties: {
+            include: {
+              property: {
+                select: {
+                  id: true,
+                  number: true,
+                  floor: true,
+                },
+              },
             },
           },
           attachments: {
@@ -289,14 +321,15 @@ class MailboxingService {
   async updateMailboxing(
     id: number,
     input: UpdateMailboxingRequest,
-    mailboxerId: number
+    mailboxerId: number,
+    isDirector: boolean = false
   ): Promise<MailboxingDTO> {
     // Verificar que el buzoneamiento existe y pertenece al usuario
     const existing = await prisma.mailboxing.findFirst({
       where: {
         id,
-        mailboxerId,
         deletedAt: null,
+        ...(isDirector ? {} : { mailboxerId }),
       },
     });
 
@@ -322,6 +355,7 @@ class MailboxingService {
 
     const updateData: any = {};
     if (input.status !== undefined) updateData.status = input.status;
+    if (input.executionStatus !== undefined) updateData.executionStatus = input.executionStatus;
     if (input.comment !== undefined) updateData.comment = input.comment;
     if (input.date !== undefined) updateData.date = new Date(input.date);
 
@@ -405,7 +439,6 @@ class MailboxingService {
         userId,
         type: "Mailboxing",
         deletedAt: null,
-        startDate: { lte: now },
         endDate: { gte: now },
       },
       include: {
@@ -431,7 +464,7 @@ class MailboxingService {
       type: assignment.type,
       startDate: assignment.startDate,
       endDate: assignment.endDate,
-      isActive: true,
+      isActive: assignment.startDate <= now && assignment.endDate >= now,
       building: {
         id: assignment.building.id,
         street: assignment.building.street,
@@ -652,7 +685,10 @@ class MailboxingService {
       mailboxer: mailboxing.mailboxer,
       buildingId: mailboxing.buildingId,
       building: mailboxing.building,
+      propertyIds: mailboxing.properties?.map((p: any) => p.propertyId) || [],
+      properties: mailboxing.properties?.map((p: any) => p.property) || [],
       status: mailboxing.status,
+      executionStatus: mailboxing.executionStatus || "completed",
       comment: mailboxing.comment || undefined,
       date: mailboxing.date,
       createdAt: mailboxing.createdAt,
