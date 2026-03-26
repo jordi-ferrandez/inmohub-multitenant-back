@@ -53,9 +53,14 @@ export class MailboxingController {
       const userId = this.getUserId(req, res);
       if (userId === null) return;
 
+      const isDirector = this.isDirector(req);
+      const targetMailboxerId = (isDirector && req.body.mailboxerId) 
+        ? req.body.mailboxerId 
+        : userId;
+
       const mailboxing = await MailboxingService.createMailboxing(
         req.body,
-        userId
+        targetMailboxerId
       );
       successResponse(res, mailboxing, 201);
     } catch (error: any) {
@@ -157,10 +162,13 @@ export class MailboxingController {
       if (userId === null) return;
 
       const { id } = req.params;
+      const isDirector = this.isDirector(req);
+
       const mailboxing = await MailboxingService.updateMailboxing(
         parseInt(id),
         req.body,
-        userId
+        userId,
+        isDirector
       );
       successResponse(res, mailboxing);
     } catch (error: any) {
