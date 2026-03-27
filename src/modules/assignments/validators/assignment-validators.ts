@@ -99,6 +99,7 @@ const updateAssignmentSchemaBase = z
         z.coerce.date(),
       ])
       .optional(),
+    isActive: z.boolean().optional(),
   })
   .refine(
     (data) => {
@@ -215,6 +216,7 @@ export const validateUpdateAssignment = (
     ...(result.data.endDate && {
       endDate: normalizeEndDateToUTC(result.data.endDate, userTimezone),
     }),
+    ...(result.data.isActive !== undefined && { isActive: result.data.isActive }),
   };
 
   // Validar que endDate >= startDate después de normalización (si ambas vienen)

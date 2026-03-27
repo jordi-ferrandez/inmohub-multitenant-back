@@ -7,6 +7,7 @@ export interface AssignmentDTO {
   type: AssignmentType;
   startDate: Date;
   endDate: Date;
+  isActive: boolean;
   user: {
     id: number;
     firstName: string;
