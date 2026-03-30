@@ -43,7 +43,7 @@ export const patchPropertyBodySchema = z
     tenantId: z.number().int().positive().optional().nullable(),
     capturedById: z.number().int().positive().optional().nullable(),
     appraisalPrice: z.number().optional().nullable(),
-    occupiedBy: z.enum(["owner", "tenant", "none"]).optional().nullable(),
+    occupiedBy: z.enum(["owner", "tenant", "none", "not_identified"]).optional().nullable(),
     importantNotice: z.string().optional().nullable(),
     rso_comment: z.string().optional().nullable(),
     noDisturb: z.boolean().optional(),

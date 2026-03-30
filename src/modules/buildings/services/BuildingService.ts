@@ -390,6 +390,7 @@ export class BuildingService {
       informer: [],
       president: [],
       noOccupationStatus: [],
+      notIdentified: [],
     };
 
     building.properties.forEach((property) => {
@@ -470,6 +471,10 @@ export class BuildingService {
         propertiesGroups.ownerOccupied.push(propertyWithDate);
       }
 
+      if (occupiedBy === "not_identified") {
+        propertiesGroups.noOccupationStatus.push(propertyWithDate);
+      }
+
       // 7. Segunda Residencia
       if (isSecondResidence) {
         propertiesGroups.secondResidence.push(propertyWithDate);
@@ -501,6 +506,7 @@ export class BuildingService {
         appraisalPrice !== null ||
         occupiedBy === "tenant" ||
         occupiedBy === "owner" ||
+        occupiedBy === "not_identified" ||
         occupiedBy === "none" ||
         isSecondResidence ||
         isInformer ||
