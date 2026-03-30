@@ -12,4 +12,5 @@ export interface UpdateAssignmentRequest {
   type?: "Following" | "Mailboxing";
   startDate?: Date;
   endDate?: Date;
+  isActive?: boolean;
 }

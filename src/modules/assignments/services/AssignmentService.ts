@@ -114,11 +114,18 @@ class AssignmentService {
 
     if (query.isActive !== undefined) {
       const now = new Date();
-      console.log({ now });
       if (query.isActive) {
-        where.AND = [{ startDate: { lte: now } }, { endDate: { gte: now } }];
+        where.AND = [
+          { isActive: true },
+          { startDate: { lte: now } },
+          { endDate: { gte: now } },
+        ];
       } else {
-        where.OR = [{ startDate: { gt: now } }, { endDate: { lt: now } }];
+        where.OR = [
+          { isActive: false },
+          { startDate: { gt: now } },
+          { endDate: { lt: now } },
+        ];
       }
     }
 
@@ -295,10 +302,9 @@ class AssignmentService {
       updatedAt: new Date(),
     };
 
-    // Si startDate viene pero endDate no, establecer endDate = startDate
-    if (input.startDate && !input.endDate) {
-      updateData.endDate = input.startDate;
-    }
+    // Si startDate viene pero endDate no, mantener el endDate existente
+    // (ya no forzamos endDate = startDate)
+    // Solo si se proporciona explícitamente se sobrescribe
 
     const updatedAssignment = await prisma.assignment.update({
       where: { id },
@@ -601,6 +607,7 @@ class AssignmentService {
       type: assignment.type,
       startDate: assignment.startDate,
       endDate: assignment.endDate,
+      isActive: assignment.isActive ?? true,
       user: assignment.user,
       building: assignment.building,
       createdAt: assignment.createdAt,
