@@ -39,6 +39,36 @@ export class PropertyService {
     return property;
   }
 
+  async createProperty(data: any): Promise<Property> {
+    try {
+      const property = await prisma.property.create({
+        data: {
+          buildingId: Number(data.buildingId),
+          floor: data.floor ? Number(data.floor) : 0,
+          number: String(data.number),
+          inmovillaCode: data.inmovillaCode ? Number(data.inmovillaCode) : undefined,
+          status: data.status || "sin_estado",
+        },
+        include: this.propertyRelations,
+      });
+      return property;
+    } catch (error) {
+      throw new Error(`Error creating property: ${error}`);
+    }
+  }
+
+  async deleteProperty(id: number): Promise<void> {
+    try {
+      await prisma.property.update({
+        where: { id },
+        data: { deletedAt: new Date() },
+      });
+    } catch (error) {
+      throw new Error(`Error deleting property: ${error}`);
+    }
+  }
+
+
   async patchPropertyById(
     id: number,
     data: Partial<Property>

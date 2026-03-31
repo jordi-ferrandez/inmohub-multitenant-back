@@ -1,4 +1,4 @@
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, requireDirectorRole } from "@core/middlewares";
 import express from "express";
 import {
   validateGetPropertyById,
@@ -29,8 +29,14 @@ const propertyAttachmentController = bindAllMethods(
 propertyRouter.get(
   "/",
   authenticationToken,
-  validateGetProperties ,
+  validateGetProperties,
   propertyController.getProperty
+);
+
+propertyRouter.post(
+  "/",
+  authenticationToken,
+  propertyController.createProperty
 );
 
 
@@ -47,6 +53,14 @@ propertyRouter.patch(
   validatePatchPropertyById,
   propertyController.patchPropertyById
 );
+
+propertyRouter.delete(
+  "/:id",
+  authenticationToken,
+  requireDirectorRole,
+  propertyController.deleteProperty
+);
+
 
 propertyRouter.get(
   "/:id/follow-ups",

@@ -108,9 +108,19 @@ class ReminderService {
     const limit = params.limit ? parseInt(params.limit, 10) : 20;
     const skip = (page - 1) * limit;
 
-    const where: any = {
-      deletedAt: null,
-    };
+    const where: any = {};
+    
+    if (params.status) {
+      const statuses = params.status.split(",") as ReminderStatus[];
+      where.status = { in: statuses };
+      // Solo forzar deletedAt: null si 'archived' NO está entre los estados buscados
+      if (!statuses.includes("archived")) {
+        where.deletedAt = null;
+      }
+    } else {
+      // En "Todos", excluimos los archivados (que tienen deletedAt != null)
+      where.deletedAt = null;
+    }
 
     const requester = await prisma.user.findUnique({
       where: { id: requesterId },
@@ -128,11 +138,6 @@ class ReminderService {
 
     if (params.responsibleId) {
       where.responsibleId = parseInt(params.responsibleId, 10);
-    }
-
-    if (params.status) {
-      const statuses = params.status.split(",") as ReminderStatus[];
-      where.status = { in: statuses };
     }
 
     if (params.propertyId) {
