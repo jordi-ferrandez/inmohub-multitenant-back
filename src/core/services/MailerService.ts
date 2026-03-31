@@ -28,8 +28,7 @@ class MailerService {
       });
     } catch (error) {
       console.error("Error sending email:", error);
-      // We don't throw here to avoid breaking the main flow, 
-      // but in production we might want to log this properly.
+      throw error; // Lanzar error para que el controlador lo capture
     }
   }
 
