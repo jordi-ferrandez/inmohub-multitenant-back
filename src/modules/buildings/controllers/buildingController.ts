@@ -9,6 +9,8 @@ import {
   GetBuildingMailboxingsParams,
   GetBuildingMailboxingsQuery,
   DeleteBuildingParams,
+  CreateBuildingDTO,
+  UpdateBuildingDTO,
 } from "../types/buildingTypes";
 
 export class BuildingController {
@@ -141,6 +143,27 @@ export class BuildingController {
           `Error al obtener el edificio cons ID ${req.paramsValidated.id}`,
         500
       );
+    }
+  }
+
+  async createBuilding(req: Request, res: Response): Promise<void> {
+    try {
+      const data = req.body as CreateBuildingDTO;
+      const building = await this.BuildingService.createBuilding(data);
+      successResponse(res, building, 201);
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al crear edificio", 500);
+    }
+  }
+
+  async updateBuilding(req: Request, res: Response): Promise<void> {
+    try {
+      const id = Number(req.params.id);
+      const data = req.body as UpdateBuildingDTO;
+      const building = await this.BuildingService.updateBuilding(id, data);
+      successResponse(res, building, 200);
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al actualizar edificio", 500);
     }
   }
 

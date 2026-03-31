@@ -11,6 +11,8 @@ import {
   GetBuildingMailboxingsQuery,
   DeleteBuildingParams,
   DeletionSummaryDTO,
+  CreateBuildingDTO,
+  UpdateBuildingDTO,
 } from "../types/buildingTypes";
 import { getNameAndNumberFromStreet } from "../utils/getNameAndNumberFromStreet";
 import {
@@ -55,6 +57,41 @@ export class BuildingService {
     );
 
     return response;
+  }
+  async createBuilding(data: CreateBuildingDTO): Promise<Building> {
+    try {
+      const building = await prisma.building.create({
+        data: {
+          street: data.street,
+          number: Number(data.number),
+          block: data.block || null,
+          stair: data.stair || null,
+        },
+      });
+      return building;
+    } catch (error) {
+      throw new Error(`Error creating building: ${error}`);
+    }
+  }
+
+  async updateBuilding(
+    id: number,
+    data: UpdateBuildingDTO
+  ): Promise<Building> {
+    try {
+      const building = await prisma.building.update({
+        where: { id },
+        data: {
+          street: data.street,
+          number: data.number ? Number(data.number) : undefined,
+          block: data.block,
+          stair: data.stair,
+        },
+      });
+      return building;
+    } catch (error) {
+      throw new Error(`Error updating building: ${error}`);
+    }
   }
 
   async getBuildings(filters: GetBuildingsQuery) {
