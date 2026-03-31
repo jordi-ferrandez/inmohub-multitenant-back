@@ -107,6 +107,27 @@ export class PropertyController {
     }
   }
 
+  async createProperty(req: Request, res: Response): Promise<void> {
+    try {
+      const property = await this.PropertyService.createProperty(req.body);
+      successResponse(res, property, 201);
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al crear propiedad", 500);
+      return;
+    }
+  }
+
+  async deleteProperty(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      await this.PropertyService.deleteProperty(Number(id));
+      successResponse(res, { message: "Property deleted" }, 200);
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al borrar propiedad", 500);
+      return;
+    }
+  }
+
 
   /**
    * @openapi

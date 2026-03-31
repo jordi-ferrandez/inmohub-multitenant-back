@@ -24,6 +24,7 @@ const authController = bindAllMethods(new AuthController());
 // Rutas públicas
 authRouter.post("/register", validateRegister, authController.register);
 authRouter.post("/login", validateLogin, authController.login);
+
 authRouter.post("/forgot-password", validateForgotPassword, authController.forgotPassword);
 authRouter.post("/reset-password", validateResetPassword, authController.resetPassword);
 authRouter.get("/verify-email", authController.verifyEmail);

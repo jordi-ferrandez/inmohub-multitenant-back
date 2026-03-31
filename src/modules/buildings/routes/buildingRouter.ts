@@ -39,7 +39,20 @@ buildingRouter.get(
   authenticationToken,
   validateGetBuildingsByStreetName,
   buildingController.getBuildingsByStreetName
-)
+);
+
+buildingRouter.post(
+  "/",
+  authenticationToken,
+  buildingController.createBuilding
+);
+
+buildingRouter.patch(
+  "/:id",
+  authenticationToken,
+  buildingController.updateBuilding
+);
+
 
 buildingRouter.get(
   "/:id",
