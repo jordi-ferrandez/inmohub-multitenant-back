@@ -33,10 +33,19 @@ const toBuildingResponseDTO = (building: Building): BuildingResponseDTO => ({
 });
 
 export class BuildingService {
-  async getBuildingsGroupedByStreets(): Promise<GetBuildingsGroupedByStreetsDTO> {
+  // async getBuildingsGroupedByStreets(cursorId: any = null): Promise<GetBuildingsGroupedByStreetsDTO> {
+    async getBuildingsGroupedByStreets(cursorId: any = null) {
+    
     const allBuildings = await prisma.building.findMany({
+      take: 40,
+      skip: cursorId ? 1 : 0,      
+      cursor: cursorId ? { id: parseInt(cursorId, 10) } : undefined,
       orderBy: { street: "asc" },
     });
+
+    const lastPostInResults = allBuildings[39]; 
+    const myCursorId = lastPostInResults.id; 
+    
 
     const groupedByStreet = allBuildings.reduce<
       Record<string, BuildingResponseDTO[]>
@@ -51,12 +60,16 @@ export class BuildingService {
 
     const response = Object.entries(groupedByStreet).map(
       ([street, buildings]) => ({
-        street,
+        street, 
         buildings,
       })
     );
 
-    return response;
+    cursorId = myCursorId;
+    
+     return { response, cursorId };
+    // return response;
+    
   }
   async createBuilding(data: CreateBuildingDTO): Promise<Building> {
     try {

@@ -31,9 +31,13 @@ export class BuildingController {
     res: Response
   ): Promise<void> {
     try {
+      const cursorId = req.query.cursorId;
+      
       const buildings =
-        await this.BuildingService.getBuildingsGroupedByStreets();
+        await this.BuildingService.getBuildingsGroupedByStreets(cursorId);
+        
       successResponse(res, buildings, 200);
+
       return;
     } catch (error: any) {
       errorResponse(
