@@ -1,7 +1,7 @@
 import express from "express";
 import { PersonController } from "../controllers/PersonController";
 import { bindAllMethods } from "@core/utils";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, requireDirectorRole } from "@core/middlewares";
 
 const personRouter = express.Router();
 const personController = bindAllMethods(new PersonController());
@@ -22,17 +22,19 @@ personRouter.post("/", personController.create);
 personRouter.patch("/:id", personController.update);
 
 // DELETE /v1/persons/:id - Eliminar persona (soft delete)
-personRouter.delete("/:id", personController.delete);
+personRouter.delete("/:id", requireDirectorRole, personController.delete);
 
 // POST /v1/persons/:id/properties/:propertyId - Asignar persona a propiedad
 personRouter.post(
   "/:id/properties/:propertyId",
+  requireDirectorRole,
   personController.assignProperty
 );
 
 // DELETE /v1/persons/:id/properties/:propertyId - Desasignar persona de propiedad
 personRouter.delete(
   "/:id/properties/:propertyId",
+  requireDirectorRole,
   personController.unassignProperty
 );
 

@@ -1,0 +1,252 @@
+
+> inmohub-backend@1.0.0 test
+> jest src/tests/agent-permissions.e2e.spec.ts
+
+  console.log
+    ­ƒôä Swagger documentation available at http://localhost:4000/api/docs
+
+      at setupSwagger (src/core/config/swagger.ts:56:11)
+
+  console.log
+    
+    [2026-04-06T22:28:48.903Z Method GET /api/v1/properties/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:48 +0000] "GET /api/v1/properties/1 HTTP/1.1" 200 105 "-" "-"
+  console.log
+    [2026-04-06T22:28:48.903Z] Response: Status Code 200 - 7ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:48.944Z Method PATCH /api/v1/properties/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:48 +0000] "PATCH /api/v1/properties/1 HTTP/1.1" 200 60 "-" "-"
+  console.log
+    [2026-04-06T22:28:48.944Z] Response: Status Code 200 - 3ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:48.953Z Method DELETE /api/v1/properties/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:48 +0000] "DELETE /api/v1/properties/1 HTTP/1.1" 403 80 "-" "-"
+  console.log
+    [2026-04-06T22:28:48.953Z] Response: Status Code 403 - 1ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:48.962Z Method GET /api/v1/reminders - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:48 +0000] "GET /api/v1/reminders HTTP/1.1" 403 80 "-" "-"
+  console.log
+    [2026-04-06T22:28:48.962Z] Response: Status Code 403 - 1ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:48.973Z Method POST /api/v1/reminders - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:48 +0000] "POST /api/v1/reminders HTTP/1.1" 403 80 "-" "-"
+  console.log
+    [2026-04-06T22:28:48.973Z] Response: Status Code 403 - 1ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:48.981Z Method GET /api/v1/persons - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:48 +0000] "GET /api/v1/persons HTTP/1.1" 200 81 "-" "-"
+  console.log
+    [2026-04-06T22:28:48.981Z] Response: Status Code 200 - 2ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:48.991Z Method DELETE /api/v1/persons/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:48 +0000] "DELETE /api/v1/persons/1 HTTP/1.1" 403 80 "-" "-"
+  console.log
+    [2026-04-06T22:28:48.991Z] Response: Status Code 403 - 1ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:49.000Z Method POST /api/v1/persons/1/properties/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:49 +0000] "POST /api/v1/persons/1/properties/1 HTTP/1.1" 403 80 "-" "-"
+  console.log
+    [2026-04-06T22:28:49.000Z] Response: Status Code 403 - 1ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:49.016Z Method DELETE /api/v1/persons/1/properties/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:49 +0000] "DELETE /api/v1/persons/1/properties/1 HTTP/1.1" 403 80 "-" "-"
+  console.log
+    [2026-04-06T22:28:49.016Z] Response: Status Code 403 - 1ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:49.027Z Method GET /api/v1/assignments - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+  console.log
+    Logging req.query:  [Object: null prototype] {}
+
+      at validateAssignmentQuery (src/modules/assignments/validators/assignment-validators.ts:245:11)
+
+  console.log
+    Logging result:  {
+      success: true,
+      data: { page: 1, limit: 10, sortBy: 'createdAt', sortOrder: 'desc' }
+    }
+
+      at validateAssignmentQuery (src/modules/assignments/validators/assignment-validators.ts:247:11)
+
+  console.log
+    Logging query in service:  {
+      query: { page: 1, limit: 10, sortBy: 'createdAt', sortOrder: 'desc' }
+    }
+
+      at AssignmentService.getAssignments (src/modules/assignments/services/AssignmentService.ts:92:13)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:49 +0000] "GET /api/v1/assignments HTTP/1.1" 200 109 "-" "-"
+  console.log
+    [2026-04-06T22:28:49.027Z] Response: Status Code 200 - 20ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:49.054Z Method POST /api/v1/assignments - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:49 +0000] "POST /api/v1/assignments HTTP/1.1" 403 80 "-" "-"
+  console.log
+    [2026-04-06T22:28:49.054Z] Response: Status Code 403 - 1ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:49.061Z Method DELETE /api/v1/assignments/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:49 +0000] "DELETE /api/v1/assignments/1 HTTP/1.1" 403 80 "-" "-"
+  console.log
+    [2026-04-06T22:28:49.061Z] Response: Status Code 403 - 1ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:49.071Z Method GET /api/v1/reminders - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:49 +0000] "GET /api/v1/reminders HTTP/1.1" 200 99 "-" "-"
+  console.log
+    [2026-04-06T22:28:49.071Z] Response: Status Code 200 - 2ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:49.081Z Method DELETE /api/v1/properties/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:49 +0000] "DELETE /api/v1/properties/1 HTTP/1.1" 200 58 "-" "-"
+  console.log
+    [2026-04-06T22:28:49.081Z] Response: Status Code 200 - 2ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+  console.log
+    
+    [2026-04-06T22:28:49.091Z Method DELETE /api/v1/persons/1 - IP: ::ffff:127.0.0.1]
+
+      at requestLogger (src/core/middlewares/requestLogger.ts:5:11)
+
+::ffff:127.0.0.1 - - [06/Apr/2026:22:28:49 +0000] "DELETE /api/v1/persons/1 HTTP/1.1" 404 57 "-" "-"
+  console.log
+    [2026-04-06T22:28:49.091Z] Response: Status Code 404 - 2ms
+
+      at ServerResponse.<anonymous> (src/core/middlewares/requestLogger.ts:9:13)
+
+FAIL src/tests/agent-permissions.e2e.spec.ts (5.987 s)
+  Agent Permissions & Restrictions (E2E)
+    Property Access for Agents
+      ÔêÜ should allow agents to view property details (including prices and persons) (44 ms)
+      ÔêÜ should allow agents to edit property number and floor (24 ms)
+      ÔêÜ should deny agents from deleting properties (9 ms)
+    Reminders Access for Agents
+      ÔêÜ should deny agents from viewing reminders list (8 ms)
+      ÔêÜ should deny agents from creating reminders (10 ms)
+    Persons Access for Agents
+      ÔêÜ should allow agents to search and view persons (9 ms)
+      ÔêÜ should deny agents from deleting persons (8 ms)
+      ÔêÜ should deny agents from assigning/unassigning persons to properties (26 ms)
+    Assignments Access for Agents
+      ÔêÜ should allow agents to view their assignments (28 ms)
+      ÔêÜ should deny agents from creating or deleting assignments (16 ms)
+    Director Access
+      ÔêÜ should allow directors to access reminders (11 ms)
+      ÔêÜ should allow directors to delete properties (10 ms)
+      ├ù should allow directors to delete persons and manage assignments (12 ms)
+
+  ÔùÅ Agent Permissions & Restrictions (E2E) ÔÇ║ Director Access ÔÇ║ should allow directors to delete persons and manage assignments
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 404
+
+      161 |       prismaMock.person.update.mockResolvedValue({ id: 1 } as any);
+      162 |       const responsePerson = await request(app).delete('/api/v1/persons/1');
+    > 163 |       expect(responsePerson.status).toBe(200);
+          |                                     ^
+      164 |
+      165 |       prismaMock.assignment.create.mockResolvedValue({ id: 1 } as any);
+      166 |       const responseAssign = await request(app).post('/api/v1/assignments').send({ propertyId: 1, userId: 2 });
+
+      at Object.<anonymous> (src/tests/agent-permissions.e2e.spec.ts:163:37)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 12 passed, 13 total
+Snapshots:   0 total
+Time:        6.324 s
+Ran all test suites matching src/tests/agent-permissions.e2e.spec.ts.
