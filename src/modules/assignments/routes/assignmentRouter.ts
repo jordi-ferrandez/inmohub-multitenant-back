@@ -6,27 +6,43 @@ import {
   validateAssignmentQuery,
   validateAssignmentParams,
 } from "../validators";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, requireDirectorRole } from "@core/middlewares";
 
 const router = Router();
 
 // Todas las rutas requieren autenticación
 router.use(authenticationToken);
 
-// Rutas principales de asignaciones
+// Rutas de escritura solo para directores
 router.post(
   "/",
+  requireDirectorRole,
   validateCreateAssignment,
   assignmentController.createAssignment.bind(assignmentController)
 );
 
+router.put(
+  "/:id",
+  requireDirectorRole,
+  validateAssignmentParams,
+  validateUpdateAssignment,
+  assignmentController.updateAssignment.bind(assignmentController)
+);
+
+router.delete(
+  "/:id",
+  requireDirectorRole,
+  validateAssignmentParams,
+  assignmentController.deleteAssignment.bind(assignmentController)
+);
+
+// Rutas de lectura para todos
 router.get(
   "/",
   validateAssignmentQuery,
   assignmentController.getAssignments.bind(assignmentController)
 );
 
-// Rutas específicas ANTES de /:id para evitar conflictos
 router.get(
   "/summary",
   assignmentController.getAssignmentsSummary.bind(assignmentController)
@@ -42,24 +58,10 @@ router.get(
   assignmentController.getAssignmentsByBuilding.bind(assignmentController)
 );
 
-// Rutas con parámetros al final
 router.get(
   "/:id",
   validateAssignmentParams,
   assignmentController.getAssignmentById.bind(assignmentController)
-);
-
-router.put(
-  "/:id",
-  validateAssignmentParams,
-  validateUpdateAssignment,
-  assignmentController.updateAssignment.bind(assignmentController)
-);
-
-router.delete(
-  "/:id",
-  validateAssignmentParams,
-  assignmentController.deleteAssignment.bind(assignmentController)
 );
 
 export { router as assignmentRouter };
