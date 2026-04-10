@@ -12,7 +12,7 @@ jest.mock('@core/lib', () => ({
 // Mock middlewares
 jest.mock('@core/middlewares/authenticationToken', () => ({
     authenticationToken: (req: any, res: any, next: any) => {
-        req.user = { id: 1, email: 'admin@example.com', roles: [{ name: 'admin', displayName: 'Admin' }] };
+        req.user = { id: 1, email: 'admin@example.com', roles: [{ name: 'Director', displayName: 'Admin' }] };
         next();
     },
 }));

@@ -828,18 +828,16 @@ class FollowUpService {
     sortBy?: string,
     sortOrder?: "asc" | "desc"
   ): any[] {
-    const order = sortOrder || "desc";
+    const order = (sortOrder === "asc" || sortOrder === "desc") ? sortOrder : "desc";
 
     if (!sortBy) {
-      // Orden por defecto
       return [
         { executedDate: "desc" },
-        { plannedDate: "desc" },
         { createdAt: "desc" },
       ];
     }
 
-    // Mapeo de campos de ordenamiento
+    // Mapeo explícito para asegurar que los nombres coincidan con el esquema de Prisma
     const orderByMap: Record<string, any> = {
       executedDate: { executedDate: order },
       plannedDate: { plannedDate: order },
@@ -851,19 +849,22 @@ class FollowUpService {
     };
 
     const primaryOrder = orderByMap[sortBy];
+    
+    // Si el campo no es válido, usamos el orden por defecto
     if (!primaryOrder) {
-      // Si el campo no es válido, usar orden por defecto
-      return [
-        { executedDate: "desc" },
-        { plannedDate: "desc" },
-        { createdAt: "desc" },
-      ];
+      return [{ executedDate: "desc" }, { createdAt: "desc" }];
     }
 
-    // Agregar orden secundario para consistencia
+    // Siempre añadimos orden por fecha como secundario para estabilidad
+    // Excepto si ya estamos ordenando por fecha
+    if (sortBy === "executedDate") {
+      return [primaryOrder, { createdAt: "desc" }];
+    }
+
     return [
       primaryOrder,
-      { createdAt: "desc" },
+      { executedDate: "desc" },
+      { createdAt: "desc" }
     ];
   }
 
