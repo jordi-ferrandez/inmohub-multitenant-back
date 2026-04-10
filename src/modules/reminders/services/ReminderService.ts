@@ -204,6 +204,16 @@ class ReminderService {
       }
     }
 
+    if (params.startDate || params.endDate) {
+      where.scheduledAt = {};
+      if (params.startDate) {
+        where.scheduledAt.gte = new Date(params.startDate);
+      }
+      if (params.endDate) {
+        where.scheduledAt.lte = new Date(params.endDate);
+      }
+    }
+
     const [reminders, total] = await Promise.all([
       prisma.reminder.findMany({
         where,
@@ -398,7 +408,12 @@ class ReminderService {
     };
 
     if (responsibleId) {
-      whereReminder.responsibleId = responsibleId;
+      // Si no es director, solo puede ver lo suyo
+      if (!isDirector && responsibleId !== requesterId) {
+        whereReminder.responsibleId = requesterId;
+      } else {
+        whereReminder.responsibleId = responsibleId;
+      }
     } else if (!isDirector) {
       whereReminder.responsibleId = requesterId;
     }

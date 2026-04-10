@@ -15,7 +15,6 @@ import { authenticationToken, requireDirectorRole } from "@core/middlewares";
 const router = Router();
 
 router.use(authenticationToken);
-router.use(requireDirectorRole);
 
 router.post(
   "/",

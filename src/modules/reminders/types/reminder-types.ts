@@ -191,6 +191,8 @@ export interface ReminderQueryParams {
   limit?: string;
   sortBy?: string;
   sortOrder?: "asc" | "desc";
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface ReminderListResponse {
