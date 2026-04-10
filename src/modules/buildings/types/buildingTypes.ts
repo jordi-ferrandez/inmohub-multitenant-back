@@ -21,12 +21,24 @@ export type BuildingResponseDTO = {
   properties: Property[];
 };
 
+
+
+
 export type BuildingsGroupedByStreetDTO = {
   street: string;
   buildings: BuildingResponseDTO[];
 };
 
+
+export type myType = {
+  cursorId: number;
+  buildings: BuildingsGroupedByStreetDTO[];
+}
+
+
 export type GetBuildingsGroupedByStreetsDTO = BuildingsGroupedByStreetDTO[];
+
+export type GetBuildingsGroupedByStreetsDTO2 = myType;
 
 export const getBuildingsGroupedByStreetsQuerySchema = z.object({
   page: z.coerce.number().min(1).optional().default(1),
