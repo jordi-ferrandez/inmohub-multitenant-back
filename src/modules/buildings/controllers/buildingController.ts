@@ -40,6 +40,7 @@ export class BuildingController {
 
       return;
     } catch (error: any) {
+      console.error("Error in getBuildingsGroupedByStreets:", error);
       errorResponse(
         res,
         error.message || "Error al obtener los edificios agrupados",

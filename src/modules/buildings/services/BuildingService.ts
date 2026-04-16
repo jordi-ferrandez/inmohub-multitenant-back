@@ -44,7 +44,7 @@ export class BuildingService {
     });
 
     const lastPostInResults = allBuildings[39]; 
-    const myCursorId = lastPostInResults.id; 
+    const myCursorId = lastPostInResults?.id; 
     
 
     const groupedByStreet = allBuildings.reduce<
