@@ -95,8 +95,49 @@ export class BoardService {
     });
   }
   
-  async createColumn(data: { boardId: number; title: string; order: number }) {
-      return prisma.boardColumn.create({ data });
+  async createColumn(data: { boardId: number; title: string; order?: number }) {
+      const maxOrder = await prisma.boardColumn.aggregate({
+        where: { boardId: data.boardId },
+        _max: { order: true }
+      });
+      const maxVal = typeof maxOrder._max?.order === 'number' ? maxOrder._max.order : -1;
+      const nextOrder = data.order ?? (maxVal + 1);
+      return prisma.boardColumn.create({
+        data: {
+          boardId: data.boardId,
+          title: data.title,
+          order: nextOrder
+        }
+      });
+  }
+
+  async updateColumn(id: number, data: { title?: string; order?: number }) {
+    return prisma.boardColumn.update({
+      where: { id },
+      data
+    });
+  }
+
+  async deleteColumn(id: number) {
+    const column = await prisma.boardColumn.findUnique({
+      where: { id },
+      include: { cards: true }
+    });
+    if (column && column.cards.length > 0) {
+      throw new Error("Cannot delete column with cards");
+    }
+    return prisma.boardColumn.delete({ where: { id } });
+  }
+
+  async reorderColumns(boardId: number, columnIds: number[]) {
+    return prisma.$transaction(
+      columnIds.map((colId, index) =>
+        prisma.boardColumn.update({
+          where: { id: colId },
+          data: { order: index }
+        })
+      )
+    );
   }
 
   async createCard(data: { columnId: number; title: string; description?: string; priority?: CardPriority; creatorId: number; responsibleId?: number; dueDate?: Date, tags?: string[] }) {

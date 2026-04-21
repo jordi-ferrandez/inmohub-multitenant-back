@@ -129,8 +129,41 @@ export class BoardController {
   async createColumn(req: Request, res: Response) {
     try {
       const { id } = req.params;
+      console.log('[createColumn] boardId:', id, 'body:', req.body);
       const column = await this.service.createColumn({ ...req.body, boardId: Number(id) });
       res.json(column);
+    } catch (error: any) {
+      console.error('[createColumn] error:', error);
+      res.status(400).json({ message: error.message });
+    }
+  }
+
+  async updateColumn(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const column = await this.service.updateColumn(Number(id), req.body);
+      res.json(column);
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  }
+
+  async deleteColumn(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      await this.service.deleteColumn(Number(id));
+      res.json({ message: "Column deleted" });
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  }
+
+  async reorderColumns(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const { columnIds } = req.body;
+      await this.service.reorderColumns(Number(id), columnIds);
+      res.json({ message: "Columns reordered" });
     } catch (error: any) {
       res.status(400).json({ message: error.message });
     }
