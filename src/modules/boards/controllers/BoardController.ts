@@ -128,12 +128,10 @@ export class BoardController {
    */
   async createColumn(req: Request, res: Response) {
     try {
-      const { id } = req.params;
-      console.log('[createColumn] boardId:', id, 'body:', req.body);
+      const { id } = req.params
       const column = await this.service.createColumn({ ...req.body, boardId: Number(id) });
       res.json(column);
     } catch (error: any) {
-      console.error('[createColumn] error:', error);
       res.status(400).json({ message: error.message });
     }
   }

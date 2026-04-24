@@ -30,7 +30,7 @@ describe('Building Endpoints (E2E)', () => {
   describe('GET /api/v1/buildings', () => {
     it('should return 200 and a list of buildings', async () => {
       const mockBuildings = [
-        { id: 1, streetName: 'Main St', streetNumber: '100' },
+        { id: 1, street: 'Main St', number: 100 },
       ];
 
       prismaMock.$transaction.mockResolvedValue([mockBuildings, 1]);

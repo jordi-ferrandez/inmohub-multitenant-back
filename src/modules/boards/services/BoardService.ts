@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { prisma } from "@core/lib";
 import { BoardCard, CardActivity, CardPriority, Prisma } from "./../../../generated/prisma";
 
@@ -130,6 +129,21 @@ export class BoardService {
   }
 
   async reorderColumns(boardId: number, columnIds: number[]) {
+    // Verify all columns belong to the specified board
+    const columns = await prisma.boardColumn.findMany({
+      where: { id: { in: columnIds } },
+      select: { id: true, boardId: true }
+    });
+    
+    if (columns.length !== columnIds.length) {
+      throw new Error("Some columns not found");
+    }
+    
+    const invalidColumns = columns.filter(col => col.boardId !== boardId);
+    if (invalidColumns.length > 0) {
+      throw new Error("Column does not belong to this board");
+    }
+
     return prisma.$transaction(
       columnIds.map((colId, index) =>
         prisma.boardColumn.update({
