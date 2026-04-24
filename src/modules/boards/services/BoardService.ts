@@ -1,5 +1,5 @@
 import { prisma } from "@core/lib";
-import { BoardCard, CardActivity, CardPriority, Prisma } from "./../../../generated/prisma";
+import { BoardCard, CardActivity, CardPriority, Prisma } from "@generated/prisma";
 
 export class BoardService {
   async getAllBoards(userId: number, roles: string[], filters?: { ownerId?: number, creatorId?: number, search?: string }) {
