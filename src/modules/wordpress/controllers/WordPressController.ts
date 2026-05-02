@@ -29,4 +29,14 @@ export class WordPressController {
       return res.status(500).json({ status: "error", errorMessage: error.message });
     }
   }
+
+  //stats
+  async stats(req: Request, res: Response) {
+    try {
+      const result = await this.wordpressService.stats();
+      return res.status(200).json({ status: "success", data: result });
+    } catch (error: any) {
+      return res.status(500).json({ status: "error", errorMessage: error.message });
+    }
+  }
 }

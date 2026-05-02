@@ -90,6 +90,7 @@ export class WordPressService {
   }
 
   async importFromJson(data: RsoJson): Promise<WordPressImportResultDTO> {
+    console.log('🚀 Starting WordPress import processing...');
     const result: WordPressImportResultDTO = {
       propertiesProcessed: 0,
       propertiesImported: 0,
@@ -112,6 +113,7 @@ export class WordPressService {
     const buildingIdMap = new Map<string, number>();
 
     // ─── 1. EDIFICIOS → Building ──────────────────────────────────────────
+    console.log(`🏢 Processing ${data.wprm_rso_edificio?.length || 0} buildings...`);
     for (const edificio of data.wprm_rso_edificio ?? []) {
       try {
         const street = (edificio.calle ?? "SIN CALLE").trim();
@@ -153,6 +155,7 @@ export class WordPressService {
     }
 
     // ─── 2. PERSONAS (INQUILINOS) → Person ────────────────────────────────
+    console.log(`👥 Processing ${data.wprm_rso_inquilino?.length || 0} people...`);
     const personIdMap = new Map<string, number>();
 
     for (const inquilino of data.wprm_rso_inquilino ?? []) {
@@ -202,14 +205,23 @@ export class WordPressService {
     }
 
     // ─── 3. PUERTAS → Property ────────────────────────────────────────────
+    console.log(`🏠 Processing ${data.wprm_rso_puerta?.length || 0} properties...`);
     const propertyIdMap = new Map<string, number>(); // rsoId → inmuhubId
 
     for (const puerta of data.wprm_rso_puerta ?? []) {
       result.propertiesProcessed++;
       try {
-        const buildingId = buildingIdMap.get(puerta.id_edificio) ?? fallbackBuildingId!;
-        const inmovillaCode = parseInt(puerta.codigo_inmovilla ?? "0") || parseInt(puerta.id);
-        const number = (puerta.numero_puerta ?? puerta.id ?? "0").trim();
+        const buildingId = buildingIdMap.get(puerta.id_edificio) ?? fallbackBuildingId;
+        
+        if (!buildingId) {
+          result.errors.push(`Puerta ${puerta.id}: No se pudo encontrar edificio asociado (ID RSO: ${puerta.id_edificio})`);
+          continue;
+        }
+
+        const inmovillaCodeRaw = parseInt(puerta.codigo_inmovilla ?? "0") || parseInt(puerta.id) || 0;
+        const inmovillaCode = isNaN(inmovillaCodeRaw) ? 0 : inmovillaCodeRaw;
+        
+        const number = (puerta.numero_puerta ?? puerta.id ?? "0").toString().trim();
         const floor = parseInt(puerta.planta ?? "0") || 0;
 
         const statusMap: Record<string, string> = {
@@ -289,6 +301,7 @@ export class WordPressService {
     }
 
     // ─── 5. SEGUIMIENTOS → FollowUp ──────────────────────────────────────
+    console.log(`📝 Processing ${data.wprm_rso_seguimiento?.length || 0} follow-ups...`);
     const systemUser = await this.prisma.user.findFirst();
     if (systemUser) {
       for (const seg of data.wprm_rso_seguimiento ?? []) {
@@ -316,6 +329,27 @@ export class WordPressService {
       }
     }
 
+    console.log('✅ WordPress import finished successfully!');
     return result;
+  }
+
+
+  //stats
+  async stats() {
+    //building count
+    const buildingCount = await this.prisma.building.count();
+    //property count
+    const propertyCount = await this.prisma.property.count();
+    //person count
+    const personCount = await this.prisma.person.count();
+    //followUp count
+    const followUpCount = await this.prisma.followUp.count();
+
+    return {
+     totalBuildings: buildingCount,
+     totalProperties: propertyCount,
+     totalPersons: personCount,
+     totalFollowUps: followUpCount
+    };
   }
 }

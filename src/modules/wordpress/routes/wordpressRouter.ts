@@ -17,4 +17,14 @@ wordpressRouter.post(
   }
 );
 
+//test
+wordpressRouter.get("/test", (req, res, next) => {
+  res.status(200).json({ status: "success", data: "test" });
+});
+
+wordpressRouter.get("/stats", (req, res, next) => {
+  wordpressController.stats(req, res).catch(next);
+});
+
+
 export { wordpressRouter };
