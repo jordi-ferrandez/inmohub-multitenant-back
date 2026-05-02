@@ -98,6 +98,7 @@ export class WordPressService {
       buildingsCreated: 0,
       peopleImported: 0,
       followUpsCreated: 0,
+      followUpsSkipped: 0,
       errors: [],
     };
 
@@ -304,12 +305,36 @@ export class WordPressService {
     console.log(`📝 Processing ${data.wprm_rso_seguimiento?.length || 0} follow-ups...`);
     const systemUser = await this.prisma.user.findFirst();
     if (systemUser) {
+      const processedSegIds = new Set<string>();
+      let duplicatesSkipped = 0;
+
       for (const seg of data.wprm_rso_seguimiento ?? []) {
         try {
           const propertyId = propertyIdMap.get(seg.id_puerta);
           if (!propertyId) continue;
 
           const executedDate = seg.fecha ? new Date(seg.fecha) : new Date();
+
+          const segKey = `${seg.id_puerta}-${seg.tipo}-${seg.subtipo}-${seg.nota}-${executedDate.getTime()}`;
+          if (processedSegIds.has(segKey)) {
+            duplicatesSkipped++;
+            continue;
+          }
+
+          const existingFollowUp = await this.prisma.followUp.findFirst({
+            where: {
+              propertyId,
+              contactType: seg.tipo ?? null,
+              observationType: seg.subtipo ?? null,
+              comment: seg.nota ?? null,
+              executedDate,
+            },
+          });
+
+          if (existingFollowUp) {
+            duplicatesSkipped++;
+            continue;
+          }
 
           await this.prisma.followUp.create({
             data: {
@@ -323,9 +348,15 @@ export class WordPressService {
             },
           });
           result.followUpsCreated++;
+          processedSegIds.add(segKey);
         } catch (e: any) {
           result.errors.push(`Seguimiento ${seg.id}: ${e.message}`);
         }
+      }
+
+      if (duplicatesSkipped > 0) {
+        result.followUpsSkipped = duplicatesSkipped;
+        console.log(`⚠️  Skipped ${duplicatesSkipped} duplicate follow-ups`);
       }
     }
 

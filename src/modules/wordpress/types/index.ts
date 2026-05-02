@@ -5,5 +5,6 @@ export interface WordPressImportResultDTO {
   buildingsCreated: number;
   peopleImported: number;
   followUpsCreated: number;
+  followUpsSkipped: number;
   errors: string[];
 }
