@@ -1,7 +1,5 @@
 import { prisma } from "@core/lib";
 import { CreateValuationRequest, CreateInternalValuationRequest, ValuationResult } from "../types";
-import { Prisma } from "@prisma/client"; // Fallback, or better try to use Decimal from runtime if available
-// Actually, using the generated Prisma client typically exposes Prisma namespace with Decimal
 import { Prisma as GeneratedPrisma } from "../../../generated/prisma"; 
 
 export class ValuationService {

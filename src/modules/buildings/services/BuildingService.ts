@@ -401,6 +401,7 @@ export class BuildingService {
               select: {
                 executedDate: true,
                 deletedAt: true,
+                wasContacted: true,
               },
             },
           },
@@ -416,6 +417,7 @@ export class BuildingService {
       "id" | "number" | "status"
     > & {
       lastFollowUpDate?: Date | null;
+      lastFollowUpWasContacted?: boolean | null;
       soldRentedUs?: boolean;
       noDisturb?: boolean;
       importantNotice?: string | null;
@@ -463,12 +465,14 @@ export class BuildingService {
       const lastFollowUp =
         property.followUps.length > 0 ? property.followUps[0] : null;
       const lastFollowUpDate = lastFollowUp?.executedDate || null;
+      const lastFollowUpWasContacted = lastFollowUp?.wasContacted ?? null;
 
       const propertyWithDate: PropertyWithLastFollowUp = {
         id,
         number,
         status: status || "sin_estado",
         lastFollowUpDate,
+        lastFollowUpWasContacted,
         soldRentedUs: (property as any).soldRentedUs || false,
         noDisturb: (property as any).noDisturb || false,
         importantNotice: importantNotice || null,
@@ -521,7 +525,7 @@ export class BuildingService {
         propertiesGroups.ownerOccupied.push(propertyWithDate);
       }
 
-      if (occupiedBy === "not_identified") {
+      if (occupiedBy === "not_identified" || occupiedBy === null || occupiedBy === undefined) {
         propertiesGroups.noOccupationStatus.push(propertyWithDate);
       }
 
@@ -530,8 +534,8 @@ export class BuildingService {
         propertiesGroups.secondResidence.push(propertyWithDate);
       }
 
-      // 8. Vacío (SOLO basado en occupiedBy = "none" o null)
-      if (occupiedBy === "none" || occupiedBy === null || occupiedBy === undefined) {
+      // 8. Vacío (SOLO basado en occupiedBy = "none")
+      if (occupiedBy === "none") {
         propertiesGroups.empty.push(propertyWithDate);
       }
 
@@ -545,8 +549,8 @@ export class BuildingService {
         propertiesGroups.president.push(propertyWithDate);
       }
 
-      // 11. Sin estado de ocupación (si no encajó en NINGÚN grupo anterior)
-      // NO incluir aquí si ya está en "empty", "ownerOccupied", "tenantOccupied"
+      // 11. No identificado (si no encajó en NINGÚN grupo anterior)
+      // NO incluir aquí si ya está en "empty", "ownerOccupied", "tenantOccupied", "noOccupationStatus"
       const hasActiveFollowUpsForClassification = property.followUps.some(
         (followUp) => followUp.deletedAt === null
       );
@@ -557,14 +561,16 @@ export class BuildingService {
         occupiedBy === "tenant" ||
         occupiedBy === "owner" ||
         occupiedBy === "not_identified" ||
+        occupiedBy === null ||
+        occupiedBy === undefined ||
         occupiedBy === "none" ||
         isSecondResidence ||
         isInformer ||
         isPresident;
 
-      // Solo agregar a "noOccupationStatus" si NO tiene NINGUNA clasificación previa
+      // Solo agregar a "notIdentified" si NO tiene NINGUNA clasificación previa
       if (!hasAnyClassification) {
-        propertiesGroups.noOccupationStatus.push(propertyWithDate);
+        propertiesGroups.notIdentified.push(propertyWithDate);
       }
     });
 
