@@ -10,7 +10,7 @@ import {
   validateUpdateOccurrence,
   validateUpdateReminder,
 } from "../validators";
-import { authenticationToken, requireDirectorRole } from "@core/middlewares";
+import { authenticationToken } from "@core/middlewares";
 
 const router = Router();
 
@@ -24,7 +24,6 @@ router.post(
 
 router.get(
   "/",
-  requireDirectorRole,
   validateReminderQuery,
   reminderController.getReminders.bind(reminderController)
 );

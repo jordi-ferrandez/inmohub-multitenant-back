@@ -118,8 +118,9 @@ class ReminderService {
         where.deletedAt = null;
       }
     } else {
-      // En "Todos", excluimos los archivados (que tienen deletedAt != null)
+      // En "Todos", excluimos los archivados
       where.deletedAt = null;
+      where.status = { notIn: ["archived"] };
     }
 
     const requester = await prisma.user.findUnique({
