@@ -576,11 +576,22 @@ class ReminderService {
       reminder.status === "active" &&
       (input.status === "completed" || input.status === "skipped")
     ) {
-      await this.ensureOccurrencesForRange(
-        reminder,
-        DateTime.fromJSDate(updated.scheduledFor),
-        DateTime.fromJSDate(updated.scheduledFor).plus({ days: 30 })
-      );
+      if (reminder.recurrenceType === "once") {
+        await prisma.reminder.update({
+          where: { id: reminderId },
+          data: { status: "archived" },
+        });
+        
+        if (updated.reminder) {
+          updated.reminder.status = "archived";
+        }
+      } else {
+        await this.ensureOccurrencesForRange(
+          reminder,
+          DateTime.fromJSDate(updated.scheduledFor),
+          DateTime.fromJSDate(updated.scheduledFor).plus({ days: 30 })
+        );
+      }
     }
 
     return this.mapOccurrenceToDTO(updated);
