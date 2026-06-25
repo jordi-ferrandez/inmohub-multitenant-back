@@ -1,1 +1,1 @@
-export * from "./routes/flyer.routes";
+export * from "./routes";

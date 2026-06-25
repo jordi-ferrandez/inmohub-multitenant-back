@@ -7,19 +7,19 @@ import { propertyRouter } from '@modules/properties/routes';
 import { personRouter } from '@modules/persons/routes';
 import { assignmentRouter } from '@modules/assignments/routes';
 import { followUpRouter } from '@modules/followups';
-import agentRoutes from '@modules/agents/routes/agentRoutes';
+import { agentRoutes } from '@modules/agents';
 import mailboxingRouter from '@modules/mailboxing/routes';
 import { reminderRouter } from '@modules/reminders';
 import activityRouter from '@modules/activity/routes';
 import aiRouter from '@modules/ai/routes';
-import { flyerRouter } from '@modules/flyers/routes/flyer.routes';
+import { flyerRouter } from '@modules/flyers';
 import { boardRouter } from '@modules/boards/routes';
 import { forumRouter } from '@modules/forum/routes';
 import apiKeyRouter from '@modules/api-keys/routes/index';
 import valuationRouter from '@modules/valuations/routes/valuationRoutes';
 import { wordpressRouter } from '@modules/wordpress/routes/wordpressRouter';
 import { notificationRouter } from '@modules/notifications';
-import publicApiRouter from '@modules/public-api/routes/index';
+import { publicApiRouter } from '@modules/public-api';
 
 function routerAPI(app: Express) {
   const router = express.Router();
