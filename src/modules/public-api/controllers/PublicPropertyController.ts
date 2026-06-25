@@ -155,7 +155,7 @@ export class PublicPropertyController {
   async update(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
-      const data = req.body;
+      const { companyId: _ignoredCompanyId, capturedById: _ignoredCapturedBy, id: _ignoredId, ...data } = req.body;
       const { companyId, userId } = req.apiKey;
       
       // Enforce check before update
@@ -164,8 +164,7 @@ export class PublicPropertyController {
       const property = await prisma.property.update({
         where: { id },
         data
-      });
-      
+      });      
       successResponse(res, property);
     } catch (error: any) {
       errorResponse(res, error.message || 'Error updating property', 400);

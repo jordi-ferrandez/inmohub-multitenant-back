@@ -18,6 +18,8 @@ import { forumRouter } from '@modules/forum/routes';
 import apiKeyRouter from '@modules/api-keys/routes/index';
 import valuationRouter from '@modules/valuations/routes/valuationRoutes';
 import { wordpressRouter } from '@modules/wordpress/routes/wordpressRouter';
+import { notificationRouter } from '@modules/notifications';
+import publicApiRouter from '@modules/public-api/routes/index';
 
 function routerAPI(app: Express) {
   const router = express.Router();
@@ -40,6 +42,8 @@ function routerAPI(app: Express) {
   router.use('/valuations', valuationRouter);
   router.use('/api-keys', apiKeyRouter);
   router.use('/wordpress', wordpressRouter);
+  router.use('/notifications', notificationRouter);
+  router.use('/public', publicApiRouter);
   router.use('/', testRouter);
 }
 export { routerAPI };

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { prisma } from "@core/lib";
 import { Prisma } from "./../../../../generated/prisma";
 import {
@@ -27,7 +26,7 @@ export class PersonService {
       }
     }
 
-    return prisma.person.create({
+    const args: any = {
       data: {
         ...personData,
         phones: phones ? { create: phones } : undefined,
@@ -35,7 +34,8 @@ export class PersonService {
       include: {
         phones: true,
       },
-    });
+    };
+    return prisma.person.create(args);
   }
 
   async updatePerson(id: number, data: UpdatePersonBody) {

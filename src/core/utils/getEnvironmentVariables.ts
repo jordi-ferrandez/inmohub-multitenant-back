@@ -26,6 +26,10 @@ function getEnvironmentVariables() {
     SMTP_PASS: process.env.SMTP_PASS,
     SMTP_FROM: process.env.SMTP_FROM || "InmoHub <noreply@inmohub.com>",
     FRONTEND_URL: process.env.FRONTEND_URL || "http://localhost:3000",
+    TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
+    TWILIO_WHATSAPP_FROM: process.env.TWILIO_WHATSAPP_FROM,
+    TWILIO_SMS_FROM: process.env.TWILIO_SMS_FROM,
   };
 }
 export { getEnvironmentVariables };

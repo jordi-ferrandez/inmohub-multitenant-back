@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { errorResponse, successResponse } from "@core/utils";
 import { Request, Response } from "express";
 import { FlyerService } from "../services/FlyerService";
@@ -6,16 +5,6 @@ import { FlyerService } from "../services/FlyerService";
 export class FlyerController {
   private flyerService = new FlyerService();
 
-  /**
-   * @openapi
-   * /v1/flyers/templates:
-   *   get:
-   *     tags: [Flyers]
-   *     summary: Obtener plantillas de flyers disponibles
-   *     responses:
-   *       200:
-   *         description: Lista de plantillas
-   */
   async getTemplates(req: Request, res: Response): Promise<void> {
     try {
       const templates = await this.flyerService.getTemplates();
@@ -39,40 +28,10 @@ export class FlyerController {
     }
   }
 
-  /**
-   * @openapi
-   * /v1/flyers:
-   *   post:
-   *     tags: [Flyers]
-   *     summary: Crear un nuevo flyer para una propiedad
-   *     security:
-   *       - bearerAuth: []
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *             properties:
-   *               propertyId:
-   *                 type: integer
-   *               templateId:
-   *                 type: integer
-   *               qrContent:
-   *                 type: string
-   *     responses:
-   *       201:
-   *         description: Flyer creado
-   */
   async createFlyer(req: Request, res: Response): Promise<void> {
     try {
-      const { propertyId, templateId, qrContent } = req.body;
+      const body = req.bodyValidated || req.body;
       const userId = (req as any).user?.userId;
-
-      if (!propertyId || !templateId || !qrContent) {
-        errorResponse(res, "Faltan datos requeridos", 400);
-        return;
-      }
 
       if (!userId) {
         errorResponse(res, "Usuario no autenticado", 401);
@@ -80,10 +39,10 @@ export class FlyerController {
       }
 
       const flyer = await this.flyerService.createFlyer({
-        propertyId: parseInt(propertyId),
-        templateId: parseInt(templateId),
+        propertyId: body.propertyId,
+        templateId: body.templateId,
         generatedById: parseInt(userId),
-        qrContent,
+        qrContent: body.qrContent,
       });
 
       successResponse(res, flyer, 201);
@@ -96,7 +55,7 @@ export class FlyerController {
     try {
       const flyerId = parseInt(req.params.id);
       const userId = (req as any).user?.userId;
-      const { notes } = req.body;
+      const { notes } = req.bodyValidated || req.body;
 
       if (isNaN(flyerId)) {
         errorResponse(res, "ID de flyer inválido", 400);
@@ -108,12 +67,7 @@ export class FlyerController {
         return;
       }
 
-      const shipment = await this.flyerService.recordShipment(
-        flyerId,
-        parseInt(userId),
-        notes
-      );
-
+      const shipment = await this.flyerService.recordShipment(flyerId, parseInt(userId), notes);
       successResponse(res, shipment, 201);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al registrar envío", 500);

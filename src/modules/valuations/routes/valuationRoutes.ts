@@ -1,16 +1,18 @@
 import { Router } from "express";
 import { ValuationController } from "../controllers/ValuationController";
 import { bindAllMethods } from "@core/utils";
-import { authenticationToken } from "@core/middlewares"; // Assuming middleware location
+import { authenticationToken } from "@core/middlewares";
+import {
+  validateSlugParam,
+  validateProcessValuation,
+  validateCreateInternalValuation,
+} from "../validators";
 
 const router = Router();
 const valuationController = bindAllMethods(new ValuationController());
 
-// Public routes (for the widget iframe)
-router.get("/widget/:slug", valuationController.getWidgetConfig);
-router.post("/process", valuationController.processValuation);
-
-// Secured Routes
-router.post("/internal", authenticationToken, valuationController.createInternalValuation);
+router.get("/widget/:slug", validateSlugParam, valuationController.getWidgetConfig);
+router.post("/process", validateProcessValuation, valuationController.processValuation);
+router.post("/internal", authenticationToken, validateCreateInternalValuation, valuationController.createInternalValuation);
 
 export default router;

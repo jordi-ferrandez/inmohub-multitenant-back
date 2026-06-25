@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Request, Response } from "express";
 import MailboxingService from "../services/MailboxingService";
 import { successResponse, errorResponse, paginatedResponse } from "@core/utils";

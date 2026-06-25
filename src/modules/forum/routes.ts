@@ -1,21 +1,25 @@
 import express from "express";
 import { forumController } from "./controller";
 import { authenticationToken } from "@core/middlewares";
+import {
+  validateCreateTopic,
+  validateCreatePost,
+  validateModerateTopic,
+  validateTopicIdParam,
+  validatePostIdParam,
+} from "./validators";
 
 const forumRouter = express.Router();
 
-// Public/Authenticated list routes
 forumRouter.get("/categories", authenticationToken, forumController.getCategories);
 forumRouter.get("/topics", authenticationToken, forumController.getTopics);
-forumRouter.get("/topics/:id", authenticationToken, forumController.getTopicById);
+forumRouter.get("/topics/:id", authenticationToken, validateTopicIdParam, forumController.getTopicById);
 
-// Create routes
-forumRouter.post("/categories", authenticationToken, forumController.createCategory); // Should be admin
-forumRouter.post("/topics", authenticationToken, forumController.createTopic);
-forumRouter.post("/posts", authenticationToken, forumController.createPost);
+forumRouter.post("/categories", authenticationToken, forumController.createCategory);
+forumRouter.post("/topics", authenticationToken, validateCreateTopic, forumController.createTopic);
+forumRouter.post("/posts", authenticationToken, validateCreatePost, forumController.createPost);
 
-// Moderation/Action routes
-forumRouter.patch("/topics/:id/moderate", authenticationToken, forumController.moderateTopic);
-forumRouter.delete("/posts/:id", authenticationToken, forumController.deletePost);
+forumRouter.patch("/topics/:id/moderate", authenticationToken, validateTopicIdParam, validateModerateTopic, forumController.moderateTopic);
+forumRouter.delete("/posts/:id", authenticationToken, validatePostIdParam, forumController.deletePost);
 
 export { forumRouter };
