@@ -4,6 +4,34 @@ import { notificationService } from "../services/NotificationService";
 import { successResponse, errorResponse } from "@core/utils";
 
 class NotificationController {
+  /**
+   * @openapi
+   * /v1/notifications/send:
+   *   post:
+   *     tags: [Notifications]
+   *     summary: Enviar una notificación a una persona
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               personId:
+   *                 type: integer
+   *               channel:
+   *                 type: string
+   *                 enum: [EMAIL, WHATSAPP, SMS]
+   *               subject:
+   *                 type: string
+   *               message:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Notificación enviada
+   */
   async sendNotification(req: Request, res: Response) {
     try {
       const { personId, channel, subject, message } = req.bodyValidated || req.body;
@@ -26,6 +54,38 @@ class NotificationController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/notifications/bulk:
+   *   post:
+   *     tags: [Notifications]
+   *     summary: Enviar notificaciones masivas
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               personIds:
+   *                 type: array
+   *                 items:
+   *                   type: integer
+   *               channel:
+   *                 type: string
+   *                 enum: [EMAIL, WHATSAPP, SMS]
+   *               subject:
+   *                 type: string
+   *               message:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Notificaciones enviadas
+   *       207:
+   *         description: Algunas notificaciones fallaron
+   */
   async sendBulkNotification(req: Request, res: Response) {
     try {
       const { personIds, channel, subject, message } = req.bodyValidated || req.body;
@@ -49,6 +109,24 @@ class NotificationController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/notifications/property-visit/{followUpId}:
+   *   post:
+   *     tags: [Notifications]
+   *     summary: Disparar notificación de visita a propiedad
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: followUpId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Notificaciones enviadas correctamente
+   */
   async triggerPropertyVisitNotification(req: Request, res: Response) {
     try {
       const { followUpId } = req.paramsValidated || req.params;
@@ -61,6 +139,24 @@ class NotificationController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/notifications/preferences/{personId}:
+   *   get:
+   *     tags: [Notifications]
+   *     summary: Obtener preferencias de notificación de una persona
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: personId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Preferencias de la persona
+   */
   async getPersonPreferences(req: Request, res: Response) {
     try {
       const personId = parseInt(req.params.personId, 10);
@@ -89,6 +185,34 @@ class NotificationController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/notifications/preferences/{personId}:
+   *   put:
+   *     tags: [Notifications]
+   *     summary: Actualizar preferencias de notificación de una persona
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: personId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               notificationPreference:
+   *                 type: string
+   *                 enum: [EMAIL, WHATSAPP, SMS, NONE]
+   *     responses:
+   *       200:
+   *         description: Preferencias actualizadas
+   */
   async updatePersonPreferences(req: Request, res: Response) {
     try {
       const personId = parseInt(req.params.personId, 10);

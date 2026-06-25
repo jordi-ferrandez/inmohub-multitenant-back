@@ -9,6 +9,31 @@ export class BoardController {
     this.service = new BoardService();
   }
 
+  /**
+   * @openapi
+   * /v1/boards:
+   *   get:
+   *     tags: [Boards]
+   *     summary: Obtener todos los boards
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: ownerId
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: creatorId
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: search
+   *         schema:
+   *           type: string
+   *     responses:
+   *       200:
+   *         description: Lista de boards
+   */
   async getBoards(req: Request, res: Response) {
     try {
       const userId = req.user?.userId;
@@ -26,6 +51,26 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/{id}:
+   *   get:
+   *     tags: [Boards]
+   *     summary: Obtener un board por ID
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Board encontrado
+   *       404:
+   *         description: Board no encontrado
+   */
   async getBoard(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -40,6 +85,29 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards:
+   *   post:
+   *     tags: [Boards]
+   *     summary: Crear un nuevo board
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               name:
+   *                 type: string
+   *               ownerId:
+   *                 type: integer
+   *     responses:
+   *       201:
+   *         description: Board creado
+   */
   async createBoard(req: Request, res: Response) {
     try {
       const creatorId = req.user?.userId;
@@ -57,6 +125,33 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/{id}/columns:
+   *   post:
+   *     tags: [Boards]
+   *     summary: Crear una nueva columna en un board
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               name:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Columna creada
+   */
   async createColumn(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -68,6 +163,33 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/columns/{id}:
+   *   put:
+   *     tags: [Boards]
+   *     summary: Actualizar una columna
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               name:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Columna actualizada
+   */
   async updateColumn(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -79,6 +201,24 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/columns/{id}:
+   *   delete:
+   *     tags: [Boards]
+   *     summary: Eliminar una columna
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Columna eliminada
+   */
   async deleteColumn(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -89,6 +229,35 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/{id}/columns/reorder:
+   *   put:
+   *     tags: [Boards]
+   *     summary: Reordenar columnas de un board
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               columnIds:
+   *                 type: array
+   *                 items:
+   *                   type: integer
+   *     responses:
+   *       200:
+   *         description: Columnas reordenadas
+   */
   async reorderColumns(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -100,6 +269,31 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/cards:
+   *   post:
+   *     tags: [Boards]
+   *     summary: Crear una nueva tarjeta
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               columnId:
+   *                 type: integer
+   *               title:
+   *                 type: string
+   *               description:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Tarjeta creada
+   */
   async createCard(req: Request, res: Response) {
     try {
       const userId = req.user?.userId;
@@ -111,6 +305,35 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/cards/{id}:
+   *   put:
+   *     tags: [Boards]
+   *     summary: Actualizar una tarjeta
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               title:
+   *                 type: string
+   *               description:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Tarjeta actualizada
+   */
   async updateCard(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -123,6 +346,33 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/cards/{id}/move:
+   *   put:
+   *     tags: [Boards]
+   *     summary: Mover una tarjeta a otra columna
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               columnId:
+   *                 type: integer
+   *     responses:
+   *       200:
+   *         description: Tarjeta movida
+   */
   async moveCard(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -135,6 +385,24 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/cards/{id}:
+   *   delete:
+   *     tags: [Boards]
+   *     summary: Eliminar una tarjeta
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Tarjeta eliminada
+   */
   async deleteCard(req: Request, res: Response) {
     try {
       const { id } = req.params;
@@ -146,6 +414,18 @@ export class BoardController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/boards/activity:
+   *   get:
+   *     tags: [Boards]
+   *     summary: Obtener actividad diaria de boards
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Actividad diaria
+   */
   async getDailyActivity(req: Request, res: Response) {
     try {
       const userId = req.user?.userId;

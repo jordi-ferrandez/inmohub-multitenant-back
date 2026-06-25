@@ -5,6 +5,18 @@ import { FlyerService } from "../services/FlyerService";
 export class FlyerController {
   private flyerService = new FlyerService();
 
+  /**
+   * @openapi
+   * /v1/flyers/templates:
+   *   get:
+   *     tags: [Flyers]
+   *     summary: Obtener todas las plantillas de flyers
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de plantillas
+   */
   async getTemplates(req: Request, res: Response): Promise<void> {
     try {
       const templates = await this.flyerService.getTemplates();
@@ -14,6 +26,24 @@ export class FlyerController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/flyers/property/{propertyId}:
+   *   get:
+   *     tags: [Flyers]
+   *     summary: Obtener flyers de una propiedad
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: propertyId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de flyers de la propiedad
+   */
   async getPropertyFlyers(req: Request, res: Response): Promise<void> {
     try {
       const propertyId = parseInt(req.params.propertyId);
@@ -28,6 +58,31 @@ export class FlyerController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/flyers:
+   *   post:
+   *     tags: [Flyers]
+   *     summary: Crear un nuevo flyer
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               propertyId:
+   *                 type: integer
+   *               templateId:
+   *                 type: integer
+   *               qrContent:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Flyer creado
+   */
   async createFlyer(req: Request, res: Response): Promise<void> {
     try {
       const body = req.bodyValidated || req.body;
@@ -51,6 +106,33 @@ export class FlyerController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/flyers/{id}/ship:
+   *   post:
+   *     tags: [Flyers]
+   *     summary: Registrar envío de un flyer
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               notes:
+   *                 type: string
+   *     responses:
+   *       201:
+   *         description: Envío registrado
+   */
   async shipFlyer(req: Request, res: Response): Promise<void> {
     try {
       const flyerId = parseInt(req.params.id);
@@ -74,6 +156,24 @@ export class FlyerController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/flyers/{id}/shipments:
+   *   get:
+   *     tags: [Flyers]
+   *     summary: Obtener envíos de un flyer
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista de envíos del flyer
+   */
   async getFlyerShipments(req: Request, res: Response): Promise<void> {
     try {
       const flyerId = parseInt(req.params.id);

@@ -44,8 +44,10 @@ const options: swaggerJsdoc.Options = {
   apis: [
     './src/modules/**/routes/*.ts',
     './src/modules/**/controllers/*.ts',
+    './src/modules/**/controller/*.ts',
     './dist/modules/**/routes/*.js',
     './dist/modules/**/controllers/*.js',
+    './dist/modules/**/controller/*.js',
   ], // Archivos donde buscaremos documentación
 };
 

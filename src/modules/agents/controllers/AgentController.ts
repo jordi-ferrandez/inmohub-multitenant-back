@@ -5,6 +5,18 @@ import { agentService } from "../services/AgentService";
 import { AvailablePropertyQueryParams } from "../types/agent-types";
 
 export class AgentController {
+  /**
+   * @openapi
+   * /v1/agents/assignments/active:
+   *   get:
+   *     tags: [Agents]
+   *     summary: Obtener asignaciones activas del agente
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de asignaciones activas
+   */
   async getActiveAssignments(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
@@ -20,6 +32,18 @@ export class AgentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/agents/assignments/history:
+   *   get:
+   *     tags: [Agents]
+   *     summary: Obtener historial de asignaciones del agente
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: Lista de asignaciones históricas
+   */
   async getAssignmentsHistory(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
@@ -35,6 +59,31 @@ export class AgentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/agents/properties/available:
+   *   get:
+   *     tags: [Agents]
+   *     summary: Obtener propiedades disponibles para seguimiento
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: query
+   *         name: search
+   *         schema:
+   *           type: string
+   *       - in: query
+   *         name: page
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Lista paginada de propiedades disponibles
+   */
   async getAvailableProperties(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
@@ -64,6 +113,24 @@ export class AgentController {
     }
   }
 
+  /**
+   * @openapi
+   * /v1/agents/properties/{propertyId}/followups:
+   *   get:
+   *     tags: [Agents]
+   *     summary: Obtener historial de seguimientos de una propiedad
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: propertyId
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Historial de seguimientos de la propiedad
+   */
   async getPropertyFollowUpsHistory(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
