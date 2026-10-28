@@ -8,98 +8,39 @@ import {
 
 export class PropertyController {
   PropertyService = new PropertyService();
-  /**
-   * @openapi
-   * /v1/properties/{id}:
-   *   get:
-   *     tags: [Properties]
-   *     summary: Obtener detalles de una propiedad por ID
-   *     parameters:
-   *       - in: path
-   *         name: id
-   *         required: true
-   *         schema:
-   *           type: integer
-   *     responses:
-   *       200:
-   *         description: Detalles de la propiedad
-   */
+
   async getPropertyById(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.paramsValidated;
-      const property = await this.PropertyService.getPropertyById(id);
+      const companyId = req.companyId ?? null;
+      const property = await this.PropertyService.getPropertyById(id, companyId);
       successResponse(res, property, 200);
     } catch (error: any) {
-      errorResponse(res, error.message || "Error al obtener edificio", 500);
+      errorResponse(res, error.message || "Error al obtener propiedad", 500);
       return;
     }
   }
 
-
-  /**
-   * @openapi
-   * /v1/properties:
-   *   get:
-   *     tags: [Properties]
-   *     summary: Obtener lista paginada de propiedades
-   *     parameters:
-   *       - in: query
-   *         name: page
-   *         schema:
-   *           type: integer
-   *       - in: query
-   *         name: limit
-   *         schema:
-   *           type: integer
-   *       - in: query
-   *         name: status
-   *         schema:
-   *           type: string
-   *     responses:
-   *       200:
-   *         description: Lista de propiedades
-   */
   async getProperty(req: Request, res: Response): Promise<void> {
     try {
       const query = req.queryValidated as GetPropertiesQuery;
-      const { data, meta } = await this.PropertyService.getProperty(query);
+      const companyId = req.companyId ?? null;
+      const { data, meta } = await this.PropertyService.getProperty(query, companyId);
 
       paginatedResponse(res, data, meta, 200);
-      
+
     } catch (error: any) {
-      errorResponse(res, error.message || "Error al obtener property", 500);
+      errorResponse(res, error.message || "Error al obtener propiedades", 500);
       return;
     }
   }
 
-  
-  /**
-   * @openapi
-   * /v1/properties/{id}:
-   *   patch:
-   *     tags: [Properties]
-   *     summary: Actualizar parcialmente una propiedad
-   *     parameters:
-   *       - in: path
-   *         name: id
-   *         required: true
-   *         schema:
-   *           type: integer
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *     responses:
-   *       200:
-   *         description: Propiedad actualizada
-   */
   async patchPropertyById(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.paramsValidated;
       const data = req.bodyValidated;
-      const property = await this.PropertyService.patchPropertyById(id, data);
+      const companyId = req.companyId ?? null;
+      const property = await this.PropertyService.patchPropertyById(id, data, companyId);
       successResponse(res, property, 200);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al actualizar propiedad", 500);
@@ -109,7 +50,8 @@ export class PropertyController {
 
   async createProperty(req: Request, res: Response): Promise<void> {
     try {
-      const property = await this.PropertyService.createProperty(req.body);
+      const companyId = req.companyId ?? null;
+      const property = await this.PropertyService.createProperty(req.body, companyId);
       successResponse(res, property, 201);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al crear propiedad", 500);
@@ -120,8 +62,9 @@ export class PropertyController {
   async deleteProperty(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
-      await this.PropertyService.deleteProperty(Number(id));
-      successResponse(res, { message: "Property deleted" }, 200);
+      const companyId = req.companyId ?? null;
+      await this.PropertyService.deleteProperty(Number(id), companyId);
+      successResponse(res, { message: "Propiedad eliminada" }, 200);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al borrar propiedad", 500);
       return;
@@ -211,7 +154,7 @@ export class PropertyController {
         queryParams.sortOrder = req.query.sortOrder;
       }
 
-      const result = await FollowUpService.getFollowUps(queryParams, userId);
+      const result = await FollowUpService.getFollowUps(queryParams, userId, req.companyId ?? null);
 
       // Formatear paginación para paginatedResponse
       const pagination = {

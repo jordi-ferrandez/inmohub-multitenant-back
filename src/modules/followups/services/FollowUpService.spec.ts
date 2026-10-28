@@ -49,7 +49,7 @@ describe('FollowUpService', () => {
         property: { id: 1, building: { id: 5 } }
       } as any);
 
-      const result = await followUpService.createFollowUp(input, sellerId);
+      const result = await followUpService.createFollowUp(input, sellerId, null);
 
       expect(result.id).toBe(100);
       expect(prismaMock.followUp.create).toHaveBeenCalled();
@@ -62,7 +62,7 @@ describe('FollowUpService', () => {
       prismaMock.followUp.findMany.mockResolvedValue([]);
       prismaMock.followUp.count.mockResolvedValue(0);
 
-      const result = await followUpService.getFollowUps({}, 1);
+      const result = await followUpService.getFollowUps({}, 1, null);
 
       expect(result.data).toBeInstanceOf(Array);
       expect(result.pagination.total).toBe(0);

@@ -17,13 +17,18 @@ import { randomUUID } from "crypto";
 class MailboxingService {
   private readonly s3 = S3StorageService.getInstance();
 
+  private buildTenantFilter(companyId: number | null): { companyId?: number } {
+    return companyId ? { companyId } : {};
+  }
+
   async createMailboxing(
     input: CreateMailboxingRequest,
-    mailboxerId: number
+    mailboxerId: number,
+    companyId: number | null
   ): Promise<MailboxingDTO> {
-    // Verificar que el edificio existe
-    const building = await prisma.building.findUnique({
-      where: { id: input.buildingId },
+    // Verificar que el edificio existe y pertenece a la empresa
+    const building = await prisma.building.findFirst({
+      where: { id: input.buildingId, ...this.buildTenantFilter(companyId) },
     });
 
     if (!building) {
@@ -33,7 +38,7 @@ class MailboxingService {
     // Si status es 'no_disturb', actualizar el Building
     if (input.status === "no_disturb") {
       await prisma.building.update({
-        where: { id: input.buildingId },
+        where: { id: input.buildingId, ...this.buildTenantFilter(companyId) },
         data: { noDisturb: true },
       });
     }
@@ -111,10 +116,10 @@ class MailboxingService {
     return this.mapToDTO(mailboxing);
   }
 
-  async getMailboxingById(id: number, userId: number): Promise<MailboxingDTO> {
+  async getMailboxingById(id: number, userId: number, companyId: number | null = null): Promise<MailboxingDTO> {
     // Verificar si el usuario es director
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
+    const user = await prisma.user.findFirst({
+      where: { id: userId, ...this.buildTenantFilter(companyId) },
       include: {
         roles: {
           include: {
@@ -130,6 +135,7 @@ class MailboxingService {
     const whereCondition: any = {
       id,
       deletedAt: null,
+      building: { ...this.buildTenantFilter(companyId) },
     };
 
     // Si no es director, solo puede ver sus propios buzoneamientos

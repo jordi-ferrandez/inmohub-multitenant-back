@@ -17,6 +17,7 @@ export interface AiContext {
   screenTitle?: string;
   userId?: number;
   userRole?: string;
+  companyId?: number | null;
 }
 
 export interface ChatMessage {
@@ -63,7 +64,8 @@ const dispatchTool = async (toolCall: any, context: AiContext) => {
             propertyId: args.propertyId,
             recurrence: { type: "once" }
           },
-          context.userId
+          context.userId,
+          context.companyId ?? null
         );
         return JSON.stringify({ success: true, reminderId: result.id });
       }

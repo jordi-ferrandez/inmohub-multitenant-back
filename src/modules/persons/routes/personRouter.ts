@@ -1,13 +1,13 @@
 import express from "express";
 import { PersonController } from "../controllers/PersonController";
 import { bindAllMethods } from "@core/utils";
-import { authenticationToken, requireDirectorRole } from "@core/middlewares";
+import { authenticationToken, requireDirectorRole, tenantMiddleware } from "@core/middlewares";
 
 const personRouter = express.Router();
 const personController = bindAllMethods(new PersonController());
 
-// Todas las rutas de persons requieren autenticación
-personRouter.use(authenticationToken);
+// Todas las rutas de persons requieren autenticación + tenant
+personRouter.use(authenticationToken, tenantMiddleware);
 
 // GET /v1/persons/search - Búsqueda rápida de personas (PRIMERO)
 personRouter.get("/search", personController.search);

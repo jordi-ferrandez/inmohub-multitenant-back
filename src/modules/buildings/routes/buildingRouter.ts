@@ -1,7 +1,7 @@
 import express from "express";
 import { BuildingAttachmentController, BuildingController } from "../controllers";
 import { bindAllMethods } from "@core/utils";
-import { authenticationToken,requireDirectorRole } from "@core/middlewares";
+import { authenticationToken, requireDirectorRole, tenantMiddleware } from "@core/middlewares";
 import {
   validateGetBuildingById,
   validateGetBuildings,
@@ -24,6 +24,7 @@ const buildingAttachmentController = bindAllMethods(
 buildingRouter.get(
   "/",
   authenticationToken,
+  tenantMiddleware,
   validateGetBuildings,
   buildingController.getBuildings
 );
@@ -31,12 +32,14 @@ buildingRouter.get(
 buildingRouter.get(
   "/streets",
   authenticationToken,
+  tenantMiddleware,
   buildingController.getBuildingsGroupedByStreets
 );
 
 buildingRouter.get(
   "/streets/:name",
   authenticationToken,
+  tenantMiddleware,
   validateGetBuildingsByStreetName,
   buildingController.getBuildingsByStreetName
 );
@@ -44,12 +47,14 @@ buildingRouter.get(
 buildingRouter.post(
   "/",
   authenticationToken,
+  tenantMiddleware,
   buildingController.createBuilding
 );
 
 buildingRouter.patch(
   "/:id",
   authenticationToken,
+  tenantMiddleware,
   buildingController.updateBuilding
 );
 
@@ -57,6 +62,7 @@ buildingRouter.patch(
 buildingRouter.get(
   "/:id",
   authenticationToken,
+  tenantMiddleware,
   validateGetBuildingById,
   buildingController.getBuildingById
 );
@@ -64,6 +70,7 @@ buildingRouter.get(
 buildingRouter.get(
   "/:id/mailboxing",
   authenticationToken,
+  tenantMiddleware,
   validateGetBuildingMailboxings,
   buildingController.getBuildingMailboxings
 );
@@ -71,6 +78,7 @@ buildingRouter.get(
 buildingRouter.get(
   "/:id/attachments",
   authenticationToken,
+  tenantMiddleware,
   validateGetBuildingAttachments,
   buildingAttachmentController.list
 );
@@ -78,6 +86,7 @@ buildingRouter.get(
 buildingRouter.post(
   "/:id/attachments",
   authenticationToken,
+  tenantMiddleware,
   validateUploadBuildingAttachment,
   upload.single("file"),
   buildingAttachmentController.upload
@@ -86,6 +95,7 @@ buildingRouter.post(
 buildingRouter.patch(
   "/:id/attachments/:attachmentId",
   authenticationToken,
+  tenantMiddleware,
   validateUpdateBuildingAttachment,
   buildingAttachmentController.update
 );
@@ -93,6 +103,7 @@ buildingRouter.patch(
 buildingRouter.delete(
   "/:id/attachments/:attachmentId",
   authenticationToken,
+  tenantMiddleware,
   validateDeleteBuildingAttachment,
   buildingAttachmentController.delete
 );
@@ -100,6 +111,7 @@ buildingRouter.delete(
 buildingRouter.get(
   "/:id/deletion-summary",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateDeleteBuilding,
   buildingController.getDeletionSummary
@@ -108,6 +120,7 @@ buildingRouter.get(
 buildingRouter.delete(
   "/:id",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateDeleteBuilding,
   buildingController.deleteBuilding

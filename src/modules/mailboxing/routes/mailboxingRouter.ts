@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { MailboxingController } from "../controllers";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, tenantMiddleware } from "@core/middlewares";
 import {
   mailboxingQuerySchema,
   mailboxingParamsSchema,
@@ -19,8 +19,8 @@ import { upload } from "@core/config/multer";
 const router = Router();
 const mailboxingController = bindAllMethods(new MailboxingController());
 
-// Todas las rutas requieren autenticación
-router.use(authenticationToken);
+// Todas las rutas requieren autenticación + tenant
+router.use(authenticationToken, tenantMiddleware);
 
 // Obtener asignaciones activas del buzoneador
 router.get("/assignments/active", mailboxingController.getActiveAssignments);

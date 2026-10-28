@@ -17,7 +17,8 @@ export const forumController = {
    */
   getCategories: async (req: Request, res: Response) => {
     try {
-      const categories = await forumService.getCategories();
+      const companyId = req.companyId ?? null;
+      const categories = await forumService.getCategories(companyId);
       successResponse(res, categories);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
@@ -70,8 +71,9 @@ export const forumController = {
       const category = req.query.category as string | undefined;
       const page = req.query.page ? parseInt(req.query.page as string) : 1;
       const limit = req.query.limit ? parseInt(req.query.limit as string) : 20;
+      const companyId = req.companyId ?? null;
 
-      const result = await forumService.getTopics(category, page, limit);
+      const result = await forumService.getTopics(category, page, limit, companyId);
       successResponse(res, result);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
@@ -101,7 +103,8 @@ export const forumController = {
   getTopicById: async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id);
-      const topic = await forumService.getTopicById(id);
+      const companyId = req.companyId ?? null;
+      const topic = await forumService.getTopicById(id, companyId);
       if (!topic) {
         errorResponse(res, "Tema no encontrado", 404);
         return;
@@ -141,10 +144,11 @@ export const forumController = {
     try {
       const userId = parseInt(req.user?.userId as string);
       const data = req.bodyValidated || req.body;
+      const companyId = req.companyId ?? null;
       const topic = await forumService.createTopic({
         ...data,
         authorId: userId,
-      });
+      }, companyId);
       successResponse(res, topic, 201);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
@@ -178,10 +182,11 @@ export const forumController = {
     try {
       const userId = parseInt(req.user?.userId as string);
       const data = req.bodyValidated || req.body;
+      const companyId = req.companyId ?? null;
       const post = await forumService.createPost({
         ...data,
         authorId: userId,
-      });
+      }, companyId);
       successResponse(res, post, 201);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
@@ -222,17 +227,18 @@ export const forumController = {
     try {
       const id = parseInt(req.params.id);
       const { action, value } = req.bodyValidated || req.body;
+      const companyId = req.companyId ?? null;
 
       let result;
       switch (action) {
         case "lock":
-          result = await forumService.lockTopic(id, value);
+          result = await forumService.lockTopic(id, value, companyId);
           break;
         case "pin":
-          result = await forumService.pinTopic(id, value);
+          result = await forumService.pinTopic(id, value, companyId);
           break;
         case "delete":
-          result = await forumService.deleteTopic(id);
+          result = await forumService.deleteTopic(id, companyId);
           break;
         default:
           errorResponse(res, "Acción no válida", 400);

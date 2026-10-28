@@ -18,70 +18,31 @@ export class FollowUpController {
 
     return userId;
   }
-  /**
-   * @openapi
-   * /v1/followups:
-   *   post:
-   *     tags: [FollowUps]
-   *     summary: Crear un nuevo seguimiento
-   *     security:
-   *       - bearerAuth: []
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *             properties:
-   *               propertyId:
-   *                 type: integer
-   *               wasContacted:
-   *                 type: boolean
-   *               comment:
-   *                 type: string
-   *     responses:
-   *       201:
-   *         description: Seguimiento creado
-   */
+
   async createFollowUp(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
       if (userId === null) return;
+      const companyId = req.companyId ?? null;
 
-      const followUp = await FollowUpService.createFollowUp(req.body, userId);
+      const followUp = await FollowUpService.createFollowUp(req.body, userId, companyId);
       successResponse(res, followUp, 201);
     } catch (error: any) {
       errorResponse(res, error.message, 400);
     }
   }
 
-  /**
-   * @openapi
-   * /v1/followups/{id}:
-   *   get:
-   *     tags: [FollowUps]
-   *     summary: Obtener un seguimiento por ID
-   *     security:
-   *       - bearerAuth: []
-   *     parameters:
-   *       - in: path
-   *         name: id
-   *         required: true
-   *         schema:
-   *           type: integer
-   *     responses:
-   *       200:
-   *         description: Detalles del seguimiento
-   */
   async getFollowUpById(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
       if (userId === null) return;
+      const companyId = req.companyId ?? null;
 
       const { id } = req.params;
       const followUp = await FollowUpService.getFollowUpById(
         parseInt(id),
-        userId
+        userId,
+        companyId
       );
       successResponse(res, followUp);
     } catch (error: any) {
@@ -89,45 +50,24 @@ export class FollowUpController {
     }
   }
 
-  /**
-   * @openapi
-   * /v1/followups:
-   *   get:
-   *     tags: [FollowUps]
-   *     summary: Obtener lista paginada de seguimientos
-   *     security:
-   *       - bearerAuth: []
-   *     parameters:
-   *       - in: query
-   *         name: page
-   *         schema:
-   *           type: integer
-   *       - in: query
-   *         name: limit
-   *         schema:
-   *           type: integer
-   *     responses:
-   *       200:
-   *         description: Lista de seguimientos (del usuario activo o filtrada)
-   */
   async getFollowUps(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
       if (userId === null) return;
+      const companyId = req.companyId ?? null;
 
       const result = await FollowUpService.getFollowUps(
         req.query as any,
-        userId
+        userId,
+        companyId
       );
 
-      // Si el resultado tiene paginación, usar paginatedResponse
       if (
         result &&
         typeof result === "object" &&
         "data" in result &&
         "pagination" in result
       ) {
-        // Asegurar que la paginación tenga el formato correcto
         const pagination = result.pagination as any;
         const formattedPagination = {
           totalItems: pagination.total || pagination.totalItems || 0,
@@ -144,40 +84,18 @@ export class FollowUpController {
     }
   }
 
-  /**
-   * @openapi
-   * /v1/followups/{id}:
-   *   put:
-   *     tags: [FollowUps]
-   *     summary: Actualizar un seguimiento
-   *     security:
-   *       - bearerAuth: []
-   *     parameters:
-   *       - in: path
-   *         name: id
-   *         required: true
-   *         schema:
-   *           type: integer
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *     responses:
-   *       200:
-   *         description: Seguimiento actualizado
-   */
   async updateFollowUp(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
       if (userId === null) return;
+      const companyId = req.companyId ?? null;
 
       const { id } = req.params;
       const followUp = await FollowUpService.updateFollowUp(
         parseInt(id),
         req.body,
-        userId
+        userId,
+        companyId
       );
       successResponse(res, followUp);
     } catch (error: any) {
@@ -185,31 +103,14 @@ export class FollowUpController {
     }
   }
 
-  /**
-   * @openapi
-   * /v1/followups/{id}:
-   *   delete:
-   *     tags: [FollowUps]
-   *     summary: Eliminar un seguimiento
-   *     security:
-   *       - bearerAuth: []
-   *     parameters:
-   *       - in: path
-   *         name: id
-   *         required: true
-   *         schema:
-   *           type: integer
-   *     responses:
-   *       204:
-   *         description: Seguimiento eliminado
-   */
   async deleteFollowUp(req: Request, res: Response): Promise<void> {
     try {
       const userId = this.getUserId(req, res);
       if (userId === null) return;
+      const companyId = req.companyId ?? null;
 
       const { id } = req.params;
-      await FollowUpService.deleteFollowUp(parseInt(id), userId);
+      await FollowUpService.deleteFollowUp(parseInt(id), userId, companyId);
       res.status(204).send();
     } catch (error: any) {
       errorResponse(res, error.message, 400);

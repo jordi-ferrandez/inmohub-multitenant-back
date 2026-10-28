@@ -12,6 +12,8 @@ declare global {
   namespace Express {
     interface Request {
       user?: any;
+      companyId?: number | null;
+      isSuperAdmin?: boolean;
       queryValidated?:
         | UserQueryParams
         | MailboxingQueryParams

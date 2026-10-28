@@ -23,13 +23,18 @@ import {
 } from "../utils/permissions";
 
 class FollowUpService {
+  private buildTenantFilter(companyId: number | null): { companyId?: number } {
+    return companyId ? { companyId } : {};
+  }
+
   async createFollowUp(
     input: CreateFollowUpRequest,
-    sellerId: number
+    sellerId: number,
+    companyId: number | null
   ): Promise<FollowUpDTO> {
-    // Verificar que la propiedad existe
-    const property = await prisma.property.findUnique({
-      where: { id: input.propertyId },
+    // Verificar que la propiedad existe y pertenece a la empresa
+    const property = await prisma.property.findFirst({
+      where: { id: input.propertyId, ...this.buildTenantFilter(companyId) },
       include: {
         building: true,
         propertyPersons: {
@@ -125,6 +130,7 @@ class FollowUpService {
         plannedDate: null, // Siempre null - no se permiten seguimientos planificados
         executedDate: executedDate, // Siempre la fecha actual o la proporcionada (si no es futura)
         comment: input.comment,
+        companyId: companyId ?? undefined,
       },
       include: {
         seller: {
@@ -159,10 +165,10 @@ class FollowUpService {
     return this.mapToDTO(followUp);
   }
 
-  async getFollowUpById(id: number, userId: number): Promise<FollowUpDTO> {
+  async getFollowUpById(id: number, userId: number, companyId: number | null): Promise<FollowUpDTO> {
     // Verificar si el usuario es director
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
+    const user = await prisma.user.findFirst({
+      where: { id: userId, ...this.buildTenantFilter(companyId) },
       include: {
         roles: {
           include: {
@@ -178,6 +184,7 @@ class FollowUpService {
     const whereCondition: any = {
       id,
       deletedAt: null, // Excluir seguimientos eliminados
+      ...this.buildTenantFilter(companyId),
     };
 
     // Si no es director, solo puede ver sus propios seguimientos
@@ -213,7 +220,8 @@ class FollowUpService {
 
   async getFollowUps(
     params: FollowUpQueryParams,
-    userId: number
+    userId: number,
+    companyId: number | null
   ): Promise<FollowUpListResponse> {
     const {
       page: rawPage = 1,
@@ -239,11 +247,12 @@ class FollowUpService {
     // Construir filtros
     const where: any = {
       deletedAt: null, // Excluir seguimientos eliminados
+      ...this.buildTenantFilter(companyId),
     };
 
     // Si no es director, solo puede ver sus propios seguimientos
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
+    const user = await prisma.user.findFirst({
+      where: { id: userId, ...this.buildTenantFilter(companyId) },
       include: {
         roles: {
           include: {
@@ -349,7 +358,8 @@ class FollowUpService {
   async updateFollowUp(
     id: number,
     input: UpdateFollowUpRequest,
-    userId: number
+    userId: number,
+    companyId: number | null = null
   ): Promise<FollowUpDTO> {
     // Verificar permisos usando el sistema flexible
     const hasPermission = await canEditFollowUp(id, userId);
@@ -363,6 +373,7 @@ class FollowUpService {
       where: {
         id,
         deletedAt: null,
+        ...this.buildTenantFilter(companyId),
       },
     });
 
@@ -388,7 +399,7 @@ class FollowUpService {
     }
 
     const updatedFollowUp = await prisma.followUp.update({
-      where: { id },
+      where: { id, ...this.buildTenantFilter(companyId) },
       data: {
         ...input,
         plannedDate: input.plannedDate
@@ -424,7 +435,7 @@ class FollowUpService {
     return this.mapToDTO(updatedFollowUp);
   }
 
-  async deleteFollowUp(id: number, userId: number): Promise<void> {
+  async deleteFollowUp(id: number, userId: number, companyId: number | null = null): Promise<void> {
     // Verificar permisos usando el sistema flexible
     const hasPermission = await canDeleteFollowUp(id, userId);
     if (!hasPermission) {
@@ -437,6 +448,7 @@ class FollowUpService {
       where: {
         id,
         deletedAt: null,
+        ...this.buildTenantFilter(companyId),
       },
     });
 
@@ -983,7 +995,7 @@ class FollowUpService {
         sellerId
       );
     } else {
-      await reminderService.createReminder(createPayload, sellerId);
+      await reminderService.createReminder(createPayload, sellerId, null);
     }
   }
 

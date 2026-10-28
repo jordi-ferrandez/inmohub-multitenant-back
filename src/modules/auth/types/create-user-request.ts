@@ -7,4 +7,5 @@ export type CreateUserRequest = {
   phone?: string;
   avatarUrl?: string;
   isActive?: boolean;
+  companyId?: number;
 };

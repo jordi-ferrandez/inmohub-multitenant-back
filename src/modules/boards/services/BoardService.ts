@@ -2,11 +2,15 @@ import { prisma } from "@core/lib";
 import { BoardCard, CardActivity, CardPriority, Prisma } from "@generated/prisma";
 
 export class BoardService {
-  async getAllBoards(userId: number, roles: string[], filters?: { ownerId?: number, creatorId?: number, search?: string }) {
+  private buildTenantFilter(companyId: number | null): { companyId?: number } {
+    return companyId ? { companyId } : {};
+  }
+
+  async getAllBoards(userId: number, roles: string[], filters?: { ownerId?: number, creatorId?: number, search?: string }, companyId?: number | null) {
     const isDirector = roles.some(role => role.toLowerCase() === 'director');
-    
-    const where: any = {};
-    
+
+    const where: any = { ...this.buildTenantFilter(companyId) };
+
     if (isDirector) {
       if (filters?.ownerId) where.ownerId = filters.ownerId;
       if (filters?.creatorId) where.creatorId = filters.creatorId;
@@ -17,7 +21,7 @@ export class BoardService {
     if (filters?.search) {
       where.title = { contains: filters.search, mode: 'insensitive' };
     }
-    
+
     return prisma.board.findMany({
       where,
       include: {
@@ -43,9 +47,9 @@ export class BoardService {
     });
   }
 
-  async getBoardById(id: number) {
-    return prisma.board.findUnique({
-      where: { id },
+  async getBoardById(id: number, companyId?: number | null) {
+    return prisma.board.findFirst({
+      where: { id, ...this.buildTenantFilter(companyId) },
       include: {
         columns: {
           orderBy: { order: "asc" },
@@ -73,7 +77,7 @@ export class BoardService {
     });
   }
 
-  async createBoard(data: { title: string; description?: string; ownerId: number; creatorId: number; isPrivate?: boolean }) {
+  async createBoard(data: { title: string; description?: string; ownerId: number; creatorId: number; isPrivate?: boolean }, companyId?: number | null) {
     return prisma.board.create({
       data: {
         title: data.title,
@@ -81,6 +85,7 @@ export class BoardService {
         isPrivate: data.isPrivate || false,
         ownerId: data.ownerId,
         creatorId: data.creatorId,
+        companyId: companyId ?? undefined,
         // Default columns
         columns: {
            create: [

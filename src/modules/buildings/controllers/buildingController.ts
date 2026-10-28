@@ -16,26 +16,17 @@ import {
 export class BuildingController {
   BuildingService = new BuildingService();
 
-  /**
-   * @openapi
-   * /v1/buildings/grouped:
-   *   get:
-   *     tags: [Buildings]
-   *     summary: Obtener edificios agrupados por calles
-   *     responses:
-   *       200:
-   *         description: Edificios agrupados por calle
-   */
   async getBuildingsGroupedByStreets(
     req: Request,
     res: Response
   ): Promise<void> {
     try {
       const cursorId = req.query.cursorId;
-      
+      const companyId = req.companyId ?? null;
+
       const buildings =
-        await this.BuildingService.getBuildingsGroupedByStreets(cursorId);
-        
+        await this.BuildingService.getBuildingsGroupedByStreets(cursorId, companyId);
+
       successResponse(res, buildings, 200);
 
       return;
@@ -50,64 +41,11 @@ export class BuildingController {
     }
   }
 
-  /**
-   * @openapi
-   * /v1/buildings:
-   *   get:
-   *     tags: [Buildings]
-   *     summary: Obtener lista paginada de edificios
-   *     parameters:
-   *       - in: query
-   *         name: page
-   *         schema:
-   *           type: integer
-   *       - in: query
-   *         name: limit
-   *         schema:
-   *           type: integer
-   *       - in: query
-   *         name: street
-   *         schema:
-   *           type: string
-   *     responses:
-   *       200:
-   *         description: Lista de edificios
-   */
   async getBuildings(req: Request, res: Response): Promise<void> {
     try {
       const query = req.queryValidated as GetBuildingsQuery;
-      const { data, meta } = await this.BuildingService.getBuildings(query);
-      paginatedResponse(res, data, meta, 200);
-    } catch (error: any) {
-      errorResponse(
-        res,
-        error.message || "Error al obtener los edificios",
-        500
-      );
-    }
-  }
-  /**
-   * @openapi
-   * /v1/buildings/street/{streetName}:
-   *   get:
-   *     tags: [Buildings]
-   *     summary: Obtener edificios de una calle específica
-   *     parameters:
-   *       - in: path
-   *         name: streetName
-   *         required: true
-   *         schema:
-   *           type: string
-   *     responses:
-   *       200:
-   *         description: Lista de edificios de la calle
-   */
-  async getBuildingsByStreetName(req: Request, res: Response): Promise<void> {
-    try {
-      const params = req.paramsValidated as GetBuildingsByStreetNameParams;
-      const query = req.queryValidated as GetBuildingsByStreetNameQuery;
-      const { data, meta } =
-        await this.BuildingService.getBuildingsByStreetName(params, query);
+      const companyId = req.companyId ?? null;
+      const { data, meta } = await this.BuildingService.getBuildings(query, companyId);
       paginatedResponse(res, data, meta, 200);
     } catch (error: any) {
       errorResponse(
@@ -118,34 +56,34 @@ export class BuildingController {
     }
   }
 
-  /**
-   * @openapi
-   * /v1/buildings/{id}:
-   *   get:
-   *     tags: [Buildings]
-   *     summary: Obtener detalles de un edificio por ID
-   *     parameters:
-   *       - in: path
-   *         name: id
-   *         required: true
-   *         schema:
-   *           type: integer
-   *     responses:
-   *       200:
-   *         description: Detalles del edificio
-   *       404:
-   *         description: Edificio no encontrado
-   */
+  async getBuildingsByStreetName(req: Request, res: Response): Promise<void> {
+    try {
+      const params = req.paramsValidated as GetBuildingsByStreetNameParams;
+      const query = req.queryValidated as GetBuildingsByStreetNameQuery;
+      const companyId = req.companyId ?? null;
+      const { data, meta } =
+        await this.BuildingService.getBuildingsByStreetName(params, query, companyId);
+      paginatedResponse(res, data, meta, 200);
+    } catch (error: any) {
+      errorResponse(
+        res,
+        error.message || "Error al obtener los edificios",
+        500
+      );
+    }
+  }
+
   async getBuildingById(req: Request, res: Response): Promise<void> {
     try {
       const params = req.paramsValidated as GetBuildingByIdParams;
-      const data = await this.BuildingService.getBuildingById(params);
+      const companyId = req.companyId ?? null;
+      const data = await this.BuildingService.getBuildingById(params, companyId);
       successResponse(res, data, 200);
     } catch (error: any) {
       errorResponse(
         res,
         error.message ||
-          `Error al obtener el edificio cons ID ${req.paramsValidated.id}`,
+          `Error al obtener el edificio con ID ${req.paramsValidated.id}`,
         500
       );
     }
@@ -154,7 +92,8 @@ export class BuildingController {
   async createBuilding(req: Request, res: Response): Promise<void> {
     try {
       const data = req.body as CreateBuildingDTO;
-      const building = await this.BuildingService.createBuilding(data);
+      const companyId = req.companyId ?? null;
+      const building = await this.BuildingService.createBuilding(data, companyId);
       successResponse(res, building, 201);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al crear edificio", 500);
@@ -165,7 +104,8 @@ export class BuildingController {
     try {
       const id = Number(req.params.id);
       const data = req.body as UpdateBuildingDTO;
-      const building = await this.BuildingService.updateBuilding(id, data);
+      const companyId = req.companyId ?? null;
+      const building = await this.BuildingService.updateBuilding(id, data, companyId);
       successResponse(res, building, 200);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al actualizar edificio", 500);
@@ -176,11 +116,12 @@ export class BuildingController {
     try {
       const params = req.paramsValidated as GetBuildingMailboxingsParams;
       const query = req.queryValidated as GetBuildingMailboxingsQuery;
+      const companyId = req.companyId ?? null;
       const result = await this.BuildingService.getBuildingMailboxings(
         params,
-        query
+        query,
+        companyId
       );
-      // Mapear la paginación de MailboxingListResponse a PaginationMetadata
       const paginationMetadata = {
         totalItems: result.pagination.total,
         page: result.pagination.page,
@@ -198,10 +139,11 @@ export class BuildingController {
     }
   }
 
-    async getDeletionSummary(req: Request, res: Response): Promise<void> {
+  async getDeletionSummary(req: Request, res: Response): Promise<void> {
     try {
       const params = req.paramsValidated as DeleteBuildingParams;
-      const summary = await this.BuildingService.getDeletionSummary(params);
+      const companyId = req.companyId ?? null;
+      const summary = await this.BuildingService.getDeletionSummary(params, companyId);
       successResponse(res, summary, 200);
     } catch (error: any) {
       errorResponse(
@@ -212,10 +154,11 @@ export class BuildingController {
     }
   }
 
-    async deleteBuilding(req: Request, res: Response): Promise<void> {
+  async deleteBuilding(req: Request, res: Response): Promise<void> {
     try {
       const params = req.paramsValidated as DeleteBuildingParams;
-      await this.BuildingService.deleteBuilding(params);
+      const companyId = req.companyId ?? null;
+      await this.BuildingService.deleteBuilding(params, companyId);
       successResponse(
         res,
         { message: "Edificio eliminado correctamente" },

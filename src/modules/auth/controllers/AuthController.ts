@@ -134,7 +134,11 @@ class AuthController {
   ): Promise<void> {
     try {
       const userData = req.bodyValidated;
-      const newUser = await this.authService.createUser(userData);
+      const companyId = req.companyId ?? null;
+      const newUser = await this.authService.createUser({
+        ...userData,
+        companyId,
+      });
       successResponse(res, newUser, 201);
       return;
     } catch (error: any) {
@@ -150,7 +154,12 @@ class AuthController {
   ): Promise<void> {
     try {
       const query = req.queryValidated as UserQueryParams;
-      const result = await this.authService.getUsers(query);
+      // Forzar filtro por empresa del director (no puede ver otras empresas)
+      const companyId = req.companyId ?? null;
+      const result = await this.authService.getUsers({
+        ...query,
+        companyId,
+      });
       paginatedResponse(
         res,
         result.users,
@@ -288,7 +297,8 @@ class AuthController {
   ): Promise<void> {
     try {
       const params = req.paramsValidated as UserParams;
-      await this.authService.deleteUser(parseInt(params.id));
+      const companyId = req.companyId ?? null;
+      await this.authService.deleteUser(parseInt(params.id), companyId);
       successResponse(res, { message: "Usuario eliminado correctamente" }, 200);
       return;
     } catch (error: any) {
@@ -305,9 +315,11 @@ class AuthController {
     try {
       const params = req.paramsValidated as UserParams;
       const rolesData = req.bodyValidated as UpdateUserRolesRequest;
+      const companyId = req.companyId ?? null;
       const updatedUser = await this.authService.updateUserRoles(
         parseInt(params.id),
-        rolesData.roleIds
+        rolesData.roleIds,
+        companyId
       );
       successResponse(res, updatedUser, 200);
       return;

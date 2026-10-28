@@ -5,7 +5,7 @@ import {
   requireDirectorRole,
   requireAgentOrDirectorRole,
 } from "../middlewares";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, tenantMiddleware } from "@core/middlewares";
 import {
   createFollowUpSchema,
   updateFollowUpSchema,
@@ -20,8 +20,8 @@ import { bindAllMethods } from "@core/utils";
 const router = Router();
 const followUpController = bindAllMethods(new FollowUpController());
 
-// Todas las rutas requieren autenticación
-router.use(authenticationToken);
+// Todas las rutas requieren autenticación + tenant
+router.use(authenticationToken, tenantMiddleware);
 
 // Crear seguimiento - Cualquier usuario autenticado
 router.post(

@@ -35,7 +35,7 @@ describe('ReminderService', () => {
       // Mock private method ensureOccurrencesForRange
       (reminderService as any).ensureOccurrencesForRange = jest.fn().mockResolvedValue([]);
 
-      const result = await reminderService.createReminder(input as any, 10);
+      const result = await reminderService.createReminder(input as any, 10, null);
 
       expect(result.id).toBe(1);
     });
@@ -47,7 +47,7 @@ describe('ReminderService', () => {
       prismaMock.reminder.findMany.mockResolvedValue([]);
       prismaMock.reminder.count.mockResolvedValue(0);
 
-      const result = await reminderService.getReminders({}, 1);
+      const result = await reminderService.getReminders({}, 1, null);
 
       expect(result.data).toBeInstanceOf(Array);
       expect(result.pagination.total).toBe(0);

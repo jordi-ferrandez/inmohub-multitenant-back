@@ -60,7 +60,8 @@ class ReminderController {
 
       const reminder = await reminderService.createReminder(
         req.bodyValidated || req.body,
-        userId
+        userId,
+        req.companyId ?? null
       );
       successResponse(res, reminder, 201);
     } catch (error: any) {
@@ -87,7 +88,8 @@ class ReminderController {
 
       const result = await reminderService.getReminders(
         (req.queryValidated as ReminderQueryParams) || (req.query as any),
-        userId
+        userId,
+        req.companyId ?? null
       );
       successResponse(res, result, 200);
     } catch (error: any) {

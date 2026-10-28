@@ -12,13 +12,17 @@ import {
 } from "../types/personTypes";
 
 export class PersonService {
-  async createPerson(data: CreatePersonBody) {
+  private buildTenantFilter(companyId: number | null): { companyId?: number } {
+    return companyId ? { companyId } : {};
+  }
+
+  async createPerson(data: CreatePersonBody, companyId: number | null) {
     const { phones, ...personData } = data;
 
     // Verificar que el email sea único solo si se proporciona
     if (personData.email) {
-      const existingPerson = await prisma.person.findUnique({
-        where: { email: personData.email },
+      const existingPerson = await prisma.person.findFirst({
+        where: { email: personData.email, ...this.buildTenantFilter(companyId) },
       });
 
       if (existingPerson) {
@@ -30,6 +34,7 @@ export class PersonService {
       data: {
         ...personData,
         phones: phones ? { create: phones } : undefined,
+        companyId: companyId ?? undefined,
       },
       include: {
         phones: true,
@@ -38,12 +43,12 @@ export class PersonService {
     return prisma.person.create(args);
   }
 
-  async updatePerson(id: number, data: UpdatePersonBody) {
+  async updatePerson(id: number, data: UpdatePersonBody, companyId: number | null) {
     const { phones, ...personData } = data;
 
     // Verificar que la persona existe
-    const existingPerson = await prisma.person.findUnique({
-      where: { id },
+    const existingPerson = await prisma.person.findFirst({
+      where: { id, ...this.buildTenantFilter(companyId) },
     });
 
     if (!existingPerson) {
@@ -54,8 +59,8 @@ export class PersonService {
     if (personData.email && personData.email !== existingPerson.email) {
       // Solo verificar unicidad si el nuevo email no es null
       if (personData.email) {
-        const emailExists = await prisma.person.findUnique({
-          where: { email: personData.email },
+        const emailExists = await prisma.person.findFirst({
+          where: { email: personData.email, ...this.buildTenantFilter(companyId) },
         });
 
         if (emailExists) {
@@ -96,7 +101,7 @@ export class PersonService {
     }
 
     return prisma.person.update({
-      where: { id },
+      where: { id, ...this.buildTenantFilter(companyId) },
       data: {
         ...personData,
         ...(phones ? { phones: phoneOps } : {}),
@@ -107,10 +112,12 @@ export class PersonService {
     });
   }
 
-  async getPersons(query: GetPersonsQuery) {
+  async getPersons(query: GetPersonsQuery, companyId: number | null) {
     const { page, limit, search } = query;
+    const tenantFilter = this.buildTenantFilter(companyId);
     const where = search
       ? {
+          ...tenantFilter,
           deletedAt: null,
           OR: [
             {
@@ -144,7 +151,7 @@ export class PersonService {
             },
           ],
         }
-      : { deletedAt: null };
+      : { ...tenantFilter, deletedAt: null };
 
     const [items, total] = await Promise.all([
       prisma.person.findMany({
@@ -197,11 +204,13 @@ export class PersonService {
     };
   }
 
-  async searchPersons(query: SearchPersonsQuery) {
+  async searchPersons(query: SearchPersonsQuery, companyId: number | null) {
     const { q } = query;
+    const tenantFilter = this.buildTenantFilter(companyId);
 
     const persons = await prisma.person.findMany({
       where: {
+        ...tenantFilter,
         deletedAt: null,
         OR: [
           {
@@ -241,9 +250,9 @@ export class PersonService {
     }));
   }
 
-  async deletePerson(id: number) {
-    const existingPerson = await prisma.person.findUnique({
-      where: { id },
+  async deletePerson(id: number, companyId: number | null) {
+    const existingPerson = await prisma.person.findFirst({
+      where: { id, ...this.buildTenantFilter(companyId) },
     });
 
     if (!existingPerson) {
@@ -272,11 +281,12 @@ export class PersonService {
   async assignPropertyToPerson(
     personId: number,
     propertyId: number,
-    role: AssignPropertyBody["role"]
+    role: AssignPropertyBody["role"],
+    companyId: number | null
   ) {
     // Verificar que la persona existe
-    const person = await prisma.person.findUnique({
-      where: { id: personId },
+    const person = await prisma.person.findFirst({
+      where: { id: personId, ...this.buildTenantFilter(companyId) },
     });
 
     if (!person) {
@@ -288,8 +298,8 @@ export class PersonService {
     }
 
     // Verificar que la propiedad existe
-    const property = await prisma.property.findUnique({
-      where: { id: propertyId },
+    const property = await prisma.property.findFirst({
+      where: { id: propertyId, ...this.buildTenantFilter(companyId) },
     });
 
     if (!property) {
@@ -335,7 +345,7 @@ export class PersonService {
 
     if (Object.keys(updateData).length > 0) {
       await prisma.property.update({
-        where: { id: propertyId },
+        where: { id: propertyId, ...this.buildTenantFilter(companyId) },
         data: updateData,
       });
     }
@@ -347,11 +357,12 @@ export class PersonService {
   async unassignPropertyFromPerson(
     personId: number,
     propertyId: number,
-    role: UnassignPropertyBody["role"]
+    role: UnassignPropertyBody["role"],
+    companyId: number | null
   ) {
     // Verificar que la persona existe
-    const person = await prisma.person.findUnique({
-      where: { id: personId },
+    const person = await prisma.person.findFirst({
+      where: { id: personId, ...this.buildTenantFilter(companyId) },
     });
 
     if (!person) {
@@ -359,8 +370,8 @@ export class PersonService {
     }
 
     // Verificar que la propiedad existe
-    const property = await prisma.property.findUnique({
-      where: { id: propertyId },
+    const property = await prisma.property.findFirst({
+      where: { id: propertyId, ...this.buildTenantFilter(companyId) },
     });
 
     if (!property) {
@@ -396,7 +407,7 @@ export class PersonService {
       const updateData =
         role === "owner" ? { ownerId: null } : { tenantId: null };
       await prisma.property.update({
-        where: { id: propertyId },
+        where: { id: propertyId, ...this.buildTenantFilter(companyId) },
         data: updateData,
       });
     } else {
@@ -410,10 +421,10 @@ export class PersonService {
     return { message: "Persona desasignada correctamente" };
   }
 
-  async getPersonRelations(id: number) {
+  async getPersonRelations(id: number, companyId: number | null) {
     // Verificar que la persona existe
-    const person = await prisma.person.findUnique({
-      where: { id },
+    const person = await prisma.person.findFirst({
+      where: { id, ...this.buildTenantFilter(companyId) },
       select: { id: true, firstName: true, lastName: true },
     });
 

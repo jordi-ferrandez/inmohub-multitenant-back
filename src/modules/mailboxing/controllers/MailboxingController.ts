@@ -59,7 +59,8 @@ export class MailboxingController {
 
       const mailboxing = await MailboxingService.createMailboxing(
         req.body,
-        targetMailboxerId
+        targetMailboxerId,
+        req.companyId ?? null
       );
       successResponse(res, mailboxing, 201);
     } catch (error: any) {

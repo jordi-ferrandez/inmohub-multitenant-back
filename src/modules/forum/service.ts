@@ -9,13 +9,17 @@ export const FORUM_CATEGORIES = [
   "Cafetería (Off-topic)",
 ];
 
+function buildTenantFilter(companyId: number | null): { companyId?: number } {
+  return companyId ? { companyId } : {};
+}
+
 export const forumService = {
   // Categorías: ahora son strings estáticos
-  getCategories: async () => {
+  getCategories: async (companyId?: number | null) => {
     // Devolvemos las categorías predefinidas junto con el conteo de topics de cada una
     const counts = await prisma.forumTopic.groupBy({
       by: ["category"],
-      where: { deletedAt: null },
+      where: { deletedAt: null, ...buildTenantFilter(companyId) },
       _count: { id: true },
     });
 
@@ -29,11 +33,12 @@ export const forumService = {
   },
 
   // Topics
-  getTopics: async (category?: string, page = 1, limit = 20) => {
+  getTopics: async (category?: string, page = 1, limit = 20, companyId?: number | null) => {
     const skip = (page - 1) * limit;
+    const tenantFilter = buildTenantFilter(companyId);
     const where = category
-      ? { category, deletedAt: null }
-      : { deletedAt: null };
+      ? { ...tenantFilter, category, deletedAt: null }
+      : { ...tenantFilter, deletedAt: null };
 
     const [topics, total] = await Promise.all([
       prisma.forumTopic.findMany({
@@ -57,15 +62,15 @@ export const forumService = {
     return { topics, total, pages: Math.ceil(total / limit) };
   },
 
-  getTopicById: async (id: number) => {
+  getTopicById: async (id: number, companyId?: number | null) => {
     // Increase views
-    await prisma.forumTopic.update({
-      where: { id },
+    await prisma.forumTopic.updateMany({
+      where: { id, ...buildTenantFilter(companyId) },
       data: { views: { increment: 1 } },
     });
 
-    return await prisma.forumTopic.findUnique({
-      where: { id },
+    return await prisma.forumTopic.findFirst({
+      where: { id, ...buildTenantFilter(companyId) },
       include: {
         author: {
           select: { id: true, firstName: true, lastName: true, avatarUrl: true },
@@ -84,12 +89,13 @@ export const forumService = {
     });
   },
 
-  createTopic: async (data: { title: string; content: string; category: string; authorId: number; tags?: string[] }) => {
+  createTopic: async (data: { title: string; content: string; category: string; authorId: number; tags?: string[] }, companyId?: number | null) => {
     const { tags, ...topicData } = data;
 
     return await prisma.forumTopic.create({
       data: {
         ...topicData,
+        companyId: companyId ?? undefined,
         tags: tags
           ? {
               connectOrCreate: tags.map((tag) => ({
@@ -103,8 +109,8 @@ export const forumService = {
   },
 
   // Posts (Replies)
-  createPost: async (data: { topicId: number; authorId: number; content: string }) => {
-    const topic = await prisma.forumTopic.findUnique({ where: { id: data.topicId } });
+  createPost: async (data: { topicId: number; authorId: number; content: string }, companyId?: number | null) => {
+    const topic = await prisma.forumTopic.findFirst({ where: { id: data.topicId, ...buildTenantFilter(companyId) } });
     if (topic?.isLocked) {
       throw new Error("Este tema está cerrado y no permite más respuestas.");
     }
@@ -120,23 +126,23 @@ export const forumService = {
   },
 
   // Moderation
-  lockTopic: async (id: number, isLocked: boolean) => {
-    return await prisma.forumTopic.update({
-      where: { id },
+  lockTopic: async (id: number, isLocked: boolean, companyId?: number | null) => {
+    return await prisma.forumTopic.updateMany({
+      where: { id, ...buildTenantFilter(companyId) },
       data: { isLocked },
     });
   },
 
-  pinTopic: async (id: number, isPinned: boolean) => {
-    return await prisma.forumTopic.update({
-      where: { id },
+  pinTopic: async (id: number, isPinned: boolean, companyId?: number | null) => {
+    return await prisma.forumTopic.updateMany({
+      where: { id, ...buildTenantFilter(companyId) },
       data: { isPinned },
     });
   },
 
-  deleteTopic: async (id: number) => {
-    return await prisma.forumTopic.update({
-      where: { id },
+  deleteTopic: async (id: number, companyId?: number | null) => {
+    return await prisma.forumTopic.updateMany({
+      where: { id, ...buildTenantFilter(companyId) },
       data: { deletedAt: new Date() },
     });
   },

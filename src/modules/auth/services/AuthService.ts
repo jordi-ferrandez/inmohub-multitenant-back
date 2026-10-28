@@ -41,8 +41,8 @@ class AuthService {
     const passwordHash = await hash(input.password, SALT_ROUNDS);
     const verificationToken = crypto.randomBytes(32).toString("hex");
 
-    const userRole = await prisma.role.findUnique({
-      where: { name: input.role },
+    const userRole = await prisma.role.findFirst({
+      where: { name: input.role, companyId: null },
     });
 
     if (!userRole) {
@@ -138,6 +138,8 @@ class AuthService {
       userId: user.id,
       email: user.email,
       roles: roles,
+      companyId: user.companyId,
+      isSuperAdmin: user.isSuperAdmin,
       completedTours: user.completedTours || [],
     };
 
@@ -161,8 +163,14 @@ class AuthService {
 
     const passwordHash = await hash(input.password, SALT_ROUNDS);
 
-    const userRole = await prisma.role.findUnique({
-      where: { name: input.role },
+    const userRole = await prisma.role.findFirst({
+      where: {
+        name: input.role,
+        OR: [
+          { companyId: input.companyId ?? null },
+          { companyId: null },
+        ],
+      },
     });
 
     if (!userRole) {
@@ -179,6 +187,7 @@ class AuthService {
           phone: input.phone,
           avatarUrl: input.avatarUrl,
           isActive: input.isActive ?? true,
+          companyId: input.companyId,
         },
       });
 
@@ -204,11 +213,17 @@ class AuthService {
     const isActive = query.isActive;
     const sortBy = query.sortBy ?? "createdAt";
     const sortOrder = query.sortOrder ?? "desc";
+    const companyId = query.companyId;
 
     const skip = (page - 1) * limit;
 
     // Construir filtros
     const where: any = {};
+
+    // Filtrar por empresa (a menos que sea superadmin consultando)
+    if (companyId !== undefined) {
+      where.companyId = companyId;
+    }
 
     if (search) {
       where.OR = [
@@ -493,13 +508,13 @@ class AuthService {
     );
   }
 
-  async deleteUser(id: number): Promise<void> {
-    const existingUser = await prisma.user.findUnique({
-      where: { id },
+  async deleteUser(id: number, companyId: number | null = null): Promise<void> {
+    const existingUser = await prisma.user.findFirst({
+      where: { id, ...(companyId ? { companyId } : {}) },
     });
 
     if (!existingUser) {
-      throw new Error("Usuario no encontrado");
+      throw new Error("Usuario no encontrado en esta empresa");
     }
 
     // Soft delete
@@ -514,15 +529,16 @@ class AuthService {
 
   async updateUserRoles(
     id: number,
-    roleIds: number[]
+    roleIds: number[],
+    companyId: number | null = null
   ): Promise<UserManagementDTO> {
-    // Verificar que el usuario existe
-    const existingUser = await prisma.user.findUnique({
-      where: { id },
+    // Verificar que el usuario existe y pertenece a la empresa
+    const existingUser = await prisma.user.findFirst({
+      where: { id, ...(companyId ? { companyId } : {}) },
     });
 
     if (!existingUser) {
-      throw new Error("Usuario no encontrado");
+      throw new Error("Usuario no encontrado en esta empresa");
     }
 
     // Eliminar duplicados de roleIds
@@ -532,16 +548,20 @@ class AuthService {
       throw new Error("Debe proporcionar al menos un rol");
     }
 
-    // Verificar que todos los roles existen
+    // Verificar que todos los roles existen y pertenecen a la empresa (o son globales)
     const roles = await prisma.role.findMany({
       where: {
         id: { in: uniqueRoleIds },
         deletedAt: null,
+        OR: [
+          { companyId: companyId },
+          { companyId: null }, // Roles globales del sistema
+        ],
       },
     });
 
     if (roles.length !== uniqueRoleIds.length) {
-      throw new Error("Uno o más roles no existen o están eliminados");
+      throw new Error("Uno o más roles no existen o no están disponibles para esta empresa");
     }
 
     // Actualizar roles en transacción
@@ -992,6 +1012,8 @@ class AuthService {
         name: role.name,
         displayName: role.displayName,
       })),
+      companyId: user.companyId,
+      isSuperAdmin: user.isSuperAdmin,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
       completedTours: user.completedTours || [],

@@ -39,12 +39,13 @@ export class BoardController {
       const userId = req.user?.userId;
       const roles = req.user?.roles?.map((r: any) => r.name) || [];
       const { ownerId, creatorId, search } = req.query as any;
+      const companyId = req.companyId ?? null;
 
       const boards = await this.service.getAllBoards(Number(userId), roles, {
         ownerId: ownerId ? Number(ownerId) : undefined,
         creatorId: creatorId ? Number(creatorId) : undefined,
         search: search as string,
-      });
+      }, companyId);
       successResponse(res, boards);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
@@ -74,7 +75,8 @@ export class BoardController {
   async getBoard(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const board = await this.service.getBoardById(Number(id));
+      const companyId = req.companyId ?? null;
+      const board = await this.service.getBoardById(Number(id), companyId);
       if (!board) {
         errorResponse(res, "Board no encontrado", 404);
         return;
@@ -113,12 +115,13 @@ export class BoardController {
       const creatorId = req.user?.userId;
       const data = req.bodyValidated || req.body;
       const targetOwnerId = data.ownerId ? Number(data.ownerId) : Number(creatorId);
+      const companyId = req.companyId ?? null;
 
       const board = await this.service.createBoard({
         ...data,
         ownerId: targetOwnerId,
         creatorId: Number(creatorId),
-      });
+      }, companyId);
       successResponse(res, board, 201);
     } catch (error: any) {
       errorResponse(res, error.message, 400);

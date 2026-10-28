@@ -4,6 +4,7 @@ export type UserQueryParams = {
   search?: string;
   role?: string;
   isActive?: boolean;
+  companyId?: number;
   sortBy: "firstName" | "lastName" | "email" | "createdAt";
   sortOrder: "asc" | "desc";
 };

@@ -1,17 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 import { errorResponse, getEnvironmentVariables } from "../utils";
-
-interface JwtPayload {
-  userId: string;
-  email: string;
-  roles: Array<{
-    displayName: string;
-    name: string;
-  }>;
-  iat?: number;
-  exp?: number;
-}
+import { JwtPayload } from "@modules/auth/types";
 
 const JWT_SECRET = getEnvironmentVariables().JWT_SECRET;
 
@@ -26,7 +16,10 @@ function authenticationToken(req: Request, res: Response, next: NextFunction) {
       errorResponse(res, "Invalid token", 401);
       return;
     }
-    req.user = decoded as JwtPayload;
+    const payload = decoded as JwtPayload;
+    req.user = payload;
+    req.companyId = payload.companyId;
+    req.isSuperAdmin = payload.isSuperAdmin;
     next();
   });
 }

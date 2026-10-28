@@ -11,6 +11,8 @@ export type UserManagementDTO = {
     name: string;
     displayName: string;
   }>;
+  companyId: number | null;
+  isSuperAdmin: boolean;
   createdAt: Date;
   updatedAt: Date;
   completedTours: string[];

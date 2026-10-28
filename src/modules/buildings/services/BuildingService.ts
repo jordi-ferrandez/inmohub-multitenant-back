@@ -33,14 +33,17 @@ const toBuildingResponseDTO = (building: Building): BuildingResponseDTO => ({
 });
 
 export class BuildingService {
-  // async getBuildingsGroupedByStreets(cursorId: any = null): Promise<GetBuildingsGroupedByStreetsDTO> {
-    async getBuildingsGroupedByStreets(cursorId: any = null) {
-    
+  private buildTenantFilter(companyId: number | null): { companyId?: number } {
+    return companyId ? { companyId } : {};
+  }
+
+  async getBuildingsGroupedByStreets(cursorId: any = null, companyId: number | null) {
     const allBuildings = await prisma.building.findMany({
       take: 40,
-      skip: cursorId ? 1 : 0,      
+      skip: cursorId ? 1 : 0,
       cursor: cursorId ? { id: parseInt(cursorId, 10) } : undefined,
       orderBy: { street: "asc" },
+      where: this.buildTenantFilter(companyId),
     });
 
     const lastPostInResults = allBuildings[39]; 
@@ -71,7 +74,7 @@ export class BuildingService {
     // return response;
     
   }
-  async createBuilding(data: CreateBuildingDTO): Promise<Building> {
+  async createBuilding(data: CreateBuildingDTO, companyId: number | null): Promise<Building> {
     try {
       const building = await prisma.building.create({
         data: {
@@ -79,6 +82,7 @@ export class BuildingService {
           number: Number(data.number),
           block: data.block || null,
           stair: data.stair || null,
+          companyId: companyId ?? undefined,
         },
       });
       return building;
@@ -89,11 +93,12 @@ export class BuildingService {
 
   async updateBuilding(
     id: number,
-    data: UpdateBuildingDTO
+    data: UpdateBuildingDTO,
+    companyId: number | null
   ): Promise<Building> {
     try {
       const building = await prisma.building.update({
-        where: { id },
+        where: { id, ...this.buildTenantFilter(companyId) },
         data: {
           street: data.street,
           number: data.number ? Number(data.number) : undefined,
@@ -107,10 +112,10 @@ export class BuildingService {
     }
   }
 
-  async getBuildings(filters: GetBuildingsQuery) {
+  async getBuildings(filters: GetBuildingsQuery, companyId: number | null) {
     const { page, limit, ...filterData } = filters;
     const skip = (page - 1) * limit;
-    const where: Prisma.BuildingWhereInput = {};
+    const where: Prisma.BuildingWhereInput = { ...this.buildTenantFilter(companyId) };
 
     if (filterData.street) {
       where.street = { contains: filterData.street, mode: "insensitive" };
@@ -138,8 +143,6 @@ export class BuildingService {
       prisma.building.count({ where }),
     ]);
 
-    console.log("Buildings found:", buildings);
-
     const totalPages = Math.ceil(totalItems / limit);
 
     return { data: buildings, meta: { totalItems, page, limit, totalPages } };
@@ -147,19 +150,18 @@ export class BuildingService {
 
   async getBuildingsByStreetName(
     params: GetBuildingsByStreetNameParams,
-    filters: GetBuildingsByStreetNameQuery
+    filters: GetBuildingsByStreetNameQuery,
+    companyId: number | null
   ) {
     const { name } = params;
     const { page, limit } = filters;
     const skip = (page - 1) * limit;
     const { streetString, propertyNumber } = getNameAndNumberFromStreet(name);
 
-    console.log({ streetString, propertyNumber });
-
     const where: Prisma.BuildingWhereInput = {
+      ...this.buildTenantFilter(companyId),
       street: {
         contains: streetString,
-
         mode: "insensitive",
       },
     };
@@ -364,10 +366,10 @@ export class BuildingService {
 
     return { data: result, meta: { totalItems, page, limit, totalPages } };
   }
-  async getBuildingById(params: GetBuildingByIdParams) {
+  async getBuildingById(params: GetBuildingByIdParams, companyId: number | null) {
     const { id } = params;
-    const building = await prisma.building.findUnique({
-      where: { id },
+    const building = await prisma.building.findFirst({
+      where: { id, ...this.buildTenantFilter(companyId) },
       include: {
         properties: {
           select: {
@@ -582,7 +584,8 @@ export class BuildingService {
 
   async getBuildingMailboxings(
     params: GetBuildingMailboxingsParams,
-    query: GetBuildingMailboxingsQuery
+    query: GetBuildingMailboxingsQuery,
+    companyId: number | null
   ): Promise<MailboxingListResponse> {
     const { id: buildingId } = params;
     const page = query.page ?? 1;
@@ -590,8 +593,8 @@ export class BuildingService {
     const skip = (page - 1) * limit;
 
     // Verificar que el edificio existe
-    const building = await prisma.building.findUnique({
-      where: { id: buildingId },
+    const building = await prisma.building.findFirst({
+      where: { id: buildingId, ...this.buildTenantFilter(companyId) },
     });
 
     if (!building) {
@@ -734,13 +737,14 @@ export class BuildingService {
   }
 
   async getDeletionSummary(
-    params: DeleteBuildingParams
+    params: DeleteBuildingParams,
+    companyId: number | null
   ): Promise<DeletionSummaryDTO> {
     const { id } = params;
 
     // Verificar que el edificio existe y no está eliminado
     const building = await prisma.building.findFirst({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null, ...this.buildTenantFilter(companyId) },
       select: {
         id: true,
         street: true,
@@ -902,14 +906,14 @@ export class BuildingService {
     };
   }
 
-  async deleteBuilding(params: DeleteBuildingParams): Promise<void> {
+  async deleteBuilding(params: DeleteBuildingParams, companyId: number | null): Promise<void> {
     const { id } = params;
     const s3 = S3StorageService.getInstance();
     const now = new Date();
 
     // Verificar que el edificio existe y no está eliminado
     const building = await prisma.building.findFirst({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null, ...this.buildTenantFilter(companyId) },
       select: {
         id: true,
         properties: {

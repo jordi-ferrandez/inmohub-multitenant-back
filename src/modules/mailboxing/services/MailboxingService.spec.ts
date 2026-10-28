@@ -42,7 +42,7 @@ describe('MailboxingService', () => {
         attachments: []
       } as any);
 
-      const result = await mailboxingService.createMailboxing(input as any, mailboxerId);
+      const result = await mailboxingService.createMailboxing(input as any, mailboxerId, null);
 
       expect(result.id).toBe(100);
       expect(prismaMock.mailboxing.create).toHaveBeenCalled();

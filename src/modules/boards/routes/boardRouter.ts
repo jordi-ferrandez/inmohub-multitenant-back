@@ -1,7 +1,7 @@
 import express from "express";
 import { BoardController } from "../controllers";
 import { bindAllMethods } from "@core/utils";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, tenantMiddleware } from "@core/middlewares";
 import {
   validateCreateBoard,
   validateCreateColumn,
@@ -16,7 +16,7 @@ import {
 const boardRouter = express.Router();
 const boardController = bindAllMethods(new BoardController());
 
-boardRouter.use(authenticationToken);
+boardRouter.use(authenticationToken, tenantMiddleware);
 
 boardRouter.get("/activity", boardController.getDailyActivity);
 boardRouter.get("/", boardController.getBoards);

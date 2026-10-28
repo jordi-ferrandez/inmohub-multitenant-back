@@ -16,7 +16,7 @@ import {
   validateUserSearch,
   validateUpdateUserPassword,
 } from "../validators";
-import { authenticationToken, requireDirectorRole } from "@core/middlewares";
+import { authenticationToken, requireDirectorRole, tenantMiddleware } from "@core/middlewares";
 
 const authRouter = express.Router();
 const authController = bindAllMethods(new AuthController());
@@ -48,6 +48,7 @@ authRouter.patch(
 authRouter.post(
   "/users",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateCreateUser,
   authController.createUser
@@ -55,6 +56,7 @@ authRouter.post(
 authRouter.get(
   "/users",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserQuery,
   authController.getUsers
@@ -62,6 +64,7 @@ authRouter.get(
 authRouter.get(
   "/users/search",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserSearch,
   authController.searchUsers
@@ -69,6 +72,7 @@ authRouter.get(
 authRouter.get(
   "/users/:id",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserParams,
   authController.getUserById
@@ -76,6 +80,7 @@ authRouter.get(
 authRouter.put(
   "/users/:id",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserParams,
   validateUpdateUser,
@@ -84,6 +89,7 @@ authRouter.put(
 authRouter.patch(
   "/users/:id",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserParams,
   validateUpdateUser,
@@ -92,6 +98,7 @@ authRouter.patch(
 authRouter.delete(
   "/users/:id",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserParams,
   authController.deleteUser
@@ -99,6 +106,7 @@ authRouter.delete(
 authRouter.put(
   "/users/:id/roles",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserParams,
   validateUpdateUserRoles,
@@ -107,6 +115,7 @@ authRouter.put(
 authRouter.post(
   "/users/:id/reset-onboarding",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserParams,
   authController.resetOnboarding
@@ -114,6 +123,7 @@ authRouter.post(
 authRouter.post(
   "/users/:id/password",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserParams,
   validateUpdateUserPassword,
@@ -122,6 +132,7 @@ authRouter.post(
 authRouter.post(
   "/users/:id/send-reset-link",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   validateUserParams,
   authController.sendResetPasswordLink
@@ -129,6 +140,7 @@ authRouter.post(
 authRouter.get(
   "/roles",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   authController.getAllRoles
 );

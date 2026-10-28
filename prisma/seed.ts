@@ -11,7 +11,6 @@ async function seedRolesAndPermissions() {
     { name: 'Director', displayName: 'Director' },
     { name: 'Responsible', displayName: 'Responsable' },
     { name: 'Mailboxer', displayName: 'Buzoneador' },
-    { name: 'Enterprise', displayName: 'Empresa' },
   ];
 
   const permissions = [
@@ -23,13 +22,18 @@ async function seedRolesAndPermissions() {
   ];
 
   const roleRecords = await Promise.all(
-    roles.map((role) =>
-      prisma.role.upsert({
-        where: { name: role.name },
-        update: { displayName: role.displayName },
-        create: role,
-      }),
-    ),
+    roles.map(async (role) => {
+      const existing = await prisma.role.findFirst({
+        where: { name: role.name, companyId: null },
+      });
+      if (existing) {
+        return prisma.role.update({
+          where: { id: existing.id },
+          data: { displayName: role.displayName },
+        });
+      }
+      return prisma.role.create({ data: role });
+    }),
   );
 
   const permissionRecords = await Promise.all(
@@ -65,13 +69,6 @@ async function seedRolesAndPermissions() {
     Agent: ['view:properties', 'edit:properties'],
     Responsible: ['view:properties', 'manage:assignments'],
     Mailboxer: ['view:properties', 'view:mailboxing'],
-    Enterprise: [
-      'view:properties',
-      'edit:properties',
-      'manage:assignments',
-      'view:mailboxing',
-      'manage:users',
-    ],
   };
 
   for (const role of roleRecords) {
@@ -97,9 +94,38 @@ async function seedRolesAndPermissions() {
   }
 }
 
-async function seedUsers() {
+async function seedCompanyAndUsers() {
   const passwordHash = await bcrypt.hash('InmoHub123!', 10);
 
+  // Crear empresa por defecto
+  const company = await prisma.company.upsert({
+    where: { name: 'InmoHub Demo' },
+    update: {},
+    create: { name: 'InmoHub Demo' },
+  });
+
+  // Crear usuario superadmin (sin empresa)
+  const superadmin = await prisma.user.upsert({
+    where: { email: 'superadmin@inmohub.com' },
+    update: {
+      firstName: 'Super',
+      lastName: 'Admin',
+      passwordHash,
+      isActive: true,
+      isSuperAdmin: true,
+    },
+    create: {
+      email: 'superadmin@inmohub.com',
+      firstName: 'Super',
+      lastName: 'Admin',
+      passwordHash,
+      isActive: true,
+      isSuperAdmin: true,
+      companyId: null,
+    },
+  });
+
+  // Crear usuarios de demo dentro de la empresa
   const users = [
     {
       email: 'director@example.com',
@@ -125,12 +151,6 @@ async function seedUsers() {
       lastName: 'Buzoneador',
       roles: ['Mailboxer'],
     },
-    {
-      email: 'empresa@example.com',
-      firstName: 'Entidad',
-      lastName: 'Corporativa',
-      roles: ['Enterprise'],
-    },
   ];
 
   for (const user of users) {
@@ -141,6 +161,7 @@ async function seedUsers() {
         lastName: user.lastName,
         passwordHash,
         isActive: true,
+        companyId: company.id,
       },
       create: {
         email: user.email,
@@ -148,6 +169,7 @@ async function seedUsers() {
         lastName: user.lastName,
         passwordHash,
         isActive: true,
+        companyId: company.id,
       },
     });
 
@@ -163,34 +185,41 @@ async function seedUsers() {
       });
     }
   }
+
+  return company;
 }
 
-async function seedPersons() {
+async function seedPersons(companyId: number) {
   const persons = [
     {
       firstName: 'Carlos',
       lastName: 'Contact',
       email: 'carlos.contact@example.com',
+      companyId,
     },
     {
       firstName: 'Paula',
       lastName: 'President',
       email: 'paula.president@example.com',
+      companyId,
     },
     {
       firstName: 'Ignacio',
       lastName: 'Informer',
       email: 'ignacio.informer@example.com',
+      companyId,
     },
     {
       firstName: 'Olivia',
       lastName: 'Owner',
       email: 'olivia.owner@example.com',
+      companyId,
     },
     {
       firstName: 'Tomas',
       lastName: 'Tenant',
       email: 'tomas.tenant@example.com',
+      companyId,
     },
   ];
 
@@ -201,6 +230,7 @@ async function seedPersons() {
         update: {
           firstName: person.firstName,
           lastName: person.lastName,
+          companyId,
         },
         create: person,
       }),
@@ -208,7 +238,7 @@ async function seedPersons() {
   );
 }
 
-async function seedBuildingsAndProperties() {
+async function seedBuildingsAndProperties(companyId: number) {
   const [contact, president, informer, owner, tenant, agent] =
     await Promise.all([
       prisma.person.findUnique({
@@ -231,7 +261,7 @@ async function seedBuildingsAndProperties() {
 
   if (!contact || !president || !informer || !owner || !tenant || !agent) {
     throw new Error(
-      '👥 Personas o usuarios requeridos no encontrados. Ejecuta seedPersons y seedUsers primero.',
+      'Personas o usuarios requeridos no encontrados. Ejecuta seedPersons y seedUsers primero.',
     );
   }
 
@@ -248,6 +278,7 @@ async function seedBuildingsAndProperties() {
       contactId: contact.id,
       presidentId: president.id,
       informerId: informer.id,
+      companyId,
     },
     create: {
       street: 'Avenida Central',
@@ -257,6 +288,7 @@ async function seedBuildingsAndProperties() {
       contactId: contact.id,
       presidentId: president.id,
       informerId: informer.id,
+      companyId,
     },
   });
 
@@ -269,6 +301,7 @@ async function seedBuildingsAndProperties() {
       tenantId: tenant.id,
       capturedById: agent.id,
       status: 'sin_estado' as const,
+      companyId,
     },
     {
       inmovillaCode: 1002,
@@ -278,6 +311,7 @@ async function seedBuildingsAndProperties() {
       capturedById: agent.id,
       status: 'noticia_venta' as const,
       salePrice: 245000,
+      companyId,
     },
     {
       inmovillaCode: 1003,
@@ -287,6 +321,7 @@ async function seedBuildingsAndProperties() {
       capturedById: agent.id,
       status: 'noticia_alquiler' as const,
       rentalPrice: 950,
+      companyId,
     },
   ];
 
@@ -306,6 +341,7 @@ async function seedBuildingsAndProperties() {
         salePrice: property.salePrice ?? null,
         rentalPrice: property.rentalPrice ?? null,
         status: property.status,
+        companyId,
       },
       create: {
         buildingId: building.id,
@@ -315,8 +351,8 @@ async function seedBuildingsAndProperties() {
   }
 }
 
-async function seedAssignments() {
-  const building = await prisma.building.findFirst();
+async function seedAssignments(companyId: number) {
+  const building = await prisma.building.findFirst({ where: { companyId } });
   const agent = await prisma.user.findUnique({
     where: { email: 'agent@example.com' },
   });
@@ -329,7 +365,7 @@ async function seedAssignments() {
 
   if (!building || !agent || !responsible || !mailboxer) {
     console.warn(
-      '⚠️ No se encontraron datos necesarios para asignaciones. Saltando.',
+      'No se encontraron datos necesarios para asignaciones. Saltando.',
     );
     return;
   }
@@ -382,8 +418,8 @@ async function seedAssignments() {
   }
 }
 
-async function seedFollowUps() {
-  const property = await prisma.property.findFirst();
+async function seedFollowUps(companyId: number) {
+  const property = await prisma.property.findFirst({ where: { companyId } });
   const agent = await prisma.user.findUnique({
     where: { email: 'agent@example.com' },
   });
@@ -393,7 +429,7 @@ async function seedFollowUps() {
 
   if (!property || !agent || !director) {
     console.warn(
-      '⚠️ No se encontraron datos necesarios para seguimientos. Saltando.',
+      'No se encontraron datos necesarios para seguimientos. Saltando.',
     );
     return;
   }
@@ -406,6 +442,7 @@ async function seedFollowUps() {
       contactType: 'Directo',
       executedDate: new Date('2025-02-02T10:30:00Z'),
       comment: 'Propietario interesado en valorar oferta de venta.',
+      companyId,
     },
     {
       sellerId: director.id,
@@ -413,6 +450,7 @@ async function seedFollowUps() {
       wasContacted: false,
       plannedDate: new Date('2025-02-10T11:00:00Z'),
       comment: 'Programar llamada de seguimiento para cerrar visita.',
+      companyId,
     },
   ];
 
@@ -431,14 +469,14 @@ async function seedFollowUps() {
   }
 }
 
-async function seedMailboxing() {
-  const building = await prisma.building.findFirst();
+async function seedMailboxing(companyId: number) {
+  const building = await prisma.building.findFirst({ where: { companyId } });
   const mailboxer = await prisma.user.findUnique({
     where: { email: 'mailboxer@example.com' },
   });
 
   if (!building || !mailboxer) {
-    console.warn('⚠️ No se encontraron datos para buzoneo. Saltando.');
+    console.warn('No se encontraron datos para buzoneo. Saltando.');
     return;
   }
 
@@ -635,38 +673,45 @@ async function seedAlerts() {
 }
 
 async function main() {
-  console.log('🌱 Iniciando seed...');
+  console.log('Iniciando seed multitenant...');
   await seedRolesAndPermissions();
-  console.log('✅ Roles y permisos listos');
+  console.log('Roles y permisos listos');
 
-  await seedUsers();
-  console.log('✅ Usuarios creados');
+  const company = await seedCompanyAndUsers();
+  console.log('Empresa y usuarios creados (incluyendo superadmin)');
 
-  await seedPersons();
-  console.log('✅ Personas creadas');
+  await seedPersons(company.id);
+  console.log('Personas creadas');
 
-  await seedBuildingsAndProperties();
-  console.log('✅ Edificios y propiedades creadas');
+  await seedBuildingsAndProperties(company.id);
+  console.log('Edificios y propiedades creadas');
 
-  await seedAssignments();
-  console.log('✅ Asignaciones creadas');
+  await seedAssignments(company.id);
+  console.log('Asignaciones creadas');
 
-  await seedFollowUps();
-  console.log('✅ Seguimientos creados');
+  await seedFollowUps(company.id);
+  console.log('Seguimientos creados');
 
   await seedAttachments();
-  console.log('✅ Adjuntos mock generados');
+  console.log('Adjuntos mock generados');
 
-  await seedMailboxing();
-  console.log('✅ Registros de buzoneo creados');
+  await seedMailboxing(company.id);
+  console.log('Registros de buzoneo creados');
 
   await seedFlyerTemplates();
-  console.log('✅ Plantillas de flyers creadas');
+  console.log('Plantillas de flyers creadas');
 
   await seedValuationConfig();
-  console.log('✅ Configuración de valoración creada');
+  console.log('Configuracion de valoracion creada');
 
   await seedAlerts();
+
+  console.log('');
+  console.log('=== CREDENCIALES ===');
+  console.log('Superadmin: superadmin@inmohub.com / InmoHub123!');
+  console.log('Director: director@example.com / InmoHub123!');
+  console.log('Agente: agent@example.com / InmoHub123!');
+  console.log('====================');
 }
 
 async function seedValuationConfig() {

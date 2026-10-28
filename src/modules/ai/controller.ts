@@ -63,6 +63,7 @@ export const handleChat = async (req: Request, res: Response): Promise<void> => 
       ...(context || {}),
       userId,
       userRole,
+      companyId: req.companyId ?? null,
     };
 
     const response = await chatWithAi(messages, augmentedContext, mode);

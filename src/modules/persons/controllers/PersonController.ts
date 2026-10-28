@@ -41,7 +41,8 @@ export class PersonController {
   async create(req: Request, res: Response) {
     try {
       const body = createPersonBodySchema.parse(req.body);
-      const person = await this.service.createPerson(body);
+      const companyId = req.companyId ?? null;
+      const person = await this.service.createPerson(body, companyId);
       successResponse(res, person, 201);
     } catch (err: any) {
       if (err.name === "ZodError") {
@@ -87,7 +88,8 @@ export class PersonController {
       }
 
       const body = updatePersonBodySchema.parse(req.body);
-      const person = await this.service.updatePerson(id, body);
+      const companyId = req.companyId ?? null;
+      const person = await this.service.updatePerson(id, body, companyId);
       successResponse(res, person);
     } catch (err: any) {
       if (err.name === "ZodError") {
@@ -124,7 +126,8 @@ export class PersonController {
   async list(req: Request, res: Response) {
     try {
       const query = getPersonsQuerySchema.parse(req.query);
-      const { data, metadata } = await this.service.getPersons(query);
+      const companyId = req.companyId ?? null;
+      const { data, metadata } = await this.service.getPersons(query, companyId);
       paginatedResponse(res, data, metadata);
     } catch (err: any) {
       errorResponse(res, err.message, 400);
@@ -149,9 +152,9 @@ export class PersonController {
    */
   async search(req: Request, res: Response) {
     try {
-      console.log('aquiiiiii ' + JSON.stringify(req.query));
       const query = searchPersonsQuerySchema.parse(req.query);
-      const persons = await this.service.searchPersons(query);
+      const companyId = req.companyId ?? null;
+      const persons = await this.service.searchPersons(query, companyId);
       successResponse(res, persons);
     } catch (err: any) {
       if (err.name === "ZodError") {
@@ -186,7 +189,8 @@ export class PersonController {
         return;
       }
 
-      const result = await this.service.deletePerson(id);
+      const companyId = req.companyId ?? null;
+      const result = await this.service.deletePerson(id, companyId);
       successResponse(res, result);
     } catch (err: any) {
       const statusCode = err.message.includes("no encontrada") ? 404 : 400;
@@ -232,10 +236,12 @@ export class PersonController {
       }
 
       const body = assignPropertyBodySchema.parse(req.body);
+      const companyId = req.companyId ?? null;
       const result = await this.service.assignPropertyToPerson(
         personId,
         propertyId,
-        body.role
+        body.role,
+        companyId
       );
       successResponse(res, result);
     } catch (err: any) {
@@ -259,10 +265,12 @@ export class PersonController {
       }
 
       const body = unassignPropertyBodySchema.parse(req.body);
+      const companyId = req.companyId ?? null;
       const result = await this.service.unassignPropertyFromPerson(
         personId,
         propertyId,
-        body.role
+        body.role,
+        companyId
       );
       successResponse(res, result);
     } catch (err: any) {
@@ -299,7 +307,8 @@ export class PersonController {
         return;
       }
 
-      const relations = await this.service.getPersonRelations(id);
+      const companyId = req.companyId ?? null;
+      const relations = await this.service.getPersonRelations(id, companyId);
       successResponse(res, relations);
     } catch (err: any) {
       const statusCode = err.message.includes("no encontrada") ? 404 : 400;

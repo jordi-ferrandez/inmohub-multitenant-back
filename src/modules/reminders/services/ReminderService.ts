@@ -37,9 +37,14 @@ const WEEKDAY_MAP: Record<number, Weekday> = {
 };
 
 class ReminderService {
+  private buildTenantFilter(companyId: number | null): { companyId?: number } {
+    return companyId ? { companyId } : {};
+  }
+
   async createReminder(
     input: CreateReminderRequest,
-    creatorId: number
+    creatorId: number,
+    companyId: number | null
   ): Promise<ReminderDTO> {
     const timezone = input.timezone || DEFAULT_TIMEZONE;
     const scheduledAt = this.isoToUtc(input.scheduledAt, timezone);
@@ -61,8 +66,8 @@ class ReminderService {
     // Si se envía propertyId pero no buildingId, calcular buildingId desde la propiedad
     let buildingId = input.buildingId || null;
     if (input.propertyId && !buildingId) {
-      const property = await prisma.property.findUnique({
-        where: { id: input.propertyId },
+      const property = await prisma.property.findFirst({
+        where: { id: input.propertyId, ...this.buildTenantFilter(companyId) },
         select: { buildingId: true },
       });
       if (property) {
@@ -87,6 +92,7 @@ class ReminderService {
         recurrenceEndsAt: recurrenceData.endsAt || null,
         status: "active",
         metadata: this.toJsonValue(metadataCombined),
+        companyId: companyId ?? undefined,
       },
       include: this.defaultInclude(),
     });
@@ -102,14 +108,15 @@ class ReminderService {
 
   async getReminders(
     params: ReminderQueryParams,
-    requesterId: number
+    requesterId: number,
+    companyId: number | null
   ): Promise<ReminderListResponse> {
     const page = params.page ? parseInt(params.page, 10) : 1;
     const limit = params.limit ? parseInt(params.limit, 10) : 20;
     const skip = (page - 1) * limit;
 
-    const where: any = {};
-    
+    const where: any = { ...this.buildTenantFilter(companyId) };
+
     if (params.status) {
       const statuses = params.status.split(",") as ReminderStatus[];
       where.status = { in: statuses };
@@ -123,8 +130,8 @@ class ReminderService {
       where.status = { notIn: ["archived"] };
     }
 
-    const requester = await prisma.user.findUnique({
-      where: { id: requesterId },
+    const requester = await prisma.user.findFirst({
+      where: { id: requesterId, ...this.buildTenantFilter(companyId) },
       include: { roles: { include: { role: true } } },
     });
 

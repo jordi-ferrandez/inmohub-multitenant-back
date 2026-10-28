@@ -1,4 +1,4 @@
-import { authenticationToken, requireDirectorRole } from "@core/middlewares";
+import { authenticationToken, requireDirectorRole, tenantMiddleware } from "@core/middlewares";
 import express from "express";
 import {
   validateGetPropertyById,
@@ -9,7 +9,7 @@ import {
   validateDeletePropertyAttachment,
   validateGetPropertyFollowUps,
   validateGetProperties,
-  
+
 } from "../validators";
 import { PropertyAttachmentController, PropertyController } from "../controller";
 import { bindAllMethods } from "@core/utils";
@@ -29,6 +29,7 @@ const propertyAttachmentController = bindAllMethods(
 propertyRouter.get(
   "/",
   authenticationToken,
+  tenantMiddleware,
   validateGetProperties,
   propertyController.getProperty
 );
@@ -36,6 +37,7 @@ propertyRouter.get(
 propertyRouter.post(
   "/",
   authenticationToken,
+  tenantMiddleware,
   propertyController.createProperty
 );
 
@@ -43,6 +45,7 @@ propertyRouter.post(
 propertyRouter.get(
   "/:id",
   authenticationToken,
+  tenantMiddleware,
   validateGetPropertyById,
   propertyController.getPropertyById
 );
@@ -50,6 +53,7 @@ propertyRouter.get(
 propertyRouter.patch(
   "/:id",
   authenticationToken,
+  tenantMiddleware,
   validatePatchPropertyById,
   propertyController.patchPropertyById
 );
@@ -57,6 +61,7 @@ propertyRouter.patch(
 propertyRouter.delete(
   "/:id",
   authenticationToken,
+  tenantMiddleware,
   requireDirectorRole,
   propertyController.deleteProperty
 );
@@ -65,6 +70,7 @@ propertyRouter.delete(
 propertyRouter.get(
   "/:id/follow-ups",
   authenticationToken,
+  tenantMiddleware,
   validateGetPropertyFollowUps,
   propertyController.getPropertyFollowUps
 );
@@ -72,6 +78,7 @@ propertyRouter.get(
 propertyRouter.get(
   "/:id/attachments",
   authenticationToken,
+  tenantMiddleware,
   validateGetPropertyAttachments,
   propertyAttachmentController.list
 );
@@ -79,6 +86,7 @@ propertyRouter.get(
 propertyRouter.post(
   "/:id/attachments",
   authenticationToken,
+  tenantMiddleware,
   validateUploadPropertyAttachment,
   upload.single("file"),
   propertyAttachmentController.upload
@@ -87,6 +95,7 @@ propertyRouter.post(
 propertyRouter.patch(
   "/:id/attachments/:attachmentId",
   authenticationToken,
+  tenantMiddleware,
   validateUpdatePropertyAttachment,
   propertyAttachmentController.update
 );
@@ -94,6 +103,7 @@ propertyRouter.patch(
 propertyRouter.delete(
   "/:id/attachments/:attachmentId",
   authenticationToken,
+  tenantMiddleware,
   validateDeletePropertyAttachment,
   propertyAttachmentController.delete
 );

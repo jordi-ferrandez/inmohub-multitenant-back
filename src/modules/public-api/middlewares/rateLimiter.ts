@@ -1,4 +1,4 @@
-import rateLimit from 'express-rate-limit';
+import rateLimit, { ipKeyGenerator } from 'express-rate-limit';
 import { Request } from 'express';
 
 /**
@@ -15,8 +15,8 @@ export const publicApiRateLimiter = rateLimit({
     if (req.apiKey && req.apiKey.id) {
       return `apikey_${req.apiKey.id}`;
     }
-    // Otherwise fallback to IP
-    return req.ip || 'unknown_ip';
+    // Otherwise fallback to IP (using ipKeyGenerator for IPv6 support)
+    return ipKeyGenerator(req);
   },
   handler: (req, res, next, options) => {
     res.status(options.statusCode).json({

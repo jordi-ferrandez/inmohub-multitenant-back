@@ -25,7 +25,7 @@ describe('BuildingService', () => {
 
       prismaMock.$transaction.mockResolvedValue([mockBuildings, mockTotal]);
 
-      const result = await buildingService.getBuildings({ page: 1, limit: 10 });
+      const result = await buildingService.getBuildings({ page: 1, limit: 10 }, null);
 
       expect(result.data).toEqual(mockBuildings);
       expect(result.meta.totalItems).toBe(mockTotal);
@@ -42,10 +42,10 @@ describe('BuildingService', () => {
         assignments: []
       };
 
-      prismaMock.building.findUnique.mockResolvedValue(mockBuilding as any);
+      prismaMock.building.findFirst.mockResolvedValue(mockBuilding as any);
       prismaMock.$transaction.mockResolvedValue([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
-      const result = await buildingService.getBuildingById({ id: 1 });
+      const result = await buildingService.getBuildingById({ id: 1 }, null);
 
       expect(result.building.id).toBe(1);
     });
