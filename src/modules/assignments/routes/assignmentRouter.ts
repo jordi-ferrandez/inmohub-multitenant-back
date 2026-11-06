@@ -6,12 +6,12 @@ import {
   validateAssignmentQuery,
   validateAssignmentParams,
 } from "../validators";
-import { authenticationToken, requireDirectorRole } from "@core/middlewares";
+import { authenticationToken, requireDirectorRole, tenantMiddleware } from "@core/middlewares";
 
 const router = Router();
 
-// Todas las rutas requieren autenticación
-router.use(authenticationToken);
+// Todas las rutas requieren autenticación + tenant
+router.use(authenticationToken, tenantMiddleware);
 
 // Rutas de escritura solo para directores
 router.post(

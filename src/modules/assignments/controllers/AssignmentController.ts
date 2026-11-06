@@ -34,8 +34,10 @@ class AssignmentController {
    */
   async createAssignment(req: Request, res: Response) {
     try {
+      const companyId = req.companyId ?? null;
       const assignment = await assignmentService.createAssignment(
-        req.bodyValidated
+        req.bodyValidated,
+        companyId
       );
       successResponse(res, assignment, 201);
     } catch (error: any) {
@@ -57,7 +59,8 @@ class AssignmentController {
    */
   async getAssignments(req: Request, res: Response) {
     try {
-      const result = await assignmentService.getAssignments(req.queryValidated);
+      const companyId = req.companyId ?? null;
+      const result = await assignmentService.getAssignments(req.queryValidated, companyId);
       successResponse(res, result, 200);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
@@ -85,7 +88,8 @@ class AssignmentController {
   async getAssignmentById(req: Request<AssignmentParams>, res: Response) {
     try {
       const id = parseInt(req.paramsValidated.id);
-      const assignment = await assignmentService.getAssignmentById(id);
+      const companyId = req.companyId ?? null;
+      const assignment = await assignmentService.getAssignmentById(id, companyId);
       successResponse(res, assignment, 200);
     } catch (error: any) {
       errorResponse(res, error.message, 404);
@@ -122,9 +126,11 @@ class AssignmentController {
   ) {
     try {
       const id = parseInt(req.paramsValidated.id);
+      const companyId = req.companyId ?? null;
       const assignment = await assignmentService.updateAssignment(
         id,
-        req.bodyValidated
+        req.bodyValidated,
+        companyId
       );
       successResponse(res, assignment, 200);
     } catch (error: any) {
@@ -153,7 +159,8 @@ class AssignmentController {
   async deleteAssignment(req: Request<AssignmentParams>, res: Response) {
     try {
       const id = parseInt(req.paramsValidated.id);
-      await assignmentService.deleteAssignment(id);
+      const companyId = req.companyId ?? null;
+      await assignmentService.deleteAssignment(id, companyId);
       successResponse(res, null, 200);
     } catch (error: any) {
       errorResponse(res, error.message, 404);
@@ -181,7 +188,8 @@ class AssignmentController {
   async getAssignmentsByUser(req: Request<{ userId: string }>, res: Response) {
     try {
       const userId = parseInt(req.paramsValidated.userId);
-      const assignments = await assignmentService.getAssignmentsByUser(userId);
+      const companyId = req.companyId ?? null;
+      const assignments = await assignmentService.getAssignmentsByUser(userId, companyId);
       successResponse(res, assignments, 200);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
@@ -217,11 +225,13 @@ class AssignmentController {
         return;
       }
 
+      const companyId = req.companyId ?? null;
       // Verificar si se solicita solo asignaciones activas
       const activeOnly = req.query.activeOnly === "true";
 
       const assignments = await assignmentService.getAssignmentsByBuilding(
         buildingId,
+        companyId,
         activeOnly
       );
       successResponse(res, assignments, 200);
@@ -232,7 +242,8 @@ class AssignmentController {
 
   async getAssignmentsSummary(req: Request, res: Response) {
     try {
-      const summary = await assignmentService.getAssignmentsSummary();
+      const companyId = req.companyId ?? null;
+      const summary = await assignmentService.getAssignmentsSummary(companyId);
       successResponse(res, summary, 200);
     } catch (error: any) {
       errorResponse(res, error.message, 500);

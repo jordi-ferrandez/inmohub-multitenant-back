@@ -75,10 +75,26 @@ export class ApiKeyController {
     try {
       const { companyId, name, scopes, expiresAt, restrictedIps } = req.body;
       const userId = (req.user as any).userId;
+      const isSuperAdmin = !!(req.user as any)?.isSuperAdmin;
+      const tenantCompanyId = req.companyId ?? null;
+
+      // Resolve company scope: non-superadmin is constrained to their tenant company
+      let effectiveCompanyId: number | undefined;
+      if (isSuperAdmin) {
+        // Superadmin: if tenant-scoped via X-Company-Id, use that; else allow body; else undefined
+        if (tenantCompanyId) effectiveCompanyId = tenantCompanyId;
+        else if (companyId) effectiveCompanyId = parseInt(companyId);
+      } else {
+        if (!tenantCompanyId) {
+          errorResponse(res, 'Se requiere contexto de empresa para crear API keys', 403);
+          return;
+        }
+        effectiveCompanyId = tenantCompanyId;
+      }
 
       const result = await apiKeyService.createApiKey({
         userId: parseInt(userId),
-        companyId: companyId ? parseInt(companyId) : undefined,
+        companyId: effectiveCompanyId,
         name,
         scopes,
         expiresAt: expiresAt ? new Date(expiresAt) : undefined,

@@ -16,8 +16,8 @@ export class PublicReminderController {
    */
   async getAll(req: Request, res: Response) {
     try {
-      const companyId = req.apiKey.companyId;
-      const result = await publicApiService.findMany(prisma.reminder, companyId, req.query);
+      const { companyId, userId } = req.apiKey;
+      const result = await publicApiService.findMany(prisma.reminder, { companyId, userId }, req.query);
       const pagination = {
         totalItems: result.pagination.total,
         page: result.pagination.page,
@@ -33,8 +33,8 @@ export class PublicReminderController {
   async getById(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
-      const companyId = req.apiKey.companyId;
-      const task = await publicApiService.findOne(prisma.reminder, id, companyId, req.query.include);
+      const { companyId, userId } = req.apiKey;
+      const task = await publicApiService.findOne(prisma.reminder, id, { companyId, userId }, req.query.include);
       successResponse(res, task);
     } catch (error: any) {
       errorResponse(res, error.message || 'Task not found', 404);

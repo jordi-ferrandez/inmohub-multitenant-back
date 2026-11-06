@@ -36,12 +36,7 @@ class NotificationController {
     try {
       const { personId, channel, subject, message } = req.bodyValidated || req.body;
 
-      const result = await notificationService.sendNotification(
-        personId,
-        channel,
-        subject,
-        message
-      );
+      const result = await notificationService.sendNotification(personId, channel, subject, message, req.companyId ?? null);
 
       if (!result.success) {
         errorResponse(res, result.error || "Error al enviar notificación", 400);
@@ -92,7 +87,7 @@ class NotificationController {
 
       const results = await Promise.all(
         personIds.map((personId: number) =>
-          notificationService.sendNotification(personId, channel, subject, message)
+          notificationService.sendNotification(personId, channel, subject, message, req.companyId ?? null)
         )
       );
 
@@ -132,7 +127,7 @@ class NotificationController {
       const { followUpId } = req.paramsValidated || req.params;
       const id = typeof followUpId === "string" ? parseInt(followUpId, 10) : followUpId;
 
-      await notificationService.notifyPropertyVisit(id);
+      await notificationService.notifyPropertyVisit(id, req.companyId ?? null);
       successResponse(res, { message: "Notificaciones enviadas correctamente" }, 200);
     } catch (error: any) {
       errorResponse(res, error.message, 500);
@@ -160,8 +155,9 @@ class NotificationController {
   async getPersonPreferences(req: Request, res: Response) {
     try {
       const personId = parseInt(req.params.personId, 10);
-      const person = await prisma.person.findUnique({
-        where: { id: personId },
+      const companyId = req.companyId ?? null;
+      const person = await prisma.person.findFirst({
+        where: { id: personId, ...(companyId ? { companyId } : {}) },
         select: {
           id: true,
           firstName: true,
@@ -218,6 +214,9 @@ class NotificationController {
       const personId = parseInt(req.params.personId, 10);
       const { notificationPreference } = req.bodyValidated || req.body;
 
+      const companyId = req.companyId ?? null;
+      const existing = await prisma.person.findFirst({ where: { id: personId, ...(companyId ? { companyId } : {}) } });
+      if (!existing) { errorResponse(res, "Persona no encontrada", 404); return; }
       const updated = await prisma.person.update({
         where: { id: personId },
         data: { notificationPreference },

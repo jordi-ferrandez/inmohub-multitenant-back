@@ -89,7 +89,7 @@ export class WordPressService {
     this.prisma = new PrismaClient();
   }
 
-  async importFromJson(data: RsoJson): Promise<WordPressImportResultDTO> {
+  async importFromJson(data: RsoJson, companyId: number | null = null): Promise<WordPressImportResultDTO> {
     console.log('🚀 Starting WordPress import processing...');
     const result: WordPressImportResultDTO = {
       propertiesProcessed: 0,
@@ -121,14 +121,14 @@ export class WordPressService {
         const number = parseInt(edificio.numero ?? "0") || 0;
 
         const existing = await this.prisma.building.findFirst({
-          where: { street, number },
+          where: { street, number, ...(companyId ? { companyId } : {}) },
         });
 
         if (existing) {
           buildingIdMap.set(edificio.id, existing.id);
         } else {
           const created = await this.prisma.building.create({
-            data: { street, number },
+            data: { street, number, companyId: companyId ?? undefined },
           });
           buildingIdMap.set(edificio.id, created.id);
           result.buildingsCreated++;
@@ -142,13 +142,13 @@ export class WordPressService {
     let fallbackBuildingId: number | null = null;
     if (buildingIdMap.size === 0) {
       const fallback = await this.prisma.building.findFirst({
-        where: { street: "MIGRACION WORDPRESS", number: 0 },
+        where: { street: "MIGRACION WORDPRESS", number: 0, ...(companyId ? { companyId } : {}) },
       });
       if (fallback) {
         fallbackBuildingId = fallback.id;
       } else {
         const created = await this.prisma.building.create({
-          data: { street: "MIGRACION WORDPRESS", number: 0 },
+          data: { street: "MIGRACION WORDPRESS", number: 0, companyId: companyId ?? undefined },
         });
         fallbackBuildingId = created.id;
         result.buildingsCreated++;
@@ -168,12 +168,12 @@ export class WordPressService {
         const email = inquilino.email?.trim() || null;
 
         let existing = email
-          ? await this.prisma.person.findFirst({ where: { email } })
+          ? await this.prisma.person.findFirst({ where: { email, ...(companyId ? { companyId } : {}) } })
           : null;
 
         if (!existing) {
           existing = await this.prisma.person.findFirst({
-            where: { firstName, lastName },
+            where: { firstName, lastName, ...(companyId ? { companyId } : {}) },
           });
         }
 
@@ -185,6 +185,7 @@ export class WordPressService {
               firstName,
               lastName,
               email: email ?? undefined,
+              companyId: companyId ?? undefined,
             },
           });
           personIdMap.set(inquilino.id, created.id);
@@ -235,7 +236,7 @@ export class WordPressService {
         const status = (statusMap[puerta.estado?.toLowerCase() ?? ""] ?? "sin_estado") as any;
 
         const existing = await this.prisma.property.findFirst({
-          where: { inmovillaCode },
+          where: { inmovillaCode, ...(companyId ? { companyId } : {}) },
         });
 
         const propertyData = {
@@ -271,6 +272,7 @@ export class WordPressService {
               buildingId,
               isPresident: puerta.is_presidente === "1",
               isInformer: puerta.informador === "1",
+              companyId: companyId ?? undefined,
             },
           });
           propertyIdMap.set(puerta.id, created.id);
@@ -303,7 +305,7 @@ export class WordPressService {
 
     // ─── 5. SEGUIMIENTOS → FollowUp ──────────────────────────────────────
     console.log(`📝 Processing ${data.wprm_rso_seguimiento?.length || 0} follow-ups...`);
-    const systemUser = await this.prisma.user.findFirst();
+    const systemUser = await this.prisma.user.findFirst({ where: companyId ? { companyId } : undefined });
     if (systemUser) {
       const processedSegIds = new Set<string>();
       let duplicatesSkipped = 0;
@@ -328,6 +330,7 @@ export class WordPressService {
               observationType: seg.subtipo ?? null,
               comment: seg.nota ?? null,
               executedDate,
+              ...(companyId ? { companyId } : {}),
             },
           });
 
@@ -345,6 +348,7 @@ export class WordPressService {
               observationType: seg.subtipo ?? null,
               comment: seg.nota ?? null,
               executedDate,
+              companyId: companyId ?? undefined,
             },
           });
           result.followUpsCreated++;
@@ -366,15 +370,15 @@ export class WordPressService {
 
 
   //stats
-  async stats() {
+  async stats(companyId: number | null = null) {
     //building count
-    const buildingCount = await this.prisma.building.count();
+    const buildingCount = await this.prisma.building.count({ where: companyId ? { companyId } : undefined });
     //property count
-    const propertyCount = await this.prisma.property.count();
+    const propertyCount = await this.prisma.property.count({ where: companyId ? { companyId } : undefined });
     //person count
-    const personCount = await this.prisma.person.count();
+    const personCount = await this.prisma.person.count({ where: companyId ? { companyId } : undefined });
     //followUp count
-    const followUpCount = await this.prisma.followUp.count();
+    const followUpCount = await this.prisma.followUp.count({ where: companyId ? { companyId } : undefined });
 
     return {
      totalBuildings: buildingCount,

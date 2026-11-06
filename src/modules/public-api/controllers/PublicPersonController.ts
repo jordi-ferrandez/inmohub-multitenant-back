@@ -15,10 +15,10 @@ export class PublicPersonController {
    */
   async getAll(req: Request, res: Response) {
     try {
-      const companyId = req.apiKey.companyId;
+      const { companyId, userId } = req.apiKey;
       const result = await publicApiService.findMany(
         prisma.person,
-        companyId,
+        { companyId, userId },
         req.query,
       );
       const pagination = {
@@ -36,11 +36,11 @@ export class PublicPersonController {
   async getById(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
-      const companyId = req.apiKey.companyId;
+      const { companyId, userId } = req.apiKey;
       const person = await publicApiService.findOne(
         prisma.person,
         id,
-        companyId,
+        { companyId, userId },
         req.query.include,
       );
       successResponse(res, person);
@@ -51,8 +51,8 @@ export class PublicPersonController {
 
   async create(req: Request, res: Response) {
     try {
-      const data = req.body;
-      const companyId = req.apiKey.companyId;
+      const { companyId: _ignoredCompanyId, id: _ignoredId, ...data } = req.body;
+      const { companyId } = req.apiKey;
       const person = await prisma.person.create({
         data: { ...data, companyId },
       });
@@ -65,9 +65,9 @@ export class PublicPersonController {
   async update(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
-      const data = req.body;
-      const companyId = req.apiKey.companyId;
-      await publicApiService.findOne(prisma.person, id, companyId);
+      const { companyId: _ignoredCompanyId, id: _ignoredId, ...data } = req.body;
+      const { companyId, userId } = req.apiKey;
+      await publicApiService.findOne(prisma.person, id, { companyId, userId });
       const person = await prisma.person.update({
         where: { id },
         data,
@@ -81,8 +81,8 @@ export class PublicPersonController {
   async delete(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
-      const companyId = req.apiKey.companyId;
-      await publicApiService.findOne(prisma.person, id, companyId);
+      const { companyId, userId } = req.apiKey;
+      await publicApiService.findOne(prisma.person, id, { companyId, userId });
       await prisma.person.update({
         where: { id },
         data: { deletedAt: new Date() },

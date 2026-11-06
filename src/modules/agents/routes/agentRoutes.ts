@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { AgentController } from "../controllers/AgentController";
 import { requireAgentRole } from "../../followups/middlewares";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, tenantMiddleware } from "@core/middlewares";
 import { bindAllMethods } from "@core/utils";
 import {
   validateAvailablePropertiesQuery,
@@ -11,7 +11,7 @@ import {
 const router = Router();
 const agentController = bindAllMethods(new AgentController());
 
-router.use(authenticationToken);
+router.use(authenticationToken, tenantMiddleware);
 
 router.get(
   "/properties/available",

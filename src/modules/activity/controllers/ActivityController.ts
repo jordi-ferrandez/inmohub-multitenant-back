@@ -19,7 +19,8 @@ export class ActivityController {
   async getActivityReport(req: Request, res: Response): Promise<void> {
     try {
       const query = req.queryValidated as any;
-      const report = await activityService.getActivityReport(query);
+      const companyId = req.companyId ?? null;
+      const report = await activityService.getActivityReport(query, companyId);
       successResponse(res, report);
     } catch (error: any) {
       errorResponse(res, error.message, 400);
@@ -41,7 +42,8 @@ export class ActivityController {
   async getActivityItems(req: Request, res: Response): Promise<void> {
     try {
       const query = req.queryValidated as ActivityItemsQueryParams;
-      const items = await activityService.getActivityItems(query);
+      const companyId = req.companyId ?? null;
+      const items = await activityService.getActivityItems(query, companyId);
       successResponse(res, items);
     } catch (error: any) {
       errorResponse(res, error.message, 400);

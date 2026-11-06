@@ -52,28 +52,27 @@ describe('PublicApiService', () => {
       );
     });
 
-    it('should enforce user filter when no companyId', async () => {
+    it('should scope findMany to company B only (tenant isolation)', async () => {
       mockDelegate.findMany.mockResolvedValue([]);
       mockDelegate.count.mockResolvedValue(0);
 
-      await service.findMany(
-        mockDelegate,
-        { userId: 10 },
-        { page: 1, limit: 10 }
-      );
+      await service.findMany(mockDelegate, { companyId: 2 }, { page: 1, limit: 10 });
 
       expect(mockDelegate.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
-          where: expect.objectContaining({
-            deletedAt: null,
-            OR: expect.arrayContaining([
-              expect.objectContaining({ capturedById: 10 }),
-              expect.objectContaining({ userId: 10 }),
-              expect.objectContaining({ authorId: 10 }),
-            ]),
-          }),
+          where: expect.objectContaining({ companyId: 2, deletedAt: null }),
         })
       );
+      const where = mockDelegate.findMany.mock.calls[0][0].where;
+      expect(where.companyId).toBe(2);
+      expect(where.companyId).not.toBe(1);
+    });
+
+    it('should deny access when companyId is missing', async () => {
+      await expect(
+        service.findMany(mockDelegate, { userId: 10 }, { page: 1, limit: 10 })
+      ).rejects.toThrow('API key sin empresa asociada');
+      expect(mockDelegate.findMany).not.toHaveBeenCalled();
     });
 
     it('should respect custom filters', async () => {
@@ -136,6 +135,26 @@ describe('PublicApiService', () => {
       await expect(
         service.findOne(mockDelegate, 999, { companyId: 1 })
       ).rejects.toThrow('Record not found');
+    });
+
+    it('should deny access when companyId is missing', async () => {
+      await expect(
+        service.findOne(mockDelegate, 1, { userId: 10 })
+      ).rejects.toThrow('API key sin empresa asociada');
+      expect(mockDelegate.findFirst).not.toHaveBeenCalled();
+    });
+
+    it('should not allow company B to access company A record', async () => {
+      mockDelegate.findFirst.mockResolvedValue(null);
+
+      await expect(
+        service.findOne(mockDelegate, 1, { companyId: 2 })
+      ).rejects.toThrow('Record not found');
+      expect(mockDelegate.findFirst).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 1, deletedAt: null, companyId: 2 },
+        })
+      );
     });
   });
 });

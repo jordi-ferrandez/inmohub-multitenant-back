@@ -39,7 +39,7 @@ describe('AgentService', () => {
 
       prismaMock.assignment.findMany.mockResolvedValue(mockAssignments as any);
 
-      const result = await agentService.getActiveAssignments(10);
+      const result = await agentService.getActiveAssignments(10, null);
 
       expect(result).toHaveLength(1);
       expect(result[0].building.street).toBe('Main St');
@@ -103,18 +103,18 @@ describe('AgentService', () => {
         ]
       };
 
-      prismaMock.property.findUnique.mockResolvedValue(mockProperty as any);
+      prismaMock.property.findFirst.mockResolvedValue(mockProperty as any);
 
-      const result = await agentService.getPropertyFollowUpsHistory(100, 10);
+      const result = await agentService.getPropertyFollowUpsHistory(100, 10, null);
 
       expect(result.id).toBe(100);
       expect(result.followUps).toHaveLength(1);
     });
 
     it('should throw error if property not found', async () => {
-      prismaMock.property.findUnique.mockResolvedValue(null);
+      prismaMock.property.findFirst.mockResolvedValue(null);
 
-      await expect(agentService.getPropertyFollowUpsHistory(999, 10))
+      await expect(agentService.getPropertyFollowUpsHistory(999, 10, null))
         .rejects.toThrow('Propiedad no encontrada');
     });
   });

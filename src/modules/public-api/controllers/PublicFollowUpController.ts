@@ -16,8 +16,8 @@ export class PublicFollowUpController {
    */
   async getAll(req: Request, res: Response) {
     try {
-      const companyId = req.apiKey.companyId;
-      const result = await publicApiService.findMany(prisma.followUp, companyId, req.query);
+      const { companyId, userId } = req.apiKey;
+      const result = await publicApiService.findMany(prisma.followUp, { companyId, userId }, req.query);
       const pagination = {
         totalItems: result.pagination.total,
         page: result.pagination.page,
@@ -33,8 +33,8 @@ export class PublicFollowUpController {
   async getById(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
-      const companyId = req.apiKey.companyId;
-      const followUp = await publicApiService.findOne(prisma.followUp, id, companyId, req.query.include);
+      const { companyId, userId } = req.apiKey;
+      const followUp = await publicApiService.findOne(prisma.followUp, id, { companyId, userId }, req.query.include);
       successResponse(res, followUp);
     } catch (error: any) {
       errorResponse(res, error.message || 'Follow-up not found', 404);

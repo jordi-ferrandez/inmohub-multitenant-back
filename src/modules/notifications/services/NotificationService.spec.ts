@@ -32,7 +32,7 @@ describe('NotificationService', () => {
 
   describe('sendNotification', () => {
     it('should send email successfully', async () => {
-      prismaMock.person.findUnique.mockResolvedValue({
+      prismaMock.person.findFirst.mockResolvedValue({
         id: 1,
         email: 'john@example.com',
         phones: [],
@@ -50,7 +50,7 @@ describe('NotificationService', () => {
     });
 
     it('should return error if person not found', async () => {
-      prismaMock.person.findUnique.mockResolvedValue(null);
+      prismaMock.person.findFirst.mockResolvedValue(null);
 
       const result = await notificationService.sendNotification(999, 'EMAIL', 'Subject', 'Body');
 
@@ -59,7 +59,7 @@ describe('NotificationService', () => {
     });
 
     it('should return error if person has no email for EMAIL channel', async () => {
-      prismaMock.person.findUnique.mockResolvedValue({
+      prismaMock.person.findFirst.mockResolvedValue({
         id: 1,
         email: null,
         phones: [],
@@ -72,7 +72,7 @@ describe('NotificationService', () => {
     });
 
     it('should send WhatsApp via fallback when Twilio is not configured', async () => {
-      prismaMock.person.findUnique.mockResolvedValue({
+      prismaMock.person.findFirst.mockResolvedValue({
         id: 1,
         phones: [{ phone: '+34123456789' }],
       } as any);
@@ -108,7 +108,7 @@ describe('NotificationService', () => {
         }
       };
 
-      prismaMock.followUp.findUnique.mockResolvedValue(mockFollowUp as any);
+      prismaMock.followUp.findFirst.mockResolvedValue(mockFollowUp as any);
 
       const sendEmailSpy = jest.spyOn(notificationService as any, 'sendEmail')
         .mockResolvedValue({ channel: 'EMAIL', to: 'john@example.com', success: true });
@@ -141,7 +141,7 @@ describe('NotificationService', () => {
         }
       };
 
-      prismaMock.followUp.findUnique.mockResolvedValue(mockFollowUp as any);
+      prismaMock.followUp.findFirst.mockResolvedValue(mockFollowUp as any);
 
       const sendEmailSpy = jest.spyOn(notificationService as any, 'sendEmail')
         .mockResolvedValue({ channel: 'EMAIL', to: '', success: true });

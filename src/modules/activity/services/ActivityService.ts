@@ -18,7 +18,8 @@ import {
 
 class ActivityService {
   async getActivityReport(
-    query: ActivityQueryParams
+    query: ActivityQueryParams,
+    companyId: number | null
   ): Promise<ActivityReportDTO> {
     const startDate = new Date(query.startDate);
     const endDate = new Date(query.endDate);
@@ -32,6 +33,7 @@ class ActivityService {
         { executedDate: { gte: startDate, lte: endDate } },
         { createdAt: { gte: startDate, lte: endDate } },
       ],
+      ...(companyId ? { companyId } : {}),
     };
 
     if (query.userId) {
@@ -42,6 +44,7 @@ class ActivityService {
     const mailboxingWhere: any = {
       date: { gte: startDate, lte: endDate },
       deletedAt: null,
+      ...(companyId ? { building: { companyId } } : {}),
     };
 
     if (query.userId) {
@@ -320,7 +323,8 @@ class ActivityService {
   }
 
   async getActivityItems(
-    query: ActivityItemsQueryParams
+    query: ActivityItemsQueryParams,
+    companyId: number | null
   ): Promise<ActivityItemsResponse> {
     const page = query.page ?? 1;
     const limit = query.limit ?? 20;
@@ -340,6 +344,7 @@ class ActivityService {
           { createdAt: { gte: startDate, lte: endDate } },
         ],
         deletedAt: null,
+        ...(companyId ? { companyId } : {}),
       };
 
       if (query.userId) {
@@ -532,6 +537,7 @@ class ActivityService {
       const mailboxingWhere: any = {
         date: { gte: startDate, lte: endDate },
         deletedAt: null,
+        ...(companyId ? { building: { companyId } } : {}),
       };
 
       if (query.userId) {

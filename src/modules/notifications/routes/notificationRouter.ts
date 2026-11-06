@@ -6,11 +6,11 @@ import {
   validatePropertyVisit,
   validatePreference,
 } from "../validators";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, tenantMiddleware } from "@core/middlewares";
 
 const router = Router();
 
-router.use(authenticationToken);
+router.use(authenticationToken, tenantMiddleware);
 
 router.post(
   "/send",

@@ -15,6 +15,25 @@ describe('ActivityService', () => {
   });
 
   describe('getActivityReport', () => {
+    it('should apply tenant filters when companyId is provided', async () => {
+      const query = { startDate: '2026-01-01', endDate: '2026-01-01' };
+      prismaMock.followUp.findMany.mockResolvedValue([] as any);
+      prismaMock.mailboxing.findMany.mockResolvedValue([] as any);
+
+      await activityService.getActivityReport(query as any, 1);
+
+      expect(prismaMock.followUp.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({ companyId: 1 }),
+        })
+      );
+      expect(prismaMock.mailboxing.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({ building: { companyId: 1 } }),
+        })
+      );
+    });
+
     it('should generate a report with aggregated follow-ups and mailboxings', async () => {
       // Use local dates to avoid timezone shifts in buckets
       const today = new Date();
@@ -47,7 +66,7 @@ describe('ActivityService', () => {
         }
       ] as any);
 
-      const result = await activityService.getActivityReport(query as any);
+      const result = await activityService.getActivityReport(query as any, null);
 
       expect(result.contactActivities).toHaveLength(1);
       expect(result.contactActivities[0].contacted).toBe(1);
@@ -84,7 +103,7 @@ describe('ActivityService', () => {
 
       prismaMock.mailboxing.findMany.mockResolvedValue([]);
 
-      const result = await activityService.getActivityItems(query as any);
+      const result = await activityService.getActivityItems(query as any, null);
 
       expect(result.items).toHaveLength(1);
       expect(result.items[0].type).toBe('followup');

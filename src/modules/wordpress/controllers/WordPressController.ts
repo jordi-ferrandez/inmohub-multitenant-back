@@ -64,7 +64,8 @@ export class WordPressController {
    */
   async stats(req: Request, res: Response) {
     try {
-      const result = await this.wordpressService.stats();
+      const companyId = req.companyId ?? null;
+      const result = await this.wordpressService.stats(companyId);
       return res.status(200).json({ status: "success", data: result });
     } catch (error: any) {
       return res.status(500).json({ status: "error", errorMessage: error.message });

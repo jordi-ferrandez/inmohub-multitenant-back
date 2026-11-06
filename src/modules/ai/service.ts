@@ -80,7 +80,7 @@ const dispatchTool = async (toolCall: any, context: AiContext) => {
           startDate: args.startDate,
           endDate: args.endDate,
           type: "Following"
-        });
+        }, context.companyId ?? null);
         return JSON.stringify({ success: true, assignmentId: result.id });
       }
 

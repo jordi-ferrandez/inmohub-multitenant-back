@@ -186,8 +186,12 @@ export class ValuationService {
     };
   }
 
-  async createInternalValuation(data: CreateInternalValuationRequest, userId: number): Promise<ValuationResult> {
+  async createInternalValuation(data: CreateInternalValuationRequest, userId: number, companyId: number | null = null): Promise<ValuationResult> {
     const { property, propertyId } = data;
+    if (companyId && propertyId) {
+      const prop = await prisma.property.findFirst({ where: { id: propertyId, companyId } });
+      if (!prop) throw new Error("Propiedad no encontrada");
+    }
     
     // 2. Calculate Price (Same algorithm)
     const baseM2Price = 1800 + Math.random() * 1000;
@@ -213,6 +217,7 @@ export class ValuationService {
       data: {
         generatedById: userId,
         propertyId: propertyId,
+        companyId: companyId ?? undefined,
         address: property.address,
         municipality: property.municipality,
         province: property.province,

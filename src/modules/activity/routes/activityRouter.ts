@@ -2,13 +2,13 @@ import express from "express";
 import { ActivityController } from "../controllers";
 import { bindAllMethods } from "@core/utils";
 import { validateActivityQuery, validateActivityItemsQuery } from "../validators";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, tenantMiddleware } from "@core/middlewares";
 
 const activityRouter = express.Router();
 const activityController = bindAllMethods(new ActivityController());
 
-// Todas las rutas requieren autenticación
-activityRouter.use(authenticationToken);
+// Todas las rutas requieren autenticación + tenant
+activityRouter.use(authenticationToken, tenantMiddleware);
 
 // GET /api/v1/activity - Obtener reporte de actividad
 activityRouter.get(

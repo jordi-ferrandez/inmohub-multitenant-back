@@ -103,10 +103,11 @@ class NotificationService {
     personId: number,
     channel: NotificationChannel,
     subject: string | undefined,
-    message: string
+    message: string,
+    companyId: number | null = null
   ): Promise<NotificationResult> {
-    const person = await prisma.person.findUnique({
-      where: { id: personId },
+    const person = await prisma.person.findFirst({
+      where: { id: personId, ...(companyId ? { companyId } : {}) },
       include: { phones: true },
     });
 
@@ -138,9 +139,9 @@ class NotificationService {
     }
   }
 
-  async notifyPropertyVisit(followUpId: number) {
-    const followUp = await prisma.followUp.findUnique({
-      where: { id: followUpId },
+  async notifyPropertyVisit(followUpId: number, companyId: number | null = null) {
+    const followUp = await prisma.followUp.findFirst({
+      where: { id: followUpId, ...(companyId ? { companyId } : {}) },
       include: {
         seller: true,
         property: {

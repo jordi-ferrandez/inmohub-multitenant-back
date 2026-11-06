@@ -2,7 +2,11 @@ import { prisma } from "@core/lib";
 import { CreateFlyerDTO } from "../types/FlyerTypes";
 
 export class FlyerService {
-  async getTemplates() {
+  private propertyFilter(companyId: number | null) {
+    return companyId ? { property: { companyId } } : {};
+  }
+
+  async getTemplates(companyId: number | null) {
     return prisma.flyerTemplate.findMany({
       where: {
         isActive: true,
@@ -11,11 +15,16 @@ export class FlyerService {
     });
   }
 
-  async getFlyersByProperty(propertyId: number) {
+  async getFlyersByProperty(propertyId: number, companyId: number | null) {
+    if (companyId) {
+      const property = await prisma.property.findFirst({ where: { id: propertyId, companyId } });
+      if (!property) throw new Error("Propiedad no encontrada");
+    }
     return prisma.flyer.findMany({
       where: {
         propertyId,
         deletedAt: null,
+        ...this.propertyFilter(companyId),
       },
       include: {
         template: true,
@@ -34,7 +43,13 @@ export class FlyerService {
     });
   }
 
-  async createFlyer(data: CreateFlyerDTO) {
+  async createFlyer(data: CreateFlyerDTO, companyId: number | null) {
+    if (companyId) {
+      const property = await prisma.property.findFirst({ where: { id: data.propertyId, companyId } });
+      if (!property) throw new Error("Propiedad no encontrada");
+      const user = await prisma.user.findUnique({ where: { id: data.generatedById } });
+      if (!user || user.companyId !== companyId) throw new Error("Usuario no encontrado");
+    }
     return prisma.flyer.create({
       data,
       include: {
@@ -43,7 +58,13 @@ export class FlyerService {
     });
   }
 
-  async recordShipment(flyerId: number, userId: number, notes?: string) {
+  async recordShipment(flyerId: number, userId: number, notes: string | undefined, companyId: number | null) {
+    if (companyId) {
+      const flyer = await prisma.flyer.findFirst({ where: { id: flyerId, ...this.propertyFilter(companyId) } });
+      if (!flyer) throw new Error("Flyer no encontrado");
+      const user = await prisma.user.findUnique({ where: { id: userId } });
+      if (!user || user.companyId !== companyId) throw new Error("Usuario no encontrado");
+    }
     return prisma.flyerShipment.create({
       data: {
         flyerId,
@@ -53,7 +74,11 @@ export class FlyerService {
     });
   }
 
-  async getShipmentsByFlyer(flyerId: number) {
+  async getShipmentsByFlyer(flyerId: number, companyId: number | null) {
+    if (companyId) {
+      const flyer = await prisma.flyer.findFirst({ where: { id: flyerId, ...this.propertyFilter(companyId) } });
+      if (!flyer) throw new Error("Flyer no encontrado");
+    }
     return prisma.flyerShipment.findMany({
       where: { flyerId },
       include: {

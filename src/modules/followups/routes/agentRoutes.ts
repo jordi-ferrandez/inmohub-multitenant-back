@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { AgentController } from "../controllers";
 import { requireAgentOrDirectorRole } from "../middlewares";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, tenantMiddleware } from "@core/middlewares";
 import { validateParams, validateQuery } from "../validators";
 import { z } from "zod";
 import { bindAllMethods } from "@core/utils";
@@ -9,8 +9,8 @@ import { bindAllMethods } from "@core/utils";
 const router = Router();
 const agentController = bindAllMethods(new AgentController());
 
-// Todas las rutas requieren autenticación
-router.use(authenticationToken);
+// Todas las rutas requieren autenticación + tenant
+router.use(authenticationToken, tenantMiddleware);
 
 // Todas las rutas requieren rol de agente o director
 router.use(requireAgentOrDirectorRole);

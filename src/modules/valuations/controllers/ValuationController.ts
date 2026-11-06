@@ -91,13 +91,14 @@ export class ValuationController {
   async createInternalValuation(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
+      const companyId = req.companyId ?? null;
       if (!userId) {
         errorResponse(res, "Usuario no autenticado", 401);
         return;
       }
       
       const data = req.body;
-      const result = await valuationService.createInternalValuation(data, parseInt(userId));
+      const result = await valuationService.createInternalValuation(data, parseInt(userId), companyId);
       successResponse(res, result);
     } catch (error: any) {
       console.error("Internal Valuation Error:", error);

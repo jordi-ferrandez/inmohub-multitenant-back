@@ -19,7 +19,8 @@ export class FlyerController {
    */
   async getTemplates(req: Request, res: Response): Promise<void> {
     try {
-      const templates = await this.flyerService.getTemplates();
+      const companyId = req.companyId ?? null;
+      const templates = await this.flyerService.getTemplates(companyId);
       successResponse(res, templates, 200);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al obtener plantillas", 500);
@@ -51,7 +52,8 @@ export class FlyerController {
         errorResponse(res, "ID de propiedad inválido", 400);
         return;
       }
-      const flyers = await this.flyerService.getFlyersByProperty(propertyId);
+      const companyId = req.companyId ?? null;
+      const flyers = await this.flyerService.getFlyersByProperty(propertyId, companyId);
       successResponse(res, flyers, 200);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al obtener flyers", 500);
@@ -93,12 +95,13 @@ export class FlyerController {
         return;
       }
 
+      const companyId = req.companyId ?? null;
       const flyer = await this.flyerService.createFlyer({
         propertyId: body.propertyId,
         templateId: body.templateId,
         generatedById: parseInt(userId),
         qrContent: body.qrContent,
-      });
+      }, companyId);
 
       successResponse(res, flyer, 201);
     } catch (error: any) {
@@ -149,7 +152,8 @@ export class FlyerController {
         return;
       }
 
-      const shipment = await this.flyerService.recordShipment(flyerId, parseInt(userId), notes);
+      const companyId = req.companyId ?? null;
+      const shipment = await this.flyerService.recordShipment(flyerId, parseInt(userId), notes, companyId);
       successResponse(res, shipment, 201);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al registrar envío", 500);
@@ -181,7 +185,8 @@ export class FlyerController {
         errorResponse(res, "ID de flyer inválido", 400);
         return;
       }
-      const shipments = await this.flyerService.getShipmentsByFlyer(flyerId);
+      const companyId = req.companyId ?? null;
+      const shipments = await this.flyerService.getShipmentsByFlyer(flyerId, companyId);
       successResponse(res, shipments, 200);
     } catch (error: any) {
       errorResponse(res, error.message || "Error al obtener envíos", 500);

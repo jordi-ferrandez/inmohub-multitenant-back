@@ -9,8 +9,18 @@ import {
 import { getNameAndNumberFromStreet } from "../../buildings/utils/getNameAndNumberFromStreet";
 
 class AgentService {
+  private buildAssignmentTenantFilter(companyId: number | null) {
+    if (!companyId) return {};
+    return { user: { companyId }, building: { companyId } };
+  }
+
+  private buildPropertyTenantFilter(companyId: number | null) {
+    if (!companyId) return {};
+    return { companyId };
+  }
+
   // Obtener asignaciones activas del agente
-  async getActiveAssignments(userId: number): Promise<AgentAssignmentDTO[]> {
+  async getActiveAssignments(userId: number, companyId: number | null): Promise<AgentAssignmentDTO[]> {
     const now = new Date();
 
     const assignments = await prisma.assignment.findMany({
@@ -20,6 +30,7 @@ class AgentService {
         deletedAt: null,
         startDate: { lte: now },
         endDate: { gte: now },
+        ...this.buildAssignmentTenantFilter(companyId),
       },
       include: {
         building: {
@@ -75,12 +86,13 @@ class AgentService {
   }
 
   // Obtener historial de asignaciones del agente
-  async getAssignmentsHistory(userId: number): Promise<AgentAssignmentDTO[]> {
+  async getAssignmentsHistory(userId: number, companyId: number | null): Promise<AgentAssignmentDTO[]> {
     const assignments = await prisma.assignment.findMany({
       where: {
         userId,
         type: "Following",
         deletedAt: null,
+        ...this.buildAssignmentTenantFilter(companyId),
       },
       include: {
         building: {
@@ -140,7 +152,8 @@ class AgentService {
   // Obtener todas las propiedades disponibles (sin filtrado por asignaciones)
   async getAvailableProperties(
     userId: number,
-    queryParams: AvailablePropertyQueryParams = {}
+    queryParams: AvailablePropertyQueryParams = {},
+    companyId: number | null = null
   ): Promise<AvailablePropertyListResponse> {
     const {
       search,
@@ -153,6 +166,7 @@ class AgentService {
     // Construir filtros
     const where: any = {
       deletedAt: null,
+      ...this.buildPropertyTenantFilter(companyId),
     };
     // Agregar filtro de búsqueda si se proporciona
     if (search && search.trim()) {
@@ -239,17 +253,19 @@ class AgentService {
   // Obtener historial de seguimientos de una propiedad específica
   async getPropertyFollowUpsHistory(
     propertyId: number,
-    userId: number
+    userId: number,
+    companyId: number | null = null
   ): Promise<PropertyWithFollowUpsDTO> {
     try {
       // Hacer una sola consulta optimizada
-      const propertyWithFollowUps = await prisma.property.findUnique({
-        where: { id: propertyId },
+      const propertyWithFollowUps = await prisma.property.findFirst({
+        where: { id: propertyId, ...this.buildPropertyTenantFilter(companyId) },
         include: {
           building: true,
           followUps: {
             where: {
               deletedAt: null,
+              ...(companyId ? { companyId } : {}),
             },
             include: {
               seller: {

@@ -16,7 +16,7 @@ export const publicApiRateLimiter = rateLimit({
       return `apikey_${req.apiKey.id}`;
     }
     // Otherwise fallback to IP (using ipKeyGenerator for IPv6 support)
-    return ipKeyGenerator(req);
+    return ipKeyGenerator(req.ip ?? req.socket.remoteAddress ?? 'unknown');
   },
   handler: (req, res, next, options) => {
     res.status(options.statusCode).json({

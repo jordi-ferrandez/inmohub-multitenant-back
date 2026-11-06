@@ -25,34 +25,18 @@ export class PublicApiService {
     const skip = (Number(page) - 1) * Number(limit);
     const take = Math.min(Number(limit), 100);
 
-    const { companyId, userId } = context;
+    const { companyId } = context;
 
-    // Multi-tenant enforcement: if companyId is present, filter by it.
-    // Otherwise, fallback to userId (CapturedBy/Author/etc)
+    // Multi-tenant enforcement: public API data must be scoped by company.
+    // If no companyId is present, deny access rather than guessing model-specific user fields.
+    if (!companyId) {
+      throw new Error('API key sin empresa asociada: acceso denegado');
+    }
+
     const where: any = {
       deletedAt: null,
+      companyId,
     };
-
-    if (companyId) {
-      where.companyId = companyId;
-    } else if (userId) {
-      // We need to know which field to use for user filtering.
-      // For Property it's capturedById, for Reminder it's responsibleId, etc.
-      // This is a bit tricky for a generic service.
-      // Let's assume most models have a 'userId' field or similar for personal data.
-      // For this specific app, we might need a map or just try common fields.
-
-      // Fallback for demo: use an OR for common user fields if not specified
-      where.OR = [
-        { capturedById: userId },
-        { userId: userId },
-        { authorId: userId },
-      ].filter((condition) => {
-        // Check if the field exists on the model (Prisma doesn't expose this easily here,
-        // but we can try to be smart or just handle it in controllers)
-        return true;
-      });
-    }
 
     // Apply filters
     Object.keys(filters).forEach((key) => {
@@ -97,22 +81,17 @@ export class PublicApiService {
     context: { companyId?: number; userId?: number },
     include?: any,
   ) {
-    const { companyId, userId } = context;
+    const { companyId } = context;
+
+    if (!companyId) {
+      throw new Error('API key sin empresa asociada: acceso denegado');
+    }
 
     const where: any = {
       id,
       deletedAt: null,
+      companyId,
     };
-
-    if (companyId) {
-      where.companyId = companyId;
-    } else {
-      where.OR = [
-        { capturedById: userId },
-        { userId: userId },
-        { authorId: userId },
-      ];
-    }
 
     const record = await modelDelegate.findFirst({
       where,

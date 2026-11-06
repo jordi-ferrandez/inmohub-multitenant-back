@@ -9,8 +9,17 @@ import {
 } from "../types";
 
 class AssignmentService {
+  private buildTenantFilter(companyId: number | null) {
+    if (!companyId) return {};
+    return {
+      user: { companyId },
+      building: { companyId },
+    };
+  }
+
   async createAssignment(
-    input: CreateAssignmentRequest
+    input: CreateAssignmentRequest,
+    companyId: number | null
   ): Promise<AssignmentDTO> {
     // Si endDate no viene, establecerlo igual a startDate (asignación de un día)
     const endDate = input.endDate ?? input.startDate;
@@ -24,6 +33,9 @@ class AssignmentService {
     if (!user) {
       throw new Error("Usuario no encontrado");
     }
+    if (companyId && user.companyId !== companyId) {
+      throw new Error("Usuario no pertenece a la empresa");
+    }
 
     // Verificar que el edificio existe
     const building = await prisma.building.findUnique({
@@ -33,6 +45,9 @@ class AssignmentService {
     if (!building) {
       throw new Error("Edificio no encontrado");
     }
+    if (companyId && building.companyId !== companyId) {
+      throw new Error("Edificio no pertenece a la empresa");
+    }
 
     // Verificar que no existe una asignación solapada para este usuario y edificio
     // Dos rangos de fechas se solapan si: startDate1 <= endDate2 AND endDate1 >= startDate2
@@ -41,6 +56,7 @@ class AssignmentService {
         userId: input.userId,
         buildingId: input.buildingId,
         deletedAt: null,
+        ...this.buildTenantFilter(companyId),
         AND: [
           { startDate: { lte: endDate } },
           { endDate: { gte: input.startDate } },
@@ -87,7 +103,8 @@ class AssignmentService {
   }
 
   async getAssignments(
-    query: AssignmentQueryParams
+    query: AssignmentQueryParams,
+    companyId: number | null
   ): Promise<AssignmentListResponse> {
     console.log("Logging query in service: ", { query });
 
@@ -98,6 +115,7 @@ class AssignmentService {
     // Construir filtros
     const where: any = {
       deletedAt: null,
+      ...this.buildTenantFilter(companyId),
     };
 
     if (query.userId) {
@@ -201,9 +219,9 @@ class AssignmentService {
     };
   }
 
-  async getAssignmentById(id: number): Promise<AssignmentDTO> {
-    const assignment = await prisma.assignment.findUnique({
-      where: { id, deletedAt: null },
+  async getAssignmentById(id: number, companyId: number | null): Promise<AssignmentDTO> {
+    const assignment = await prisma.assignment.findFirst({
+      where: { id, deletedAt: null, ...this.buildTenantFilter(companyId) },
       include: {
         user: {
           select: {
@@ -234,11 +252,12 @@ class AssignmentService {
 
   async updateAssignment(
     id: number,
-    input: UpdateAssignmentRequest
+    input: UpdateAssignmentRequest,
+    companyId: number | null
   ): Promise<AssignmentDTO> {
     // Verificar que la asignación existe
-    const existingAssignment = await prisma.assignment.findUnique({
-      where: { id, deletedAt: null },
+    const existingAssignment = await prisma.assignment.findFirst({
+      where: { id, deletedAt: null, ...this.buildTenantFilter(companyId) },
     });
 
     if (!existingAssignment) {
@@ -253,6 +272,9 @@ class AssignmentService {
       if (!user) {
         throw new Error("Usuario no encontrado");
       }
+      if (companyId && user.companyId !== companyId) {
+        throw new Error("Usuario no pertenece a la empresa");
+      }
     }
 
     // Verificar edificio si se está actualizando
@@ -262,6 +284,9 @@ class AssignmentService {
       });
       if (!building) {
         throw new Error("Edificio no encontrado");
+      }
+      if (companyId && building.companyId !== companyId) {
+        throw new Error("Edificio no pertenece a la empresa");
       }
     }
 
@@ -282,6 +307,7 @@ class AssignmentService {
           userId,
           buildingId,
           deletedAt: null,
+          ...this.buildTenantFilter(companyId),
           AND: [
             { startDate: { lte: endDate } },
             { endDate: { gte: startDate } },
@@ -333,9 +359,9 @@ class AssignmentService {
     return this.mapToDTO(updatedAssignment);
   }
 
-  async deleteAssignment(id: number): Promise<void> {
-    const assignment = await prisma.assignment.findUnique({
-      where: { id, deletedAt: null },
+  async deleteAssignment(id: number, companyId: number | null): Promise<void> {
+    const assignment = await prisma.assignment.findFirst({
+      where: { id, deletedAt: null, ...this.buildTenantFilter(companyId) },
     });
 
     if (!assignment) {
@@ -351,13 +377,20 @@ class AssignmentService {
     });
   }
 
-  async getAssignmentsByUser(userId: number): Promise<AssignmentDTO[]> {
+  async getAssignmentsByUser(userId: number, companyId: number | null): Promise<AssignmentDTO[]> {
+    if (companyId) {
+      const user = await prisma.user.findUnique({ where: { id: userId } });
+      if (!user || user.companyId !== companyId) {
+        throw new Error("Usuario no encontrado");
+      }
+    }
     const assignments = await prisma.assignment.findMany({
       where: {
         userId,
         deletedAt: null,
         startDate: { lte: new Date() },
         endDate: { gte: new Date() },
+        ...this.buildTenantFilter(companyId),
       },
       include: {
         user: {
@@ -388,11 +421,19 @@ class AssignmentService {
 
   async getAssignmentsByBuilding(
     buildingId: number,
+    companyId: number | null,
     activeOnly: boolean = false
   ): Promise<AssignmentDTO[]> {
+    if (companyId) {
+      const building = await prisma.building.findUnique({ where: { id: buildingId } });
+      if (!building || building.companyId !== companyId) {
+        throw new Error("Edificio no encontrado");
+      }
+    }
     const where: any = {
       buildingId,
       deletedAt: null,
+      ...this.buildTenantFilter(companyId),
     };
 
     // Si se solicita solo asignaciones activas, agregar filtros de fecha
@@ -431,13 +472,14 @@ class AssignmentService {
     return assignments.map((assignment) => this.mapToDTO(assignment));
   }
 
-  async getAssignmentsSummary(): Promise<AssignmentSummaryDTO[]> {
+  async getAssignmentsSummary(companyId: number | null): Promise<AssignmentSummaryDTO[]> {
     const now = new Date();
 
     // Obtener todas las asignaciones (incluyendo las pasadas para habituales)
     const assignments = await prisma.assignment.findMany({
       where: {
         deletedAt: null,
+        ...this.buildTenantFilter(companyId),
       },
       include: {
         user: {

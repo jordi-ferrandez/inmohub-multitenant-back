@@ -25,7 +25,7 @@ export class AgentController {
         return;
       }
 
-      const assignments = await agentService.getActiveAssignments(userId);
+      const assignments = await agentService.getActiveAssignments(userId, req.companyId ?? null);
       successResponse(res, assignments);
     } catch (error: any) {
       errorResponse(res, error.message, 400);
@@ -52,7 +52,7 @@ export class AgentController {
         return;
       }
 
-      const assignments = await agentService.getAssignmentsHistory(userId);
+      const assignments = await agentService.getAssignmentsHistory(userId, req.companyId ?? null);
       successResponse(res, assignments);
     } catch (error: any) {
       errorResponse(res, error.message, 400);
@@ -98,7 +98,7 @@ export class AgentController {
         limit: (req.queryValidated as any)?.limit || 50,
       };
 
-      const result = await agentService.getAvailableProperties(userId, queryParams);
+      const result = await agentService.getAvailableProperties(userId, queryParams, req.companyId ?? null);
 
       const paginationMetadata: PaginationMetadata = {
         totalItems: result.pagination.total,
@@ -140,10 +140,7 @@ export class AgentController {
       }
 
       const { propertyId } = req.params;
-      const propertyFollowUps = await agentService.getPropertyFollowUpsHistory(
-        parseInt(propertyId),
-        userId
-      );
+      const propertyFollowUps = await agentService.getPropertyFollowUpsHistory(parseInt(propertyId), userId, req.companyId ?? null);
       successResponse(res, propertyFollowUps);
     } catch (error: any) {
       errorResponse(res, error.message, 400);

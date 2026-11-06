@@ -20,12 +20,13 @@ export class AgentController {
   async getActiveAssignments(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
+      const companyId = req.companyId ?? null;
       if (!userId) {
         errorResponse(res, "Usuario no autenticado", 401);
         return;
       }
 
-      const assignments = await AgentService.getActiveAssignments(userId);
+      const assignments = await AgentService.getActiveAssignments(userId, companyId);
       successResponse(res, assignments);
     } catch (error: any) {
       errorResponse(res, error.message, 400);
@@ -47,12 +48,13 @@ export class AgentController {
   async getAssignmentsHistory(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user?.userId;
+      const companyId = req.companyId ?? null;
       if (!userId) {
         errorResponse(res, "Usuario no autenticado", 401);
         return;
       }
 
-      const assignments = await AgentService.getAssignmentsHistory(userId);
+      const assignments = await AgentService.getAssignmentsHistory(userId, companyId);
       successResponse(res, assignments);
     } catch (error: any) {
       errorResponse(res, error.message, 400);
@@ -98,10 +100,8 @@ export class AgentController {
         limit: req.queryValidated?.limit || 50,
       };
 
-      const result = await AgentService.getAvailableProperties(
-        userId,
-        queryParams
-      );
+      const companyId = req.companyId ?? null;
+      const result = await AgentService.getAvailableProperties(userId, queryParams, companyId);
 
       const paginationMetadata: PaginationMetadata = {
         totalItems: result.pagination.total,
@@ -153,9 +153,11 @@ export class AgentController {
         return;
       }
 
+      const companyId = req.companyId ?? null;
       const propertyFollowUps = await AgentService.getPropertyFollowUpsHistory(
         parsedPropertyId,
-        userId
+        userId,
+        companyId
       );
       successResponse(res, propertyFollowUps);
     } catch (error: any) {

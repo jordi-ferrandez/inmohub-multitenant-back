@@ -1,6 +1,6 @@
 import express from "express";
 import { bindAllMethods } from "@core/utils";
-import { authenticationToken } from "@core/middlewares";
+import { authenticationToken, tenantMiddleware } from "@core/middlewares";
 import { upload } from "@core/config/multer";
 import { InmovillaController } from "../controllers";
 import { validateCSVFile } from "../validators";
@@ -11,6 +11,7 @@ const inmovillaController = bindAllMethods(new InmovillaController());
 inmovillaRouter.post(
   "/import-properties-csv",
   authenticationToken,
+  tenantMiddleware,
   upload.single("csvFile"),
   validateCSVFile,
   inmovillaController.importCSV

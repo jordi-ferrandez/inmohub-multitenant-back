@@ -12,7 +12,7 @@ import { BatchProcessor } from "@core/utils/BatchProcessor";
 import { Person, PhoneType, Property } from "./../../../../generated/prisma";
 
 export class InmovillaService {
-  async importFromCSV(parsedCSVData: ParsedCSVData): Promise<ImportDTO> {
+  async importFromCSV(parsedCSVData: ParsedCSVData, companyId: number | null = null): Promise<ImportDTO> {
     const startTime = Date.now();
     const parseTime = Date.now();
     const response: ImportDTO = {
@@ -55,7 +55,7 @@ export class InmovillaService {
         buildingEntries,
         10,
         async ([buildingKey, buildingUnit]) => {
-          const result = await this.processBuilding(buildingUnit, response);
+           const result = await this.processBuilding(buildingUnit, response, companyId);
           processedBuildings++;
           if (
             processedBuildings % 10 === 0 ||
@@ -344,7 +344,8 @@ export class InmovillaService {
             try {
               const { buildingCreated } = await this.processBuilding(
                 buildingProcessingUnit,
-                response
+                response,
+                null
               );
               if (buildingCreated) response.buildingsCreated++;
               return buildingCreated;
@@ -372,7 +373,8 @@ export class InmovillaService {
 
   private async processBuilding(
     buildingUnit: BuildingProcessingUnit,
-    response: ImportDTO
+    response: ImportDTO,
+    companyId: number | null
   ): Promise<{ buildingCreated: boolean; buildingExisting: boolean }> {
     let buildingCreated = false;
     let buildingExisting = false;
@@ -394,15 +396,16 @@ export class InmovillaService {
       number: building.number,
       block: building.block,
       stair: building.stair,
+      ...(companyId ? { companyId } : {}),
     };
 
     let dbBuilding = await prisma.building.findFirst({
-      where: { ...data },
+      where: { street: building.street, number: building.number, block: building.block, stair: building.stair, ...(companyId ? { companyId } : {}) },
     });
 
     if (!dbBuilding) {
       dbBuilding = await prisma.building.create({
-        data,
+        data: { street: building.street, number: building.number, block: building.block, stair: building.stair, companyId: companyId ?? undefined },
       });
       buildingCreated = true;
     } else {
@@ -416,7 +419,7 @@ export class InmovillaService {
       buildingUnit.propertiesWithRelations,
       15,
       async (propertyUnit) =>
-        this.processProperty(dbBuilding.id, propertyUnit, response),
+        this.processProperty(dbBuilding.id, propertyUnit, response, companyId),
       (propertyUnit, err) => {
         const code = propertyUnit.property.inmovillaCode;
         const rowNumber = propertyUnit.rowNumber;
@@ -452,12 +455,14 @@ export class InmovillaService {
   private async processProperty(
     buildingId: number,
     propertyWithRelations: PropertyWithRelations,
-    response: ImportDTO
+    response: ImportDTO,
+    companyId: number | null
   ): Promise<void> {
     const { property, client, captador } = propertyWithRelations;
 
     let dbProperty = await prisma.property.findFirst({
       where: {
+        ...(companyId ? { companyId } : {}),
         OR: [
           { inmovillaCode: property.inmovillaCode },
           {
@@ -498,13 +503,14 @@ export class InmovillaService {
         occupiedBy: property.occupiedBy,
         rso_comment: property.rso_comment,
         soldRentedUs: property.soldRentedUs,
+        companyId: companyId ?? undefined,
       },
     });
     response.propertiesCreated++;
 
     // Procesar cliente con manejo de errores para que no detenga el proceso
     try {
-      await this.processClient(propertyWithRelations, dbProperty, response);
+      await this.processClient(propertyWithRelations, dbProperty, response, companyId);
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : String(error);
       const rowNumber = propertyWithRelations.rowNumber;
@@ -554,7 +560,8 @@ export class InmovillaService {
   private async processClient(
     propertyWithRelations: PropertyWithRelations,
     dbProperty: Property,
-    response: ImportDTO
+    response: ImportDTO,
+    companyId: number | null
   ): Promise<Person | null> {
     const { client } = propertyWithRelations;
 
@@ -603,8 +610,8 @@ export class InmovillaService {
       // Buscar persona: primero por email si existe, luego por nombre + teléfono
       if (emailValue) {
         // Buscar por email si está disponible
-        dbPerson = await prisma.person.findUnique({
-          where: { email: emailValue },
+        dbPerson = await prisma.person.findFirst({
+          where: { email: emailValue, ...(companyId ? { companyId } : {}) },
         });
       }
 
@@ -618,6 +625,7 @@ export class InmovillaService {
             where: {
               firstName: client.firstName,
               lastName: client.lastName,
+              ...(companyId ? { companyId } : {}),
               phones: {
                 some: {
                   phone: normalizedPhone,
@@ -642,6 +650,7 @@ export class InmovillaService {
             firstName: client.firstName,
             lastName: client.lastName,
             email: emailValue || null, // Email opcional
+            companyId: companyId ?? undefined,
             phones: {
               create: [
                 ...(client.telephone &&
