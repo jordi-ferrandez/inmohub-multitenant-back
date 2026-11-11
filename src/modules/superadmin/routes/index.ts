@@ -13,6 +13,8 @@ import {
   validateCreateCompany,
   validateUpdateCompany,
   validateMoveUser,
+  validateCreateUser,
+  validateUpdateUser,
 } from "../validators";
 
 const router = Router();
@@ -34,7 +36,14 @@ router.delete("/companies/:id", (req, res) =>
 );
 
 // Usuarios globales
+router.get("/roles", (req, res) => superadminUserController.getRoles(req, res));
 router.get("/users", (req, res) => superadminUserController.getAll(req, res));
+router.post("/users", validateCreateUser, (req, res) =>
+  superadminUserController.createUser(req, res)
+);
+router.patch("/users/:id", validateUpdateUser, (req, res) =>
+  superadminUserController.updateUser(req, res)
+);
 router.patch("/users/:id/move", validateMoveUser, (req, res) =>
   superadminUserController.moveUser(req, res)
 );

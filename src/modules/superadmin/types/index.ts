@@ -33,6 +33,54 @@ export type SuperadminUserQueryParams = {
   sortOrder?: "asc" | "desc";
 };
 
+export type SuperadminRoleDTO = {
+  id: number;
+  name: string;
+  displayName: string;
+};
+
+export type SuperadminUserDTO = {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  phone?: string | null;
+  avatarUrl?: string | null;
+  isActive: boolean;
+  isSuperAdmin: boolean;
+  companyId: number | null;
+  companyName?: string | null;
+  roles: SuperadminRoleDTO[];
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type CreateSuperadminUserDTO = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  phone?: string;
+  isActive?: boolean;
+  /** Si es true, se crea sin empresa y sin roles (flag global) */
+  isSuperAdmin?: boolean;
+  companyId?: number | null;
+  roleIds?: number[];
+};
+
+export type UpdateSuperadminUserDTO = {
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  /** En edición es opcional: si viene, se cambia la contraseña */
+  password?: string;
+  phone?: string | null;
+  isActive?: boolean;
+  isSuperAdmin?: boolean;
+  companyId?: number | null;
+  roleIds?: number[];
+};
+
 export type SuperadminStatsDTO = {
   totalCompanies: number;
   totalUsers: number;

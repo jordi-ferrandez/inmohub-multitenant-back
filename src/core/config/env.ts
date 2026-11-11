@@ -21,6 +21,13 @@ const envSchema = z.object({
   TWILIO_ACCOUNT_SID: z.string().optional(),
   TWILIO_AUTH_TOKEN: z.string().optional(),
   TWILIO_PHONE_NUMBER: z.string().optional(),
+  CATASTRO_API_BASE_URL: z.string().url().optional(),
+  CATASTRO_API_KEY: z.string().optional(),
+  SUPERADMIN_EMAIL: z
+    .string()
+    .email()
+    .default("superadmin@inmohub.com"),
+  SUPERADMIN_PASSWORD: z.string().min(1).default("InmoHub123!"),
 });
 
 type EnvConfig = z.infer<typeof envSchema>;

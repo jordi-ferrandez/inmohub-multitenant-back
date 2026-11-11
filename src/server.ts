@@ -1,8 +1,8 @@
 import { app } from './app';
-import { PrismaClient } from '../generated/prisma';
+import { prisma } from '@core/lib/prisma';
+import { ensureSuperadmin } from '@core/bootstrap/ensureSuperadmin';
 import { envConfig } from '@core/config/env';
 
-const prisma = new PrismaClient();
 const port = envConfig.PORT;
 const host = envConfig.HOST;
 
@@ -12,6 +12,16 @@ const server = app.listen(port, host, () => {
   console.log(
     `❤️  Health check disponible en http://${host}:${port}/api/health`,
   );
+
+  // Bootstrap: asegurar que exista un Superadmin al arrancar.
+  // No bloquea la escucha del servidor; si la BD no está disponible
+  // se loguea el error y el servidor sigue funcionando.
+  void ensureSuperadmin().catch((error) => {
+    console.error(
+      '❌ Bootstrap: no se pudo verificar/crear el Superadmin:',
+      error,
+    );
+  });
 });
 
 // Graceful shutdown

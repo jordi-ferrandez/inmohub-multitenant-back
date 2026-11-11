@@ -21,6 +21,7 @@ import { wordpressRouter } from '@modules/wordpress/routes/wordpressRouter';
 import { notificationRouter } from '@modules/notifications';
 import { publicApiRouter } from '@modules/public-api';
 import superadminRouter from '@modules/superadmin/routes';
+import { catastroRouter } from '@modules/catastro/routes';
 
 function routerAPI(app: Express) {
   const router = express.Router();
@@ -46,6 +47,7 @@ function routerAPI(app: Express) {
   router.use('/notifications', notificationRouter);
   router.use('/public', publicApiRouter);
   router.use('/superadmin', superadminRouter);
+  router.use('/catastro', catastroRouter);
   router.use('/', testRouter);
 }
 export { routerAPI };

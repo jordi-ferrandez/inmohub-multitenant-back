@@ -87,6 +87,47 @@ class SuperadminUserController {
       errorResponse(res, error.message || "Error al mover usuario", 400);
     }
   }
+
+  async createUser(req: Request, res: Response) {
+    try {
+      const user = await superadminUserService.createUser(req.bodyValidated);
+      successResponse(res, user, 201);
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al crear usuario", 400);
+    }
+  }
+
+  async updateUser(req: Request, res: Response) {
+    try {
+      const id = Number(req.params.id);
+      if (Number.isNaN(id)) {
+        errorResponse(res, "ID de usuario inválido", 400);
+        return;
+      }
+      // El usuario autenticado (para protecciones de autobloqueo)
+      const currentUserId = (req.user as any)?.userId as number;
+      const user = await superadminUserService.updateUser(
+        id,
+        req.bodyValidated,
+        currentUserId
+      );
+      successResponse(res, user);
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al actualizar usuario", 400);
+    }
+  }
+
+  async getRoles(req: Request, res: Response) {
+    try {
+      const companyId = req.query.companyId
+        ? Number(req.query.companyId)
+        : undefined;
+      const roles = await superadminUserService.getRoles(companyId);
+      successResponse(res, roles);
+    } catch (error: any) {
+      errorResponse(res, error.message || "Error al obtener roles", 500);
+    }
+  }
 }
 
 class SuperadminStatsController {
