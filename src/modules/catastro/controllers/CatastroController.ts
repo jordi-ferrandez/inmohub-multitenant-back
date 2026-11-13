@@ -141,4 +141,20 @@ export class CatastroController {
       return;
     }
   }
+
+  async getInmuebleByRefCatastral(req: Request, res: Response): Promise<void> {
+    try {
+      const { refCatastral } = req.params as { refCatastral: string };
+      const result = await this.catastroService.getInmuebleByrefCatastral(refCatastral);
+      successResponse(res, result, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(
+        res,
+        error.message || "Error al consultar Catastro",
+        error.statusCode || 500
+      );
+      return;
+    }
+  }
 }

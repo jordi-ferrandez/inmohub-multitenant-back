@@ -3,6 +3,8 @@ import express from "express";
 import {
   validateGetPropertyById,
   validatePatchPropertyById,
+  validateCreatePropertyFromCatastro,
+  validateGetSavedRefCatastrals,
   validateGetPropertyAttachments,
   validateUploadPropertyAttachment,
   validateUpdatePropertyAttachment,
@@ -24,6 +26,25 @@ const propertyAttachmentController = bindAllMethods(
 // propertyRouter.get('/', (req, res) => {
 //   res.send('Bienvenido a la página de inicio. -> ' + authenticationToken);
 // });
+
+
+// Catastro: comprobar referencias ya guardadas y guardar inmuebles.
+// Deben declararse antes de `/:id` para no ser capturadas por el param.
+propertyRouter.get(
+  "/saved-refs",
+  authenticationToken,
+  validateGetSavedRefCatastrals,
+  tenantMiddleware,
+  propertyController.getSavedRefCatastrals
+);
+
+propertyRouter.post(
+  "/from-catastro",
+  authenticationToken,
+  tenantMiddleware,
+  validateCreatePropertyFromCatastro,
+  propertyController.createPropertyFromCatastro
+);
 
 
 propertyRouter.get(

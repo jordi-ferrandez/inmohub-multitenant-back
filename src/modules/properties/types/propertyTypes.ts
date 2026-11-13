@@ -67,4 +67,23 @@ export const patchPropertyBodySchema = z
     (data) => Object.values(data).some((val) => val !== undefined),
     "At least one field must be provided"
   );
+
+  /**
+ * Guardar un inmueble de Catastro como Property a partir de su referencia.
+ */
+export const createPropertyFromCatastroBodySchema = z
+  .object({
+    refCatastral: z.string().trim().min(5).max(50),
+    // Opcional: adjuntar a un edificio ya existente en lugar de resolverlo por dirección.
+    buildingId: z.coerce.number().int().positive().optional(),
+    description: z.string().max(2000).optional(),
+    ownerId: z.number().int().positive().optional().nullable(),
+    tenantId: z.number().int().positive().optional().nullable(),
+  })
+  .strict();
+export type CreatePropertyFromCatastroBody = z.infer<
+  typeof createPropertyFromCatastroBodySchema
+>;
+
+
 export type PatchPropertyBody = z.infer<typeof patchPropertyBodySchema>;

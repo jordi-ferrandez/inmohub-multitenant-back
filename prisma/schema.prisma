@@ -74,8 +74,8 @@ model User {
   valuationConfigs    ValuationWidgetConfig[]
   valuationsGenerated ValuationRequest[]      @relation("ValuationGeneratedBy")
 
-  isSuperAdmin Boolean @default(false) @map("is_super_admin")
-  companyId    Int?    @map("company_id")
+  isSuperAdmin Boolean  @default(false) @map("is_super_admin")
+  companyId    Int?     @map("company_id")
   company      Company? @relation(fields: [companyId], references: [id])
   apiKeys      ApiKey[]
 }
@@ -119,31 +119,33 @@ model RolePermission {
 }
 
 model Building {
-  id          Int                  @id @default(autoincrement())
-  street      String
-  number      Int
-  block       String?
-  stair       String?
-  contactId   Int?                 @map("contact_id")
-  presidentId Int?                 @map("president_id")
-  informerId  Int?                 @map("informer_id")
-  noDisturb   Boolean              @default(false) @map("no_disturb")
-  createdAt   DateTime             @default(now()) @map("created_at")
-  updatedAt   DateTime             @default(now()) @updatedAt @map("updated_at")
-  deletedAt   DateTime?            @map("deleted_at")
-  assignments Assignment[]
-  contact     Person?              @relation("BuildingContact", fields: [contactId], references: [id])
-  informer    Person?              @relation("BuildingInformer", fields: [informerId], references: [id])
-  president   Person?              @relation("BuildingPresident", fields: [presidentId], references: [id])
-  attachments BuildingAttachment[]
-  mailboxing  Mailboxing[]
-  properties  Property[]
-  reminders   Reminder[]
+  id           Int                  @id @default(autoincrement())
+  street       String
+  number       Int
+  block        String?
+  stair        String?
+  refCatastral String?              @map("ref_catastral")
+  contactId    Int?                 @map("contact_id")
+  presidentId  Int?                 @map("president_id")
+  informerId   Int?                 @map("informer_id")
+  noDisturb    Boolean              @default(false) @map("no_disturb")
+  createdAt    DateTime             @default(now()) @map("created_at")
+  updatedAt    DateTime             @default(now()) @updatedAt @map("updated_at")
+  deletedAt    DateTime?            @map("deleted_at")
+  assignments  Assignment[]
+  contact      Person?              @relation("BuildingContact", fields: [contactId], references: [id])
+  informer     Person?              @relation("BuildingInformer", fields: [informerId], references: [id])
+  president    Person?              @relation("BuildingPresident", fields: [presidentId], references: [id])
+  attachments  BuildingAttachment[]
+  mailboxing   Mailboxing[]
+  properties   Property[]
+  reminders    Reminder[]
 
   companyId Int?     @map("company_id")
   company   Company? @relation(fields: [companyId], references: [id])
 
-  @@unique([number, block, stair, street])
+  @@unique([refCatastral, companyId], map: "idx_building_ref_catastral_company")
+  // @@unique([number, block, stair, street])
   @@index([number, block, stair, street], map: "idx_building")
   @@index([street], map: "idx_building_street")
 }
@@ -153,6 +155,9 @@ model Property {
   inmovillaCode     Int                  @map("inmovilla_code")
   number            String
   floor             Int
+  refCatastral      String?              @map("ref_catastral")
+  province          String?
+  municipality      String?
   buildingId        Int                  @map("building_id")
   ownerId           Int?                 @map("owner_id")
   tenantId          Int?                 @map("tenant_id")
@@ -191,10 +196,32 @@ model Property {
   valuations        ValuationRequest[]
   mailboxing        MailboxingProperty[]
 
+  // Datos catastrales (respuesta Catastro / RSO). Todos opcionales.
+  tipoBien           String? @map("tipo_bien")
+  cadastralReference String? @map("cadastral_reference")
+  cadastralPc1       String? @map("cadastral_pc1")
+  cadastralPc2       String? @map("cadastral_pc2")
+  cadastralCar       String? @map("cadastral_car")
+  cadastralCc1       String? @map("cadastral_cc1")
+  cadastralCc2       String? @map("cadastral_cc2")
+
+  ineProvinceCode     String? @map("ine_province_code")
+  ineMunicipalityCode String? @map("ine_municipality_code")
+  provinceName        String? @map("province_name")
+  municipalityName    String? @map("municipality_name")
+  postalCode          String? @map("postal_code")
+  streetType          String? @map("street_type")
+  streetName          String? @map("street_name")
+  streetNumber        String? @map("street_number")
+  cadastralFloor      String? @map("cadastral_floor")
+  cadastralDoor       String? @map("cadastral_door")
+  fullAddress         String? @map("full_address")
+
   companyId Int?     @map("company_id")
   company   Company? @relation(fields: [companyId], references: [id])
 
-  @@unique([number, floor, buildingId])
+  @@unique([refCatastral, companyId], map: "idx_property_ref_catastral_company")
+  // @@unique([number, floor, buildingId])
   @@index([buildingId], map: "idx_property_building")
   @@index([inmovillaCode], map: "idx_property_inmovilla_code")
 }
@@ -282,20 +309,20 @@ enum MailboxingExecutionStatus {
 }
 
 model Mailboxing {
-  id               Int                       @id @default(autoincrement())
-  mailboxerId      Int                       @map("mailboxer_id")
-  buildingId       Int                       @map("building_id")
-  status           MailboxingStatus          @default(outside)
-  executionStatus  MailboxingExecutionStatus @default(completed) @map("execution_status")
-  comment          String?
-  date             DateTime                  @map("date")
-  createdAt        DateTime                  @default(now()) @map("created_at")
-  updatedAt   DateTime               @default(now()) @updatedAt @map("updated_at")
-  deletedAt   DateTime?              @map("deleted_at")
-  building    Building               @relation(fields: [buildingId], references: [id])
-  properties  MailboxingProperty[]
-  mailboxer   User                   @relation(fields: [mailboxerId], references: [id])
-  attachments MailboxingAttachment[]
+  id              Int                       @id @default(autoincrement())
+  mailboxerId     Int                       @map("mailboxer_id")
+  buildingId      Int                       @map("building_id")
+  status          MailboxingStatus          @default(outside)
+  executionStatus MailboxingExecutionStatus @default(completed) @map("execution_status")
+  comment         String?
+  date            DateTime                  @map("date")
+  createdAt       DateTime                  @default(now()) @map("created_at")
+  updatedAt       DateTime                  @default(now()) @updatedAt @map("updated_at")
+  deletedAt       DateTime?                 @map("deleted_at")
+  building        Building                  @relation(fields: [buildingId], references: [id])
+  properties      MailboxingProperty[]
+  mailboxer       User                      @relation(fields: [mailboxerId], references: [id])
+  attachments     MailboxingAttachment[]
 }
 
 model MailboxingProperty {
@@ -664,7 +691,7 @@ model ForumTopic {
   id        Int       @id @default(autoincrement())
   title     String
   content   String    @db.Text
-  category  String    // Nombre libre de la categoría (string)
+  category  String // Nombre libre de la categoría (string)
   authorId  Int       @map("author_id")
   views     Int       @default(0)
   isPinned  Boolean   @default(false) @map("is_pinned")
@@ -673,9 +700,9 @@ model ForumTopic {
   updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
 
-  author  User        @relation(fields: [authorId], references: [id])
-  posts   ForumPost[]
-  tags    ForumTag[]
+  author User        @relation(fields: [authorId], references: [id])
+  posts  ForumPost[]
+  tags   ForumTag[]
 
   companyId Int?     @map("company_id")
   company   Company? @relation(fields: [companyId], references: [id])

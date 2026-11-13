@@ -81,42 +81,92 @@ export interface CatastroResponse {
 /* ---------- Callejero: provincias, municipios y vías ---------- */
 
 export interface CatastroProvincia {
-  nombre?: string;
-  codigoProvinciaIne?: string;
+ cpine: string,
+  np: string  
 }
 
 export interface CatastroProvinciasResponse {
-  numeroProvincias: number;
-  provincias: CatastroProvincia[];
-  errores: CatastroError[];
-}
+  // numeroProvincias: number;
+  // provincias: CatastroProvincia[];
+  // errores: CatastroError[];
+  consulta_provincieroResult:{
+    control:{
+cuprov: number;
+    }
+  }
+   provinciero: {
+      prov: CatastroProvincia[]
+}}
 
 export interface CatastroMunicipio {
-  codigoDelegacion?: string;
-  codigoProvinciaIne?: string;
-  codigoMunicipioMeh?: string;
-  codigoMunicipioIne?: string;
-  nombreMunicipio?: string;
+  // codigoDelegacion?: string;
+  // codigoProvinciaIne?: string;
+  // codigoMunicipioMeh?: string;
+  // codigoMunicipioIne?: string;
+  // nombreMunicipio?: string;
+    locat: {
+            cd: string;
+            cmc: string;
+          },
+          loine: {
+            cp: string;
+            cm: string;
+          },
+          nm: string;
 }
 
 export interface CatastroMunicipiosResponse {
-  numeroMunicipios: number;
-  municipios: CatastroMunicipio[];
-  errores: CatastroError[];
+  // numeroMunicipios: number;
+  // municipios: CatastroMunicipio[];
+  // errores: CatastroError[];
+  consulta_municipieroResult: {
+    control: {
+      cumun: number;
+    };
+  };
+  municipiero: {
+    muni: CatastroMunicipio[];
+  };
 }
 
 export interface CatastroVia {
-  codigoMunicipioIne?: string;
-  codigoProvinciaIne?: string;
-  codigoVia?: string;
-  nombreVia?: string;
-  tipoVia?: string;
+  // codigoMunicipioIne?: string;
+  // codigoProvinciaIne?: string;
+  // codigoVia?: string;
+  // nombreVia?: string;
+  // tipoVia?: string;
+   loine: {
+            cp: string;
+            cm: string;
+          },
+          dir: {
+            cv: string;
+            tv: string;
+            nv: string;
+          },
+          dirine: {
+            ecine: string;
+            esine: string;
+            nucine: string;
+            sine: string;
+            vine: string;
+            deine: string;
+          }
 }
 
 export interface CatastroViasResponse {
-  numeroVias: number;
-  vias: CatastroVia[];
-  errores: CatastroError[];
+  // numeroVias: number;
+  // vias: CatastroVia[];
+  // errores: CatastroError[];
+consulta_callejeroResult: {
+    control: {
+      cuca: number;
+    };
+  };
+  callejero: {
+    calle: CatastroVia[];
+  };
+
 }
 
 export const catastroProvinciaQuerySchema = z.object({
@@ -135,3 +185,159 @@ export const catastroViasQuerySchema = z.object({
 });
 
 export type CatastroViasQuery = z.infer<typeof catastroViasQuerySchema>;
+
+export interface CatastroSearch {
+     
+          rc: {
+            pc1: string;
+            pc2: string;
+            car: string;
+            cc1: string;
+            cc2: string;
+          },
+          dt: {
+            loine: {
+              cp: string;
+              cm: string
+            },
+            cmc:  string;
+            np:  string;
+            nm:  string;
+            locs: {
+              lous: {
+                lourb: {
+                  dir: {
+                    cv:  string;  
+                    tv: string; 
+                    nv: string; 
+                    pnp: string; 
+                  },
+                  loint: {
+                    es: string; 
+                    pt: string; 
+                    pu: string; 
+                  },
+                  dp: string; 
+                  dm: string; 
+                }
+              }
+            }
+          },
+          debi: {
+            luso: string; 
+            sfc: string; 
+            cpt: string; 
+            ant: string; 
+          }
+        
+}
+
+export interface CatastroSearchResult {
+   consulta_dnplocResult: {
+    control: {
+      cudnp: number;
+    },
+    lrcdnp: {
+      rcdnp:CatastroSearch[]
+    }
+  }
+}
+
+
+export interface CatastroRefRc {
+  pc1: string;
+  pc2: string;
+  car: string;
+  cc1: string;
+  cc2: string;
+}
+
+export interface CatastroRefLourb {
+  dir?: {
+    cv?: string;
+    tv?: string;
+    nv?: string;
+    pnp?: string;
+  };
+  loint?: {
+    es?: string;
+    pt?: string;
+    pu?: string;
+  };
+  dp?: string;
+  dm?: string;
+}
+
+export interface CatastroRefBi {
+  idbi: {
+    cn?: string;
+    rc: CatastroRefRc;
+  };
+  dt?: {
+    loine?: {
+      cp?: string;
+      cm?: string;
+    };
+    cmc?: string;
+    np?: string;
+    nm?: string;
+    locs?: {
+      lous?: {
+        lourb?: CatastroRefLourb;
+      };
+    };
+  };
+  ldt?: string;
+  debi?: {
+    luso?: string;
+    sfc?: string;
+    cpt?: string;
+    ant?: string;
+  };
+}
+
+export interface CatastroRefConstruccion {
+  lcd?: string;
+  dt?: {
+    lourb?: {
+      loint?: {
+        es?: string;
+        pt?: string;
+        pu?: string;
+      };
+    };
+  };
+  dfcons?: {
+    stl?: string;
+  };
+  dvcons?: {
+    dtip?: string;
+  };
+}
+
+export interface CatastroRefFinca {
+  ldt?: string;
+  ltp?: string;
+  dff?: {
+    ss?: string;
+  };
+  infgraf?: {
+    igraf?: string;
+  };
+}
+
+export interface CatastroBico {
+  bi: CatastroRefBi;
+  finca?: CatastroRefFinca;
+  lcons?: CatastroRefConstruccion[];
+}
+
+export interface CatastroInmuebleByRefCatastral {
+  consulta_dnprcResult: {
+    control?: {
+      cudnp?: number;
+      cucons?: number;
+    };
+    bico: CatastroBico;
+  };
+}

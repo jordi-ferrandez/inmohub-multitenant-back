@@ -174,4 +174,96 @@ export class PropertyController {
       return;
     }
   }
+
+
+  /**
+   * @openapi
+   * /v1/properties/from-catastro:
+   *   post:
+   *     tags: [Properties]
+   *     summary: Guarda un inmueble de Catastro como propiedad
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             required: [refCatastral]
+   *             properties:
+   *               refCatastral:
+   *                 type: string
+   *               buildingId:
+   *                 type: integer
+   *     responses:
+   *       201:
+   *         description: Propiedad creada
+   *       200:
+   *         description: La propiedad ya estaba guardada
+   */
+  async createPropertyFromCatastro(
+    req: Request,
+    res: Response
+  ): Promise<void> {
+    try {
+      const { refCatastral, buildingId, description } =
+        req.bodyValidated as {
+          refCatastral: string;
+          buildingId?: number;
+          description?: string;
+        };
+        const companyId = req.companyId ?? null;
+
+      const result = await this.PropertyService.createPropertyFromCatastro({
+        refCatastral,
+        buildingId,
+        description,
+        companyId,
+      });
+
+      successResponse(res, result, result.alreadySaved ? 200 : 201);
+      return;
+    } catch (error: any) {
+      errorResponse(
+        res,
+        error.message || "Error al guardar la propiedad de Catastro",
+        error.statusCode || 500
+      );
+      return;
+    }
+  }
+
+  /**
+   * @openapi
+   * /v1/properties/saved-refs:
+   *   get:
+   *     tags: [Properties]
+   *     summary: Indica qué referencias catastrales ya están guardadas
+   *     parameters:
+   *       - in: query
+   *         name: refs
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: Referencias separadas por comas
+   *     responses:
+   *       200:
+   *         description: Lista de referencias ya guardadas
+   */
+  async getSavedRefCatastrals(req: Request, res: Response): Promise<void> {
+    try {
+      const { refs } = req.queryValidated as { refs: string[] };
+      const companyId = req.companyId ?? null;
+      const savedRefs =
+        await this.PropertyService.getSavedRefCatastrals(refs,companyId);
+      successResponse(res, { savedRefs }, 200);
+      return;
+    } catch (error: any) {
+      errorResponse(
+        res,
+        error.message || "Error al comprobar las referencias guardadas",
+        error.statusCode || 500
+      );
+      return;
+    }
+  }
 }

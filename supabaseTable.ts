@@ -1,4 +1,4 @@
-const contactos: {
+export interface contactos {
   id: number;
   tipo: string;
   inmovilla_data: {
@@ -258,7 +258,7 @@ const contactos: {
 agency_id:string;
 };
 
-const ghl_espejo: {
+export interface ghl_espejo {
     ghl_contact_id:string;
     agency_id:string;
     location_id:string;
@@ -272,7 +272,7 @@ const ghl_espejo: {
     assigned_to:string;
     tags:{string};
     custom_fields:{custom_fields}
-    attribution{string};
+    attribution:{string};
     ghl_date_added:timestamp;
     ghl_date_updated:timestamp;
     raw:{}
@@ -280,4 +280,170 @@ const ghl_espejo: {
     espejado_en:timestamp;
     notas_espejadas_en:timestamp;
     tareas_citas_espejadas_en:timestamp;    
+}
+
+export interface  ghl_inmueble_relaciones_espejo {
+  ghl_relation_id:string
+ghl_association_id:string
+ghl_inmueble_record_id:string
+agency_id:string
+related_object_key:string
+related_record_id:string
+ghl_date_added:timestamp
+raw:{}
+origen_espejo:string
+espejado_en:timestamp
+}
+
+export interface inmuebles {
+  id:string
+ciudad:string
+direccion:string
+numero_finca:string
+numero_puerta:string
+created_at:timestamp
+updated_at:timestamp
+tipo_propiedad:string
+descripcion:string
+user_id:string
+origen_encargo:string
+inmovilla_external_id:string
+inmovilla_cod_ofer:number
+origen_encargo_id:string
+edificio_id:string
+numero_planta:string
+precio_compra:number
+fecha_compra:timestamp
+valor_estimado_actual:number
+fecha_valoracion:timestamp
+ibi_anual:number
+comunidad_mensual:number
+seguro_anual:number
+observaciones_economicas:string
+modo_explotacion:string
+}
+
+export interface intereses_inmueble {
+  id:string
+contact_id_ghl:string
+property_ref:string
+fecha_interes:timestamp
+canal:string
+estado:string
+motivo_descarte:string
+asesor_user_id_ghl:String
+agency_id:string
+origen:string
+created_at:timestamp
+updated_at:timestamp  
+}
+
+
+export interface personas{
+  id:string
+nombre:string
+apellidos:string
+nombre_completo:string
+dni_nie:string
+fecha_nacimiento:timestamp
+telefono:string
+telefono2:string
+email:string
+email2:string
+direccion:string
+ciudad:string
+codigo_postal:string
+provincia:string
+pais:string
+tipo:string
+subtipo:string
+estado:string
+tags:{string}
+origen:string
+canal_captacion:string
+ghl_contact_id:string
+inmovilla_client_id:string
+rgpd_consentimiento:string
+rgpd_fecha_consentimiento:timestamp
+rgpd_canal_consentimiento:string
+rgpd_marketing_email:string
+rgpd_marketing_whatsapp:string
+lead_score:number
+ultimo_contacto:string
+notas:string
+agency_id:string
+created_at:timestamp
+updated_at:timestamp
+synced_at:timestamp
+direccion_fiscal:string
+direccion_fiscal_calle:string
+direccion_fiscal_numero:string
+direccion_fiscal_planta_puerta:string
+direccion_fiscal_ciudad:string
+direccion_fiscal_codigo_postal:string
+direccion_fiscal_provincia:string
+roles:{string}
+}
+
+export interface propiedades_inmovilla {
+  id:string
+external_id:string
+ref:string
+precio:number
+categoria:string
+tipo_operacion:string
+ciudad:string
+zona:string
+m_construidos:number
+m_parcela:number
+habitaciones:number
+banos:number
+bloque:string
+planta:string
+descripcion:string
+activo:boolean
+created_at:timestamp
+updated_at:timestamp
+banyos:number
+calle:string
+numero_calle:string
+escalera:string
+puerta:string
+latitud:number
+longitud:number
+cod_ofer:string
+prospecto:boolean
+disponible:boolean
+titulo:string
+tipo_inmueble:string
+provincia:string
+codigo_postal:string
+key_loca:string
+key_zona:string
+m_utiles:number
+energia_letra:string
+energia_valor:number
+emisiones_letra:string
+emisiones_valor:number
+ref_certificado:string
+fecha_cert_validez:timestamp
+ref_catastral:string
+idufir_cru:string
+keycli:string
+num_fotos:number
+foto_letra:string
+fotos_urls:{string}
+raw_data:object
+fecha_actualizacion_inmovilla:timestamp
+direccion:string
+contactadopor:string
+eninternet:boolean
+titulo_norm:string
+calle_norm:string
+ciudad_norm:string
+zona_norm:string
+keyagente:string
+captadopor_id:string
+agency_id:string
+
 }
